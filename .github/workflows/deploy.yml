@@ -34,7 +34,7 @@ jobs:
         run: dotnet build DndInator/DndInator.csproj --configuration Release
 
       - name: Publish the project
-        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true
+        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
 
       - name: Add .nojekyll file
         run: touch ./output/wwwroot/.nojekyll

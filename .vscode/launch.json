@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch and Debug Blazor WebAssembly",
+            "type": "blazorwasm",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/DndInator",
+            "browser": "edge",
+            "url": "https://localhost:7166",
+            "timeout": 120000,
+            "preLaunchTask": "build"
+        },
+        {
+            "name": "Launch and Debug with Watch",
+            "type": "blazorwasm",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/DndInator",
+            "browser": "edge",
+            "url": "https://localhost:7166",
+            "timeout": 120000,
+            "preLaunchTask": "watch",
+            "postDebugTask": "kill-watch"
+        }
+    ]
+}
