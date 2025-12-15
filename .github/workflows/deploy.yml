@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore DndInator/DndInator.csproj
+
+      - name: Build the project
+        run: dotnet build DndInator/DndInator.csproj --configuration Release
+
+      - name: Publish the project
+        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true
+
+      - name: Add .nojekyll file
+        run: touch ./output/wwwroot/.nojekyll
+
+      - name: Add index.html for 404
+        run: cp ./output/wwwroot/index.html ./output/wwwroot/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/wwwroot
+          publish_branch: gh-pages
