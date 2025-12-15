@@ -18,4 +18,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../DndInator\DndInator.csproj" />
+    <ProjectReference Include="../DndShared/DndShared.csproj" />
+  </ItemGroup>
+
 </Project>

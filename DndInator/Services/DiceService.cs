@@ -1,6 +1,11 @@
-namespace DndInator.DiceService
+namespace DndInator.Services
 {
-    public class DiceService
+    public interface IDiceService
+    {
+        int RollDice(int sides);
+    }
+
+    public class DiceService : IDiceService
     {
         public int RollDice(int sides)
         {

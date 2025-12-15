@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "name": "DndInator (Root)",
+      "path": "."
+    },
+    {
+      "name": "DndInator",
+      "path": "DndInator"
+    },
+    {
+      "name": "DndMapper",
+      "path": "DndMapper"
+    },
+    {
+      "name": "DndShared",
+      "path": "DndShared"
+    },
+    {
+      "name": "DndTests",
+      "path": "DndTests"
+    }
+  ],
+  "settings": {
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "dotnet.defaultSolution": "DndInator.sln",
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+  }
+}
