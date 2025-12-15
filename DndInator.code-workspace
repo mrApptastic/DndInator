@@ -3,22 +3,6 @@
     {
       "name": "DndInator (Root)",
       "path": "."
-    },
-    {
-      "name": "DndInator",
-      "path": "DndInator"
-    },
-    {
-      "name": "DndMapper",
-      "path": "DndMapper"
-    },
-    {
-      "name": "DndShared",
-      "path": "DndShared"
-    },
-    {
-      "name": "DndTests",
-      "path": "DndTests"
     }
   ],
   "settings": {

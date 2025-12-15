@@ -1,4 +1,6 @@
 ﻿@page "/counter"
+@using DndInator.Services
+@inject DiceService DiceService
 
 <PageTitle>Counter</PageTitle>
 
@@ -13,6 +15,6 @@
 
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount += DiceService.RollDice(6);
     }
 }
