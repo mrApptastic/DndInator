@@ -37,7 +37,13 @@ jobs:
         run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
 
       - name: Update base href in index.html for GitHub Pages
-        run: sed -i 's|<base href="/" />|<base href="/DndInator/" />|g' ./output/wwwroot/index.html
+        run: |
+          sed -i 's|<base href="/" />|<base href="/DndInator/" />|g' ./output/wwwroot/index.html
+          echo "Updated index.html:"
+          grep "<base" ./output/wwwroot/index.html
+          echo "Checking if files exist:"
+          ls -la ./output/wwwroot/ | head -20
+          ls -la ./output/wwwroot/lib/bootstrap/dist/css/ | head -5
 
       - name: Add .nojekyll file
         run: touch ./output/wwwroot/.nojekyll
