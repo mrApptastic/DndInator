@@ -10,5 +10,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IDiceService, DiceService>();
+builder.Services.AddScoped<ILineageService, LineageService>();
+builder.Services.AddScoped<ISpellService, SpellService>();
+builder.Services.AddScoped<IStorageService, StorageService>();
 
 await builder.Build().RunAsync();

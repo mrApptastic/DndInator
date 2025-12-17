@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <ProjectReference Include="../DndShared/DndShared.csproj" />
+  </ItemGroup>
+
 </Project>

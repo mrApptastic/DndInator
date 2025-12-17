@@ -1,0 +1,376 @@
+@page "/spells"
+@using DndInator.Services
+@using DndShared.Models
+@inject ISpellService SpellService
+
+<PageTitle>Spells</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="bi bi-stars me-2"></i>
+                D&D Spells
+            </h1>
+            <p class="lead text-muted">Master the arcane arts with this comprehensive spell compendium</p>
+        </div>
+    </div>
+
+    @if (spells == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading spells...</p>
+        </div>
+    }
+    else if (!spells.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            No spells found.
+        </div>
+    }
+    else
+    {
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="🔍 Search spells..." 
+                       @bind="searchText" @bind:event="oninput" />
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedLevel">
+                    <option value="">All Levels</option>
+                    @for (int i = 0; i <= 9; i++)
+                    {
+                        <option value="@i">@(i == 0 ? "Cantrip" : $"Level {i}")</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedSchool">
+                    <option value="">All Schools</option>
+                    @foreach (var school in Schools)
+                    {
+                        <option value="@school">@school</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 mb-3 d-flex align-items-center justify-content-end">
+                <span class="badge bg-primary fs-6">
+                    <i class="bi bi-collection-fill me-1"></i>
+                    @FilteredSpells.Count() spells
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var spell in FilteredSpells)
+            {
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0 hover-card">
+                        <div class="card-header @GetSchoolClass(spell.School) text-white py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0 fw-bold">@spell.Name</h5>
+                                <span class="badge bg-light text-dark">
+                                    @(spell.Level == 0 ? "Cantrip" : $"Lvl {spell.Level}")
+                                </span>
+                            </div>
+                            <small class="text-white-50">@spell.School</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="spell-details mb-3">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-clock-fill me-1"></i>
+                                            <strong>Casting Time:</strong>
+                                        </small>
+                                        <small>@spell.CastingTime</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-crosshair me-1"></i>
+                                            <strong>Range:</strong>
+                                        </small>
+                                        <small>@spell.Range</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-hourglass-split me-1"></i>
+                                            <strong>Duration:</strong>
+                                        </small>
+                                        <small>@spell.Duration</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-gem me-1"></i>
+                                            <strong>Components:</strong>
+                                        </small>
+                                        <small>@spell.Components</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            @if (!string.IsNullOrEmpty(spell.Description))
+                            {
+                                <p class="card-text small text-secondary">
+                                    @GetTruncatedText(spell.Description, 150)
+                                </p>
+                            }
+                            
+                            @if (spell.SpellLists != null && spell.SpellLists.Any())
+                            {
+                                <div class="d-flex flex-wrap gap-1 mt-2">
+                                    @foreach (var spellList in spell.SpellLists.Take(3))
+                                    {
+                                        <span class="badge bg-secondary text-white small">@spellList</span>
+                                    }
+                                    @if (spell.SpellLists.Count > 3)
+                                    {
+                                        <span class="badge bg-secondary small">+@(spell.SpellLists.Count - 3) more</span>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-outline-primary btn-sm w-100" @onclick="() => ShowDetails(spell)">
+                                <i class="bi bi-book-fill me-1"></i>
+                                View Full Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (selectedSpell != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header @GetSchoolClass(selectedSpell.School) text-white">
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">
+                                <i class="bi bi-stars me-2"></i>
+                                @selectedSpell.Name
+                            </h5>
+                            <small class="text-white-50">
+                                @(selectedSpell.Level == 0 ? "Cantrip" : $"Level {selectedSpell.Level}") - @selectedSpell.School
+                            </small>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDetails"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-clock-fill text-primary fs-3"></i>
+                                        <h6 class="mt-2 mb-0 small text-muted">Casting Time</h6>
+                                        <p class="mb-0 fw-bold">@selectedSpell.CastingTime</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-crosshair text-primary fs-3"></i>
+                                        <h6 class="mt-2 mb-0 small text-muted">Range</h6>
+                                        <p class="mb-0 fw-bold">@selectedSpell.Range</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-hourglass-split text-primary fs-3"></i>
+                                        <h6 class="mt-2 mb-0 small text-muted">Duration</h6>
+                                        <p class="mb-0 fw-bold">@selectedSpell.Duration</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-gem text-primary fs-3"></i>
+                                        <h6 class="mt-2 mb-0 small text-muted">Components</h6>
+                                        <p class="mb-0 fw-bold">@selectedSpell.Components</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(selectedSpell.Description))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-file-text me-1"></i>
+                                    Description
+                                </h6>
+                                <div class="spell-description">
+                                    @((MarkupString)selectedSpell.Description)
+                                </div>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(selectedSpell.AtHigherLevels))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-arrow-up-circle me-1"></i>
+                                    At Higher Levels
+                                </h6>
+                                <div class="spell-higher-levels">
+                                    @((MarkupString)selectedSpell.AtHigherLevels)
+                                </div>
+                            </div>
+                        }
+
+                        @if (selectedSpell.SpellLists != null && selectedSpell.SpellLists.Any())
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-person-badge me-1"></i>
+                                    Available To
+                                </h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach (var spellList in selectedSpell.SpellLists)
+                                    {
+                                        <span class="badge bg-primary">@spellList</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(selectedSpell.Source))
+                        {
+                            <div class="text-muted small">
+                                <i class="bi bi-book me-1"></i>
+                                <strong>Source:</strong> @selectedSpell.Source
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDetails">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .hover-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .spell-description, .spell-higher-levels {
+        line-height: 1.8;
+    }
+    
+    .school-abjuration { background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%); }
+    .school-conjuration { background: linear-gradient(135deg, #f39c12 0%, #d68910 100%); }
+    .school-divination { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); }
+    .school-enchantment { background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%); }
+    .school-evocation { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+    .school-illusion { background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%); }
+    .school-necromancy { background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); }
+    .school-transmutation { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); }
+    .school-default { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+</style>
+
+@code {
+    private List<Spell>? spells;
+    private Spell? selectedSpell;
+    private string searchText = string.Empty;
+    private string selectedLevel = string.Empty;
+    private string selectedSchool = string.Empty;
+
+    private List<string> Schools => spells?
+        .Select(s => s.School)
+        .Where(s => !string.IsNullOrEmpty(s))
+        .Distinct()
+        .OrderBy(s => s)
+        .ToList() ?? new List<string>();
+
+    private IEnumerable<Spell> FilteredSpells
+    {
+        get
+        {
+            if (spells == null) return Enumerable.Empty<Spell>();
+            
+            var filtered = spells.AsEnumerable();
+            
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(s => 
+                    s.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    s.Description?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    s.School?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+                );
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedLevel) && int.TryParse(selectedLevel, out int level))
+            {
+                filtered = filtered.Where(s => s.Level == level);
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedSchool))
+            {
+                filtered = filtered.Where(s => s.School?.Equals(selectedSchool, StringComparison.OrdinalIgnoreCase) == true);
+            }
+            
+            return filtered.OrderBy(s => s.Level).ThenBy(s => s.Name);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            spells = await SpellService.GetAllSpellsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading spells: {ex.Message}");
+            spells = new List<Spell>();
+        }
+    }
+
+    private string GetTruncatedText(string text, int maxLength)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        
+        var strippedText = System.Text.RegularExpressions.Regex.Replace(text, "<.*?>", string.Empty);
+        
+        if (strippedText.Length <= maxLength)
+            return strippedText;
+        
+        return strippedText.Substring(0, maxLength) + "...";
+    }
+
+    private string GetSchoolClass(string? school)
+    {
+        if (string.IsNullOrEmpty(school)) return "school-default";
+        
+        return $"school-{school.ToLower()}";
+    }
+
+    private void ShowDetails(Spell spell)
+    {
+        selectedSpell = spell;
+    }
+
+    private void CloseDetails()
+    {
+        selectedSpell = null;
+    }
+}

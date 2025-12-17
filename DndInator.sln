@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndInator", "DndInator\DndInator.csproj", "{2B0DF75D-FA42-8CDA-DA5D-46437DA09DD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndMapper", "DndMapper\DndMapper.csproj", "{56F89FD8-2F26-5D89-A0D3-B2666C87F3B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndScraper", "DndScraper\DndScraper.csproj", "{56F89FD8-2F26-5D89-A0D3-B2666C87F3B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndShared", "DndShared\DndShared.csproj", "{229C330D-61F1-070B-CDDB-3B900B864D5A}"
 EndProject
