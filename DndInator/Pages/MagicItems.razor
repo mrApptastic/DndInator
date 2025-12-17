@@ -1,0 +1,333 @@
+@page "/magic-items"
+@using DndInator.Services
+@using DndShared.Models
+@inject IMagicItemService MagicItemService
+
+<PageTitle>Magic Items</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="bi bi-gem me-2"></i>
+                D&D Magic Items
+            </h1>
+            <p class="lead text-muted">Discover powerful artifacts and enchanted treasures</p>
+        </div>
+    </div>
+
+    @if (magicItems == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading magic items...</p>
+        </div>
+    }
+    else if (!magicItems.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            No magic items found.
+        </div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-md-4 mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="🔍 Search magic items..." 
+                       @bind="searchText" @bind:event="oninput" />
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedRarity">
+                    <option value="">All Rarities</option>
+                    @foreach (var rarity in Rarities)
+                    {
+                        <option value="@rarity">@rarity</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedCategory">
+                    <option value="">All Categories</option>
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category">@category</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 mb-3 d-flex align-items-center justify-content-end">
+                <span class="badge bg-primary fs-6">
+                    <i class="bi bi-collection-fill me-1"></i>
+                    @FilteredMagicItems.Count() items
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in FilteredMagicItems)
+            {
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0 hover-card">
+                        <div class="card-header @GetRarityClass(item.Rarity) text-white py-3">
+                            <h5 class="card-title mb-0 fw-bold">
+                                <i class="bi bi-gem me-2"></i>
+                                @item.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(item.Rarity))
+                            {
+                                <small class="text-white-50">@item.Rarity</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            @if (!string.IsNullOrEmpty(item.Description))
+                            {
+                                <p class="card-text small text-secondary mb-3">
+                                    @GetTruncatedText(item.Description, 120)
+                                </p>
+                            }
+                            
+                            <div class="row g-2">
+                                @if (!string.IsNullOrEmpty(item.Type))
+                                {
+                                    <div class="col-12">
+                                        <small class="text-muted">
+                                            <i class="bi bi-tag-fill me-1"></i>
+                                            <strong>Type:</strong> @item.Type
+                                        </small>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(item.Attunement))
+                                {
+                                    <div class="col-12">
+                                        <small class="text-muted">
+                                            <i class="bi bi-link-45deg me-1"></i>
+                                            <strong>Attunement:</strong> @item.Attunement
+                                        </small>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-outline-primary btn-sm w-100" @onclick="() => ShowDetails(item)">
+                                <i class="bi bi-eye-fill me-1"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (selectedItem != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header @GetRarityClass(selectedItem.Rarity) text-white">
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">
+                                <i class="bi bi-gem me-2"></i>
+                                @selectedItem.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(selectedItem.Rarity))
+                            {
+                                <small class="text-white-50">@selectedItem.Rarity</small>
+                            }
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDetails"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(selectedItem.Description))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-file-text me-1"></i>
+                                    Description
+                                </h6>
+                                <p>@selectedItem.Description</p>
+                            </div>
+                        }
+
+                        <div class="row mb-3">
+                            @if (!string.IsNullOrEmpty(selectedItem.Type))
+                            {
+                                <div class="col-md-4 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-tag-fill me-1"></i>
+                                        Type
+                                    </h6>
+                                    <p>@selectedItem.Type</p>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedItem.Rarity))
+                            {
+                                <div class="col-md-4 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-star-fill me-1"></i>
+                                        Rarity
+                                    </h6>
+                                    <p>@selectedItem.Rarity</p>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedItem.Attunement))
+                            {
+                                <div class="col-md-4 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-link-45deg me-1"></i>
+                                        Attunement
+                                    </h6>
+                                    <p>@selectedItem.Attunement</p>
+                                </div>
+                            }
+                        </div>
+
+                        @if (selectedItem.Properties != null && selectedItem.Properties.Any())
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-list-check me-1"></i>
+                                    Properties
+                                </h6>
+                                <ul>
+                                    @foreach (var property in selectedItem.Properties)
+                                    {
+                                        <li>@property</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(selectedItem.Source))
+                        {
+                            <div class="text-muted small">
+                                <i class="bi bi-book me-1"></i>
+                                <strong>Source:</strong> @selectedItem.Source
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDetails">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .hover-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .rarity-common { background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%); }
+    .rarity-uncommon { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); }
+    .rarity-rare { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); }
+    .rarity-very-rare { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); }
+    .rarity-legendary { background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); }
+    .rarity-artifact { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+    .rarity-default { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+</style>
+
+@code {
+    private List<MagicItem>? magicItems;
+    private MagicItem? selectedItem;
+    private string searchText = string.Empty;
+    private string selectedRarity = string.Empty;
+    private string selectedCategory = string.Empty;
+
+    private List<string> Rarities => magicItems?
+        .Select(i => i.Rarity)
+        .Where(r => !string.IsNullOrEmpty(r))
+        .Distinct()
+        .OrderBy(r => r)
+        .ToList() ?? new List<string>();
+
+    private List<string> Categories => magicItems?
+        .Select(i => i.Category)
+        .Where(c => !string.IsNullOrEmpty(c))
+        .Distinct()
+        .OrderBy(c => c)
+        .ToList() ?? new List<string>();
+
+    private IEnumerable<MagicItem> FilteredMagicItems
+    {
+        get
+        {
+            if (magicItems == null) return Enumerable.Empty<MagicItem>();
+            
+            var filtered = magicItems.AsEnumerable();
+            
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(i => 
+                    i.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    i.Description?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    i.Type?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+                );
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedRarity))
+            {
+                filtered = filtered.Where(i => i.Rarity?.Equals(selectedRarity, StringComparison.OrdinalIgnoreCase) == true);
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedCategory))
+            {
+                filtered = filtered.Where(i => i.Category?.Equals(selectedCategory, StringComparison.OrdinalIgnoreCase) == true);
+            }
+            
+            return filtered.OrderBy(i => i.Name);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            magicItems = await MagicItemService.GetAllMagicItemsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading magic items: {ex.Message}");
+            magicItems = new List<MagicItem>();
+        }
+    }
+
+    private string GetTruncatedText(string text, int maxLength)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        
+        var strippedText = System.Text.RegularExpressions.Regex.Replace(text, "<.*?>", string.Empty);
+        
+        if (strippedText.Length <= maxLength)
+            return strippedText;
+        
+        return strippedText.Substring(0, maxLength) + "...";
+    }
+
+    private string GetRarityClass(string? rarity)
+    {
+        if (string.IsNullOrEmpty(rarity)) return "rarity-default";
+        
+        var normalized = rarity.ToLower().Replace(" ", "-");
+        return $"rarity-{normalized}";
+    }
+
+    private void ShowDetails(MagicItem item)
+    {
+        selectedItem = item;
+    }
+
+    private void CloseDetails()
+    {
+        selectedItem = null;
+    }
+}
