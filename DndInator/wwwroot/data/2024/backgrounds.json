@@ -1,0 +1,842 @@
+[
+  {
+    "Id": "e23153e3-f33d-4fe0-8fad-b9a8fbf974d9",
+    "Name": "Acolyte",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove. There you performed rites in honor of a god or pantheon. You served under a priest and studied religion. Thanks to your priest\u0027s instruction and your own devotion, you also learned how to channel a modicum of divine power in service to your place of worship and the people who prayed there.",
+    "AbilityScores": [
+      "Intelligence",
+      "Wisdom",
+      "Charisma"
+    ],
+    "Feat": "Magic Initiate (Cleric)",
+    "SkillProficiencies": [
+      "Insight",
+      "Religion"
+    ],
+    "ToolProficiency": "Calligrapher\u0027s Supplies",
+    "Equipment": "Choose A or B: (A) Calligrapher\u2019s Supplies, Book (prayers), Holy Symbol, Parchment (10 sheets), Robe, 8 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove. There you performed rites in honor of a god or pantheon. You served under a priest and studied religion. Thanks to your priest\u0027s instruction and your own devotion, you also learned how to channel a modicum of divine power in service to your place of worship and the people who prayed there.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Intelligence, Wisdom, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:magic-initiate\u0022\u003EMagic Initiate (Cleric)\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Religion\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ECalligrapher\u0027s Supplies\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Calligrapher\u2019s Supplies, Book (prayers), Holy Symbol, Parchment (10 sheets), Robe, 8 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "242d745b-1ed8-4280-8574-d9267eb740a3",
+    "Name": "Artisan",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You began mopping floors and scrubbing counters in an artisan\u2019s workshop for a few coppers per day as soon as you were strong enough to carry a bucket. When you were old enough to apprentice, you learned to create basic crafts of your own, as well as how to sweet-talk the occasional demanding customer. Your trade has also given you a keen eye for detail.",
+    "AbilityScores": [
+      "Strength",
+      "Dexterity",
+      "Intelligence"
+    ],
+    "Feat": "Crafter",
+    "SkillProficiencies": [
+      "Investigation",
+      "Persuasion"
+    ],
+    "ToolProficiency": "Choose one kind of Artisan\u2019s Tools",
+    "Equipment": "Choose A or B: (A) Artisan\u0027s Tools (same as above), 2 Pouches, Traveler\u2019s Clothes, 32 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou began mopping floors and scrubbing counters in an artisan\u2019s workshop for a few coppers per day as soon as you were strong enough to carry a bucket. When you were old enough to apprentice, you learned to create basic crafts of your own, as well as how to sweet-talk the occasional demanding customer. Your trade has also given you a keen eye for detail.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Intelligence\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:crafter\u0022\u003ECrafter\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Investigation and Persuasion\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of \u003Ca href=\u0022/equipment:tool\u0022\u003EArtisan\u2019s Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Artisan\u0027s Tools (same as above), 2 Pouches, Traveler\u2019s Clothes, 32 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "633b7cdf-5831-492b-b7f6-18cc1c508386",
+    "Name": "Charlatan",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "Once you were old enough to order an ale, you soon had a favorite stool in every tavern within ten miles of where you were born. As you traveled the circuit from public house to watering hole, you learned to prey on unfortunates who were in the market for a comforting lie or two\u2014perhaps a sham potion or forged ancestry records.",
+    "AbilityScores": [
+      "Dexterity",
+      "Constitution",
+      "Charisma"
+    ],
+    "Feat": "Skilled",
+    "SkillProficiencies": [
+      "Deception",
+      "Sleight of Hand"
+    ],
+    "ToolProficiency": "Forgery Kit",
+    "Equipment": "Choose A or B: (A) Forgery Kit, Costume, Fine Clothes, 15 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EOnce you were old enough to order an ale, you soon had a favorite stool in every tavern within ten miles of where you were born. As you traveled the circuit from public house to watering hole, you learned to prey on unfortunates who were in the market for a comforting lie or two\u2014perhaps a sham potion or forged ancestry records.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:skilled\u0022\u003ESkilled\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Deception and Sleight of Hand\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003EForgery Kit\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Forgery Kit, Costume, Fine Clothes, 15 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "e5097f6d-0737-4541-9914-e3aa68d392e3",
+    "Name": "Criminal",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You eked out a living in dark alleyways, cutting purses or burgling shops. Perhaps you were part of a small gang of like-minded wrongdoers who looked out for each other. Or maybe you were a lone wolf, fending for yourself against the local thieves\u0027 guild and more fearsome lawbreakers.",
+    "AbilityScores": [
+      "Dexterity",
+      "Constitution",
+      "Intelligence"
+    ],
+    "Feat": "Alert",
+    "SkillProficiencies": [
+      "Sleight of Hand",
+      "Stealth"
+    ],
+    "ToolProficiency": "Thieves\u0027 Tools",
+    "Equipment": "Choose A or B: (A) 2 Daggers, Thieves\u0027 Tools, Crowbar, 2 Pouches, Traveler\u0027s Clothes, 16 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou eked out a living in dark alleyways, cutting purses or burgling shops. Perhaps you were part of a small gang of like-minded wrongdoers who looked out for each other. Or maybe you were a lone wolf, fending for yourself against the local thieves\u0027 guild and more fearsome lawbreakers.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Intelligence\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:alert\u0022\u003EAlert\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Sleight of Hand and Stealth\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003EThieves\u0027 Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) 2 Daggers, Thieves\u0027 Tools, Crowbar, 2 Pouches, Traveler\u0027s Clothes, 16 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "164bce74-5f96-44cf-9d7a-eb0f17095d62",
+    "Name": "Entertainer",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You spent much of your youth following roving fairs and carnivals, performing odd jobs for musicians and acrobats in exchange for lessons. You may have learned how to walk a tightrope, how to play a lute in a distinct style, or how to recite poetry with impeccable diction. To this day, you thrive on applause and long for the stage.",
+    "AbilityScores": [
+      "Strength",
+      "Dexterity",
+      "Charisma"
+    ],
+    "Feat": "Musician",
+    "SkillProficiencies": [
+      "Acrobatics",
+      "Performance"
+    ],
+    "ToolProficiency": "Choose one kind of Musical Instrument",
+    "Equipment": "Choose A or B: (A) Musical Instrument (same as above), 2 Costumes, Mirror, Perfume, Traveler\u2019s Clothes, 11 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou spent much of your youth following roving fairs and carnivals, performing odd jobs for musicians and acrobats in exchange for lessons. You may have learned how to walk a tightrope, how to play a lute in a distinct style, or how to recite poetry with impeccable diction. To this day, you thrive on applause and long for the stage.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:musician\u0022\u003EMusician\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Performance\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of \u003Ca href=\u0022/equipment:tool\u0022\u003EMusical Instrument\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Musical Instrument (same as above), 2 Costumes, Mirror, Perfume, Traveler\u2019s Clothes, 11 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "1dda4d17-1c85-4ec9-a193-024613f86f65",
+    "Name": "Farmer",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You grew up close to the land. Years tending animals and cultivating the earth rewarded you with patience and good health. You have a keen appreciation for nature\u2019s bounty alongside a healthy respect for nature\u0027s wrath.",
+    "AbilityScores": [
+      "Strength",
+      "Constitution",
+      "Wisdom"
+    ],
+    "Feat": "Tough",
+    "SkillProficiencies": [
+      "Animal Handling",
+      "Nature"
+    ],
+    "ToolProficiency": "Carpenter\u0027s Tools",
+    "Equipment": "Choose A or B: (A) Sickle, Carpenter\u0027s Tools, Healer\u0027s Kit, Iron Pot, Shovel, Traveler\u0027s Clothes, 30 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou grew up close to the land. Years tending animals and cultivating the earth rewarded you with patience and good health. You have a keen appreciation for nature\u2019s bounty alongside a healthy respect for nature\u0027s wrath.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tough\u0022\u003ETough\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Animal Handling and Nature\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ECarpenter\u0027s Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Sickle, Carpenter\u0027s Tools, Healer\u0027s Kit, Iron Pot, Shovel, Traveler\u0027s Clothes, 30 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "ecbd405d-53f6-4649-aa90-9e6861b7a6bb",
+    "Name": "Guard",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "Your feet ache when you remember the countless hours you spent at your post in the tower. You were trained to keep one eye looking outside the wall, watching for marauders sweeping from the nearby forest, and your other eye looking inside the wall, searching for cutpurses and troublemakers.",
+    "AbilityScores": [
+      "Strength",
+      "Intelligence",
+      "Wisdom"
+    ],
+    "Feat": "Alert",
+    "SkillProficiencies": [
+      "Athletics",
+      "Perception"
+    ],
+    "ToolProficiency": "Choose one kind of Gaming Set",
+    "Equipment": "Choose A or B: (A) Spear, Light Crossbow, 20 Bolts, Gaming Set (same as above), Hooded Lantern, Manacles, Quiver, Traveler\u2019s Clothes, 12 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYour feet ache when you remember the countless hours you spent at your post in the tower. You were trained to keep one eye looking outside the wall, watching for marauders sweeping from the nearby forest, and your other eye looking inside the wall, searching for cutpurses and troublemakers.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Intelligence, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:alert\u0022\u003EAlert\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Athletics and Perception\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of \u003Ca href=\u0022/equipment:tool\u0022\u003EGaming Set\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Spear, Light Crossbow, 20 Bolts, Gaming Set (same as above), Hooded Lantern, Manacles, Quiver, Traveler\u2019s Clothes, 12 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "14133092-ed55-4d32-82f2-8edf73eee838",
+    "Name": "Guide",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You came of age outdoors, far from settled lands. Your home was anywhere you chose to spread your bedroll. There are wonders in the wilderness\u2014 strange monsters, pristine forests and streams, overgrown ruins of great halls once trod by giants\u2014 and you learned to fend for yourself as you explored them. From time to time, you guided friendly nature priests who instructed you in the fundamentals of channeling the magic of the wild.",
+    "AbilityScores": [
+      "Dexterity",
+      "Constitution",
+      "Wisdom"
+    ],
+    "Feat": "Magic Initiate (Druid)",
+    "SkillProficiencies": [
+      "Stealth",
+      "Survival"
+    ],
+    "ToolProficiency": "Cartographer\u0027s Tools",
+    "Equipment": "Choose A or B: (A) Shortbow, 20 Arrows, Cartographer\u2019s Tools, Bedroll, Quiver, Tent, Traveler\u0027s Clothes, 3 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou came of age outdoors, far from settled lands. Your home was anywhere you chose to spread your bedroll. There are wonders in the wilderness\u2014 strange monsters, pristine forests and streams, overgrown ruins of great halls once trod by giants\u2014 and you learned to fend for yourself as you explored them. From time to time, you guided friendly nature priests who instructed you in the fundamentals of channeling the magic of the wild.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:magic-initiate\u0022\u003EMagic Initiate (Druid)\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Stealth and Survival\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ECartographer\u0027s Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Shortbow, 20 Arrows, Cartographer\u2019s Tools, Bedroll, Quiver, Tent, Traveler\u0027s Clothes, 3 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "b88e3a54-eba4-42b6-b247-775adfa3d592",
+    "Name": "Hermit",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You spent your early years secluded in a hut or monastery located well beyond the outskirts of the nearest settlement. In those days, your only companions were the creatures of the forest and those who would occasionally visit to bring news of the outside world and supplies. The solitude allowed you to spend many hours pondering the mysteries of creation.",
+    "AbilityScores": [
+      "Constitution",
+      "Wisdom",
+      "Charisma"
+    ],
+    "Feat": "Healer",
+    "SkillProficiencies": [
+      "Medicine",
+      "Religion"
+    ],
+    "ToolProficiency": "Herbalism Kit",
+    "Equipment": "Choose A or B: (A) Quarterstaff, Herbalism Kit, Bedroll, Book (philosophy), Lamp, Oil (3 flasks), Traveler\u0027s Clothes, 16 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou spent your early years secluded in a hut or monastery located well beyond the outskirts of the nearest settlement. In those days, your only companions were the creatures of the forest and those who would occasionally visit to bring news of the outside world and supplies. The solitude allowed you to spend many hours pondering the mysteries of creation.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Wisdom, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:healer\u0022\u003EHealer\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Medicine and Religion\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003EHerbalism Kit\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Quarterstaff, Herbalism Kit, Bedroll, Book (philosophy), Lamp, Oil (3 flasks), Traveler\u0027s Clothes, 16 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "41942308-53d3-404d-a1ff-a0c73446b152",
+    "Name": "Merchant",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You were apprenticed to a trader, caravan master, or shopkeeper, learning the fundamentals of commerce. You traveled broadly, and you earned a living by buying and selling the raw materials artisans need to practice their craft or finished works from such crafters. You might have transported goods from one place to another (by ship, wagon, or caravan) or bought them from traveling traders and sold them in your own shop.",
+    "AbilityScores": [
+      "Constitution",
+      "Intelligence",
+      "Charisma"
+    ],
+    "Feat": "Lucky",
+    "SkillProficiencies": [
+      "Animal Handling",
+      "Persuasion"
+    ],
+    "ToolProficiency": "Navigator\u0027s Tools",
+    "Equipment": "Choose A or B: (A) Navigator\u2019s Tools, 2 Pouches, Traveler\u0027s Clothes, 22 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou were apprenticed to a trader, caravan master, or shopkeeper, learning the fundamentals of commerce. You traveled broadly, and you earned a living by buying and selling the raw materials artisans need to practice their craft or finished works from such crafters. You might have transported goods from one place to another (by ship, wagon, or caravan) or bought them from traveling traders and sold them in your own shop.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:lucky\u0022\u003ELucky\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Animal Handling and Persuasion\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ENavigator\u0027s Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Navigator\u2019s Tools, 2 Pouches, Traveler\u0027s Clothes, 22 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "249d9829-2430-4f45-87a8-fcd4bc3df0e0",
+    "Name": "Noble",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You were raised in a castle, surrounded by wealth, power, and privilege. Your family of minor aristocrats ensured that you received a first-class education, some of which you appreciated and some of which you resented. Your time in the castle, especially the many hours you spent observing your family at court, also taught you a great deal about leadership.",
+    "AbilityScores": [
+      "Strength",
+      "Intelligence",
+      "Charisma"
+    ],
+    "Feat": "Skilled",
+    "SkillProficiencies": [
+      "History",
+      "Persuasion"
+    ],
+    "ToolProficiency": "Choose one kind of Gaming Set",
+    "Equipment": "Choose A or B: (A) Gaming Set (same as above), Fine Clothes, Perfume, 29 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou were raised in a castle, surrounded by wealth, power, and privilege. Your family of minor aristocrats ensured that you received a first-class education, some of which you appreciated and some of which you resented. Your time in the castle, especially the many hours you spent observing your family at court, also taught you a great deal about leadership.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Intelligence, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:skilled\u0022\u003ESkilled\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E History and Persuasion\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of \u003Ca href=\u0022/equipment:tool\u0022\u003EGaming Set\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Gaming Set (same as above), Fine Clothes, Perfume, 29 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "52eac57d-ca2e-4785-bb72-4bd1a6c0883d",
+    "Name": "Sage",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You spent your formative years traveling between manors and monasteries, performing various odd jobs and services in exchange for access to their libraries. You whiled away many a long evening studying books and scrolls, learning the lore of the multiverse - even the rudiments of magic - and your mind yearns for more.",
+    "AbilityScores": [
+      "Constitution",
+      "Intelligence",
+      "Wisdom"
+    ],
+    "Feat": "Magic Initiate (Wizard)",
+    "SkillProficiencies": [
+      "Arcana",
+      "History"
+    ],
+    "ToolProficiency": "Calligrapher\u0027s Supplies",
+    "Equipment": "Choose A or B: (A) Quarterstaff, Calligrapher\u0027s Supplies, Book (history), Parchment (8 sheets), Robe, 8 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou spent your formative years traveling between manors and monasteries, performing various odd jobs and services in exchange for access to their libraries. You whiled away many a long evening studying books and scrolls, learning the lore of the multiverse - even the rudiments of magic - and your mind yearns for more.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:magic-initiate\u0022\u003EMagic Initiate (Wizard)\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Arcana and History\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ECalligrapher\u0027s Supplies\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Quarterstaff, Calligrapher\u0027s Supplies, Book (history), Parchment (8 sheets), Robe, 8 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "bcd45427-b043-4378-beb2-e14183eabae6",
+    "Name": "Sailor",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You lived as a seafarer, wind at your back and decks swaying beneath your feet. You\u0027ve perched on barstools in more ports of call than you can remember, faced mighty storms, and swapped stories with folk who live beneath the waves.",
+    "AbilityScores": [
+      "Strength",
+      "Dexterity",
+      "Wisdom"
+    ],
+    "Feat": "Tavern Brawler",
+    "SkillProficiencies": [
+      "Acrobatics",
+      "Perception"
+    ],
+    "ToolProficiency": "Navigator\u0027s Tools",
+    "Equipment": "Choose A or B: (A) Dagger, Navigator\u0027s Tools, Rope, Traveler\u0027s Clothes, 20 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou lived as a seafarer, wind at your back and decks swaying beneath your feet. You\u0027ve perched on barstools in more ports of call than you can remember, faced mighty storms, and swapped stories with folk who live beneath the waves.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tavern-brawler\u0022\u003ETavern Brawler\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Perception\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ENavigator\u0027s Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Dagger, Navigator\u0027s Tools, Rope, Traveler\u0027s Clothes, 20 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "e6819665-7d78-494a-99df-8c48a18551df",
+    "Name": "Scribe",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You spent formative years in a scriptorium, a monastery dedicated to the preservation of knowledge, or a government agency, where you learned to write with a clear hand and produce finely written texts. Perhaps you scribed government documents or copied tomes of literature. You might have some skill as a writer of poetry, narrative, or scholarly research. Above all, you have a careful attention to detail, helping you avoid introducing mistakes to the documents you copy and create.",
+    "AbilityScores": [
+      "Dexterity",
+      "Intelligence",
+      "Wisdom"
+    ],
+    "Feat": "Skilled",
+    "SkillProficiencies": [
+      "Investigation",
+      "Perception"
+    ],
+    "ToolProficiency": "Calligrapher\u0027s Supplies",
+    "Equipment": "Choose A or B: (A) Calligrapher\u2019s Supplies, Fine Clothes, Lamp, Oil (3 flasks), Parchment (12 sheets), 23 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou spent formative years in a scriptorium, a monastery dedicated to the preservation of knowledge, or a government agency, where you learned to write with a clear hand and produce finely written texts. Perhaps you scribed government documents or copied tomes of literature. You might have some skill as a writer of poetry, narrative, or scholarly research. Above all, you have a careful attention to detail, helping you avoid introducing mistakes to the documents you copy and create.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Wisdom\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:skilled\u0022\u003ESkilled\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Investigation and Perception\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003ECalligrapher\u0027s Supplies\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Calligrapher\u2019s Supplies, Fine Clothes, Lamp, Oil (3 flasks), Parchment (12 sheets), 23 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "a9992919-8334-449f-bfad-d42282ed75bd",
+    "Name": "Soldier",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You began training for war as soon as you reached adulthood and carry precious few memories of life before you took up arms. Battle is in your blood. Sometimes you catch yourself reflexively performing the basic fighting exercises you learned first. Eventually, you put that training to use on the battlefield, protecting the realm by waging war.",
+    "AbilityScores": [
+      "Strength",
+      "Dexterity",
+      "Constitution"
+    ],
+    "Feat": "Savage Attacker",
+    "SkillProficiencies": [
+      "Athletics",
+      "Intimidation"
+    ],
+    "ToolProficiency": "Choose one kind of Gaming Set",
+    "Equipment": "Choose A or B: (A) Spear, Shortbow, 20 Arrows, Gaming Set (same as above), Healer\u0027s Kit, Quiver, Traveler\u2019s Clothes, 14 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou began training for war as soon as you reached adulthood and carry precious few memories of life before you took up arms. Battle is in your blood. Sometimes you catch yourself reflexively performing the basic fighting exercises you learned first. Eventually, you put that training to use on the battlefield, protecting the realm by waging war.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Constitution\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:savage-attacker\u0022\u003ESavage Attacker\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Athletics and Intimidation\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of \u003Ca href=\u0022/equipment:tool\u0022\u003EGaming Set\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Spear, Shortbow, 20 Arrows, Gaming Set (same as above), Healer\u0027s Kit, Quiver, Traveler\u2019s Clothes, 14 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "ffb8a883-ed40-4db3-aa57-fe1f5e139f36",
+    "Name": "Wayfarer",
+    "Category": "Common",
+    "Source": "Player\u0027s Handbook",
+    "Description": "You grew up on the streets surrounded by similarly ill-fated castoffs, a few of them friends and a few of them rivals. You slept where you could and did odd jobs for food. At times, when the hunger became unbearable, you resorted to theft. Still, you never lost your pride and never abandoned hope. Fate is not yet finished with you.",
+    "AbilityScores": [
+      "Dexterity",
+      "Wisdom",
+      "Charisma"
+    ],
+    "Feat": "Lucky",
+    "SkillProficiencies": [
+      "Insight",
+      "Stealth"
+    ],
+    "ToolProficiency": "Thieves\u0027 Tools",
+    "Equipment": "Choose A or B: (A) 2 Daggers, Thieves\u0027 Tools, Gaming Set (any), Bedroll, 2 Pouches, Traveler\u0027s Clothes, 16 GP; or (B) 50 GP",
+    "FullContent": "\n\n\u003Cp\u003ESource: Player\u0027s Handbook\u003C/p\u003E\n\u003Cp\u003EYou grew up on the streets surrounded by similarly ill-fated castoffs, a few of them friends and a few of them rivals. You slept where you could and did odd jobs for food. At times, when the hunger became unbearable, you resorted to theft. Still, you never lost your pride and never abandoned hope. Fate is not yet finished with you.\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Wisdom, Charisma\u003Cbr\u003E\n\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:lucky\u0022\u003ELucky\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Stealth\u003Cbr\u003E\n\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E \u003Ca href=\u0022/equipment:tool\u0022\u003EThieves\u0027 Tools\u003C/a\u003E\u003Cbr\u003E\n\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) 2 Daggers, Thieves\u0027 Tools, Gaming Set (any), Bedroll, 2 Pouches, Traveler\u0027s Clothes, 16 GP; or (B) 50 GP\u003C/p\u003E\n"
+  },
+  {
+    "Id": "7b0cd23f-b2d8-4e1a-bdae-ab47eef7c145",
+    "Name": "Aberrant Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Constitution, Charisma",
+    "AbilityScores": [],
+    "Feat": "Aberrant Dragonmark",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:aberrant-dragonmark\u0022\u003EAberrant Dragonmark\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E History and Intimidation\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Disguise Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Dagger, Disguise Kit, Costume, Traveler\u2019s Clothes, 16 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYour aberrant dragonmark has made life challenging since it manifested. You might have hidden it successfully for most of your life or managed to avoid notice. Alternatively, you might have encountered suspicion and fear, perhaps coupled with the outright antagonism of one or more dragonmarked houses. You might have formed an association with the House Tarkanan criminal organization (named for one of the most notorious leaders of the aberrant dragonmarked in the War of the Mark twenty-five centuries ago). Or you might struggle to find your own way in the world, relying on your wits and the power of your mark.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "96e27438-b301-450c-b6f8-b98174d813c3",
+    "Name": "Archaeologist",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Intelligence, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Skilled",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:skilled\u0022\u003ESkilled\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E History and Survival\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cartographer\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Cartographer\u2019s Tools, Bullseye Lantern, Map, Map or Scroll Case, Shovel, Tent, Traveler\u2019s Clothes, 17 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou\u2019ve made a lifelong study of the lost and fallen cultures of the past, visiting their ruins, deciphering their written records, and examining their surviving masterworks. Perhaps you studied at Morgrave University or a similar institution, supplementing your time in the library with fieldwork amid ancient ruins in remote locations. Some archaeologists plunder the treasures of the past in search of wealth or fame, but most consider it their calling to learn from the past. In any case, the archaeologists of Eberron combine the qualities of learned historians with the grit of treasure hunters.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "1a8a780c-21d9-4cb4-bb78-9c9dbbeec1c2",
+    "Name": "House Agent",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Lucky",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:lucky\u0022\u003ELucky\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Investigation and Persuasion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Artisan\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Artisan\u2019s Tools (same as above), Fine Clothes, 20 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou are connected to one of the dragonmarked houses, but you haven\u2019t (yet) manifested a dragonmark. You might be a member of the family by birth or an employee of the house with no familial connection. You\u2019ve earned your living by doing the business of the house, serving as the hands, feet, and eyes of house leadership in the world. You might have many old friends, mentors, and rivals in the house you serve, plus allies or enemies in other houses.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "31e228b3-86c0-4d54-98b1-0452e8616f5e",
+    "Name": "House Cannith Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Dexterity, Intelligence",
+    "AbilityScores": [],
+    "Feat": "Mark of Making",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Intelligence\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-making\u0022\u003EMark of Making\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Investigation and Sleight of Hand\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Artisan\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Artisan\u2019s Tools (same as above), Crowbar, Fine Clothes, 2 Pouches, 17 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs a scion of House Cannith, you carry a proud legacy. Cannith creates wonders of the modern world, and you\u2019re expected to contribute to the ongoing success of the house through invention, scholarship, business, or diplomacy. The only thing that can stand in your way is the deep rift within your own house. The sooner the three barons sort out which of them is the true head of the house (and you, no doubt, have your preference), the sooner House Cannith can claim its rightful position of leadership among all the dragonmarked houses.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "34db0a60-7744-43f4-bd3d-07584dd290a1",
+    "Name": "House Deneith Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Constitution, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Mark of Sentinel",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-sentinel\u0022\u003EMark of Sentinel\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Gaming Set\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Spear, Shortbow, 20 Arrows, Gaming Set (same as above), Fine Clothes, Healer\u2019s Kit, Quiver, 1 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs an heir of House Deneith, you\u2019ve been trained for combat\u2014not to seek it out, but not to shy from it either. You\u2019ve learned the importance of duty, honor, and the laws used to govern society when duty and honor fail. As you established your name in the house, you might have worked as a bodyguard for some minor dignitary, as a mercenary, or as a marshal hunting fugitives. Now you\u2019re prepared to claim your rightful standing in the mightiest of the dragonmarked houses.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "41d031f0-6c1d-41ba-bc2c-048a5bdb3eb4",
+    "Name": "House Ghallanda Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Hospitality",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-hospitality\u0022\u003EMark of Hospitality\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Persuasion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cook\u2019s Utensils\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Cook\u2019s Utensils, Fine Clothes, Iron Pot, Lamp, Oil (5 flasks), Perfume, 26 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EThanks to your connections to House Ghallanda, you grew up accustomed to creature comforts, lively conversation, good drink, and delicious food. You might be a charming and witty scion of the house who loves nothing more than a pleasant evening beside a warm hearth. Or you could be a schemer who exploits bonds of trust and friendship to bend others to your will. You might pursue an adventuring career to master the cuisines of other cultures and ages, expand your network of useful contacts, or earn enough money to open your own inn.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "f87700de-5609-4074-ac44-6f5621b0979e",
+    "Name": "House Jorasco Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Constitution, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Mark of Healing",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-healing\u0022\u003EMark of Healing\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Medicine and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Herbalism Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Herbalism Kit, Fine Clothes, Healer\u2019s Kit, 25 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EHouse Jorasco teaches that illness and injury stalk the living like ghosts, robbing people of health and longevity. You\u2019ve been taught ways to combat these scourges, both magically and medically. You\u2019re trained to use those skills in the service of others\u2014and to ascertain that you are always appropriately compensated for this service, ensuring the health and longevity of House Jorasco. You might be a kindly healer with no stomach for combat or a dispassionate specialist who knows exactly how to incapacitate or kill an enemy with precise strikes.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "bd79cfe6-9b06-4d56-8b96-8d485b84a83a",
+    "Name": "House Kundarak Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Constitution, Intelligence",
+    "AbilityScores": [],
+    "Feat": "Mark of Warding",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Intelligence\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-warding\u0022\u003EMark of Warding\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Arcana and Investigation\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Thieves\u2019 Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Thieves\u2019 Tools, Fine Clothes, 10 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs an heir of House Kundarak, you take great pride in your family and its work of safeguarding the valuables of Khorvaire. Your house has always been a leader among the clans of the Mror Holds. Though it has never held the crown, it has a reputation for professionalism, honor, and order. You might strive to uphold that reputation, you might place your own sense of honor over your family\u2019s, or you could rebel against the house\u2019s expectations and flout the demands of honor.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "0564f31e-429f-44ea-a879-7a0c39718934",
+    "Name": "House Lyrandar Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Strength, Dexterity, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Storm",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-storm\u0022\u003EMark of Storm\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Nature\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Navigator\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Navigator\u2019s Tools, Fine Clothes, 10 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs an heir of House Lyrandar, the wind is your ally, the sea and sky your dominion. Despite the devastation of the Last War, your house is on the ascendancy, buoyed by its mastery of the new airship technology. You might have spent your early career on the sea as a sailor or navigator; as a shipwright; or as a member of the Raincallers\u2019 Guild, manipulating the weather and assisting with irrigation and similar public works. Or you might have been among the first in your house to take to the skies as part of an airship crew. Service to the house might call you to hunt pirates in the Lhazaar Sea, to explore ancient ruins in search of magical technology to bind elemental forces, or to salvage a wrecked airship in the Mournland.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "e0aca017-4bd6-4493-babc-36771ca1bda1",
+    "Name": "House Medani Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Intelligence, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Mark of Detection",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-detection\u0022\u003EMark of Detection\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Investigation\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Disguise Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Disguise Kit, Fine Clothes, 10 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs a member of House Medani, your life revolves around subterfuge - not engaging in it, but preventing others from doing so. You see the world around you as an intricate web of schemes, plots, and counterplots. Assessing the range of possibilities, you use instinct to predict threats to your clients and defend against them well before those threats can turn into danger. Defending against an assassin\u2019s blade is a job any Deneith sellsword or Tharashk enforcer can do - making sure no one ever draws that blade is the Medani way.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "36bb5592-17ab-4b9b-86b1-eab0d2ffac94",
+    "Name": "House Orien Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Constitution, Intelligence",
+    "AbilityScores": [],
+    "Feat": "Mark of Passage",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Intelligence\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-passage\u0022\u003EMark of Passage\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Athletics\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cartographer\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Cartographer\u2019s Tools, Fine Clothes, Map, Map or Scroll Case, 18 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EBefore the Last War, Orien\u2019s influence covered Khorvaire, and its trade roads and lightning rails were the lifeblood of a vibrant kingdom. But the war cut those arteries, leaving Galifar dead and House Orien bloodied. While the house\u2019s couriers and shippers still keep goods moving on both sides of the continent, finding a way to reestablish routes across the Mournland remains the house\u2019s top priority. In the meantime, Orien adventurers can serve their house by investigating missing couriers, recovering goods stolen from caravans, and troubleshooting disruptions to the lightning rail.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "25485744-6b7a-4750-8ee4-0eb7d68dc992",
+    "Name": "House Phiarlan Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Shadow",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-shadow\u0022\u003EMark of Shadow\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Deception and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Disguise Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Disguise Kit, Fine Clothes, 10 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EThough you have seen wealth, fame, and beauty as a child of House Phiarlan, you consider knowledge (and the power it brings) the greatest treasure of all. You might pursue that power as an artist or performer, always alert for secrets even as you regale the world with story, song, acrobatics, or art. Or you might foster ties to the secretive espionage arm of your house: the Serpentine Table.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "f534a9cb-648f-48c5-8c59-be2ade7b1ac1",
+    "Name": "House Sivis Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Intelligence, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Scribing",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Intelligence, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-scribing\u0022\u003EMark of Scribing\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E History and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Calligrapher\u2019s Supplies\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Calligrapher\u2019s Supplies, Fine Clothes, Ink, 5 Ink Pens, Paper (30 sheets), Parchment (9 sheets), 8 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EFor nearly thirty centuries, your family has worked to maintain order. Communication is the cord that binds civilization together, and your ancestors settled the disputes of sovereigns and helped the dragonmarked houses find a place in the world. Few people realize the influence House Sivis has had on the shape of the modern age\u2014just as few know how often a royal adviser holds more power than the actual ruler. While the other dragonmarked houses fight for fame and recognition, House Sivis plays a long game of subtle influence behind the scenes, keeping order amid the chaos of unending intrigue.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "e4c12099-0e1a-4551-9d0f-ea5f4c51c348",
+    "Name": "House Tharashk Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Constitution, Intelligence, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Mark of Finding",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-finding\u0022\u003EMark of Finding\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Perception and Survival\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Gaming Set\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Gaming Set (same as above), Climber\u2019s Kit, Fine Clothes, Hunting Trap, Manacles, 2 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EHeirs of other houses lead lives of luxury, but in House Tharashk you learned self-reliance from an early age. What your young house lacks in resources, it makes up for in spirit and determination. Tharashk has a destiny to fulfill, and you have a part in it. Whether in combat or in social interaction, you have learned to play the role of the hunter: study your enemies, exploit their weaknesses, and do whatever it takes to achieve victory.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "1d3dfaa2-b785-49d1-a904-e75b0e7c8618",
+    "Name": "House Thuranni Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Dexterity, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Shadow",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003EFeat: \u003Ca href=\u0022/feat:mark-of-shadow\u0022\u003EMark of Shadow\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Performance and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Musical Instrument\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Musical Instrument (same as above), Costume, Fine Clothes, 13 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EGiven House Thuranni\u2019s short history and focus on espionage, its leaders expect you to further the interests of the house at every opportunity. During the house\u2019s formative years as an independent entity, every move you make has been watched closely. This isn\u2019t to say that every Thuranni heir must actively spy at the behest of house elders. But even the house\u2019s most insular artists and artisans must keep up with current political events and pass on or collect information when asked.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "73a45029-1ef0-4f83-8bcb-6b4cf67b3448",
+    "Name": "House Vadalis Heir",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Constitution, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Mark of Handling",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:mark-of-handling\u0022\u003EMark of Handling\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Animal Handling and Nature\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Herbalism Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Herbalism Kit, Fine Clothes, Net, 29 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou have grown up with respect for both family and nature. You understand the culture of the Five Nations, but you don\u2019t get drawn into the games of ambition and status that others play. You know the beauty and power inherent in life, the mysteries of birth and death, and the miracles that happen in between. Your insights into the natural world allow you to see through the lies and deception of city folk\u2014and never let on how much of their subterfuge you recognize.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "30214958-c7d6-4483-88cf-a9adf4dd98f3",
+    "Name": "Inquisitive",
+    "Category": "Eberron",
+    "Source": "Eberron - Forge of the Artificer",
+    "Description": "Ability Scores: Constitution, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Alert",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Eberron - Forge of the Artificer\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:alert\u0022\u003EAlert\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Investigation\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Thieves\u2019 Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Thieves\u2019 Tools, Bullseye Lantern, Crowbar, Oil (10 flasks), Traveler\u2019s Clothes, 10 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou have honed your talents of investigation and deduction\u2014fueled by a boundless curiosity\u2014to explore mysteries, find missing people, recover stolen goods, unearth corruption and conspiracies, and solve crimes. As an inquisitive, you might have pursued freelance work, signed on with an inquisitive agency (perhaps one licensed by a dragonmarked house such as Medani or Tharashk), reported for a broadsheet, or worked for a police force.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "95537251-f162-4b82-97f9-7616de916e3d",
+    "Name": "Chondathan Freebooter",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Dexterity, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Skilled",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:skilled\u0022\u003ESkilled\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Athletics and Sleight of Hand\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Weaver\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Dagger, Weaver\u2019s Tools, Backpack, Ball Bearings, Basket, Bedroll, Bucket, Rations (3 days\u2019 worth), Rope, Signal Whistle, Traveler\u2019s Clothes, 38 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EThough most youths in Chondath accept their four-year term of compulsory military service, you bristled at that authoritarian attempt to control your life. You forsook your nationhood, discarded your given name, and worked as a freebooter with the first ship that would have you. Since then, you\u2019ve traveled the Vilhon Reach. Though you\u2019ve never sailed more than a few dozen leagues from land, you make up for it with deep local connections and the breadth of your experiences.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "33fa7ccc-daf9-44fc-a789-aa8399ec2581",
+    "Name": "Dead Magic Dweller",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Constitution, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Healer",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:healer\u0022\u003EHealer\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Medicine and Survival\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Leatherworker\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Greatclub, Leatherworker\u2019s Tools, Bedroll, Blanket, Healer\u2019s Kit, Pole, Rations (3 days\u2019 worth), Tent, Tinderbox, 5 Torches, Traveler\u2019s Clothes, Waterskin, 32 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EThe dead magic zones of the Anauroch desert are anathema to spellcasters and monsters that rely on magic - which is exactly why you made your life there. Perhaps you\u2019re on the run from Red Wizards, or you ran afoul of a powerful djinni in Calimshan. Whatever the case, you decided that living in Anauroch was your best option. After long months or years, you\u2019re stronger, wiser, and armed with hard-earned knowledge of desert medicine and wasteland survival.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "e8bc10a0-bd8f-4d1e-928a-df025e85c906",
+    "Name": "Dragon Cultist",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Dexterity, Constitution, Intelligence",
+    "AbilityScores": [],
+    "Feat": "Cult of the Dragon Initiate",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Intelligence\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:cult-of-the-dragon-initiate\u0022\u003ECult of the Dragon Initiate\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Deception and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Calligrapher\u2019s Supplies\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Calligrapher\u2019s Supplies, Dagger, Glass Bottle, Lamp, Manacles, Oil (5 flasks), 2 Pouches, Robe, Rope, 30 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou are an initiate of the Cult of the Dragon. You discovered or were brought to a cell cult, where you exemplified the values honored by dragon cultists: duplicity, secrecy, and determination. In exchange for your oath to serve the cult, the cult offered you the company of fellow dragon worshipers, plus access to resources that might help further your studies in the realms of arcana and occultism.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "95f75d29-6b50-431c-9ce2-39059f66b2c9",
+    "Name": "Emerald Enclave Caretaker",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Constitution, Intelligence, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Emerald Enclave Fledgling",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:emerald-enclave-fledgling\u0022\u003EEmerald Enclave Fledgling\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Nature and Survival\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Herbalism Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Shortbow, 20 Arrows, Herbalism Kit, Bedroll, Blanket, Pouch, Tent, Traveler\u2019s Clothes, 13 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAs a Caretaker with the Emerald Enclave, you take care of those who care for the world. Either alongside your fellow Emerald Enclave members or by yourself, you\u2019ve learned essential skills for living with the land: how to track game, where to forage for useful herbs, and even how to forecast the weather. You use these talents to maintain the balance between civilization and the wilds and to rid the world of unnatural creatures.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "18916820-5f7f-4d50-a079-156ad5c33553",
+    "Name": "Flaming Fist Mercenary",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Constitution, Charisma",
+    "AbilityScores": [],
+    "Feat": "Tough",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tough\u0022\u003ETough\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Intimidation and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Smith\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Mace, Smith\u2019s Tools, Fine Clothes, Manacles, Portable Ram, 4 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EThe chief law enforcement branch of Baldur\u2019s Gate is the Flaming Fist, a brawny mercenary guild led by the city\u2019s grand duke. You once served as a Flaming Fist, where you learned how to preempt trouble with your intimidating stare and, when necessary, absorb deadly blows. Flaming Fist mercenaries, active or retired, are known as some of the toughest, most resilient warriors along the Sword Coast, and you seek to maintain that reputation.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "3c13e45f-0563-46e8-b83a-fd87e0dd874b",
+    "Name": "Genie Touched",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Dexterity, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Magic Initiate (Wizard)",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:magic-initiate\u0022\u003EMagic Initiate\u003C/a\u003E (Wizard)\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Perception and Persuasion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Glassblower\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Light Hammer, Glassblower\u2019s Tools, Fine Clothes, Lamp, Oil (3 flasks), Waterskin, 2 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EAlthough genies no longer rule Calimshan, genie magic is still common in your homeland. Perhaps you inadvertently summoned a djinni from a magic lamp, or maybe you came upon an oasis guarded by a marid. A dao might have saved you from a landslide, or you bargained with an efreeti for fleeting wealth. However your fate intersected with that of a genie, the experience left you with a keen eye, a silver tongue, and more than a touch of magic.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "b121e16e-1d7f-4d99-b686-31ad55c7a461",
+    "Name": "Harper",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Dexterity, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Harper Agent",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:harper-agent\u0022\u003EHarper Agent\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Performance and Sleight of Hand\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Disguise Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Disguise Kit, Bedroll, Costume, Grappling Hook, Rope, Traveler\u2019s Clothes, 14 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou accepted an invitation to join the Harpers, pledging an oath to uphold the Harper code and act in service to the common good. Like all Harpers, you understand the value of teamwork as well as when it\u2019s best to go it alone. Harper veterans have taught you the order\u2019s secrets\u2014magical melodies, special watchwords, and legerdemain\u2014and have entrusted you to use such knowledge to surveil and undermine the forces of evil.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "ecaf5ada-d4b1-46c2-8270-c3e0ba66d548",
+    "Name": "Ice Fisher",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Dexterity, Constitution",
+    "AbilityScores": [],
+    "Feat": "Alert",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Constitution\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:alert\u0022\u003EAlert\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Animal Handling and Athletics\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Woodcarver\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Woodcarver\u2019s Tools, Basket, Block and Tackle, Bucket, Chain, Hunting Trap, Net, Pole, Rations (3 days\u2019 worth), Rope, Traveler\u2019s Clothes, 32 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou come from a proud line of ice fishers out of Ten-Towns in Icewind Dale. Catching knucklehead trout isn\u2019t the most glorious trade in the North, but it\u2019s an honest living. You\u2019ve trained your senses for the slightest tug on the line, wrestled big trout out of ice-covered lakes, and gutted enough knucklehead trout to feed your village many times over. These experiences have toughened your body and mind for a life of adventuring.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "44e459c8-2df3-4c6e-a824-7f7749ccc3a6",
+    "Name": "Knight Of The Gauntlet",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Intelligence, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Tyro of the Gauntlet",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Intelligence, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tyro-of-the-gauntlet\u0022\u003ETyro of the Gauntlet\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Athletics and Medicine\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Smith\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Spear, Smith\u2019s Tools, Bullseye Lantern, Holy Symbol, Manacles, Oil (5 flasks), Tinderbox, Traveler\u2019s Clothes, 9 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003ENot all who answer the call of a higher power are content to pore over scripture in a stuffy temple apse. You chose the path of the holy warrior by joining the Order of the Gauntlet. As a knight of the Gauntlet, you exercise righteous scorn for the forces of evil, unswerving camaraderie for your siblings in arms, and heartfelt compassion for the survivors of war. With weapon and holy symbol in hand, you\u2019ve sworn not to rest until the light of justice has vanquished the shadow of chaos across Faer\u00FBn.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "efae6d21-168b-4119-91f7-16b3afd19721",
+    "Name": "Lords\u0027 Alliance Vassal",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Lords\u2019 Alliance Agent",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:lords-alliance-agent\u0022\u003ELords\u2019 Alliance Agent\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Persuasion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Calligrapher\u2019s Supplies\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) 2 Javelins, Calligrapher\u2019s Supplies, Fine Clothes, Ink, 5 Ink Pens, Parchment (9 sheets), 13 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou\u2019ve pledged your loyalty to a member-city of the Lords\u2019 Alliance. As an Alliance agent, you must uphold the tenets of the Alliance and seek to increase safety and prosperity along the Sword Coast. You\u2019re sworn to bring honor and glory to your lord\u2019s house, whether that means securing trade roads for a merchant-lord of Waterdeep or vanquishing monsters upriver of Daggerford. You\u2019ve trained in the arts of swordplay and statecraft and are as deft with a blade as you are with a quill.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "02b15109-86df-4bfe-81df-7feaed1721d1",
+    "Name": "Moonwell Pilgrim",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Constitution, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Magic Initiate (Druid)",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:magic-initiate\u0022\u003EMagic Initiate\u003C/a\u003E (Druid)\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Nature and Performance\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Painter\u2019s Supplies\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Quarterstaff, Painter\u2019s Supplies, Bedroll, Bell, Pouch, Robe, String, Traveler\u2019s Clothes, Waterskin, 34 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003ELike many who hail from the Moonshae Isles, you grew up revering the blessed land, its unique gods, and the mysterious shrines called the moonwells. As a moonwell pilgrim, you undertook a quest to visit and commune with every moonwell on (or off) the map. Along your idyllic journeys, you collected a repertoire of Moonshavian folk songs, painted landscapes of enchanting vistas, and even learned how to wield a bit of primal magic.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "831cddfb-48a1-4d36-9452-05475586edb8",
+    "Name": "Mulhorandi Tomb Raider",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Dexterity, Constitution, Intelligence",
+    "AbilityScores": [],
+    "Feat": "Lucky",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Intelligence\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:lucky\u0022\u003ELucky\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Investigation and Religion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Mason\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Dagger, Light Hammer, Mason\u2019s Tools, Backpack, Bedroll, Crowbar, Ladder, Pole, 2 Pouches, Rope, String, Tinderbox, 5 Torches, Traveler\u2019s Clothes, Waterskin, 26 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou grew up in a land of living god-kings, and as a child you were told countless stories of ancient empires and buried cities. In these tales, Mulhorand was a land overflowing with forgotten riches\u2014priceless treasures awaiting anyone cunning and brave enough to seek them out. You\u2019ve taken it upon yourself to explore your homeland\u2019s crypts, tombs, and pyramids to reclaim your people\u2019s relics.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "40731a3f-db46-4bc2-9e85-7c0dbb764a13",
+    "Name": "Mythalkeeper",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Intelligence, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Crafter",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Intelligence, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:crafter\u0022\u003ECrafter\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Arcana and History\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Jeweler\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Quarterstaff, Jeweler\u2019s Tools, Perfume, Pouch, Robe, Shovel, String, Waterskin, 16 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EMythals are sources of great magical power that can alter the Weave or even the very nature of reality. Most were constructed in antiquity, and many have since been damaged or gone dormant. As a mythalkeeper from the Dalelands, your first experience with a mythal was likely in the ruins of Myth Drannor. You roam Faer\u00FBn in search of other ruined places of power, hoping to learn more about the history and powers of mythals\u2014or even restore a malfunctioning one.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "9f14ced6-ddd4-4fc1-9e15-763b3ea22255",
+    "Name": "Purple Dragon Squire",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Wisdom, Charisma",
+    "AbilityScores": [],
+    "Feat": "Purple Dragon Rook",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Wisdom, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:purple-dragon-rook\u0022\u003EPurple Dragon Rook\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Animal Handling and Insight\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Navigator\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Spear, Navigator\u2019s Tools, Fine Clothes, 9 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou\u2019ve pledged your life to the safety of Cormyr and sought admission to that realm\u2019s order of elite warriors: the Purple Dragon Knights. But before you have the chance to join the ranks officially, you must first serve as a knight\u2019s squire. You\u2019ve found a liege willing to take you on and teach you the order\u2019s ways. Will you uphold the Purple Dragon Knights\u2019 ideals of glory, honor, and strength and prove yourself worthy of knighthood?\u003C/p\u003E\n"
+  },
+  {
+    "Id": "7c94afde-4c04-40e2-8aca-84bb713a6c00",
+    "Name": "Rashemi Wanderer",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Constitution, Charisma",
+    "AbilityScores": [],
+    "Feat": "Tough",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tough\u0022\u003ETough\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Intimidation and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cartographer\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Cartographer\u2019s Tools, Backpack, Bedroll, Hooded Lantern, Oil (3 flasks), Rope, Tinderbox, Traveler\u2019s Clothes, Waterskin, 23 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou spent years wandering the highlands of Rashemen, a dangerous windswept heath that\u2019s dotted with ancient obelisks enchanted to imprison Fiends and home to dragons, gnolls, and other deadly creatures. Friendships are hard to find in such an isolated land, and you\u2019ve learned to keep strangers at a distance.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "5c3910b5-9b58-4518-9078-df5a82f83dfa",
+    "Name": "Shadowmasters Exile",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Score: Dexterity, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Savage Attacker",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Score:\u003C/strong\u003E Dexterity, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:savage-attacker\u0022\u003ESavage Attacker\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Thieves\u2019 Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) 2 Daggers, Thieves\u2019 Tools, Caltrops, Costume, Grappling Hook, Iron Spikes, Mirror, 2 Pouches, Rope, Traveler\u2019s Clothes, 3 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou trained your whole life to become a member of the Shadowmasters, the mysterious thieves\u2019 guild that controls the realm of Thesk from behind the scenes. Stealth and quick reflexes were just the start of your Shadowmaster education; you also needed to hone your ruthlessness to ensure the safety of the guild\u2019s secrets. But one wrong move led to your expulsion from the order. Now you must walk your own path.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "ece171a7-9208-451f-bffc-0216e6597a22",
+    "Name": "Spellfire Initiate",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Constitution, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Spellfire Spark",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Constitution, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:spellfire-spark\u0022\u003ESpellfire Spark\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Arcana and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003EChoose one kind of Gaming Set\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Gaming Set (same as above), Arcane Focus (Crystal or Wand), 2 Pouches, Traveler\u2019s Clothes, 36 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou bear the gift of spellfire: a rare form of magic that channels the raw power of the Weave. Wielding spellfire takes a heavy toll on the body. You\u2019ve trained both mind and body to efficiently wield this sacred power.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "abeacb96-a6cb-4d33-99e8-df6c11fe9d4c",
+    "Name": "Zhentarim Mercenary",
+    "Category": "Faerun",
+    "Source": "Forgotten Realms - Heroes of Faerun",
+    "Description": "Ability Scores: Strength, Dexterity, Charisma",
+    "AbilityScores": [],
+    "Feat": "Zhentarim Ruffian",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Forgotten Realms - Heroes of Faerun\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Dexterity, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:zhentarim-ruffian\u0022\u003EZhentarim Ruffian\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Intimidation and Perception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Forgery Kit\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003EChoose A or B: (A) Club, Dagger, Forgery Kit, Fine Clothes, Hooded Lantern, Oil (3 flasks), 2 Pouches, String, Tinderbox, 11 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EMaybe you needed the money. Maybe you longed for a family, no matter how dubious. Or maybe you\u2019re just good at getting the job done by any means necessary. Whatever your reason, you enlisted with the Zhentarim, the most notorious mercenary guild in the Realms. Though the Zhentarim\u2019s leaders insist the organization is more like a family than a shadowy syndicate, few families exhibit as much dishonesty, nepotism, and corruption as this one. You\u2019ve honed your cunning, reflexes, and blade to climb the guild\u2019s ranks.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "fa265a14-e91c-4126-bc0f-5bb0b8e48a0b",
+    "Name": "Carouser",
+    "Category": "Exotic",
+    "Source": "Astarion\u0027s Book of Hungers",
+    "Description": "Ability Scores: Dexterity, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Tireless Reveler",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Astarion\u0027s Book of Hungers\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:tireless-reveler\u0022\u003ETireless Reveler\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Deception and Persuasion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Choose one kind of Gaming Set\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Dagger, Gaming Set (same as above), Fine Clothes, Glass Bottle, Mirror, Perfume, Pouch, Tinderbox, 19 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou grew to adulthood in the beating heart of a large city, such as Baldur\u2019s Gate. You spent countless evenings in taverns, playhouses, parlors, and gambling dens, savoring all the city had to offer. You\u2019re a natural at interacting with people to learn their secrets, whether over a high-stakes game or at a high-class soiree. You might have been thrown out of an establishment or ten, but only by people who don\u2019t know how to party.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "8546f75b-cfb5-43c1-aa83-5b2d80e701a1",
+    "Name": "Lorwyn Expert",
+    "Category": "Exotic",
+    "Source": "Lorwyn - First Light",
+    "Description": "Ability Scores: Strength, Constitution, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Child of the Sun",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Lorwyn - First Light\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:child-of-the-sun\u0022\u003EChild of the Sun\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Athletics and Nature\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cartographer\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Quarterstaff, Cartographer\u2019s Tools, Backpack, Basket, Parchment (4 sheets), Rope, Traveler\u2019s Clothes, 29 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou hail from Lorwyn, a land of eternal sunshine, or you have studied the place with great intensity. You consider the majestic creature Eirdu the living embodiment of the sun, and you love embarking on whimsical adventures. You hold your loved ones close, even if only emotionally, for you\u2019ve seen some venture into Shadowmoor or beyond and become faded versions of themselves. You\u2019re nevertheless courageous and always long for new experiences.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "2e5a975b-0fbf-4aee-b431-62989fe5afea",
+    "Name": "Shadowmoor Expert",
+    "Category": "Exotic",
+    "Source": "Lorwyn - First Light",
+    "Description": "Ability Scores: Dexterity, Intelligence, Charisma",
+    "AbilityScores": [],
+    "Feat": "Shadowmoor Hexer",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Lorwyn - First Light\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Intelligence, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:shadowmoor-hexer\u0022\u003EShadowmoor Hexer\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Acrobatics and Deception\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Glassblower\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Dagger, Glassblower\u2019s Tools, Backpack, Hunting Trap, Lamp, Oil (3 flasks), Traveler\u2019s Clothes, Waterskin, 8 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou are from Shadowmoor or have studied it for years. It\u2019s a gloomy, chaotic place perpetually lit by pale moonlight. You might survive Shadowmoor\u2019s merciless conditions thanks to your wit and cunning, or you might keep threats at bay with your brawn and bravery. Regardless of where you tread, you keenly understand that friendship is a rare commodity. You believe that knowing who to trust and who to keep at arm\u2019s length isn\u2019t just practical - it\u2019s often a matter of life or death.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "d7b1f109-d0e9-45fe-b387-6ea05421704c",
+    "Name": "Vampire Devotee",
+    "Category": "Exotic",
+    "Source": "Astarion\u0027s Book of Hungers",
+    "Description": "Ability Scores: Strength, Constitution, Charisma",
+    "AbilityScores": [],
+    "Feat": "Vampire\u2019s Plaything",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Astarion\u0027s Book of Hungers\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Strength, Constitution, Charisma\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:vampire-s-plaything\u0022\u003EVampire\u2019s Plaything\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Persuasion and Stealth\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Cook\u2019s Utensils\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Cook\u2019s Utensils, Fine Clothes, 2 Glass Bottles, Healer\u2019s Kit, Perfume, Lamp, Oil (3 flasks), Waterskin, 19 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou were in service to a vampire or a small group of vampires lairing together. The Undead drank your blood more times than you can count. You might have served willingly, perhaps with aspirations of one day becoming a vampire yourself. Or you might have been magically charmed and retain only a few muddled memories of your time as a vampire familiar. In either case, your time in the vampire den is over.\u003C/p\u003E\n"
+  },
+  {
+    "Id": "c36e6338-61e3-4f12-b635-165964f95b72",
+    "Name": "Vampire Survivor",
+    "Category": "Exotic",
+    "Source": "Astarion\u0027s Book of Hungers",
+    "Description": "Ability Scores: Dexterity, Constitution, Wisdom",
+    "AbilityScores": [],
+    "Feat": "Vampire Hunter",
+    "SkillProficiencies": [],
+    "ToolProficiency": null,
+    "Equipment": null,
+    "FullContent": "\n\n\u003Cp\u003ESource: Astarion\u0027s Book of Hungers\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EAbility Scores:\u003C/strong\u003E Dexterity, Constitution, Wisdom\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EFeat:\u003C/strong\u003E \u003Ca href=\u0022/feat:vampire-hunter\u0022\u003EVampire Hunter\u003C/a\u003E\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ESkill Proficiencies:\u003C/strong\u003E Insight and Religion\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ETool Proficiency:\u003C/strong\u003E Woodcarver\u2019s Tools\u003C/p\u003E\n\u003Cp\u003E\u003Cstrong\u003EEquipment:\u003C/strong\u003E Choose A or B: (A) Woodcarver\u2019s Tools, Crowbar, Hooded Lantern, Holy Symbol (reliquary), Holy Water, Mirror, Oil (3 flasks), Tinderbox, Traveler\u2019s Clothes, Waterskin, 4 GP; or (B) 50 GP\u003C/p\u003E\n\u003Cp\u003EYou witnessed or survived a vampire attack. You might have been directly involved in this confrontation, or perhaps you were frozen in terror by what you saw. Regardless, you remain vigilant for monster attacks and pride yourself on being ready for anything. No vampire will catch you or your allies by surprise again.\u003C/p\u003E\n"
+  }
+]

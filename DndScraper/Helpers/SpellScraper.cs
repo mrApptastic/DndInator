@@ -5,7 +5,7 @@ namespace DndScraper.Helpers;
 
 public class SpellScraper
 {
-    public static async Task<List<Spell>> ScrapeSpells()
+    public static async Task<List<Spell>> ScrapeSpells2014()
     {
         string spellUrl = "https://dnd5e.wikidot.com/spells";
         var spells = new List<Spell>();
@@ -49,6 +49,82 @@ public class SpellScraper
                         {
                             spell.Name = nameLink.InnerText.Trim();
                             detailUrl = "https://dnd5e.wikidot.com" + nameLink.GetAttributeValue("href", "");
+                        }
+
+                        // Parse grundlæggende info fra tabellen
+                        spell.School = cells[1].InnerText.Trim();
+                        spell.CastingTime = cells[2].InnerText.Trim();
+                        spell.Range = cells[3].InnerText.Trim();
+                        spell.Duration = cells[4].InnerText.Trim();
+                        spell.Components = cells[5].InnerText.Trim();
+
+                        spells.Add(spell);
+                        Console.WriteLine($"Found spell: {spell.Name} (Level {level})");
+                        
+                        // Gem URL midlertidigt for at scrape detaljer
+                        if (detailUrl != null)
+                        {
+                            await ScrapeSpellDetails(client, spell, detailUrl);
+                            await Task.Delay(500); // Vær pæn mod serveren
+                        }
+                    }
+                }
+
+                Console.WriteLine($"\nTotal spells found: {spells.Count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error scraping spells: {ex.Message}");
+            }
+        }
+
+        return spells;
+    }
+
+        public static async Task<List<Spell>> ScrapeSpells2024()
+    {
+        string spellUrl = "http://dnd2024.wikidot.com/spell:all";
+        var spells = new List<Spell>();
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            try
+            {
+                // Hent hovesiden med listen over spells
+                var html = await client.GetStringAsync(spellUrl);
+                var htmlDoc = new HtmlDocument();
+                htmlDoc.LoadHtml(html);
+
+                // Find alle wiki-tab divs for hver spell level (0-9)
+                for (int level = 0; level <= 9; level++)
+                {
+                    var tabId = $"wiki-tab-0-{level}";
+                    var tabDiv = htmlDoc.DocumentNode.SelectSingleNode($"//div[@id='{tabId}']");
+                    
+                    if (tabDiv == null) continue;
+
+                    var rows = tabDiv.SelectNodes(".//table[@class='wiki-content-table']//tr");
+                    
+                    if (rows == null) continue;
+
+                    // Skip header row
+                    foreach (var row in rows.Skip(1))
+                    {
+                        var cells = row.SelectNodes("td");
+                        if (cells == null || cells.Count < 6) continue;
+
+                        var spell = new Spell();
+                        spell.Level = level;
+
+                        // Parse spell name og URL til detaljesiden
+                        var nameLink = cells[0].SelectSingleNode(".//a");
+                        string? detailUrl = null;
+                        if (nameLink != null)
+                        {
+                            spell.Name = nameLink.InnerText.Trim();
+                            detailUrl = "http://dnd2024.wikidot.com" + nameLink.GetAttributeValue("href", "");
                         }
 
                         // Parse grundlæggende info fra tabellen

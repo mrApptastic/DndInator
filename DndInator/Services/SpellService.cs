@@ -19,7 +19,7 @@ namespace DndInator.Services
 
         public async Task<List<Spell>> GetAllSpellsAsync()
         {
-            return await _http.GetFromJsonAsync<List<Spell>>($"data/spells.json");          
+            return await _http.GetFromJsonAsync<List<Spell>>($"data/2024/spells.json");          
         }
     }
 }

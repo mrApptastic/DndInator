@@ -12,6 +12,10 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IDiceService, DiceService>();
 builder.Services.AddScoped<ILineageService, LineageService>();
 builder.Services.AddScoped<ISpellService, SpellService>();
+builder.Services.AddScoped<IBackgroundService, BackgroundService>();
+builder.Services.AddScoped<ISpeciesService, SpeciesService>();
+builder.Services.AddScoped<IFeatService, FeatService>();
+builder.Services.AddScoped<IMagicItemService, MagicItemService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 
 await builder.Build().RunAsync();
