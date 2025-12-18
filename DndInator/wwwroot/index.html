@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DndInator</title>
     <base href="./" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
     <link rel="preload" id="webassembly" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
@@ -28,7 +31,46 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
+    
+    <!-- Update notification toast -->
+    <div id="update-toast" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary text-white">
+                <i class="bi bi-arrow-repeat me-2"></i>
+                <strong class="me-auto">Update Available</strong>
+                <button type="button" class="btn-close btn-close-white" onclick="document.getElementById('update-toast').style.display='none'"></button>
+            </div>
+            <div class="toast-body">
+                A new version is available!
+                <div class="mt-2 pt-2 border-top">
+                    <button type="button" class="btn btn-primary btn-sm w-100" onclick="location.reload()">
+                        Update Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered:', registration);
+                    
+                    // Listen for update messages from service worker
+                    navigator.serviceWorker.addEventListener('message', event => {
+                        if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+                            document.getElementById('update-toast').style.display = 'block';
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
 </body>
 
 </html>
