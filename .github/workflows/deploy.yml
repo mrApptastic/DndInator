@@ -28,13 +28,13 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore TestApp/TestApp.csproj
+        run: dotnet restore DndInator/DndInator.csproj
 
       - name: Build the project
-        run: dotnet build TestApp/TestApp.csproj --configuration Release
+        run: dotnet build DndInator/DndInator.csproj --configuration Release
 
       - name: Publish the project
-        run: dotnet publish TestApp/TestApp.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
+        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
 
       - name: Add .nojekyll file
         run: touch ./output/wwwroot/.nojekyll
