@@ -34,18 +34,18 @@ jobs:
         run: dotnet build DndInator/DndInator.csproj --configuration Release
 
       - name: Publish the project
-        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
+        run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./DndPublish -p:GHPages=true -p:BlazorEnableCompression=false
 
       - name: Add .nojekyll file
-        run: touch ./output/wwwroot/.nojekyll
+        run: touch ./DndPublish/wwwroot/.nojekyll
 
       - name: Copy index.html to 404.html
-        run: cp ./output/wwwroot/index.html ./output/wwwroot/404.html
+        run: cp ./DndPublish/wwwroot/index.html ./DndPublish/wwwroot/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./output/wwwroot
+          path: ./DndPublish/wwwroot
 
   deploy:
     environment:
