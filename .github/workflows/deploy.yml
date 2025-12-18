@@ -36,12 +36,6 @@ jobs:
       - name: Publish the project
         run: dotnet publish DndInator/DndInator.csproj --configuration Release --output ./output -p:GHPages=true -p:BlazorEnableCompression=false
 
-      - name: Change base href for GitHub Pages
-        run: |
-          sed -i 's|<base href="/" />|<base href="/DndInator/" />|g' ./output/wwwroot/index.html
-          echo "✓ Updated base href in index.html"
-          grep "<base" ./output/wwwroot/index.html
-
       - name: Add .nojekyll file
         run: touch ./output/wwwroot/.nojekyll
 
