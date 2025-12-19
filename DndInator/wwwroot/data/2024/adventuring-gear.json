@@ -1,0 +1,639 @@
+[
+  {
+    "Id": "6e2504fa-3c07-4edb-832f-01e9b6ae0d24",
+    "Name": "Acid",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "25 GP",
+    "Function": "When you take the Attack action, you can replace one of your attacks with throwing a vial of Acid. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d6 Acid damage."
+  },
+  {
+    "Id": "a9c8ff84-7d22-4822-b973-e9fedb838a39",
+    "Name": "Alchemist\u0027s Fire",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "50 GP",
+    "Function": "When you take the Attack action, you can replace one of your attacks with throwing a flask of Alchemist\u2019s Fire. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 1d4 Fire damage and start burning (see the rules glossary)."
+  },
+  {
+    "Id": "e108e32b-5a91-41d5-9822-b716675d705f",
+    "Name": "Ammunition",
+    "Weight": "Varies",
+    "Cost": "Varies",
+    "Function": "Ammunition is required by a weapon that has the Ammunition property. A weapon\u2019s description specifies the type of ammunition used by the weapon. The Ammunition table lists the different types and the amount you get when you buy them."
+  },
+  {
+    "Id": "f7302389-1005-4225-a096-f23881041b2f",
+    "Name": "Antitoxin",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "As a Bonus Action, you can drink a vial of Antitoxin to gain Advantage on saving throws to avoid or end the Poisoned condition for 1 hour."
+  },
+  {
+    "Id": "01eff352-8183-49ba-85d9-1902bc33ede9",
+    "Name": "Arcane Focus",
+    "Weight": "Varies",
+    "Cost": "Varies",
+    "Function": "An Arcane Focus takes one of the forms in the Arcane Focuses table and is bejeweled or carved to channel arcane magic. A Sorcerer, Warlock, or Wizard can use such an item as a Spellcasting Focus."
+  },
+  {
+    "Id": "0b570e44-2858-47f6-b3be-3c5b5593fbaa",
+    "Name": "Backpack",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "A Backpack holds up to 30 pounds within 1 cubic foot. It can also serve as a saddlebag."
+  },
+  {
+    "Id": "065e7cde-ec49-403b-b6cc-f24049b971bb",
+    "Name": "Ball Bearings",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "As a Utilize action, you can spill Ball Bearings from their pouch. They spread to cover a level, 10-foot-square area within 10 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 10 Dexterity saving throw or have the Prone condition. It takes 10 minutes to recover the Ball Bearings."
+  },
+  {
+    "Id": "ed28d173-cbd6-4867-88d0-53d01751ff46",
+    "Name": "Barrel",
+    "Weight": "70\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "A Barrel holds up to 40 gallons of liquid or up to 4 cubic feet of dry goods."
+  },
+  {
+    "Id": "b2216b18-533a-4929-875c-64644e539675",
+    "Name": "Basket",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "4 SP",
+    "Function": "A Basket holds up to 40 pounds within 2 cubic feet."
+  },
+  {
+    "Id": "97ae1dd2-e3c2-4529-a53b-bf19725c0347",
+    "Name": "Bedroll",
+    "Weight": "7\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Bedroll sleeps one Small or Medium creature. While in a Bedroll, you automatically succeed on saving throws against extreme cold (see the Dungeon Master\u2019s Guide)."
+  },
+  {
+    "Id": "160032a8-b5a4-4a16-b208-6969b944f9c0",
+    "Name": "Bell",
+    "Weight": null,
+    "Cost": "1 GP",
+    "Function": "When rung as a Utilize action, a Bell produces a sound that can be heard up to 60 feet away."
+  },
+  {
+    "Id": "aea4a172-1727-42b9-a8b6-2d1681c880f5",
+    "Name": "Blanket",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "5 SP",
+    "Function": "While wrapped in a blanket, you have Advantage on saving throws against extreme cold (see the Dungeon Master\u2019s Guide)."
+  },
+  {
+    "Id": "82654fe9-df44-4d96-8ff2-aed386e58cb0",
+    "Name": "Block and Tackle",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Block and Tackle allows you to hoist up to four times the weight you can normally lift."
+  },
+  {
+    "Id": "96369bfb-bab7-4c1f-baa2-c4803b94f2b4",
+    "Name": "Bright Fungal Cloak",
+    "Weight": null,
+    "Cost": "25 GP",
+    "Function": "While wearing a Bright Fungal Cloak, you can take a Bonus Action to furl or unfurl it. When the cloak is unfurled, it sheds Bright Light in a 5-foot radius and Dim Light for an additional 5 feet. One pound of fungus is sewn into a Bright Fungal Cloak. This fungus can be eaten as food. Once all the fungus is consumed, the cloak becomes a mundane set of Traveler\u2019s Clothes."
+  },
+  {
+    "Id": "a1a8adca-2688-485b-a5cd-215b67c08d4c",
+    "Name": "Book",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "25 GP",
+    "Function": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a \u002B5 bonus to Intelligence (Arcana, History, Nature, or Religion) checks you make about that topic."
+  },
+  {
+    "Id": "0b3b6b81-0615-4d33-bed6-54f9365c3e53",
+    "Name": "Bottle, Glass",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "A Glass Bottle holds up to 1\u00BD pints."
+  },
+  {
+    "Id": "e9197b6d-3021-4bdb-bad3-f5e31536ac00",
+    "Name": "Bucket",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "5 CP",
+    "Function": "A Bucket holds up to half a cubic foot of contents."
+  },
+  {
+    "Id": "c52a62ce-157b-4183-b236-8a35c90d98ae",
+    "Name": "Burglar\u0027s Pack",
+    "Weight": "42\u0026#160;lb.",
+    "Cost": "16 GP",
+    "Function": "A Burglar\u2019s Pack contains the following items: Backpack, Ball Bearings, Bell, 10 Candles, Crowbar, Hooded Lantern, 7 flasks of Oil, 5 days of Rations, Rope, Tinderbox, and Waterskin."
+  },
+  {
+    "Id": "55d20894-cf18-4c77-afab-701fcd7775a2",
+    "Name": "Caltrops",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "As a Utilize action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 15 Dexterity saving throw or take 1 Piercing damage and have its Speed reduced to 0 until the start of its next turn. It takes 10 minutes to recover the Caltrops."
+  },
+  {
+    "Id": "4820d578-e2ac-4ef4-a3c3-f8a00367ae51",
+    "Name": "Candle",
+    "Weight": null,
+    "Cost": "1 CP",
+    "Function": "For 1 hour, a lit Candle sheds Bright Light in a 5-foot radius and Dim Light for an additional 5 feet."
+  },
+  {
+    "Id": "e13055b1-d3ba-464d-b8e6-d0ce72ed9559",
+    "Name": "Case, Crossbow Bolt",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Crossbow Bolt Case holds up to 20 Bolts."
+  },
+  {
+    "Id": "65aabb46-5ed4-403b-b6d1-b87691dfa3b6",
+    "Name": "Case, Map or Scroll",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Map or Scroll Case holds up to 10 sheets of paper or 5 sheets of parchment."
+  },
+  {
+    "Id": "307e160f-4a74-4912-ad75-67f9c2be808a",
+    "Name": "Chain",
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "As a Utilize action, you can wrap a Chain around an unwilling creature within 5 feet of yourself that has the Grappled, Incapacitated, or Restrained condition if you succeed on a DC 13 Strength (Athletics) check. If the creature\u2019s legs are bound, the creature has the Restrained condition until it escapes. Escaping the Chain requires the creature to make a successful DC 18 Dexterity (Acrobatics) check as an action. Bursting the Chain requires a successful DC 20 Strength (Athletics) check as an action."
+  },
+  {
+    "Id": "75e40aab-2f9a-48b0-9b83-6507f7951c9c",
+    "Name": "Chest",
+    "Weight": "25\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "A Chest holds up to 12 cubic feet of contents."
+  },
+  {
+    "Id": "16bdd86e-18c1-44b3-9306-054b59e98e2f",
+    "Name": "Climber\u0027s Kit",
+    "Weight": "12\u0026#160;lb.",
+    "Cost": "25 GP",
+    "Function": "A Climber\u2019s Kit includes boot tips, gloves, pitons, and a harness. As a Utilize action, you can use the Climber\u2019s Kit to anchor yourself; when you do, you can\u2019t fall more than 25 feet from the anchor point, and you can\u2019t move more than 25 feet from there without undoing the anchor as a Bonus Action."
+  },
+  {
+    "Id": "42b7fd13-abcd-41f0-a67f-f375d7b007f3",
+    "Name": "Clothes, Fine",
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "15 GP",
+    "Function": "Fine Clothes are made of expensive fabrics and adorned with expertly crafted details. Some events and locations admit only people wearing these clothes."
+  },
+  {
+    "Id": "15bb7b81-a2d3-4f76-a428-4b723b5c4ccc",
+    "Name": "Clothes, Traveler\u0027s",
+    "Weight": "4\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "Traveler\u2019s Clothes are resilient garments designed for travel in various environments."
+  },
+  {
+    "Id": "f0870639-2a43-4fd8-9849-8758ac809c85",
+    "Name": "Component Pouch",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "25 GP",
+    "Function": "A Component Pouch is watertight and filled with compartments that hold all the free Material components of your spells."
+  },
+  {
+    "Id": "1a477057-6dfc-4bbc-8f40-806543ab94fe",
+    "Name": "Costume",
+    "Weight": "4\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "While wearing a Costume, you have Advantage on any ability check you make to impersonate the person or type of person it represents."
+  },
+  {
+    "Id": "f2902311-e733-43f8-8864-ece397a85a9a",
+    "Name": "Crowbar",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "Using a Crowbar gives you Advantage on Strength checks where the Crowbar\u2019s leverage can be applied."
+  },
+  {
+    "Id": "838ebd22-0bbf-4fe8-b86d-652ae8d3ed7a",
+    "Name": "Desert Clothing",
+    "Weight": null,
+    "Cost": "5 GP",
+    "Function": "When you are wearing Desert Clothing and not wearing Medium or Heavy armor, you automatically succeed on saving throws against the effects of extreme heat. See chapter 3 of the Dungeon Master\u2019s Guide for rules on extreme heat."
+  },
+  {
+    "Id": "d686c5d5-53ad-4cdc-844b-3dd634d276fa",
+    "Name": "Devil Mask",
+    "Weight": null,
+    "Cost": "25 GP",
+    "Function": "While you are wearing a Devil Mask, other creatures have Disadvantage on Intelligence (Investigation) and Wisdom (Insight) checks made to discern your true identity or intentions."
+  },
+  {
+    "Id": "6cd726e8-7365-4fe0-bd00-d9cb4c377919",
+    "Name": "Diplomat\u0027s Pack",
+    "Weight": "39\u0026#160;lb.",
+    "Cost": "39 GP",
+    "Function": "A Diplomat\u2019s Pack contains the following items: Chest, Fine Clothes, Ink, 5 Ink Pens, Lamp, 2 Map or Scroll Cases, 4 flasks of Oil, 5 sheets of Paper, 5 sheets of Parchment, Perfume, and Tinderbox."
+  },
+  {
+    "Id": "7ec5fd43-9605-4004-86d9-c85f44e04d33",
+    "Name": "Druidic Focus",
+    "Weight": "Varies",
+    "Cost": "Varies",
+    "Function": "A Druidic Focus takes one of the forms in the Druidic Focuses table and is carved, tied with ribbon, or painted to channel primal magic. A Druid or Ranger can use such an object as a Spellcasting Focus."
+  },
+  {
+    "Id": "cc2f95a4-dfd3-414a-8e7c-40ea0f352157",
+    "Name": "Dungeoneer\u0027s Pack",
+    "Weight": "55\u0026#160;lb.",
+    "Cost": "12 GP",
+    "Function": "A Dungeoneer\u2019s Pack contains the following items: Backpack, Caltrops, Crowbar, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin."
+  },
+  {
+    "Id": "42ca0ad7-530b-4fb0-8743-3650e75b07af",
+    "Name": "Entertainer\u0027s Pack",
+    "Weight": "58\u00BD lb.",
+    "Cost": "40 GP",
+    "Function": "An Entertainer\u2019s Pack contains the following items: Backpack, Bedroll, Bell, Bullseye Lantern, 3 Costumes, Mirror, 8 flasks of Oil, 9 days of Rations, Tinderbox, and Waterskin."
+  },
+  {
+    "Id": "768df734-2b3e-49a7-82e2-20129611978a",
+    "Name": "Explorer\u0027s Pack",
+    "Weight": "55\u0026#160;lb.",
+    "Cost": "10 GP",
+    "Function": "An Explorer\u2019s Pack contains the following items: Backpack, Bedroll, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin."
+  },
+  {
+    "Id": "819b7580-1bc9-491d-813c-95fa2105acc0",
+    "Name": "Flask",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "A Flask holds up to 1 pint."
+  },
+  {
+    "Id": "84355aa1-9975-4442-a134-239a64be62d2",
+    "Name": "Garb of Light and Shadow",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "This garb appeals to Fey from one Domain of Delight, such as the Gloaming Court or the Summer Court. While wearing the garb, you have Advantage on ability checks to influence Fey associated with that Domain of Delight."
+  },
+  {
+    "Id": "71d79049-ffea-4e1b-bead-afafdb9bd449",
+    "Name": "Genie Robe",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "This robe appeals to Elementals associated with a particular Elemental Plane (Air, Earth, Fire, Water). While wearing a Genie Robe, you have Advantage on ability checks made to influence Elementals associated with that plane."
+  },
+  {
+    "Id": "5d7adfc4-7046-4230-99fb-d6fdda371aaa",
+    "Name": "Grappling Hook",
+    "Weight": "4\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "As a Utilize action, you can throw the Grappling Hook at a railing, a ledge, or another catch within 50 feet of yourself, and the hook catches on if you succeed on a DC 13 Dexterity (Acrobatics) check. If you tied a Rope to the hook, you can then climb it."
+  },
+  {
+    "Id": "b07f542c-fa63-4624-9b6c-7647911bc73f",
+    "Name": "Healer\u0027s Kit",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "A Healer\u2019s Kit has ten uses. As a Utilize action, you can expend one of its uses to stabilize an Unconscious creature that has 0 Hit Points without needing to make a Wisdom (Medicine) check."
+  },
+  {
+    "Id": "d2d6706c-da0a-4be0-83ba-2003d66c35ec",
+    "Name": "Holy Symbol",
+    "Weight": "Varies",
+    "Cost": "Varies",
+    "Function": "A Holy Symbol takes one of the forms in the Holy Symbol table and is bejeweled or painted to channel divine magic. A Cleric or Paladin can use a Holy Symbol as a Spellcasting Focus."
+  },
+  {
+    "Id": "1ac1dfd6-e2a4-484a-a191-9d5d4c4c3c2a",
+    "Name": "Holy Water",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "25 GP",
+    "Function": "When you take the Attack action, you can replace one of your attacks with throwing a flask of Holy Water. Target one creature you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d8 Radiant damage if it is a Fiend or an Undead."
+  },
+  {
+    "Id": "c5b6ff0c-94cd-45cc-a9bc-e3f605a35a56",
+    "Name": "Hunting Trap",
+    "Weight": "25\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "As a Utilize action, you can set a Hunting Trap, which is a sawtooth steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take 1d4 Piercing damage and have its Speed reduced to 0 until the start of its next turn. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet). A creature can use its action to make a DC 13 Strength (Athletics) check, freeing itself or another creature within its reach on a success. Each failed check deals 1 Piercing damage to the trapped creature."
+  },
+  {
+    "Id": "a69414f7-3f27-4e10-97ab-ba5f0001a888",
+    "Name": "Ink",
+    "Weight": null,
+    "Cost": "10 GP",
+    "Function": "Ink comes in a 1-ounce bottle, which provides enough ink to write about 500 pages."
+  },
+  {
+    "Id": "447ffc40-18ec-4ffd-b28a-32f60026be77",
+    "Name": "Ink Pen",
+    "Weight": null,
+    "Cost": "2 CP",
+    "Function": "Using Ink, an Ink Pen is used to write or draw."
+  },
+  {
+    "Id": "921685d3-e740-4902-9b82-ec5141cdfd1b",
+    "Name": "Jug",
+    "Weight": "4\u0026#160;lb.",
+    "Cost": "2 CP",
+    "Function": "A Jug holds up to 1 gallon."
+  },
+  {
+    "Id": "d0d5e5ee-db40-4363-9e90-b3003ed1e202",
+    "Name": "Ladder",
+    "Weight": "25\u0026#160;lb.",
+    "Cost": "1 SP",
+    "Function": "A Ladder is 10 feet tall. You must climb to move up or down it."
+  },
+  {
+    "Id": "f574c5e9-1217-4665-8221-406e03cf945b",
+    "Name": "Lamp",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "5 SP",
+    "Function": "A Lamp burns Oil as fuel to cast Bright Light in a 15-foot radius and Dim Light for an additional 30 feet."
+  },
+  {
+    "Id": "eef5a8bf-3e4a-411b-bbc0-a576f49d578b",
+    "Name": "Lantern, Bullseye",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "10 GP",
+    "Function": "A Bullseye Lantern burns Oil as fuel to cast Bright Light in a 60-foot Cone and Dim Light for an additional 60 feet."
+  },
+  {
+    "Id": "5451d4fb-d3dc-4a48-a864-fbb16d4b9355",
+    "Name": "Lantern, Hooded",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "A Hooded Lantern burns Oil as fuel to cast Bright Light in a 30-foot radius and Dim Light for an additional 30 feet. As a Bonus Action, you can lower the hood, reducing the light to Dim Light in a 5-foot radius, or raise it again."
+  },
+  {
+    "Id": "fae9fe91-f0b1-4790-8cf2-448573fb7261",
+    "Name": "Lock",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "10 GP",
+    "Function": "A Lock comes with a key. Without the key, a creature can use Thieves\u2019 Tools to pick this Lock with a successful DC 15 Dexterity (Sleight of Hand) check."
+  },
+  {
+    "Id": "3681f34e-bd7e-49e7-bdd6-31a551d30637",
+    "Name": "Locking Spellbook",
+    "Weight": null,
+    "Cost": "35 GP",
+    "Function": "This 100-page leather-bound tome can be used as a Spellbook. It is closed with a lock that comes with a key. As a Utilize action, a creature can try to pick the lock using Thieves\u2019 Tools, doing so with a successful DC 15 Dexterity (Sleight of Hand) check."
+  },
+  {
+    "Id": "6ab88dfb-531a-4f87-9718-36507867a9b6",
+    "Name": "Magnifying Glass",
+    "Weight": null,
+    "Cost": "100 GP",
+    "Function": "A Magnifying Glass grants Advantage on any ability check made to appraise or inspect a highly detailed item. Lighting a fire with a Magnifying Glass requires light as bright as sunlight to focus, tinder to ignite, and about 5 minutes for the fire to ignite."
+  },
+  {
+    "Id": "281c3c1d-1e99-457c-99d8-e6f685e915cb",
+    "Name": "Manacles",
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "As a Utilize action, you can use Manacles to bind an unwilling Small or Medium creature within 5 feet of yourself that has the Grappled, Incapacitated, or Restrained condition if you succeed on a DC 13 Dexterity (Sleight of Hand) check. While bound, a creature has Disadvantage on attack rolls, and the creature is Restrained if the Manacles are attached to a chain or hook that is fixed in place. Escaping the Manacles requires a successful DC 20 Dexterity (Sleight of Hand) check as an action. Bursting them requires a successful DC 25 Strength (Athletics) check as an action. Each set of Manacles comes with a key. Without the key, a creature can use Thieves\u2019 Tools to pick the Manacles\u2019 lock with a successful DC 15 Dexterity (Sleight of Hand) check."
+  },
+  {
+    "Id": "26770869-9471-4b79-b91d-c2fa7e2fa6a3",
+    "Name": "Map",
+    "Weight": null,
+    "Cost": "1 GP",
+    "Function": "If you consult an accurate Map, you gain a \u002B5 bonus to Wisdom (Survival) checks you make to find your way in the place represented on it."
+  },
+  {
+    "Id": "2bc22c11-69b2-4a31-8d64-2ab33e916ee5",
+    "Name": "Mirror",
+    "Weight": "1/2\u0026#160;lb.",
+    "Cost": "5 GP",
+    "Function": "A handheld steel Mirror is useful for personal cosmetics but also for peeking around corners and reflecting light as a signal."
+  },
+  {
+    "Id": "9e15aeab-3143-49a4-9773-9bd672f3c87f",
+    "Name": "Monster Camouflage",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "A suit of Monster Camouflage looks like a Beast or Monstrosity, such as an owlbear. To discern that you\u2019re disguised, a creature must take the Study action to inspect your appearance and succeed on a DC 10 Intelligence (Investigation or Nature) check. The creature has Advantage on this check if it is within 30 feet of you and automatically succeeds on this check if you do anything the monster you\u2019re disguised as couldn\u2019t do."
+  },
+  {
+    "Id": "2b46f24c-3143-4d95-a556-80684356c75e",
+    "Name": "Net",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "When you take the Attack action, you can replace one of your attacks with throwing a Net. Target a creature you can see within 15 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or have the Restrained condition until it escapes. The target succeeds automatically if it is Huge or larger. To escape, the target or a creature within 5 feet of it must take an action to make a DC 10 Strength (Athletics) check, freeing the Restrained creature on a success. Destroying the Net (AC 10; 5 HP; Immunity to Bludgeoning, Poison, and Psychic damage) also frees the target, ending the effect."
+  },
+  {
+    "Id": "230d289d-508f-49a2-90d5-e5731fcf6969",
+    "Name": "Oil",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1 SP",
+    "Function": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below. Dousing a Creature or an Object. When you take the Attack action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil. Dousing a Space. You can take the Utilize action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn. Fuel. Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn\u2019t need to be consecutive; you can extinguish the burning Oil (as a Utilize action) and rekindle it again until it has burned for a total of 6 hours."
+  },
+  {
+    "Id": "a7893100-f71b-4885-acf1-1689b26b2671",
+    "Name": "Paper",
+    "Weight": null,
+    "Cost": "2 SP",
+    "Function": "One sheet of Paper can hold about 250 handwritten words."
+  },
+  {
+    "Id": "4fe21875-71cc-45d4-b129-906c8dc0ccac",
+    "Name": "Parchment",
+    "Weight": null,
+    "Cost": "1 SP",
+    "Function": "One sheet of Parchment can hold about 250 handwritten words."
+  },
+  {
+    "Id": "4c159ce3-8de0-4dd3-aff3-f3654a3ccb2e",
+    "Name": "Perfume",
+    "Weight": null,
+    "Cost": "5 GP",
+    "Function": "Perfume comes in a 4-ounce vial. For 1 hour after applying Perfume to yourself, you have Advantage on Charisma (Persuasion) checks made to influence an Indifferent Humanoid within 5 feet of yourself."
+  },
+  {
+    "Id": "f68256f6-2656-48a9-bde9-ce5b02144210",
+    "Name": "Poison, Basic",
+    "Weight": null,
+    "Cost": "100 GP",
+    "Function": "As a Bonus Action, you can use a vial of Basic Poison to coat one weapon or up to three pieces of ammunition. A creature that takes Piercing or Slashing damage from the poisoned weapon or ammunition takes an extra 1d4 Poison damage. Once applied, the poison retains potency for 1 minute or until its damage is dealt, whichever comes first."
+  },
+  {
+    "Id": "637641cc-993c-408a-b60e-360ff527d18c",
+    "Name": "Pole",
+    "Weight": "7\u0026#160;lb.",
+    "Cost": "5 CP",
+    "Function": "A Pole is 10 feet long. You can use it to touch something up to 10 feet away. If you must make a Strength (Athletics) check as part of a High or Long Jump, you can use the Pole to vault, giving yourself Advantage on the check."
+  },
+  {
+    "Id": "a36f3474-bdfe-43dc-ac50-fe87d98fc009",
+    "Name": "Pot, Iron",
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "An Iron Pot holds up to 1 gallon."
+  },
+  {
+    "Id": "75a88a98-a8aa-47d8-8988-b213fb2549b6",
+    "Name": "Potion of Healing",
+    "Weight": "1/2\u0026#160;lb.",
+    "Cost": "50 GP",
+    "Function": "This potion is a magic item. As a Bonus Action, you can drink it or administer it to another creature within 5 feet of yourself. The creature that drinks the magical red fluid in this vial regains 2d4 \u002B 2 Hit Points."
+  },
+  {
+    "Id": "224b1ef3-df6c-441f-8944-2a38df361146",
+    "Name": "Pouch",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "5 SP",
+    "Function": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot."
+  },
+  {
+    "Id": "13ffdaef-33e9-4aba-916c-b96144b1d4d4",
+    "Name": "Priest\u0027s Pack",
+    "Weight": "29\u0026#160;lb.",
+    "Cost": "33 GP",
+    "Function": "A Priest\u2019s Pack contains the following items: Backpack, Blanket, Holy Water, Lamp, 7 days of Rations, Robe, and Tinderbox."
+  },
+  {
+    "Id": "de4172b5-c81a-4efa-a36d-6bd9f4ac2fdf",
+    "Name": "Quiver",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Quiver holds up to 20 Arrows."
+  },
+  {
+    "Id": "fd11b409-012d-474d-8536-172bad29cb69",
+    "Name": "Ram, Portable",
+    "Weight": "35\u0026#160;lb.",
+    "Cost": "4 GP",
+    "Function": "You can use a Portable Ram to break down doors. When doing so, you gain a \u002B4 bonus to the Strength check. One other character can help you use the ram, giving you Advantage on this check."
+  },
+  {
+    "Id": "4859380d-0da6-4686-a702-e3b49054e371",
+    "Name": "Rations",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "5 SP",
+    "Function": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \u201CMalnutrition\u201D in the rules glossary for the risks of not eating."
+  },
+  {
+    "Id": "759ef075-a5a3-4718-9587-e0b8c9631dc4",
+    "Name": "Robe",
+    "Weight": "4\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "A Robe has vocational or ceremonial significance. Some events and locations admit only people wearing a Robe bearing certain colors or symbols."
+  },
+  {
+    "Id": "13b90cc9-2efb-4387-9ea3-668ab36b7d50",
+    "Name": "Rope",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "As a Utilize action, you can tie a knot with Rope if you succeed on a DC 10 Dexterity (Sleight of Hand) check. The Rope can be burst with a successful DC 20 Strength (Athletics) check. You can bind an unwilling creature with the Rope only if the creature has the Grappled, Incapacitated, or Restrained condition. If the creature\u2019s legs are bound, the creature has the Restrained condition until it escapes. Escaping the Rope requires the creature to make a successful DC 15 Dexterity (Acrobatics) check as an action."
+  },
+  {
+    "Id": "50829cd3-0f52-45ca-9ff2-05b46e962a35",
+    "Name": "Sack",
+    "Weight": "1/2\u0026#160;lb.",
+    "Cost": "1 CP",
+    "Function": "A Sack holds up to 30 pounds within 1 cubic foot."
+  },
+  {
+    "Id": "d8a397fc-db97-455f-91c3-79a1dbb06c7b",
+    "Name": "Scholar\u0027s Pack",
+    "Weight": "22\u0026#160;lb.",
+    "Cost": "40 GP",
+    "Function": "A Scholar\u2019s Pack contains the following items: Backpack, Book, Ink, Ink Pen, Lamp, 10 flasks of Oil, 10 sheets of Parchment, and Tinderbox."
+  },
+  {
+    "Id": "fc385354-3bdc-4948-b7f8-35a3aaf186f5",
+    "Name": "Shovel",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "Working for 1 hour, you can use a Shovel to dig a hole that is 5 feet on each side in soil or similar material."
+  },
+  {
+    "Id": "0e230945-9997-46c2-a067-d423f9ef046f",
+    "Name": "Signal Whistle",
+    "Weight": null,
+    "Cost": "5 CP",
+    "Function": "When blown as a Utilize action, a Signal Whistle produces a sound that can be heard up to 600 feet away."
+  },
+  {
+    "Id": "a7908617-e88e-45d7-aa7e-50bb8b02aab2",
+    "Name": "Spell Scroll (Cantrip)",
+    "Weight": null,
+    "Cost": "30 GP",
+    "Function": "A Spell Scroll (Cantrip) is a magic item that bears the words of a cantrip determined by the scroll\u2019s creator. If the spell is on your class\u2019s spell list, you can read the scroll and cast the spell using its normal casting time and without providing any Material components. If the spell requires a saving throw or an attack roll, the spell save DC is 13, and the attack bonus is \u002B5. The scroll disintegrates when the casting is completed."
+  },
+  {
+    "Id": "7b39c2af-d9ab-486d-aaac-8b1753ba0a91",
+    "Name": "Spell Scroll (Level 1)",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "A Spell Scroll (Level 1) is a magic item that bears the words of a level 1 spell, respectively, determined by the scroll\u2019s creator. If the spell is on your class\u2019s spell list, you can read the scroll and cast the spell using its normal casting time and without providing any Material components. If the spell requires a saving throw or an attack roll, the spell save DC is 13, and the attack bonus is \u002B5. The scroll disintegrates when the casting is completed."
+  },
+  {
+    "Id": "c103427f-1ca7-431c-a502-b710620dfc65",
+    "Name": "Spikes, Iron",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 GP",
+    "Function": "Iron Spikes come in bundles of ten. As a Utilize action, you can use a blunt object, such as a Light Hammer, to hammer a spike into wood, earth, or a similar material. You can do so to jam a door shut or to then tie a Rope or Chain to the Spike."
+  },
+  {
+    "Id": "0d27d4a8-8d8d-41ef-b047-323cfa01a09a",
+    "Name": "Spyglass",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1,000 GP",
+    "Function": "Objects viewed through a Spyglass are magnified to twice their size."
+  },
+  {
+    "Id": "8c57bbff-5c72-4607-bca4-f495f2369158",
+    "Name": "String",
+    "Weight": null,
+    "Cost": "1 SP",
+    "Function": "String is 10 feet long. You can tie a knot in it as a Utilize action."
+  },
+  {
+    "Id": "d89c709d-7dc8-435f-a728-ee37bc82e12e",
+    "Name": "Tent",
+    "Weight": "20\u0026#160;lb.",
+    "Cost": "2 GP",
+    "Function": "A Tent sleeps up to two Small or Medium creatures."
+  },
+  {
+    "Id": "c63ae208-b7f5-41a8-8133-a705d72c5da3",
+    "Name": "Tinderbox",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "5 SP",
+    "Function": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle, Lamp, Lantern, or Torch\u2014or anything else with exposed fuel\u2014takes a Bonus Action. Lighting any other fire takes 1 minute."
+  },
+  {
+    "Id": "b8556be4-c62e-4c26-80eb-d5e68b7b36df",
+    "Name": "Torch",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "1 CP",
+    "Function": "A Torch burns for 1 hour, casting Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. When you take the Attack action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage."
+  },
+  {
+    "Id": "addb922f-9008-4d7c-8177-a4175ed75294",
+    "Name": "Vial",
+    "Weight": null,
+    "Cost": "1 GP",
+    "Function": "A Vial holds up to 4 ounces."
+  },
+  {
+    "Id": "3668ab9c-dd91-4e3c-afe4-aa7470a669a8",
+    "Name": "Warm Fungal Clothing",
+    "Weight": null,
+    "Cost": "15 GP",
+    "Function": "When you\u2019re wearing Warm Fungal Clothing, you automatically succeed on saving throws against the effects of extreme cold. See chapter 3 of the Dungeon Master\u2019s Guide for rules on extreme cold. One pound of fungus is sewn into Fungal Clothing. This fungus can be eaten as food. Once all the fungus is consumed, this becomes a mundane set of Traveler\u2019s Clothes."
+  },
+  {
+    "Id": "8d06ad07-0178-435e-9789-a37bd76ae44a",
+    "Name": "Waterskin",
+    "Weight": "5\u0026#160;lb. (full)",
+    "Cost": "2 SP",
+    "Function": "A Waterskin holds up to 4 pints. If you don\u2019t drink sufficient water, you risk dehydration (see the rules glossary)."
+  },
+  {
+    "Id": "1831cc30-6baa-45ab-94c8-101ab23963ad",
+    "Name": "Winter Camouflage",
+    "Weight": null,
+    "Cost": "50 GP",
+    "Function": "While you wear Winter Camouflage in an appropriate environment, you have Advantage on Dexterity (Stealth) checks."
+  }
+]

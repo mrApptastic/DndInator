@@ -1,0 +1,298 @@
+[
+  {
+    "Id": "cf6f6aac-6e0c-423a-b00d-76ebb7d0965f",
+    "Name": "Alchemist\u0027s Supplies",
+    "Category": "Artisan Tools",
+    "Ability": "Intelligence",
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "50 GP"
+  },
+  {
+    "Id": "881d5735-b90a-4a31-b5ff-05bc6a77f49c",
+    "Name": "Brewer\u0027s Supplies",
+    "Category": "Artisan Tools",
+    "Ability": "Intelligence",
+    "Weight": "9\u0026#160;lb.",
+    "Cost": "20 GP"
+  },
+  {
+    "Id": "5d224916-aeb0-4763-ba49-16a13f72f974",
+    "Name": "Calligrapher\u0027s Supplies",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "10 GP"
+  },
+  {
+    "Id": "27faecfd-3186-4426-b2a4-cf9bb1fe379e",
+    "Name": "Carpenter\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Strength",
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "8 GP"
+  },
+  {
+    "Id": "36b68e9b-c697-40ef-8e8a-bfdfd0fdb8fe",
+    "Name": "Cartographer\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Wisdom",
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "15 GP"
+  },
+  {
+    "Id": "36a9a7bd-75b1-40ec-82bd-838eda29d33c",
+    "Name": "Cobbler\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "5 GP"
+  },
+  {
+    "Id": "677e60cc-3c2d-4790-946a-f3be3baf53fd",
+    "Name": "Cook\u0027s Utensils",
+    "Category": "Artisan Tools",
+    "Ability": "Wisdom",
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "1 GP"
+  },
+  {
+    "Id": "8bcb7359-5d07-499e-8731-706579be233d",
+    "Name": "Glassblower\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Intelligence",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "30 GP"
+  },
+  {
+    "Id": "aefb1701-e561-4a9a-96f0-8cdfa0f37fec",
+    "Name": "Jeweler\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Intelligence",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "25 GP"
+  },
+  {
+    "Id": "634e5bc0-2696-4e0c-9bbb-9908fb1f93c0",
+    "Name": "Leatherworker\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "5 GP"
+  },
+  {
+    "Id": "e6ed1d22-39d1-49c0-88f2-83107edb064c",
+    "Name": "Mason\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Strength",
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "10 GP"
+  },
+  {
+    "Id": "e83a952f-8d8a-49f2-b596-b8b4f5a7f6a0",
+    "Name": "Painter\u0027s Supplies",
+    "Category": "Artisan Tools",
+    "Ability": "Wisdom",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "10 GP"
+  },
+  {
+    "Id": "524672db-3f1c-4ebe-a0f7-e0e6acac3b88",
+    "Name": "Potter\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Intelligence",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "10 GP"
+  },
+  {
+    "Id": "f62bc646-9821-4939-ba6b-628dcc279f3c",
+    "Name": "Smith\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Strength",
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "20 GP"
+  },
+  {
+    "Id": "4d40d50d-1e10-435c-bb61-63abd081d0d6",
+    "Name": "Tinker\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "50 GP"
+  },
+  {
+    "Id": "ed14d6b8-d3b4-491c-b645-20b8e28cd322",
+    "Name": "Weaver\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 GP"
+  },
+  {
+    "Id": "34b70b44-0d3b-4fdc-b937-72c1a097e2a5",
+    "Name": "Woodcarver\u0027s Tools",
+    "Category": "Artisan Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 GP"
+  },
+  {
+    "Id": "986c1c4c-108f-411b-bed0-ba5428d191b4",
+    "Name": "Disguise Kit",
+    "Category": "Other Tools",
+    "Ability": "Charisma",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "25 GP"
+  },
+  {
+    "Id": "a655bc77-1039-4837-bf2a-73baf9a3a06f",
+    "Name": "Forgery Kit",
+    "Category": "Other Tools",
+    "Ability": "Dexterity",
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "15 GP"
+  },
+  {
+    "Id": "5235d428-0e62-48a9-a607-0576fdff0cf8",
+    "Name": "Herbalism Kit",
+    "Category": "Other Tools",
+    "Ability": "Intelligence",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "5 GP"
+  },
+  {
+    "Id": "3bec0a23-d4a9-46dd-ab0b-7436a24e8127",
+    "Name": "Navigator\u0027s Tools",
+    "Category": "Other Tools",
+    "Ability": "Wisdom",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "25 GP"
+  },
+  {
+    "Id": "531181e4-1b3a-4455-97ca-b1d153c5a669",
+    "Name": "Poisoner\u0027s Kit",
+    "Category": "Other Tools",
+    "Ability": "Intelligence",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "50 GP"
+  },
+  {
+    "Id": "9c609b44-0567-4dfd-95d1-be5fb92cc441",
+    "Name": "Thieves\u0027 Tools",
+    "Category": "Other Tools",
+    "Ability": "Dexterity",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "25 GP"
+  },
+  {
+    "Id": "f66757ed-6fe5-45ab-86e6-87f7c451f682",
+    "Name": "Dice",
+    "Category": "Gaming Sets",
+    "Ability": "Wisdom",
+    "Weight": null,
+    "Cost": "1 SP"
+  },
+  {
+    "Id": "dcca5d66-a926-48f2-acd6-e5eb7bd973a7",
+    "Name": "Dragonchess",
+    "Category": "Gaming Sets",
+    "Ability": "Wisdom",
+    "Weight": null,
+    "Cost": "1 GP"
+  },
+  {
+    "Id": "719dbde9-a0e1-48af-976a-fb4858f53801",
+    "Name": "Playing Cards",
+    "Category": "Gaming Sets",
+    "Ability": "Wisdom",
+    "Weight": null,
+    "Cost": "5 SP"
+  },
+  {
+    "Id": "3ce88c75-d558-4599-a273-b105ecbc2493",
+    "Name": "Three-dragon Ante",
+    "Category": "Gaming Sets",
+    "Ability": "Wisdom",
+    "Weight": null,
+    "Cost": "1 GP"
+  },
+  {
+    "Id": "e0bbd6ad-754d-4412-81eb-17a360473029",
+    "Name": "Bagpipes",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "30 GP"
+  },
+  {
+    "Id": "2fb46f8b-cdd1-4e62-bb76-bd7f7f11234c",
+    "Name": "Drum",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "6 GP"
+  },
+  {
+    "Id": "9255d4e8-b967-466a-908b-6135099eaca8",
+    "Name": "Dulcimer",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "25 GP"
+  },
+  {
+    "Id": "eb428f94-e747-4a0c-ab93-e61592a207b1",
+    "Name": "Flute",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "2 GP"
+  },
+  {
+    "Id": "b246cb4d-fd2f-408f-87bb-4a47eb75da35",
+    "Name": "Horn",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "3 GP"
+  },
+  {
+    "Id": "d99ba5f3-42f3-4646-98b0-e7cbba0f64de",
+    "Name": "Lute",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "35 GP"
+  },
+  {
+    "Id": "524c9e49-af34-42ad-b077-9403f6bd5f38",
+    "Name": "Lyre",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "30 GP"
+  },
+  {
+    "Id": "4ae22b8f-40b3-4ca9-a5a9-d13464d29a2d",
+    "Name": "Pan Flute",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "12 GP"
+  },
+  {
+    "Id": "03c040a9-2269-4225-8824-1d02f823bdc8",
+    "Name": "Shawm",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "2 GP"
+  },
+  {
+    "Id": "6bf992cd-67a2-49d2-957b-e259b435dac3",
+    "Name": "Viol",
+    "Category": "Musical Instruments",
+    "Ability": "Charisma",
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "30 GP"
+  }
+]

@@ -113,7 +113,7 @@ public class SpellScraper
                     foreach (var row in rows.Skip(1))
                     {
                         var cells = row.SelectNodes("td");
-                        if (cells == null || cells.Count < 6) continue;
+                        if (cells == null || cells.Count < 7) continue;
 
                         var spell = new Spell();
                         spell.Level = level;
@@ -128,11 +128,20 @@ public class SpellScraper
                         }
 
                         // Parse grundlæggende info fra tabellen
+                        // 2024 format: Name | School | Spell lists | Casting Time | Range | Components | Duration
                         spell.School = cells[1].InnerText.Trim();
-                        spell.CastingTime = cells[2].InnerText.Trim();
-                        spell.Range = cells[3].InnerText.Trim();
-                        spell.Duration = cells[4].InnerText.Trim();
+                        
+                        // Parse spell lists fra cell 2
+                        var spellListText = cells[2].InnerText.Trim();
+                        if (!string.IsNullOrEmpty(spellListText))
+                        {
+                            spell.SpellLists = spellListText.Split(',').Select(s => s.Trim()).ToList();
+                        }
+                        
+                        spell.CastingTime = cells[3].InnerText.Trim();
+                        spell.Range = cells[4].InnerText.Trim();
                         spell.Components = cells[5].InnerText.Trim();
+                        spell.Duration = cells[6].InnerText.Trim();
 
                         spells.Add(spell);
                         Console.WriteLine($"Found spell: {spell.Name} (Level {level})");

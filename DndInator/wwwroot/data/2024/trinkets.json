@@ -1,0 +1,502 @@
+[
+  {
+    "Id": "16f64ba4-b541-42dd-aa42-329e11bd5566",
+    "Roll": "01",
+    "Description": "A mummified goblin hand"
+  },
+  {
+    "Id": "329659fb-1003-4903-9cbf-aa1ec474b382",
+    "Roll": "02",
+    "Description": "A crystal that faintly glows in moonlight"
+  },
+  {
+    "Id": "88a48b86-e620-45c4-89be-bda112044c5a",
+    "Roll": "03",
+    "Description": "A gold coin minted in an unknown land"
+  },
+  {
+    "Id": "9823f9bf-1a2d-428d-bb4b-8729d018d749",
+    "Roll": "04",
+    "Description": "A diary written in a language you don\u0027t know"
+  },
+  {
+    "Id": "acf69fa2-1dec-44fd-be27-f5b79c8e0a77",
+    "Roll": "05",
+    "Description": "A brass ring that never tarnishes"
+  },
+  {
+    "Id": "3052cd21-dd0e-4a52-b50e-389dd625851c",
+    "Roll": "06",
+    "Description": "An old chess piece made from glass"
+  },
+  {
+    "Id": "e1fbe3b2-3aad-4c4a-9f77-0d56131f69e0",
+    "Roll": "07",
+    "Description": "A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips"
+  },
+  {
+    "Id": "6eda0880-d5b5-4db6-ba86-480ca1e1de28",
+    "Roll": "08",
+    "Description": "A small idol depicting a nightmarish creature that gives you unsettling dreams when you sleep near it"
+  },
+  {
+    "Id": "fbd686d9-affe-48b1-82ca-bab526eaec13",
+    "Roll": "09",
+    "Description": "A lock of someone\u0027s hair"
+  },
+  {
+    "Id": "5cda2e95-b965-4ee3-a9a7-de05ccd072ba",
+    "Roll": "10",
+    "Description": "The deed for a parcel of land in a realm unknown to you"
+  },
+  {
+    "Id": "46ad0ec2-513c-4e1b-b4d9-a8e748178ded",
+    "Roll": "11",
+    "Description": "A 1-ounce block made from an unknown material"
+  },
+  {
+    "Id": "d5d49999-df2b-4c44-8405-202577bc15cc",
+    "Roll": "12",
+    "Description": "A small cloth doll skewered with needles"
+  },
+  {
+    "Id": "f95413bb-8eba-4952-bc0f-2225659d9aa6",
+    "Roll": "13",
+    "Description": "A tooth from an unknown beast"
+  },
+  {
+    "Id": "adf1717b-e186-4495-a234-d8327e33cce3",
+    "Roll": "14",
+    "Description": "An enormous scale, perhaps from a dragon"
+  },
+  {
+    "Id": "d6a82203-6a56-4048-82fa-b35d09f320de",
+    "Roll": "15",
+    "Description": "A bright-green feather"
+  },
+  {
+    "Id": "1dd2bd13-fed6-4256-9609-0fd766477c9b",
+    "Roll": "16",
+    "Description": "An old divination card bearing your likeness"
+  },
+  {
+    "Id": "1c1ef156-c1ee-460e-90cf-37d5d6ea70cf",
+    "Roll": "17",
+    "Description": "A glass orb filled with moving smoke"
+  },
+  {
+    "Id": "714d912b-d6b0-433a-8cc9-4fb26d1268c0",
+    "Roll": "18",
+    "Description": "A 1-pound egg with a bright-red shell"
+  },
+  {
+    "Id": "42ba0be4-4973-466f-b2b9-ceedb9e2efbc",
+    "Roll": "19",
+    "Description": "A pipe that blows bubbles"
+  },
+  {
+    "Id": "b478fe26-696e-49cc-9525-5ae9064db05f",
+    "Roll": "20",
+    "Description": "A glass jar containing a bit of flesh floating in a pickling fluid"
+  },
+  {
+    "Id": "3c986d5b-c341-40e4-a395-2af897a970b9",
+    "Roll": "21",
+    "Description": "A gnome-crafted music box that plays a song you dimly remember from your childhood"
+  },
+  {
+    "Id": "bbdc2965-ebec-49ae-9fa2-67f6442fd02b",
+    "Roll": "22",
+    "Description": "A wooden statuette of a smug halfling"
+  },
+  {
+    "Id": "1583bfc2-37bd-4e45-a44f-84934fb04399",
+    "Roll": "23",
+    "Description": "A brass orb etched with strange runes"
+  },
+  {
+    "Id": "6c01e1f8-0bf3-4098-9a67-ba3d9e5362fb",
+    "Roll": "24",
+    "Description": "A multiclolored stone disk"
+  },
+  {
+    "Id": "12ce73ef-6da9-43e0-a8a3-b0b5264073d9",
+    "Roll": "25",
+    "Description": "A silver icon of a raven"
+  },
+  {
+    "Id": "2bbf09f5-a49b-4201-aa2a-6c6189a417a5",
+    "Roll": "26",
+    "Description": "A bag containing forty-seven teeth, one of which is rotten"
+  },
+  {
+    "Id": "30595c1b-410b-40e5-b771-f263bb009731",
+    "Roll": "27",
+    "Description": "A shard of obsidian that always feels warm to the touch"
+  },
+  {
+    "Id": "9763680e-fe01-4d36-af66-ba6d2dcf4e69",
+    "Roll": "28",
+    "Description": "A dragon\u0027s talon strung on a leather necklace"
+  },
+  {
+    "Id": "ec6019a5-5cb5-42a7-9d8f-4379b155f06e",
+    "Roll": "29",
+    "Description": "A pair of old socks"
+  },
+  {
+    "Id": "2f732223-20b9-4cfe-80b9-1455bf7d6d4a",
+    "Roll": "30",
+    "Description": "A blank book whose pages refuse to hold ink, chalk, grapohite, or any other marking"
+  },
+  {
+    "Id": "c38c750f-ece6-4da8-be9b-8b686805cd47",
+    "Roll": "31",
+    "Description": "A silver badge that is a five.pointed stat"
+  },
+  {
+    "Id": "96a0b474-88e1-4c49-988a-3ef6ff631655",
+    "Roll": "32",
+    "Description": "A knife that belonged to a relative"
+  },
+  {
+    "Id": "618f60ad-7ae7-4eab-84fe-fcece2b6ad45",
+    "Roll": "33",
+    "Description": "A glass vial filled with nail clippings"
+  },
+  {
+    "Id": "9ed7ba90-3944-4af0-8ee1-f4b918c7b126",
+    "Roll": "34",
+    "Description": "A rectangular metal device with two tiny metal cups on one end that throws sparks when wet"
+  },
+  {
+    "Id": "cf1a6390-e5ee-4b95-8c36-09829eb5732b",
+    "Roll": "35",
+    "Description": "A white, sequined glove sized for a human"
+  },
+  {
+    "Id": "61e22c9d-8358-4f19-8b2f-120827463c52",
+    "Roll": "36",
+    "Description": "A vest with one hundred tiny pockets"
+  },
+  {
+    "Id": "57d364e1-573b-474c-af09-c1fc93931f45",
+    "Roll": "37",
+    "Description": "A weightless stone"
+  },
+  {
+    "Id": "367383d3-d24c-4166-8bc8-f16cffdb26ac",
+    "Roll": "38",
+    "Description": "A sketch of a goblin"
+  },
+  {
+    "Id": "6d801695-280d-4d09-a2f8-29c3c85903a9",
+    "Roll": "39",
+    "Description": "An empty glass vial that smells of perfume"
+  },
+  {
+    "Id": "a7349a1e-a548-4dcc-95ac-800182e80972",
+    "Roll": "40",
+    "Description": "A gemstone that looks like a lump of coal when examined by anyone but you"
+  },
+  {
+    "Id": "8f8d06ec-02b6-4ecf-80b0-79c5b5c03799",
+    "Roll": "41",
+    "Description": "A scrap of cloth from an old banner"
+  },
+  {
+    "Id": "d4d8ffdf-c735-4549-9efa-526221a66236",
+    "Roll": "42",
+    "Description": "A rank insignia from a lost legionnaire"
+  },
+  {
+    "Id": "f8094a2c-81cd-4483-bff6-d110fa0bbdd8",
+    "Roll": "43",
+    "Description": "A silver bell without a clapper"
+  },
+  {
+    "Id": "48216bd5-b7d2-45a1-86bf-f34a3f647ab5",
+    "Roll": "44",
+    "Description": "A mechanical canary inside a lamp"
+  },
+  {
+    "Id": "49cb9adb-d3e9-4c16-970e-ebd6cd5e375c",
+    "Roll": "45",
+    "Description": "A miniature chest carved to look like it has numerous feet on the bottom"
+  },
+  {
+    "Id": "06fb5161-74e6-4bbc-bf4f-a13369782aa4",
+    "Roll": "46",
+    "Description": "A dead sprite inside a clear glass bottle"
+  },
+  {
+    "Id": "30302ef6-f68c-47a9-be99-6ddd288c7607",
+    "Roll": "47",
+    "Description": "A metal can that has no opening but sounds as if it is filled with liquid, sand, spiders, or broken glass (your choice)"
+  },
+  {
+    "Id": "7aa95da5-1170-4f7d-9670-5f4c29d18cde",
+    "Roll": "48",
+    "Description": "A glass orb filled with water, in which swims a clockwork goldfish"
+  },
+  {
+    "Id": "47d06f6c-8bf2-46b4-8e01-69c19b9b984f",
+    "Roll": "49",
+    "Description": "A silver spoon with an M engraved on the handle"
+  },
+  {
+    "Id": "d2ad799b-6e95-4d4e-8d71-de329890300b",
+    "Roll": "50",
+    "Description": "A whistle made from gold-colored wood"
+  },
+  {
+    "Id": "49a5dc2b-12fd-4b4f-9eb8-0fa08f33c4ef",
+    "Roll": "51",
+    "Description": "A dead scarab beetle the size of your hand"
+  },
+  {
+    "Id": "f940b9f1-72b8-4e67-beb3-2143944303f8",
+    "Roll": "52",
+    "Description": "Two toy soldiers, one missing a head"
+  },
+  {
+    "Id": "2ea8e995-4a2a-41bf-a6fa-34ae8a6caa56",
+    "Roll": "53",
+    "Description": "A small box filled with different-sized buttons"
+  },
+  {
+    "Id": "c404a912-5ab9-4001-b4d4-662029d3d1ec",
+    "Roll": "54",
+    "Description": "A candle that can\u0027t be lit"
+  },
+  {
+    "Id": "8f8faa4b-8ad4-4c69-9e8d-62400b8baa21",
+    "Roll": "55",
+    "Description": "A miniature cage with no door"
+  },
+  {
+    "Id": "9c2756bb-a28c-4aa2-ae64-fca8620e9d5e",
+    "Roll": "56",
+    "Description": "An old key"
+  },
+  {
+    "Id": "699159f5-90a7-4de1-abdb-34be6938119c",
+    "Roll": "57",
+    "Description": "An indecipherable treasure map"
+  },
+  {
+    "Id": "f27de7fe-8a0b-4f4c-a9ba-dce0b1e9e9e3",
+    "Roll": "58",
+    "Description": "A hilt from a broken sword"
+  },
+  {
+    "Id": "790eed29-243a-4b44-9342-d7a5812fc9c8",
+    "Roll": "59",
+    "Description": "A rabbit\u2019s foot"
+  },
+  {
+    "Id": "29ff53d5-3c26-43e4-b727-b7f83242ee3b",
+    "Roll": "60",
+    "Description": "A glass eye"
+  },
+  {
+    "Id": "53b10292-809d-4fe0-ae55-0e81956bfbf5",
+    "Roll": "61",
+    "Description": "A cameo of a hideous person"
+  },
+  {
+    "Id": "a8eddc58-b0c0-44bf-9fbb-85f96f78a85a",
+    "Roll": "62",
+    "Description": "A silver skull the size of a coin"
+  },
+  {
+    "Id": "38e991dd-3387-45ae-9dbd-e18778a79b83",
+    "Roll": "63",
+    "Description": "An alabaster mask"
+  },
+  {
+    "Id": "4d115c43-95a5-4a2e-9047-3e5d0fe4228c",
+    "Roll": "64",
+    "Description": "A cone of sticky black incense that stinks"
+  },
+  {
+    "Id": "5d03b884-450f-442b-827f-b587160d23c3",
+    "Roll": "65",
+    "Description": "A nightcap that gives you pleasant dreams when you wear it"
+  },
+  {
+    "Id": "ced073fb-7bba-4941-9208-ee59e1dbc37c",
+    "Roll": "66",
+    "Description": "A single caltrop made from bone"
+  },
+  {
+    "Id": "d3eb169b-18eb-47af-89ea-0110d02c5442",
+    "Roll": "67",
+    "Description": "A gold monocle frame without the lens"
+  },
+  {
+    "Id": "fc8b0288-2bc8-4c76-8944-88dab1a7199d",
+    "Roll": "68",
+    "Description": "A 1-inch cube, each side a different color"
+  },
+  {
+    "Id": "5dde5390-e7c2-46ee-a025-6d738729761d",
+    "Roll": "69",
+    "Description": "A crystal doorknob"
+  },
+  {
+    "Id": "1812d6c4-c14c-455c-93b0-98ae4ee18013",
+    "Roll": "70",
+    "Description": "A packet filled with pink dust"
+  },
+  {
+    "Id": "5bb760eb-d670-49e5-b460-cc743b25af9c",
+    "Roll": "71",
+    "Description": "A fragment of a beautiful song, written as musical notes on two pieces of parchment"
+  },
+  {
+    "Id": "1849f247-60bf-4afc-b1bb-8012e97715d0",
+    "Roll": "72",
+    "Description": "A silver teardrop earring containing a real teardrop"
+  },
+  {
+    "Id": "b24eda68-c601-4b97-8334-b964425cfac6",
+    "Roll": "73",
+    "Description": "An eggshell painted with scenes of misery in disturbing detail"
+  },
+  {
+    "Id": "9b8bfb92-324d-475e-aad4-4969f537ed6e",
+    "Roll": "74",
+    "Description": "A fan that, when unfolded, shows a sleepy cat"
+  },
+  {
+    "Id": "5d780668-f65f-4767-a918-effb86dc814b",
+    "Roll": "75",
+    "Description": "A set of bone pipes"
+  },
+  {
+    "Id": "18228f13-afea-49b8-a89d-39b07fd252a6",
+    "Roll": "76",
+    "Description": "A four-leaf clover pressed inside a book discussing manners and etiquette"
+  },
+  {
+    "Id": "668452f4-bcab-48a4-8122-e2279a0f6273",
+    "Roll": "77",
+    "Description": "A sheet of parchment upon which is drawn a mechanical contraption"
+  },
+  {
+    "Id": "be996ef5-e388-4e4d-8ab0-4cf27401d3ab",
+    "Roll": "78",
+    "Description": "An ornate scabbard that fits no blade you have found"
+  },
+  {
+    "Id": "9c748534-e40b-49d3-a058-221b49618287",
+    "Roll": "79",
+    "Description": "An invitation to a party where a murder happened"
+  },
+  {
+    "Id": "65aea571-5883-483d-ba10-40fd499e1508",
+    "Roll": "80",
+    "Description": "A bronze pentacle with an etching of a rat\u0027s head in its center"
+  },
+  {
+    "Id": "729c86d1-01ab-4d72-bc2f-8f3803cc5aa4",
+    "Roll": "81",
+    "Description": "A purple handkerchief embroidered with the name of an archmage"
+  },
+  {
+    "Id": "ebab6233-432e-4005-8c45-00123b2ac384",
+    "Roll": "82",
+    "Description": "Half a floor plan for a temple, a castle, or another structure"
+  },
+  {
+    "Id": "eaa189ed-5b25-4b1e-84a8-a9268e37d701",
+    "Roll": "83",
+    "Description": "A bit of folded cloth that, when unfolded, turns into a stylish cap"
+  },
+  {
+    "Id": "1c0de6c3-3f5e-4a09-9cdf-1f199f5f932e",
+    "Roll": "84",
+    "Description": "A receipt of deposit at a bank in a far-off city"
+  },
+  {
+    "Id": "e1fa2990-c38a-48d3-9996-99cb983bc2d2",
+    "Roll": "85",
+    "Description": "A diary with seven missing pages"
+  },
+  {
+    "Id": "7ebc811d-f17d-4165-ba0f-a2b10d0ab212",
+    "Roll": "86",
+    "Description": "An empty silver snuffbox bearing the inscription \u201Cdreams\u201D on its lid"
+  },
+  {
+    "Id": "86f9ba72-34c4-4d57-ba00-994df7fcb890",
+    "Roll": "87",
+    "Description": "An iron holy symbol devoted to an unknown god"
+  },
+  {
+    "Id": "a3ee713c-3bce-42b2-8fc7-9e689114e284",
+    "Roll": "88",
+    "Description": "A book about a legendary hero\u0027s rise and fall, with the last chapter missing"
+  },
+  {
+    "Id": "26f64fa5-4190-40a9-9950-da9df00e486a",
+    "Roll": "89",
+    "Description": "A vial of dragon blood"
+  },
+  {
+    "Id": "da7e3e9e-68a7-44fd-a832-ab0d5c03a275",
+    "Roll": "90",
+    "Description": "An ancient arrow of elven design"
+  },
+  {
+    "Id": "f8491ff5-413d-4a97-a06d-11f19f19536e",
+    "Roll": "91",
+    "Description": "A needle that never bends"
+  },
+  {
+    "Id": "0effb275-af04-4659-a5c8-67f474fc048e",
+    "Roll": "92",
+    "Description": "An ornate brooch of dwarven design"
+  },
+  {
+    "Id": "9ad446b7-c17a-4f69-a0d9-a8fd59d7482b",
+    "Roll": "93",
+    "Description": "An empty wine bottle bearing a pretty label that says, \u201CThe Wizard of Wines Winery, Red Dragon Crush, 331422-W\u0026quot;"
+  },
+  {
+    "Id": "bc5d3f9c-7ac3-41b9-8515-1cb53a706585",
+    "Roll": "94",
+    "Description": "A mosaic tile with a multicolored, glazed surface"
+  },
+  {
+    "Id": "a1d0ce63-10ed-4aa2-a208-1791b023029d",
+    "Roll": "95",
+    "Description": "A petrified mouse"
+  },
+  {
+    "Id": "aff49b57-e3d6-43ee-800d-2fcdf2ca5b24",
+    "Roll": "96",
+    "Description": "A black pirate flag adorned with a dragon\u0027s skull and crossbones"
+  },
+  {
+    "Id": "dbacd310-055f-4d6e-821b-6b9ed85753c0",
+    "Roll": "97",
+    "Description": "A tiny mechanical crab or spider that moves about when it\u0027s not being observed"
+  },
+  {
+    "Id": "4fc7505a-f921-469e-8632-ac4a6dbfc9f4",
+    "Roll": "98",
+    "Description": "A glass jar containing lard with a label that reads, \u201CGriffon Grease\u201D"
+  },
+  {
+    "Id": "b1e50ed4-f590-4928-ab69-f7b231b11e24",
+    "Roll": "99",
+    "Description": "A wooden box with a ceramic bottom that holds a living worm with a head on each end of its body"
+  },
+  {
+    "Id": "7caf4230-cdea-445a-af8c-96948f4cd145",
+    "Roll": "00",
+    "Description": "A metal urn containing the ashes of a hero"
+  }
+]

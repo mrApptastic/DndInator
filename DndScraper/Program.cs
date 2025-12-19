@@ -58,6 +58,69 @@ public class Program
         File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\magic-items.json", magicItemsJson2024);
         Console.WriteLine($"✓ Saved {magicItems2024.Count} magic items to magic-items.json\n");
 
+        // Scrape armor
+        Console.WriteLine("7. Scraping armor 2024...");
+        var armor2024 = await ArmorScraper.ScrapeArmor2024();
+        var armorJson2024 = JsonSerializer.Serialize(armor2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\armor.json", armorJson2024);
+        Console.WriteLine($"✓ Saved {armor2024.Count} armor to armor.json\n");
+
+        // Scrape weapons
+        Console.WriteLine("8. Scraping weapons 2024...");
+        var weapons2024 = await WeaponScraper.ScrapeWeapons2024();
+        var weaponsJson2024 = JsonSerializer.Serialize(weapons2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\weapons.json", weaponsJson2024);
+        Console.WriteLine($"✓ Saved {weapons2024.Count} weapons to weapons.json\n");
+
+        // Scrape adventuring gear
+        Console.WriteLine("9. Scraping adventuring gear 2024...");
+        var adventuringGear2024 = await AdventuringGearScraper.ScrapeAdventuringGear2024();
+        var adventuringGearJson2024 = JsonSerializer.Serialize(adventuringGear2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\adventuring-gear.json", adventuringGearJson2024);
+        Console.WriteLine($"✓ Saved {adventuringGear2024.Count} adventuring gear to adventuring-gear.json\n");
+
+        // Scrape mounts and vehicles
+        Console.WriteLine("10. Scraping mounts and vehicles 2024...");
+        var mountsAndVehicles2024 = await MountAndVehicleScraper.ScrapeMountsAndVehicles2024();
+        var mountsAndVehiclesJson2024 = JsonSerializer.Serialize(mountsAndVehicles2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\mounts-and-vehicles.json", mountsAndVehiclesJson2024);
+        Console.WriteLine($"✓ Saved {mountsAndVehicles2024.Count} mounts and vehicles to mounts-and-vehicles.json\n");
+
+        // Scrape poisons
+        Console.WriteLine("11. Scraping poisons 2024...");
+        var poisons2024 = await PoisonScraper.ScrapePoisons2024();
+        var poisonsJson2024 = JsonSerializer.Serialize(poisons2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\poisons.json", poisonsJson2024);
+        Console.WriteLine($"✓ Saved {poisons2024.Count} poisons to poisons.json\n");
+
+        // Scrape trinkets
+        Console.WriteLine("12. Scraping trinkets 2024...");
+        var trinkets2024 = await TrinketScraper.ScrapeTrinkets2024();
+        var trinketsJson2024 = JsonSerializer.Serialize(trinkets2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\trinkets.json", trinketsJson2024);
+        Console.WriteLine($"✓ Saved {trinkets2024.Count} trinkets to trinkets.json\n");
+
+        // Scrape tools
+        Console.WriteLine("13. Scraping tools 2024...");
+        var tools2024 = await ToolScraper.ScrapeTools2024();
+        var toolsJson2024 = JsonSerializer.Serialize(tools2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\tools.json", toolsJson2024);
+        Console.WriteLine($"✓ Saved {tools2024.Count} tools to tools.json\n");
+
+        // Scrape character classes
+        Console.WriteLine("14. Scraping character classes 2024...");
+        var classes2024 = await CharacterClassScraper.ScrapeClasses2024();
+        var classesJson2024 = JsonSerializer.Serialize(classes2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\classes.json", classesJson2024);
+        Console.WriteLine($"✓ Saved {classes2024.Count} character classes to classes.json\n");
+
+        // Scrape subclasses
+        Console.WriteLine("15. Scraping subclasses 2024...");
+        var subclasses2024 = await CharacterClassScraper.ScrapeSubclasses2024();
+        var subclassesJson2024 = JsonSerializer.Serialize(subclasses2024, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("..\\DndInator\\wwwroot\\data\\2024\\subclasses.json", subclassesJson2024);
+        Console.WriteLine($"✓ Saved {subclasses2024.Count} subclasses to subclasses.json\n");
+
         Console.WriteLine("=== Scraping Complete ===");
     }
 }
