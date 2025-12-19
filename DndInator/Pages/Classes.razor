@@ -1,0 +1,368 @@
+@page "/classes"
+@using DndInator.Services
+@using DndShared.Models
+@inject IClassService ClassService
+
+<PageTitle>Classes</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="bi bi-shield-fill-check me-2"></i>
+                D&D Character Classes
+            </h1>
+            <p class="lead text-muted">Choose your path and unlock your hero's potential</p>
+        </div>
+    </div>
+
+    @if (classes == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading classes...</p>
+        </div>
+    }
+    else if (!classes.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            No classes found.
+        </div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-md-8 mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="🔍 Search classes..." 
+                       @bind="searchText" @bind:event="oninput" />
+            </div>
+            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-end">
+                <span class="badge bg-primary fs-6">
+                    <i class="bi bi-collection-fill me-1"></i>
+                    @FilteredClasses.Count() classes
+                </span>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+            @foreach (var characterClass in FilteredClasses)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow hover-lift border-0" style="overflow: hidden;">
+                        <div class="card-header text-white py-3 position-relative" style="@GetClassHeaderStyle(characterClass.Name)">
+
+                            <h5 class="card-title mb-0 fw-bold position-relative">
+                                <i class="bi bi-person-circle me-2"></i>
+                                @characterClass.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(characterClass.PrimaryAbility))
+                            {
+                                <small class="text-white-50">Primary: @characterClass.PrimaryAbility</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            @if (!string.IsNullOrEmpty(characterClass.Description))
+                            {
+                                <p class="card-text small text-secondary mb-3">
+                                    @GetTruncatedText(characterClass.Description, 100)
+                                </p>
+                            }
+                            
+                            <div class="row g-2 mb-3">
+                                @if (!string.IsNullOrEmpty(characterClass.HitPointDie))
+                                {
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge bg-danger me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+                                                <i class="bi bi-heart-fill"></i>
+                                            </span>
+                                            <div>
+                                                <small class="text-muted d-block" style="font-size: 0.7rem;">Hit Die</small>
+                                                <strong class="d-block">@characterClass.HitPointDie</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (characterClass.Subclasses != null && characterClass.Subclasses.Any())
+                                {
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge bg-info me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+                                                <i class="bi bi-diagram-3-fill"></i>
+                                            </span>
+                                            <div>
+                                                <small class="text-muted d-block" style="font-size: 0.7rem;">Subclasses</small>
+                                                <strong class="d-block">@characterClass.Subclasses.Count</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(characterClass.SavingThrowProficiencies))
+                            {
+                                <div class="mb-2">
+                                    <small class="text-muted">
+                                        <i class="bi bi-shield-check me-1"></i>
+                                        <strong>Saves:</strong> @characterClass.SavingThrowProficiencies
+                                    </small>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <button class="btn btn-outline-primary btn-sm w-100" @onclick="() => ShowDetails(characterClass)">
+                                <i class="bi bi-eye-fill me-1"></i>
+                                View Full Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (selectedClass != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.6);">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content border-0 shadow-lg">
+                    <div class="modal-header text-white border-0" style="@GetClassHeaderStyle(selectedClass.Name)">
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">
+                                <i class="bi bi-person-circle me-2"></i>
+                                @selectedClass.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(selectedClass.PrimaryAbility))
+                            {
+                                <small class="text-white-50">Primary Ability: @selectedClass.PrimaryAbility</small>
+                            }
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDetails"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(selectedClass.Description))
+                        {
+                            <div class="alert alert-info mb-4">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                @selectedClass.Description
+                            </div>
+                        }
+
+                        <div class="row mb-4">
+                            @if (!string.IsNullOrEmpty(selectedClass.HitPointDie))
+                            {
+                                <div class="col-md-3 mb-3">
+                                    <div class="card bg-danger text-white">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-heart-fill fs-2 mb-2"></i>
+                                            <h6 class="card-title">Hit Die</h6>
+                                            <p class="card-text fs-4 fw-bold mb-0">@selectedClass.HitPointDie</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedClass.SavingThrowProficiencies))
+                            {
+                                <div class="col-md-9 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="text-primary fw-bold mb-2">
+                                                <i class="bi bi-shield-check me-1"></i>
+                                                Saving Throw Proficiencies
+                                            </h6>
+                                            <p class="mb-0">@selectedClass.SavingThrowProficiencies</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row mb-3">
+                            @if (!string.IsNullOrEmpty(selectedClass.SkillProficiencies))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-star-fill me-1"></i>
+                                        Skill Proficiencies
+                                    </h6>
+                                    <p>@selectedClass.SkillProficiencies</p>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedClass.WeaponProficiencies))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-crosshair me-1"></i>
+                                        Weapon Proficiencies
+                                    </h6>
+                                    <p>@selectedClass.WeaponProficiencies</p>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedClass.ArmorTraining))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-shield-fill me-1"></i>
+                                        Armor Training
+                                    </h6>
+                                    <p>@selectedClass.ArmorTraining</p>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedClass.ToolProficiencies))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-primary fw-bold mb-2">
+                                        <i class="bi bi-tools me-1"></i>
+                                        Tool Proficiencies
+                                    </h6>
+                                    <p>@selectedClass.ToolProficiencies</p>
+                                </div>
+                            }
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(selectedClass.StartingEquipment))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-bag-fill me-1"></i>
+                                    Starting Equipment
+                                </h6>
+                                <p>@selectedClass.StartingEquipment</p>
+                            </div>
+                        }
+
+                        @if (selectedClass.Subclasses != null && selectedClass.Subclasses.Any())
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-primary fw-bold mb-2">
+                                    <i class="bi bi-diagram-3-fill me-1"></i>
+                                    Subclasses (@selectedClass.Subclasses.Count)
+                                </h6>
+                                <div class="row g-2">
+                                    @foreach (var subclass in selectedClass.Subclasses)
+                                    {
+                                        <div class="col-md-4">
+                                            <span class="badge bg-info w-100 py-2">@subclass</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(selectedClass.Source))
+                        {
+                            <div class="text-muted small mt-4">
+                                <i class="bi bi-book me-1"></i>
+                                <strong>Source:</strong> @selectedClass.Source
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDetails">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    }
+</style>
+
+@code {
+    private List<CharacterClass>? classes;
+    private CharacterClass? selectedClass;
+    private string searchText = string.Empty;
+
+    private IEnumerable<CharacterClass> FilteredClasses
+    {
+        get
+        {
+            if (classes == null) return Enumerable.Empty<CharacterClass>();
+            
+            var filtered = classes.AsEnumerable();
+            
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(c => 
+                    c.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    c.Description?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    c.PrimaryAbility?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+                );
+            }
+            
+            return filtered.OrderBy(c => c.Name);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            classes = await ClassService.GetAllClassesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading classes: {ex.Message}");
+            classes = new List<CharacterClass>();
+        }
+    }
+
+    private string GetTruncatedText(string text, int maxLength)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        
+        var strippedText = System.Text.RegularExpressions.Regex.Replace(text, "<.*?>", string.Empty);
+        
+        if (strippedText.Length <= maxLength)
+            return strippedText;
+        
+        return strippedText.Substring(0, maxLength) + "...";
+    }
+
+    private string GetClassHeaderStyle(string? className)
+    {
+        // Different gradient colors for different classes
+        var gradients = new Dictionary<string, string>
+        {
+            ["Barbarian"] = "background: linear-gradient(135deg, #d32f2f 0%, #ef5350 100%);",
+            ["Bard"] = "background: linear-gradient(135deg, #8e24aa 0%, #ab47bc 100%);",
+            ["Cleric"] = "background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);",
+            ["Druid"] = "background: linear-gradient(135deg, #689f38 0%, #8bc34a 100%);",
+            ["Fighter"] = "background: linear-gradient(135deg, #5d4037 0%, #795548 100%);",
+            ["Monk"] = "background: linear-gradient(135deg, #00897b 0%, #26a69a 100%);",
+            ["Paladin"] = "background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);",
+            ["Ranger"] = "background: linear-gradient(135deg, #558b2f 0%, #689f38 100%);",
+            ["Rogue"] = "background: linear-gradient(135deg, #455a64 0%, #607d8b 100%);",
+            ["Sorcerer"] = "background: linear-gradient(135deg, #e53935 0%, #f44336 100%);",
+            ["Warlock"] = "background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);",
+            ["Wizard"] = "background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);"
+        };
+
+        if (className != null && gradients.ContainsKey(className))
+            return gradients[className];
+        
+        return "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);";
+    }
+
+    private void ShowDetails(CharacterClass characterClass)
+    {
+        selectedClass = characterClass;
+    }
+
+    private void CloseDetails()
+    {
+        selectedClass = null;
+    }
+}

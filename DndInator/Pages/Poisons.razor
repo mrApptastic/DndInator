@@ -1,0 +1,253 @@
+@page "/poisons"
+@using DndInator.Services
+@using DndShared.Models
+@inject IPoisonService PoisonService
+
+<PageTitle>Poisons</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 fw-bold text-center mb-3" style="background: linear-gradient(135deg, #4B0082 0%, #8B008B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="bi bi-droplet-fill me-2"></i>Poisons
+            </h1>
+            <p class="text-center text-muted">Deadly substances and toxic compounds</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4 offset-md-2">
+            <div class="input-group">
+                <span class="input-group-text bg-poison text-white">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search poisons..." @bind="searchTerm" @bind:event="oninput" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" @bind="selectedType">
+                <option value="">All Types</option>
+                @foreach (var type in Types)
+                {
+                    <option value="@type">@type</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @if (poisons == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-poison" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!FilteredPoisons.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No poisons found.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var poison in FilteredPoisons)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm hover-card border-poison">
+                        <div class="card-header text-white bg-poison">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-droplet-fill me-2"></i>@poison.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(poison.Type))
+                            {
+                                <small class="badge bg-light text-dark mt-1">@poison.Type</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            @if (!string.IsNullOrEmpty(poison.Cost))
+                            {
+                                <div class="mb-3">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-coin text-warning fs-5"></i>
+                                        <div>
+                                            <small class="text-muted d-block">Cost</small>
+                                            <strong class="text-warning">@poison.Cost</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(poison.Effect))
+                            {
+                                <div class="mb-3">
+                                    <h6 class="text-danger fw-bold mb-2">
+                                        <i class="bi bi-exclamation-triangle-fill me-1"></i>Effect
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        @if (poison.Effect.Length > 150)
+                                        {
+                                            <text>@poison.Effect.Substring(0, 150)...</text>
+                                        }
+                                        else
+                                        {
+                                            <text>@poison.Effect</text>
+                                        }
+                                    </p>
+                                </div>
+                            }
+                            <button class="btn btn-outline-poison w-100" @onclick="() => ShowDetails(poison)">
+                                <i class="bi bi-info-circle me-1"></i>View Full Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@if (selectedPoison != null)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-poison text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-droplet-fill me-2"></i>@selectedPoison.Name
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        @if (!string.IsNullOrEmpty(selectedPoison.Type))
+                        {
+                            <div class="col-md-6">
+                                <div class="info-card">
+                                    <h6 class="text-poison"><i class="bi bi-tag-fill me-1"></i>Type</h6>
+                                    <p>@selectedPoison.Type</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedPoison.Cost))
+                        {
+                            <div class="col-md-6">
+                                <div class="info-card">
+                                    <h6 class="text-warning"><i class="bi bi-coin me-1"></i>Cost</h6>
+                                    <p>@selectedPoison.Cost</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedPoison.Effect))
+                        {
+                            <div class="col-12">
+                                <div class="info-card bg-danger bg-opacity-10 border border-danger">
+                                    <h6 class="text-danger fw-bold">
+                                        <i class="bi bi-exclamation-triangle-fill me-1"></i>Effect
+                                    </h6>
+                                    <p class="mb-0">@selectedPoison.Effect</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .bg-poison {
+        background: linear-gradient(135deg, #4B0082 0%, #8B008B 100%);
+    }
+    
+    .text-poison {
+        color: #4B0082;
+    }
+    
+    .border-poison {
+        border-color: #8B008B !important;
+        border-width: 2px;
+    }
+    
+    .btn-outline-poison {
+        color: #4B0082;
+        border-color: #4B0082;
+    }
+    
+    .btn-outline-poison:hover {
+        background: linear-gradient(135deg, #4B0082 0%, #8B008B 100%);
+        color: white;
+        border-color: #4B0082;
+    }
+    
+    .hover-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(75, 0, 130, 0.3) !important;
+    }
+    
+    .info-card {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #f8f9fa;
+    }
+    
+    .info-card h6 {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .info-card p {
+        margin-bottom: 0;
+    }
+</style>
+
+@code {
+    private List<Poison>? poisons;
+    private Poison? selectedPoison;
+    private string searchTerm = "";
+    private string selectedType = "";
+
+    private IEnumerable<string> Types =>
+        poisons?
+            .Select(p => p.Type)
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Distinct()
+            .OrderBy(t => t)
+            .Select(t => t!)
+        ?? Enumerable.Empty<string>();
+
+    private IEnumerable<Poison> FilteredPoisons =>
+        poisons?
+            .Where(p => (string.IsNullOrWhiteSpace(searchTerm) ||
+                        (p.Name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                        (p.Effect?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false)) &&
+                       (string.IsNullOrWhiteSpace(selectedType) ||
+                        p.Type == selectedType))
+            .OrderBy(p => p.Type)
+            .ThenBy(p => p.Name)
+        ?? Enumerable.Empty<Poison>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        poisons = await PoisonService.GetAllPoisonsAsync();
+    }
+
+    private void ShowDetails(Poison poison)
+    {
+        selectedPoison = poison;
+    }
+
+    private void CloseModal()
+    {
+        selectedPoison = null;
+    }
+}

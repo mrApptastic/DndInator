@@ -1,0 +1,219 @@
+@page "/adventuring-gear"
+@using DndInator.Services
+@using DndShared.Models
+@inject IAdventuringGearService AdventuringGearService
+
+<PageTitle>Adventuring Gear</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 fw-bold text-center mb-3" style="background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="bi bi-backpack-fill me-2"></i>Adventuring Gear
+            </h1>
+            <p class="text-center text-muted">Essential equipment for your adventures</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group">
+                <span class="input-group-text bg-brown text-white">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search gear..." @bind="searchTerm" @bind:event="oninput" />
+            </div>
+        </div>
+    </div>
+
+    @if (adventuringGear == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-brown" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!FilteredGear.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No gear found matching your search.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th @onclick='() => SortBy("Name")' style="cursor: pointer;">
+                            Name <i class="bi bi-arrow-down-up"></i>
+                        </th>
+                        <th @onclick='() => SortBy("Cost")' style="cursor: pointer;">
+                            Cost <i class="bi bi-arrow-down-up"></i>
+                        </th>
+                        <th @onclick='() => SortBy("Weight")' style="cursor: pointer;">
+                            Weight <i class="bi bi-arrow-down-up"></i>
+                        </th>
+                        <th>Function</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var gear in FilteredGear)
+                    {
+                        <tr>
+                            <td class="fw-bold">@gear.Name</td>
+                            <td>
+                                <span class="badge bg-warning text-dark">@gear.Cost</span>
+                            </td>
+                            <td>@gear.Weight</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(gear.Function) && gear.Function.Length > 80)
+                                {
+                                    <text>@gear.Function.Substring(0, 80)...</text>
+                                }
+                                else
+                                {
+                                    <text>@gear.Function</text>
+                                }
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-brown" @onclick="() => ShowDetails(gear)">
+                                    <i class="bi bi-info-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@if (selectedGear != null)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); color: white;">
+                    <h5 class="modal-title">
+                        <i class="bi bi-backpack-fill me-2"></i>@selectedGear.Name
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="text-warning fw-bold mb-2">
+                                        <i class="bi bi-coin me-1"></i>Cost
+                                    </h6>
+                                    <p class="mb-0">@selectedGear.Cost</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="text-secondary fw-bold mb-2">
+                                        <i class="bi bi-box-seam me-1"></i>Weight
+                                    </h6>
+                                    <p class="mb-0">@selectedGear.Weight</p>
+                                </div>
+                            </div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(selectedGear.Function))
+                        {
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="text-brown fw-bold mb-2">
+                                            <i class="bi bi-gear-fill me-1"></i>Function
+                                        </h6>
+                                        <p class="mb-0">@selectedGear.Function</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .bg-brown {
+        background-color: #8B4513;
+    }
+    
+    .text-brown {
+        color: #8B4513;
+    }
+    
+    .btn-outline-brown {
+        color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .btn-outline-brown:hover {
+        background-color: #8B4513;
+        color: white;
+    }
+</style>
+
+@code {
+    private List<DndShared.Models.AdventuringGear>? adventuringGear;
+    private DndShared.Models.AdventuringGear? selectedGear;
+    private string searchTerm = "";
+    private string sortColumn = "Name";
+    private bool sortAscending = true;
+
+    private IEnumerable<DndShared.Models.AdventuringGear> FilteredGear => 
+        adventuringGear?
+            .Where(g => string.IsNullOrWhiteSpace(searchTerm) ||
+                       (g.Name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                       (g.Function?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+            .OrderBy(g => sortColumn switch
+            {
+                "Name" => sortAscending ? g.Name : "",
+                "Cost" => sortAscending ? g.Cost : "",
+                "Weight" => sortAscending ? g.Weight : "",
+                _ => g.Name
+            })
+            .ThenBy(g => g.Name)
+        ?? Enumerable.Empty<DndShared.Models.AdventuringGear>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        adventuringGear = await AdventuringGearService.GetAllAdventuringGearAsync();
+    }
+
+    private void ShowDetails(DndShared.Models.AdventuringGear gear)
+    {
+        selectedGear = gear;
+    }
+
+    private void CloseModal()
+    {
+        selectedGear = null;
+    }
+
+    private void SortBy(string column)
+    {
+        if (sortColumn == column)
+        {
+            sortAscending = !sortAscending;
+        }
+        else
+        {
+            sortColumn = column;
+            sortAscending = true;
+        }
+    }
+}

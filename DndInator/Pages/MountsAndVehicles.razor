@@ -1,0 +1,334 @@
+@page "/mounts-and-vehicles"
+@using DndInator.Services
+@using DndShared.Models
+@inject IMountAndVehicleService MountAndVehicleService
+
+<PageTitle>Mounts and Vehicles</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 fw-bold text-center mb-3" style="background: linear-gradient(135deg, #654321 0%, #8B7355 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="bi bi-truck me-2"></i>Mounts & Vehicles
+            </h1>
+            <p class="text-center text-muted">Transportation for land, sea, and air</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-text bg-saddle text-white">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search..." @bind="searchTerm" @bind:event="oninput" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" @bind="selectedCategory">
+                <option value="">All Categories</option>
+                @foreach (var category in Categories)
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @if (mountsAndVehicles == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-saddle" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!FilteredItems.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No mounts or vehicles found.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var item in FilteredItems)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm hover-card">
+                        <div class="card-header text-white" style="background: linear-gradient(135deg, #654321 0%, #8B7355 100%);">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-@GetCategoryIcon(item.Category) me-2"></i>@item.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(item.Category))
+                            {
+                                <small class="badge bg-light text-dark mt-1">@item.Category</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2 mb-3">
+                                @if (!string.IsNullOrEmpty(item.Cost))
+                                {
+                                    <div class="col-6">
+                                        <div class="stat-box">
+                                            <i class="bi bi-coin text-warning"></i>
+                                            <div>
+                                                <small class="text-muted d-block">Cost</small>
+                                                <strong>@item.Cost</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(item.Speed))
+                                {
+                                    <div class="col-6">
+                                        <div class="stat-box">
+                                            <i class="bi bi-speedometer text-info"></i>
+                                            <div>
+                                                <small class="text-muted d-block">Speed</small>
+                                                <strong>@item.Speed</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <button class="btn btn-outline-saddle w-100" @onclick="() => ShowDetails(item)">
+                                <i class="bi bi-info-circle me-1"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@if (selectedItem != null)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #654321 0%, #8B7355 100%); color: white;">
+                    <h5 class="modal-title">
+                        <i class="bi bi-@GetCategoryIcon(selectedItem.Category) me-2"></i>@selectedItem.Name
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        @if (!string.IsNullOrEmpty(selectedItem.Category))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-saddle"><i class="bi bi-tag-fill me-1"></i>Category</h6>
+                                    <p>@selectedItem.Category</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Cost))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-warning"><i class="bi bi-coin me-1"></i>Cost</h6>
+                                    <p>@selectedItem.Cost</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Speed))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-info"><i class="bi bi-speedometer me-1"></i>Speed</h6>
+                                    <p>@selectedItem.Speed</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.CarryingCapacity))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-secondary"><i class="bi bi-box-seam me-1"></i>Carrying Capacity</h6>
+                                    <p>@selectedItem.CarryingCapacity</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Weight))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-secondary"><i class="bi bi-rulers me-1"></i>Weight</h6>
+                                    <p>@selectedItem.Weight</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.AC))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-primary"><i class="bi bi-shield-fill me-1"></i>Armor Class</h6>
+                                    <p>@selectedItem.AC</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.HP))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-danger"><i class="bi bi-heart-fill me-1"></i>Hit Points</h6>
+                                    <p>@selectedItem.HP</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.DamageThreshold))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-warning"><i class="bi bi-exclamation-triangle-fill me-1"></i>Damage Threshold</h6>
+                                    <p>@selectedItem.DamageThreshold</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Crew))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-success"><i class="bi bi-people-fill me-1"></i>Crew</h6>
+                                    <p>@selectedItem.Crew</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Passengers))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-success"><i class="bi bi-person-fill me-1"></i>Passengers</h6>
+                                    <p>@selectedItem.Passengers</p>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(selectedItem.Cargo))
+                        {
+                            <div class="col-md-4">
+                                <div class="info-card">
+                                    <h6 class="text-info"><i class="bi bi-archive-fill me-1"></i>Cargo</h6>
+                                    <p>@selectedItem.Cargo</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .bg-saddle {
+        background-color: #654321;
+    }
+    
+    .text-saddle {
+        color: #654321;
+    }
+    
+    .btn-outline-saddle {
+        color: #654321;
+        border-color: #654321;
+    }
+    
+    .btn-outline-saddle:hover {
+        background-color: #654321;
+        color: white;
+    }
+    
+    .hover-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .stat-box {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+    }
+    
+    .info-card {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #f8f9fa;
+        height: 100%;
+    }
+    
+    .info-card h6 {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-card p {
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+</style>
+
+@code {
+    private List<MountAndVehicle>? mountsAndVehicles;
+    private MountAndVehicle? selectedItem;
+    private string searchTerm = "";
+    private string selectedCategory = "";
+
+    private IEnumerable<string> Categories =>
+        mountsAndVehicles?
+            .Select(m => m.Category)
+            .Where(c => !string.IsNullOrWhiteSpace(c))
+            .Distinct()
+            .OrderBy(c => c)
+            .Select(c => c!)
+        ?? Enumerable.Empty<string>();
+
+    private IEnumerable<MountAndVehicle> FilteredItems =>
+        mountsAndVehicles?
+            .Where(m => (string.IsNullOrWhiteSpace(searchTerm) ||
+                        (m.Name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false)) &&
+                       (string.IsNullOrWhiteSpace(selectedCategory) ||
+                        m.Category == selectedCategory))
+            .OrderBy(m => m.Category)
+            .ThenBy(m => m.Name)
+        ?? Enumerable.Empty<MountAndVehicle>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        mountsAndVehicles = await MountAndVehicleService.GetAllMountsAndVehiclesAsync();
+    }
+
+    private void ShowDetails(MountAndVehicle item)
+    {
+        selectedItem = item;
+    }
+
+    private void CloseModal()
+    {
+        selectedItem = null;
+    }
+
+    private string GetCategoryIcon(string? category)
+    {
+        return category?.ToLower() switch
+        {
+            var c when c != null && c.Contains("mount") => "emoji-smile",
+            var c when c != null && c.Contains("water") => "water",
+            var c when c != null && c.Contains("air") => "cloud",
+            var c when c != null && c.Contains("land") => "truck",
+            _ => "truck"
+        };
+    }
+}

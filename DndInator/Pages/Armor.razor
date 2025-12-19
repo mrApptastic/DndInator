@@ -1,0 +1,412 @@
+@page "/armor"
+@using DndInator.Services
+@using DndShared.Models
+@inject IArmorService ArmorService
+
+<PageTitle>Armor</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-info mb-3">
+                <i class="bi bi-shield-fill me-2"></i>
+                D&D Armor & Protection
+            </h1>
+            <p class="lead text-muted">Defend yourself with superior armor</p>
+        </div>
+    </div>
+
+    @if (armorList == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-info" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading armor...</p>
+        </div>
+    }
+    else if (!armorList.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            No armor found.
+        </div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-md-6 mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="🔍 Search armor..." 
+                       @bind="searchText" @bind:event="oninput" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedCategory">
+                    <option value="">All Categories</option>
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category">@category</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 mb-3 d-flex align-items-center justify-content-end">
+                <span class="badge bg-info fs-6">
+                    <i class="bi bi-collection-fill me-1"></i>
+                    @FilteredArmor.Count() items
+                </span>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+            @foreach (var armor in FilteredArmor)
+            {
+                <div class="col">
+                    <div class="card h-100 armor-card border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="armor-badge @GetArmorCategoryClass(armor.Category)">
+                                @armor.Category
+                            </div>
+                            @if (!string.IsNullOrEmpty(armor.ArmorClass))
+                            {
+                                <div class="ac-circle">
+                                    <div class="ac-number">@GetACNumber(armor.ArmorClass)</div>
+                                    <div class="ac-label">AC</div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title fw-bold text-info mb-3">
+                                <i class="bi bi-shield-shaded me-1"></i>
+                                @armor.Name
+                            </h6>
+                            
+                            <div class="stats-grid">
+                                @if (!string.IsNullOrEmpty(armor.Cost))
+                                {
+                                    <div class="stat-item">
+                                        <i class="bi bi-coin text-warning"></i>
+                                        <span class="stat-value">@armor.Cost</span>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(armor.Weight))
+                                {
+                                    <div class="stat-item">
+                                        <i class="bi bi-box text-secondary"></i>
+                                        <span class="stat-value">@armor.Weight</span>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(armor.Strength))
+                                {
+                                    <div class="stat-item">
+                                        <i class="bi bi-lightning-charge text-danger"></i>
+                                        <span class="stat-value">Str @armor.Strength</span>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(armor.Stealth))
+                                {
+                                    <div class="stat-item">
+                                        <i class="bi bi-eye-slash text-dark"></i>
+                                        <span class="stat-value">@armor.Stealth</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <button class="btn btn-outline-info btn-sm w-100" @onclick="() => ShowDetails(armor)">
+                                <i class="bi bi-info-circle me-1"></i>
+                                More Info
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (selectedArmor != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.6);">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 shadow-lg">
+                    <div class="modal-header bg-info text-white border-0">
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">
+                                <i class="bi bi-shield-fill me-2"></i>
+                                @selectedArmor.Name
+                            </h5>
+                            <small class="text-white-50">@selectedArmor.Category Armor</small>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDetails"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3 mb-4">
+                            @if (!string.IsNullOrEmpty(selectedArmor.ArmorClass))
+                            {
+                                <div class="col-6 col-md-3">
+                                    <div class="detail-stat bg-info text-white">
+                                        <i class="bi bi-shield-fill-check fs-2"></i>
+                                        <div class="stat-label">Armor Class</div>
+                                        <div class="stat-value">@selectedArmor.ArmorClass</div>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedArmor.Cost))
+                            {
+                                <div class="col-6 col-md-3">
+                                    <div class="detail-stat bg-warning">
+                                        <i class="bi bi-coin fs-2"></i>
+                                        <div class="stat-label">Cost</div>
+                                        <div class="stat-value">@selectedArmor.Cost</div>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedArmor.Weight))
+                            {
+                                <div class="col-6 col-md-3">
+                                    <div class="detail-stat bg-secondary text-white">
+                                        <i class="bi bi-box fs-2"></i>
+                                        <div class="stat-label">Weight</div>
+                                        <div class="stat-value">@selectedArmor.Weight</div>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedArmor.DonTime))
+                            {
+                                <div class="col-6 col-md-3">
+                                    <div class="detail-stat bg-primary text-white">
+                                        <i class="bi bi-clock fs-2"></i>
+                                        <div class="stat-label">Don Time</div>
+                                        <div class="stat-value">@selectedArmor.DonTime</div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row mb-3">
+                            @if (!string.IsNullOrEmpty(selectedArmor.Strength))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <div class="alert alert-danger mb-0">
+                                        <i class="bi bi-lightning-charge-fill me-2"></i>
+                                        <strong>Strength Requirement:</strong> @selectedArmor.Strength
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedArmor.Stealth))
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <div class="alert alert-dark mb-0">
+                                        <i class="bi bi-eye-slash-fill me-2"></i>
+                                        <strong>Stealth:</strong> @selectedArmor.Stealth
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(selectedArmor.DoffTime))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-info fw-bold mb-2">
+                                    <i class="bi bi-clock-history me-1"></i>
+                                    Doff Time
+                                </h6>
+                                <p class="mb-0">@selectedArmor.DoffTime</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDetails">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .armor-card {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .armor-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .armor-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        color: white;
+        z-index: 1;
+    }
+
+    .armor-light { background: linear-gradient(135deg, #28a745, #20c997); }
+    .armor-medium { background: linear-gradient(135deg, #ffc107, #fd7e14); }
+    .armor-heavy { background: linear-gradient(135deg, #dc3545, #c82333); }
+    .armor-shield { background: linear-gradient(135deg, #17a2b8, #138496); }
+
+    .ac-circle {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #17a2b8, #138496);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .ac-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .ac-label {
+        font-size: 0.7rem;
+        opacity: 0.9;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 80px;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        background: rgba(0,0,0,0.03);
+        border-radius: 6px;
+        font-size: 0.85rem;
+    }
+
+    .stat-item i {
+        font-size: 1.2rem;
+    }
+
+    .detail-stat {
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .detail-stat:hover {
+        transform: scale(1.05);
+    }
+
+    .detail-stat i {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .detail-stat .stat-label {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin-bottom: 5px;
+    }
+
+    .detail-stat .stat-value {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+</style>
+
+@code {
+    private List<DndShared.Models.Armor>? armorList;
+    private DndShared.Models.Armor? selectedArmor;
+    private string searchText = string.Empty;
+    private string selectedCategory = string.Empty;
+
+    private List<string> Categories => armorList?
+        .Select(a => a.Category)
+        .Where(c => !string.IsNullOrEmpty(c))
+        .Distinct()
+        .OrderBy(c => c)
+        .Select(c => c!)
+        .ToList() ?? new List<string>();
+
+    private IEnumerable<DndShared.Models.Armor> FilteredArmor
+    {
+        get
+        {
+            if (armorList == null) return Enumerable.Empty<DndShared.Models.Armor>();
+            
+            var filtered = armorList.AsEnumerable();
+            
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(a => 
+                    a.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+                );
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedCategory))
+            {
+                filtered = filtered.Where(a => a.Category?.Equals(selectedCategory, StringComparison.OrdinalIgnoreCase) == true);
+            }
+            
+            return filtered.OrderBy(a => a.Name);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            armorList = await ArmorService.GetAllArmorAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading armor: {ex.Message}");
+            armorList = new List<DndShared.Models.Armor>();
+        }
+    }
+
+    private string GetArmorCategoryClass(string? category)
+    {
+        return category?.ToLower() switch
+        {
+            "light" => "armor-light",
+            "medium" => "armor-medium",
+            "heavy" => "armor-heavy",
+            "shield" => "armor-shield",
+            _ => "armor-light"
+        };
+    }
+
+    private string GetACNumber(string? ac)
+    {
+        if (string.IsNullOrEmpty(ac)) return "?";
+        
+        // Extract just the number from strings like "11 + Dex modifier"
+        var match = System.Text.RegularExpressions.Regex.Match(ac, @"\d+");
+        return match.Success ? match.Value : ac;
+    }
+
+    private void ShowDetails(DndShared.Models.Armor armor)
+    {
+        selectedArmor = armor;
+    }
+
+    private void CloseDetails()
+    {
+        selectedArmor = null;
+    }
+}

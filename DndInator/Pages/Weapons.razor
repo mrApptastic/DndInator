@@ -1,0 +1,314 @@
+@page "/weapons"
+@using DndInator.Services
+@using DndShared.Models
+@inject IWeaponService WeaponService
+
+<PageTitle>Weapons</PageTitle>
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-danger mb-3">
+                <i class="bi bi-crosshair me-2"></i>
+                D&D Weapons Arsenal
+            </h1>
+            <p class="lead text-muted">Arm yourself with the finest weapons</p>
+        </div>
+    </div>
+
+    @if (weapons == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-danger" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading weapons...</p>
+        </div>
+    }
+    else if (!weapons.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            No weapons found.
+        </div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-md-4 mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="🔍 Search weapons..." 
+                       @bind="searchText" @bind:event="oninput" />
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedCategory">
+                    <option value="">All Categories</option>
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category">@category</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <select class="form-select form-select-lg" @bind="selectedType">
+                    <option value="">All Types</option>
+                    @foreach (var type in Types)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 mb-3 d-flex align-items-center justify-content-end">
+                <span class="badge bg-danger fs-6">
+                    <i class="bi bi-collection-fill me-1"></i>
+                    @FilteredWeapons.Count() weapons
+                </span>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-danger">
+                    <tr>
+                        <th style="width: 25%;">
+                            <i class="bi bi-crosshair me-1"></i>
+                            Weapon Name
+                        </th>
+                        <th style="width: 12%;">Category</th>
+                        <th style="width: 12%;">Type</th>
+                        <th style="width: 15%;">
+                            <i class="bi bi-heart-fill me-1"></i>
+                            Damage
+                        </th>
+                        <th style="width: 10%;">
+                            <i class="bi bi-coin me-1"></i>
+                            Cost
+                        </th>
+                        <th style="width: 8%;">
+                            <i class="bi bi-box me-1"></i>
+                            Weight
+                        </th>
+                        <th style="width: 18%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var weapon in FilteredWeapons)
+                    {
+                        <tr class="weapon-row">
+                            <td>
+                                <strong class="text-danger">@weapon.Name</strong>
+                                @if (!string.IsNullOrEmpty(weapon.Mastery))
+                                {
+                                    <br/>
+                                    <small class="text-muted">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        Mastery: @weapon.Mastery
+                                    </small>
+                                }
+                            </td>
+                            <td>
+                                <span class="badge @GetCategoryBadgeClass(weapon.Category)">
+                                    @weapon.Category
+                                </span>
+                            </td>
+                            <td>@weapon.Type</td>
+                            <td>
+                                <span class="badge bg-danger">
+                                    @weapon.Damage
+                                </span>
+                            </td>
+                            <td>@weapon.Cost</td>
+                            <td>@weapon.Weight</td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-outline-danger" @onclick="() => ShowDetails(weapon)">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Details
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (selectedWeapon != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.6);">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 shadow-lg">
+                    <div class="modal-header bg-danger text-white border-0">
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">
+                                <i class="bi bi-crosshair me-2"></i>
+                                @selectedWeapon.Name
+                            </h5>
+                            <small class="text-white-50">@selectedWeapon.Category @selectedWeapon.Type</small>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDetails"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3 mb-4">
+                            @if (!string.IsNullOrEmpty(selectedWeapon.Damage))
+                            {
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-card bg-danger text-white text-center p-3 rounded">
+                                        <i class="bi bi-heart-fill fs-3 mb-2 d-block"></i>
+                                        <small class="d-block opacity-75">Damage</small>
+                                        <strong class="fs-5">@selectedWeapon.Damage</strong>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedWeapon.Cost))
+                            {
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-card bg-warning text-center p-3 rounded">
+                                        <i class="bi bi-coin fs-3 mb-2 d-block"></i>
+                                        <small class="d-block">Cost</small>
+                                        <strong class="fs-5">@selectedWeapon.Cost</strong>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(selectedWeapon.Weight))
+                            {
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-card bg-secondary text-white text-center p-3 rounded">
+                                        <i class="bi bi-box fs-3 mb-2 d-block"></i>
+                                        <small class="d-block opacity-75">Weight</small>
+                                        <strong class="fs-5">@selectedWeapon.Weight</strong>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(selectedWeapon.Properties))
+                        {
+                            <div class="mb-3">
+                                <h6 class="text-danger fw-bold mb-2">
+                                    <i class="bi bi-list-check me-1"></i>
+                                    Properties
+                                </h6>
+                                <p class="mb-0">@selectedWeapon.Properties</p>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(selectedWeapon.Mastery))
+                        {
+                            <div class="alert alert-warning mb-0">
+                                <i class="bi bi-star-fill me-2"></i>
+                                <strong>Mastery:</strong> @selectedWeapon.Mastery
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDetails">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .weapon-row {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .weapon-row:hover {
+        background-color: rgba(220, 53, 69, 0.05);
+        transform: scale(1.01);
+    }
+
+    .stat-card {
+        transition: transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+@code {
+    private List<Weapon>? weapons;
+    private Weapon? selectedWeapon;
+    private string searchText = string.Empty;
+    private string selectedCategory = string.Empty;
+    private string selectedType = string.Empty;
+
+    private List<string> Categories => weapons?
+        .Select(w => w.Category)
+        .Where(c => !string.IsNullOrEmpty(c))
+        .Distinct()
+        .OrderBy(c => c)
+        .ToList() ?? new List<string>();
+
+    private List<string> Types => weapons?
+        .Select(w => w.Type)
+        .Where(t => !string.IsNullOrEmpty(t))
+        .Distinct()
+        .OrderBy(t => t)
+        .ToList() ?? new List<string>();
+
+    private IEnumerable<Weapon> FilteredWeapons
+    {
+        get
+        {
+            if (weapons == null) return Enumerable.Empty<Weapon>();
+            
+            var filtered = weapons.AsEnumerable();
+            
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(w => 
+                    w.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    w.Properties?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true
+                );
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectedCategory))
+            {
+                filtered = filtered.Where(w => w.Category?.Equals(selectedCategory, StringComparison.OrdinalIgnoreCase) == true);
+            }
+
+            if (!string.IsNullOrWhiteSpace(selectedType))
+            {
+                filtered = filtered.Where(w => w.Type?.Equals(selectedType, StringComparison.OrdinalIgnoreCase) == true);
+            }
+            
+            return filtered.OrderBy(w => w.Name);
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            weapons = await WeaponService.GetAllWeaponsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading weapons: {ex.Message}");
+            weapons = new List<Weapon>();
+        }
+    }
+
+    private string GetCategoryBadgeClass(string? category)
+    {
+        return category?.ToLower() switch
+        {
+            "simple" => "bg-success",
+            "martial" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+
+    private void ShowDetails(Weapon weapon)
+    {
+        selectedWeapon = weapon;
+    }
+
+    private void CloseDetails()
+    {
+        selectedWeapon = null;
+    }
+}

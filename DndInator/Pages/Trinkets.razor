@@ -1,0 +1,116 @@
+@page "/trinkets"
+@using DndInator.Services
+@using DndShared.Models
+@inject ITrinketService TrinketService
+
+<PageTitle>Trinkets</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 fw-bold text-center mb-3" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="bi bi-gem me-2"></i>Trinkets
+            </h1>
+            <p class="text-center text-muted">Strange curiosities and mysterious items</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group">
+                <span class="input-group-text bg-trinket text-white">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search trinkets..." @bind="searchTerm" @bind:event="oninput" />
+            </div>
+        </div>
+    </div>
+
+    @if (trinkets == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-trinket" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!FilteredTrinkets.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No trinkets found.
+        </div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (var trinket in FilteredTrinkets)
+            {
+                <div class="col-md-6">
+                    <div class="card shadow-sm hover-card border-trinket">
+                        <div class="card-body d-flex align-items-start gap-3">
+                            <div class="roll-badge">
+                                <span class="badge bg-trinket fs-5">@trinket.Roll</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@trinket.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="text-muted">
+                <i class="bi bi-info-circle me-1"></i>
+                Roll a d100 to randomly select a trinket for your character!
+            </p>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-trinket {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    }
+    
+    .text-trinket {
+        color: #FFD700;
+    }
+    
+    .border-trinket {
+        border-left: 4px solid #FFD700;
+    }
+    
+    .hover-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .hover-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 0.25rem 0.5rem rgba(255, 215, 0, 0.3) !important;
+    }
+    
+    .roll-badge {
+        min-width: 50px;
+        text-align: center;
+    }
+</style>
+
+@code {
+    private List<Trinket>? trinkets;
+    private string searchTerm = "";
+
+    private IEnumerable<Trinket> FilteredTrinkets =>
+        trinkets?
+            .Where(t => string.IsNullOrWhiteSpace(searchTerm) ||
+                       (t.Roll?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                       (t.Description?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+            .OrderBy(t => t.Roll)
+        ?? Enumerable.Empty<Trinket>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        trinkets = await TrinketService.GetAllTrinketsAsync();
+    }
+}

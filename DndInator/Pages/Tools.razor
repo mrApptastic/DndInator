@@ -1,0 +1,182 @@
+@page "/tools"
+@using DndInator.Services
+@using DndShared.Models
+@inject IToolService ToolService
+
+<PageTitle>Tools</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 fw-bold text-center mb-3" style="background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="bi bi-tools me-2"></i>Tools
+            </h1>
+            <p class="text-center text-muted">Artisan's tools, musical instruments, and gaming sets</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4 offset-md-2">
+            <div class="input-group">
+                <span class="input-group-text bg-tool text-white">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search tools..." @bind="searchTerm" @bind:event="oninput" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" @bind="selectedCategory">
+                <option value="">All Categories</option>
+                @foreach (var category in Categories)
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @if (tools == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-tool" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!FilteredTools.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No tools found.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var tool in FilteredTools)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm hover-card">
+                        <div class="card-header text-white bg-tool">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-@GetCategoryIcon(tool.Category) me-2"></i>@tool.Name
+                            </h5>
+                            @if (!string.IsNullOrEmpty(tool.Category))
+                            {
+                                <small class="badge bg-light text-dark mt-1">@tool.Category</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2 mb-3">
+                                @if (!string.IsNullOrEmpty(tool.Cost))
+                                {
+                                    <div class="col-6">
+                                        <div class="stat-box">
+                                            <i class="bi bi-coin text-warning"></i>
+                                            <div>
+                                                <small class="text-muted d-block">Cost</small>
+                                                <strong>@tool.Cost</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(tool.Weight))
+                                {
+                                    <div class="col-6">
+                                        <div class="stat-box">
+                                            <i class="bi bi-box-seam text-secondary"></i>
+                                            <div>
+                                                <small class="text-muted d-block">Weight</small>
+                                                <strong>@tool.Weight</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(tool.Ability))
+                                {
+                                    <div class="col-12">
+                                        <div class="stat-box">
+                                            <i class="bi bi-trophy-fill text-success"></i>
+                                            <div>
+                                                <small class="text-muted d-block">Ability</small>
+                                                <strong>@tool.Ability</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .bg-tool {
+        background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%);
+    }
+    
+    .text-tool {
+        color: #FF6347;
+    }
+    
+    .hover-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(255, 99, 71, 0.3) !important;
+    }
+    
+    .stat-box {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+    }
+</style>
+
+@code {
+    private List<DndShared.Models.Tool>? tools;
+    private string searchTerm = "";
+    private string selectedCategory = "";
+
+    private IEnumerable<string> Categories =>
+        tools?
+            .Select(t => t.Category)
+            .Where(c => !string.IsNullOrWhiteSpace(c))
+            .Distinct()
+            .OrderBy(c => c)
+            .Select(c => c!)
+        ?? Enumerable.Empty<string>();
+
+    private IEnumerable<DndShared.Models.Tool> FilteredTools =>
+        tools?
+            .Where(t => (string.IsNullOrWhiteSpace(searchTerm) ||
+                        (t.Name?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false)) &&
+                       (string.IsNullOrWhiteSpace(selectedCategory) ||
+                        t.Category == selectedCategory))
+            .OrderBy(t => t.Category)
+            .ThenBy(t => t.Name)
+        ?? Enumerable.Empty<DndShared.Models.Tool>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tools = await ToolService.GetAllToolsAsync();
+    }
+
+    private string GetCategoryIcon(string? category)
+    {
+        return category?.ToLower() switch
+        {
+            var c when c != null && c.Contains("artisan") => "hammer",
+            var c when c != null && c.Contains("music") => "music-note-beamed",
+            var c when c != null && c.Contains("gaming") => "dice-5",
+            _ => "tools"
+        };
+    }
+}
