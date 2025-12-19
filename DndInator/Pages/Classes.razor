@@ -244,8 +244,25 @@
                                 <div class="row g-2">
                                     @foreach (var subclass in selectedClass.Subclasses)
                                     {
-                                        <div class="col-md-4">
-                                            <span class="badge bg-info w-100 py-2">@subclass</span>
+                                        <div class="col-md-6">
+                                            <div class="card border-info">
+                                                <div class="card-body p-2">
+                                                    <h6 class="card-title mb-1 text-info fw-bold">@subclass.Name</h6>
+                                                    @if (!string.IsNullOrEmpty(subclass.Description))
+                                                    {
+                                                        <p class="card-text small text-muted mb-0">
+                                                            @if (subclass.Description.Length > 120)
+                                                            {
+                                                                <text>@subclass.Description.Substring(0, 120)...</text>
+                                                            }
+                                                            else
+                                                            {
+                                                                <text>@subclass.Description</text>
+                                                            }
+                                                        </p>
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     }
                                 </div>

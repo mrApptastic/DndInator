@@ -147,7 +147,7 @@ public class CharacterClassScraper
                                 var cells = row.SelectNodes("td");
                                 if (cells != null && cells.Count > 0)
                                 {
-                                    characterClass.Subclasses.Add(cells[0].InnerText.Trim());
+                                    characterClass.SubclassNames.Add(cells[0].InnerText.Trim());
                                 }
                             }
                         }

@@ -14,13 +14,15 @@ public class CharacterClass
     public string? ArmorTraining { get; set; }
     public string? ToolProficiencies { get; set; }
     public string? StartingEquipment { get; set; }
-    public List<string> Subclasses { get; set; }
+    public List<string> SubclassNames { get; set; }
+    public List<Subclass> Subclasses { get; set; }
     public string? FullContent { get; set; }
 
     public CharacterClass()
     {
         Id = Guid.NewGuid();
-        Subclasses = new List<string>();
+        SubclassNames = new List<string>();
+        Subclasses = new List<Subclass>();
     }
 
     public override string ToString()

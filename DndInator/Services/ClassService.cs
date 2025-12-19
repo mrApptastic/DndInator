@@ -22,6 +22,19 @@ public class ClassService : IClassService
         try
         {
             var classes = await _httpClient.GetFromJsonAsync<List<CharacterClass>>("data/2024/classes.json");
+            var subclasses = await _httpClient.GetFromJsonAsync<List<Subclass>>("data/2024/subclasses.json");
+            
+            if (classes != null && subclasses != null)
+            {
+                // Link subclasses to their parent classes
+                foreach (var characterClass in classes)
+                {
+                    characterClass.Subclasses = subclasses
+                        .Where(s => s.ParentClass == characterClass.Name)
+                        .ToList();
+                }
+            }
+            
             return classes ?? new List<CharacterClass>();
         }
         catch (Exception ex)
