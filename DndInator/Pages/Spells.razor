@@ -299,6 +299,7 @@
         .Where(s => !string.IsNullOrEmpty(s))
         .Distinct()
         .OrderBy(s => s)
+        .Select(s => s!)
         .ToList() ?? new List<string>();
 
     private IEnumerable<Spell> FilteredSpells

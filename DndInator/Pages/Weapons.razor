@@ -240,6 +240,7 @@
         .Where(c => !string.IsNullOrEmpty(c))
         .Distinct()
         .OrderBy(c => c)
+        .Select(c => c!)
         .ToList() ?? new List<string>();
 
     private List<string> Types => weapons?
@@ -247,6 +248,7 @@
         .Where(t => !string.IsNullOrEmpty(t))
         .Distinct()
         .OrderBy(t => t)
+        .Select(t => t!)
         .ToList() ?? new List<string>();
 
     private IEnumerable<Weapon> FilteredWeapons

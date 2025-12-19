@@ -19,7 +19,7 @@ namespace DndInator.Services
 
         public async Task<List<Lineage>> GetAllLineagesAsync()
         {
-            return await _http.GetFromJsonAsync<List<Lineage>>($"data/2014/lineages.json");          
+            return await _http.GetFromJsonAsync<List<Lineage>>($"data/2014/lineages.json") ?? new List<Lineage>();          
         }
     }
 }

@@ -248,6 +248,7 @@
         .Where(r => !string.IsNullOrEmpty(r))
         .Distinct()
         .OrderBy(r => r)
+        .Select(r => r!)
         .ToList() ?? new List<string>();
 
     private List<string> Categories => magicItems?
@@ -255,6 +256,7 @@
         .Where(c => !string.IsNullOrEmpty(c))
         .Distinct()
         .OrderBy(c => c)
+        .Select(c => c!)
         .ToList() ?? new List<string>();
 
     private IEnumerable<MagicItem> FilteredMagicItems

@@ -224,6 +224,7 @@
         .Where(c => !string.IsNullOrEmpty(c))
         .Distinct()
         .OrderBy(c => c)
+        .Select(c => c!)
         .ToList() ?? new List<string>();
 
     private IEnumerable<Feat> FilteredFeats
