@@ -59,16 +59,49 @@
                 .then(registration => {
                     console.log('Service Worker registered:', registration);
                     
-                    // Listen for update messages from service worker
-                    navigator.serviceWorker.addEventListener('message', event => {
-                        if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
-                            document.getElementById('update-toast').style.display = 'block';
+                    // Check for updates every 60 seconds
+                    setInterval(() => {
+                        console.log('Checking for service worker updates...');
+                        registration.update();
+                    }, 60000);
+                    
+                    // Listen for updates when a new service worker is waiting
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        console.log('New service worker found');
+                        
+                        newWorker.addEventListener('statechange', () => {
+                            console.log('Service worker state:', newWorker.state);
+                            if (newWorker.state === 'activated') {
+                                console.log('New service worker activated');
+                            }
+                        });
+                    });
+                    
+                    // Listen for controller change (new service worker took control)
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        console.log('Service worker controller changed - showing update notification');
+                        const toast = document.getElementById('update-toast');
+                        if (toast) {
+                            toast.style.display = 'block';
                         }
                     });
                 })
                 .catch(error => {
                     console.error('Service Worker registration failed:', error);
                 });
+            
+            // Listen for update messages from service worker
+            navigator.serviceWorker.addEventListener('message', event => {
+                console.log('Message from service worker:', event.data);
+                if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+                    console.log('Update available message received');
+                    const toast = document.getElementById('update-toast');
+                    if (toast) {
+                        toast.style.display = 'block';
+                    }
+                }
+            });
         }
     </script>
 </body>

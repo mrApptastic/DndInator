@@ -20,6 +20,9 @@ async function onInstall(event) {
         .map(asset => new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' }));
 
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+    
+    // Skip waiting to activate the new service worker immediately
+    self.skipWaiting();
 }
 
 async function onActivate(event) {
@@ -27,15 +30,22 @@ async function onActivate(event) {
 
     // Delete unused caches
     const cacheKeys = await caches.keys();
-    await Promise.all(cacheKeys
-        .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
-        .map(key => caches.delete(key)));
-
-    // Notify clients about the update
-    const clients = await self.clients.matchAll({ type: 'window' });
-    clients.forEach(client => {
-        client.postMessage({ type: 'UPDATE_AVAILABLE' });
-    });
+    const oldCaches = cacheKeys.filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName);
+    
+    if (oldCaches.length > 0) {
+        console.info('Service worker: Deleting old caches and notifying clients');
+        await Promise.all(oldCaches.map(key => caches.delete(key)));
+        
+        // Notify all clients about the update
+        const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+        clients.forEach(client => {
+            console.info('Service worker: Notifying client about update');
+            client.postMessage({ type: 'UPDATE_AVAILABLE' });
+        });
+    }
+    
+    // Take control of all pages immediately
+    await self.clients.claim();
 }
 
 async function onFetch(event) {
