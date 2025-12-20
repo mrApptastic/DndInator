@@ -1,6 +1,7 @@
 @page "/armor"
 @using DndInator.Services
 @using DndShared.Models
+@using DndShared.Helpers
 @inject IArmorService ArmorService
 
 <PageTitle>Armor</PageTitle>
@@ -84,14 +85,14 @@
                                 {
                                     <div class="stat-item">
                                         <i class="bi bi-coin text-warning"></i>
-                                        <span class="stat-value">@armor.Cost</span>
+                                        <span class="stat-value">@HtmlHelper.DecodeHtml(armor.Cost)</span>
                                     </div>
                                 }
                                 @if (!string.IsNullOrEmpty(armor.Weight))
                                 {
                                     <div class="stat-item">
                                         <i class="bi bi-box text-secondary"></i>
-                                        <span class="stat-value">@armor.Weight</span>
+                                        <span class="stat-value">@HtmlHelper.DecodeHtml(armor.Weight)</span>
                                     </div>
                                 }
                                 @if (!string.IsNullOrEmpty(armor.Strength))
@@ -155,7 +156,7 @@
                                     <div class="detail-stat bg-warning">
                                         <i class="bi bi-coin fs-2"></i>
                                         <div class="stat-label">Cost</div>
-                                        <div class="stat-value">@selectedArmor.Cost</div>
+                                        <div class="stat-value">@HtmlHelper.DecodeHtml(selectedArmor.Cost)</div>
                                     </div>
                                 </div>
                             }
@@ -165,7 +166,7 @@
                                     <div class="detail-stat bg-secondary text-white">
                                         <i class="bi bi-box fs-2"></i>
                                         <div class="stat-label">Weight</div>
-                                        <div class="stat-value">@selectedArmor.Weight</div>
+                                        <div class="stat-value">@HtmlHelper.DecodeHtml(selectedArmor.Weight)</div>
                                     </div>
                                 </div>
                             }

@@ -1,6 +1,7 @@
 @page "/weapons"
 @using DndInator.Services
 @using DndShared.Models
+@using DndShared.Helpers
 @inject IWeaponService WeaponService
 
 <PageTitle>Weapons</PageTitle>
@@ -116,8 +117,8 @@
                                     @weapon.Damage
                                 </span>
                             </td>
-                            <td>@weapon.Cost</td>
-                            <td>@weapon.Weight</td>
+                            <td>@HtmlHelper.DecodeHtml(weapon.Cost)</td>
+                            <td>@HtmlHelper.DecodeHtml(weapon.Weight)</td>
                             <td class="text-end">
                                 <button class="btn btn-sm btn-outline-danger" @onclick="() => ShowDetails(weapon)">
                                     <i class="bi bi-info-circle me-1"></i>
@@ -164,7 +165,7 @@
                                     <div class="stat-card bg-warning text-center p-3 rounded">
                                         <i class="bi bi-coin fs-3 mb-2 d-block"></i>
                                         <small class="d-block">Cost</small>
-                                        <strong class="fs-5">@selectedWeapon.Cost</strong>
+                                        <strong class="fs-5">@HtmlHelper.DecodeHtml(selectedWeapon.Cost)</strong>
                                     </div>
                                 </div>
                             }
@@ -174,7 +175,7 @@
                                     <div class="stat-card bg-secondary text-white text-center p-3 rounded">
                                         <i class="bi bi-box fs-3 mb-2 d-block"></i>
                                         <small class="d-block opacity-75">Weight</small>
-                                        <strong class="fs-5">@selectedWeapon.Weight</strong>
+                                        <strong class="fs-5">@HtmlHelper.DecodeHtml(selectedWeapon.Weight)</strong>
                                     </div>
                                 </div>
                             }
@@ -250,6 +251,14 @@
         .OrderBy(t => t)
         .Select(t => t!)
         .ToList() ?? new List<string>();
+
+    private string DecodeHtml(string? text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return string.Empty;
+        
+        return System.Net.WebUtility.HtmlDecode(text);
+    }
 
     private IEnumerable<Weapon> FilteredWeapons
     {

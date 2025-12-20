@@ -1,6 +1,7 @@
 @page "/mounts-and-vehicles"
 @using DndInator.Services
 @using DndShared.Models
+@using DndShared.Helpers
 @inject IMountAndVehicleService MountAndVehicleService
 
 <PageTitle>Mounts and Vehicles</PageTitle>
@@ -157,7 +158,7 @@
                             <div class="col-md-4">
                                 <div class="info-card">
                                     <h6 class="text-secondary"><i class="bi bi-rulers me-1"></i>Weight</h6>
-                                    <p>@selectedItem.Weight</p>
+                                    <p>@HtmlHelper.DecodeHtml(selectedItem.Weight)</p>
                                 </div>
                             </div>
                         }

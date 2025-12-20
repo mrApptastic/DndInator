@@ -33,45 +33,67 @@ public class WeaponScraper
 
                 Console.WriteLine($"\n=== Scraping weapons from {weaponUrl} ===");
 
-                string currentCategory = "Unknown";
-                string currentType = "Unknown";
-
                 // Loop through hver tabel
                 foreach (var table in tables)
                 {
-                    // Find category og type fra heading før tabellen
-                    var prevNode = table.PreviousSibling;
-                    while (prevNode != null)
+                    // Nulstil for hver tabel
+                    string currentCategory = "Unknown";
+                    string currentType = "Unknown";
+                    
+                    // Tjek først for table caption eller header row som har type information
+                    var firstRow = table.SelectSingleNode(".//tr[1]");
+                    if (firstRow != null)
                     {
-                        if (prevNode.Name == "h1" || prevNode.Name == "h2" || prevNode.Name == "h3" || 
-                            prevNode.Name == "h4" || prevNode.Name == "h5" || prevNode.Name == "h6" ||
-                            prevNode.Name == "p")
+                        var headerText = firstRow.InnerText.Trim();
+                        
+                        // Parse fra header row
+                        if (headerText.Contains("Simple Melee", StringComparison.OrdinalIgnoreCase))
                         {
-                            var headerText = prevNode.InnerText.Trim();
-                            
-                            // Parse category
-                            if (headerText.Contains("Simple Weapons"))
-                            {
-                                currentCategory = "Simple";
-                            }
-                            else if (headerText.Contains("Martial Weapons"))
-                            {
-                                currentCategory = "Martial";
-                            }
-                            
-                            // Parse type (Melee eller Ranged)
-                            if (headerText.Contains("Melee"))
-                            {
-                                currentType = "Melee";
-                                break;
-                            }
-                            else if (headerText.Contains("Ranged"))
-                            {
-                                currentType = "Ranged";
-                                break;
-                            }
+                            currentCategory = "Simple";
+                            currentType = "Melee";
                         }
-                        prevNode = prevNode.PreviousSibling;
+                        else if (headerText.Contains("Simple Ranged", StringComparison.OrdinalIgnoreCase))
+                        {
+                            currentCategory = "Simple";
+                            currentType = "Ranged";
+                        }
+                        else if (headerText.Contains("Martial Melee", StringComparison.OrdinalIgnoreCase))
+                        {
+                            currentCategory = "Martial";
+                            currentType = "Melee";
+                        }
+                        else if (headerText.Contains("Martial Ranged", StringComparison.OrdinalIgnoreCase))
+                        {
+                            currentCategory = "Martial";
+                            currentType = "Ranged";
+                        }
+                    }
+                    
+                    // Hvis vi stadig ikke har fundet kategori og type, søg baglæns efter h1
+                    if (currentCategory == "Unknown" || currentType == "Unknown")
+                    {
+                        var prevNode = table.PreviousSibling;
+                        bool foundH1 = false;
+                        
+                        while (prevNode != null && !foundH1)
+                        {
+                            if (prevNode.NodeType == HtmlNodeType.Element && prevNode.Name.ToLower() == "h1")
+                            {
+                                var h1Text = prevNode.InnerText.Trim();
+                                
+                                if (h1Text.Contains("Simple Weapons", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    currentCategory = "Simple";
+                                }
+                                else if (h1Text.Contains("Martial Weapons", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    currentCategory = "Martial";
+                                }
+                                
+                                foundH1 = true;
+                            }
+                            prevNode = prevNode.PreviousSibling;
+                        }
                     }
 
                     // Tjek om det er ammunition-tabellen
