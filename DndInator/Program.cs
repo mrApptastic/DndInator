@@ -25,5 +25,6 @@ builder.Services.AddScoped<IPoisonService, PoisonService>();
 builder.Services.AddScoped<IToolService, ToolService>();
 builder.Services.AddScoped<ITrinketService, TrinketService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
+builder.Services.AddScoped<ICharacterSheetService, CharacterSheetService>();
 
 await builder.Build().RunAsync();
