@@ -115,75 +115,83 @@ window.characterSheetModule = {
             
             // Basic Information
             if (character.information) {
-                setTextField('CharacterName', character.information.name);
-                setTextField('CharacterName 2', character.information.name);
-                setTextField('ClassLevel', character.information.class);
+                setTextField('Name', character.information.name);
                 setTextField('Background', character.information.background);
-                setTextField('PlayerName', character.information.playerName);
-                setTextField('Race ', character.information.race);
-                setTextField('Alignment', character.information.alignment);
-                setTextField('XP', character.information.experiencePoints);
+                setTextField('Class', character.information.class);
+                setTextField('Species', character.information.race);
+                setTextField('XP Points', character.information.experiencePoints);
             }
             
-            // Ability Scores
-            if (character.stats) {
-                // Strength
-                setTextField('STRmod', calcModifier(character.stats.strength));
-                setTextField('STR', character.stats.strength);
-                
-                // Dexterity
-                setTextField('DEXmod ', calcModifier(character.stats.dexterity));
-                setTextField('DEX', character.stats.dexterity);
-                
-                // Constitution
-                setTextField('CONmod', calcModifier(character.stats.constitution));
-                setTextField('CON', character.stats.constitution);
-                
-                // Intelligence
-                setTextField('INTmod', calcModifier(character.stats.intelligence));
-                setTextField('INT', character.stats.intelligence);
-                
-                // Wisdom
-                setTextField('WISmod', calcModifier(character.stats.wisdom));
-                setTextField('WIS', character.stats.wisdom);
-                
-                // Charisma
-                setTextField('CHamod', calcModifier(character.stats.charisma));
-                setTextField('CHA', character.stats.charisma);
-            }
-            
-            // Character Class Details
+            // Class details (if available separately)
             if (character.class) {
-                setTextField('HPMax', character.class.hitPointDie);
+                setTextField('Subclass', character.class.name);
                 
                 // Proficiency bonus (assume level 1 = +2)
-                setTextField('ProfBonus', '+2');
+                setTextField('PROF BONUS', '+2');
             }
             
-            // Background
-            if (character.background) {
-                setTextField('PersonalityTraits ', character.background.description);
+            // Ability Scores and Modifiers
+            if (character.stats) {
+                // Strength
+                const strMod = calcModifier(character.stats.strength);
+                setTextField('STR MOD', strMod);
+                setTextField('STR SCORE', String(character.stats.strength));
                 
-                // Skills from background
-                if (character.background.skillProficiencies) {
-                    const skills = character.background.skillProficiencies.join(', ');
-                    setTextField('ProficienciesLang', skills);
+                // Dexterity
+                const dexMod = calcModifier(character.stats.dexterity);
+                setTextField('DEX MOD', dexMod);
+                setTextField('DEX SCORE', String(character.stats.dexterity));
+                
+                // Constitution
+                const conMod = calcModifier(character.stats.constitution);
+                setTextField('CON MOD', conMod);
+                setTextField('CON SCORE', String(character.stats.constitution));
+                
+                // Intelligence
+                const intMod = calcModifier(character.stats.intelligence);
+                setTextField('INT MOD', intMod);
+                setTextField('INT SCORE', String(character.stats.intelligence));
+                
+                // Wisdom
+                const wisMod = calcModifier(character.stats.wisdom);
+                setTextField('WIS MOD', wisMod);
+                setTextField('WIS SCORE', String(character.stats.wisdom));
+                
+                // Charisma
+                const chaMod = calcModifier(character.stats.charisma);
+                setTextField('CHA MOD', chaMod);
+                setTextField('CHA SCORE', String(character.stats.charisma));
+                
+                // Initiative (use Dex modifier)
+                setTextField('init', dexMod);
+                
+                // Passive Perception (10 + Wisdom modifier)
+                const passivePerception = 10 + parseInt(wisMod);
+                setTextField('PASSIVE PERCEPTION', String(passivePerception));
+            }
+            
+            // Species/Race traits
+            if (character.race) {
+                setTextField('SPEED', character.race.speed);
+                setTextField('SIZE', character.race.size);
+                
+                if (character.race.traits && character.race.traits.length > 0) {
+                    const traits = character.race.traits.join('\n');
+                    setTextField('SPECIES TRAITS', traits);
                 }
             }
             
             // Feats
             if (character.feats && character.feats.length > 0) {
-                const featList = character.feats.map(f => f.name).join(', ');
-                setTextField('Features and Traits', featList);
+                const featText = character.feats.map(f => `${f.name}\n${f.description}`).join('\n\n');
+                setTextField('FEATS', featText);
             }
             
-            // Species/Race traits
-            if (character.race) {
-                setTextField('Speed', character.race.speed);
-                
-                if (character.race.traits && character.race.traits.length > 0) {
-                    const traits = character.race.traits.join('\n');
-                    setTextField('Features and Traits', traits);
+            // Background
+            if (character.background) {
+                // Tool proficiencies
+                if (character.background.toolProficiency) {
+                    setTextField('TOOL PROF', character.background.toolProficiency);
                 }
             }
             
