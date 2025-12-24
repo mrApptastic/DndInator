@@ -1,0 +1,897 @@
+@page "/characterbuilder"
+@using DndInator.Services
+@using DndShared.Models
+@using DndInator.Components
+@inject ISpeciesService SpeciesService
+@inject IClassService ClassService
+@inject IBackgroundService BackgroundService
+@inject IFeatService FeatService
+@inject ISpellService SpellService
+@inject IDiceService DiceService
+@inject ICharacterSheetService CharacterSheetService
+
+<PageTitle>Character Builder</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-2">
+                <i class="bi bi-person-plus-fill me-3"></i>
+                Character Builder
+            </h1>
+            <p class="lead text-muted">Create your D&D 5e character step by step</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <!-- Tab Navigation -->
+            <ul class="nav nav-pills nav-fill mb-4 character-tabs" id="characterBuilderTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 0 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(0)" 
+                            type="button">
+                        <i class="bi bi-1-circle-fill d-block fs-4 mb-1"></i>
+                        Basic Info
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 1 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(1)" 
+                            type="button">
+                        <i class="bi bi-2-circle-fill d-block fs-4 mb-1"></i>
+                        Race
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 2 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(2)" 
+                            type="button">
+                        <i class="bi bi-3-circle-fill d-block fs-4 mb-1"></i>
+                        Class
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 3 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(3)" 
+                            type="button">
+                        <i class="bi bi-4-circle-fill d-block fs-4 mb-1"></i>
+                        Background
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 4 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(4)" 
+                            type="button">
+                        <i class="bi bi-5-circle-fill d-block fs-4 mb-1"></i>
+                        Ability Scores
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 5 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(5)" 
+                            type="button">
+                        <i class="bi bi-6-circle-fill d-block fs-4 mb-1"></i>
+                        Skills & Feats
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 6 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(6)" 
+                            type="button">
+                        <i class="bi bi-7-circle-fill d-block fs-4 mb-1"></i>
+                        Preview & Export
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Tab 0: Basic Info -->
+                @if (activeTab == 0)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-primary text-white">
+                            <h4 class="mb-0"><i class="bi bi-person-vcard me-2"></i>Basic Character Information</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Character Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-lg" 
+                                           @bind="characterName" 
+                                           placeholder="Enter your character's name" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Alignment</label>
+                                    <select class="form-select form-select-lg" @bind="selectedAlignment">
+                                        @foreach (CharacterAlignment alignment in Enum.GetValues(typeof(CharacterAlignment)))
+                                        {
+                                            <option value="@alignment">@alignment.ToString()</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Character Description (Optional)</label>
+                                    <textarea class="form-control" rows="3" 
+                                              @bind="characterDescription" 
+                                              placeholder="Describe your character's appearance, personality, or backstory..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-primary btn-lg float-end" @onclick="() => SetActiveTab(1)">
+                                Next: Choose Race <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 1: Race Selection -->
+                @if (activeTab == 1)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-success text-white">
+                            <h4 class="mb-0"><i class="bi bi-emoji-smile me-2"></i>Choose Your Race</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            @if (availableSpecies == null)
+                            {
+                                <div class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-3 text-muted">Loading races...</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row g-3">
+                                    @foreach (var species in availableSpecies.Take(12))
+                                    {
+                                        <div class="col-md-4 col-lg-3">
+                                            <div class="card h-100 hover-card @(selectedSpecies?.Name == species.Name ? "border-success border-3" : "")" 
+                                                 @onclick="() => SelectSpecies(species)"
+                                                 style="cursor: pointer;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title fw-bold">@species.Name</h6>
+                                                    <small class="text-muted">
+                                                        <div><strong>Size:</strong> @species.Size</div>
+                                                        <div><strong>Speed:</strong> @species.Speed</div>
+                                                    </small>
+                                                    @if (selectedSpecies?.Name == species.Name)
+                                                    {
+                                                        <div class="mt-2">
+                                                            <span class="badge bg-success">
+                                                                <i class="bi bi-check-circle-fill"></i> Selected
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                
+                                @if (selectedSpecies != null)
+                                {
+                                    <div class="alert alert-success mt-4">
+                                        <h5 class="alert-heading">@selectedSpecies.Name</h5>
+                                        <p class="mb-0"><strong>Traits:</strong></p>
+                                        <ul>
+                                            @foreach (var trait in selectedSpecies.Traits ?? new List<string>())
+                                            {
+                                                <li>@trait</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(0)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(2)"
+                                    disabled="@(selectedSpecies == null)">
+                                Next: Choose Class <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 2: Class Selection -->
+                @if (activeTab == 2)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-warning text-dark">
+                            <h4 class="mb-0"><i class="bi bi-shield-fill-check me-2"></i>Choose Your Class</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            @if (availableClasses == null)
+                            {
+                                <div class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-3 text-muted">Loading classes...</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row g-3">
+                                    @foreach (var classOption in availableClasses.Take(12))
+                                    {
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="card h-100 hover-card @(selectedClass?.Name == classOption.Name ? "border-warning border-3" : "")" 
+                                                 @onclick="() => SelectClass(classOption)"
+                                                 style="cursor: pointer;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title fw-bold">@classOption.Name</h6>
+                                                    <small class="text-muted">
+                                                        <div><strong>Hit Die:</strong> @classOption.HitPointDie</div>
+                                                        <div><strong>Primary:</strong> @classOption.PrimaryAbility</div>
+                                                    </small>
+                                                    @if (selectedClass?.Name == classOption.Name)
+                                                    {
+                                                        <div class="mt-2">
+                                                            <span class="badge bg-warning text-dark">
+                                                                <i class="bi bi-check-circle-fill"></i> Selected
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                
+                                @if (selectedClass != null)
+                                {
+                                    <div class="alert alert-warning mt-4">
+                                        <h5 class="alert-heading">@selectedClass.Name</h5>
+                                        <p><strong>Saving Throws:</strong> @selectedClass.SavingThrowProficiencies</p>
+                                        <p class="mb-0"><strong>Skills:</strong> @selectedClass.SkillProficiencies</p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(1)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(3)"
+                                    disabled="@(selectedClass == null)">
+                                Next: Choose Background <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 3: Background Selection -->
+                @if (activeTab == 3)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-info text-white">
+                            <h4 class="mb-0"><i class="bi bi-book me-2"></i>Choose Your Background</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            @if (availableBackgrounds == null)
+                            {
+                                <div class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-3 text-muted">Loading backgrounds...</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row g-3">
+                                    @foreach (var background in availableBackgrounds.Take(12))
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="card h-100 hover-card @(selectedBackground?.Name == background.Name ? "border-info border-3" : "")" 
+                                                 @onclick="() => SelectBackground(background)"
+                                                 style="cursor: pointer;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title fw-bold">@background.Name</h6>
+                                                    <p class="card-text small text-muted">@background.Description</p>
+                                                    @if (selectedBackground?.Name == background.Name)
+                                                    {
+                                                        <span class="badge bg-info">
+                                                            <i class="bi bi-check-circle-fill"></i> Selected
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(2)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(4)"
+                                    disabled="@(selectedBackground == null)">
+                                Next: Ability Scores <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 4: Ability Scores -->
+                @if (activeTab == 4)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-danger text-white">
+                            <h4 class="mb-0"><i class="bi bi-lightning-fill me-2"></i>Roll Ability Scores</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <h5>Choose a method:</h5>
+                                <div class="btn-group w-100" role="group">
+                                    <button class="btn btn-outline-primary @(abilityScoreMethod == "roll" ? "active" : "")" 
+                                            @onclick='() => abilityScoreMethod = "roll"'>
+                                        <i class="bi bi-dice-5 me-2"></i>Roll 4d6 Drop Lowest
+                                    </button>
+                                    <button class="btn btn-outline-primary @(abilityScoreMethod == "standard" ? "active" : "")" 
+                                            @onclick='() => { abilityScoreMethod = "standard"; UseStandardArray(); }'>
+                                        <i class="bi bi-grid-3x3 me-2"></i>Standard Array (15,14,13,12,10,8)
+                                    </button>
+                                    <button class="btn btn-outline-primary @(abilityScoreMethod == "manual" ? "active" : "")" 
+                                            @onclick='() => abilityScoreMethod = "manual"'>
+                                        <i class="bi bi-pencil me-2"></i>Manual Entry
+                                    </button>
+                                </div>
+                            </div>
+
+                            @if (abilityScoreMethod == "roll")
+                            {
+                                <div class="text-center mb-4">
+                                    <button class="btn btn-lg btn-danger pulse-button" @onclick="RollAllAbilityScores">
+                                        <i class="bi bi-dice-6-fill me-2"></i>Roll All Ability Scores!
+                                    </button>
+                                    @if (!string.IsNullOrEmpty(lastRollDetails))
+                                    {
+                                        <div class="alert alert-info mt-3">
+                                            <small>@lastRollDetails</small>
+                                        </div>
+                                    }
+                                </div>
+                            }
+
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-danger">Strength (STR)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="strength" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-danger" @onclick="() => RollSingleAbility(0)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(strength).ToString("+0;-#")</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-success">Dexterity (DEX)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="dexterity" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-success" @onclick="() => RollSingleAbility(1)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(dexterity).ToString("+0;-#")</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-warning">Constitution (CON)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="constitution" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-warning" @onclick="() => RollSingleAbility(2)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(constitution).ToString("+0;-#")</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-primary">Intelligence (INT)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="intelligence" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-primary" @onclick="() => RollSingleAbility(3)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(intelligence).ToString("+0;-#")</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-info">Wisdom (WIS)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="wisdom" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-info" @onclick="() => RollSingleAbility(4)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(wisdom).ToString("+0;-#")</small>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold text-secondary">Charisma (CHA)</label>
+                                    <div class="input-group input-group-lg">
+                                        <input type="number" class="form-control" @bind="charisma" min="1" max="20" />
+                                        @if (abilityScoreMethod == "roll")
+                                        {
+                                            <button class="btn btn-outline-secondary" @onclick="() => RollSingleAbility(5)">
+                                                <i class="bi bi-dice-3"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                    <small class="text-muted">Modifier: @CharacterStats.GetAbilityModifier(charisma).ToString("+0;-#")</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(3)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(5)">
+                                Next: Skills & Feats <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 5: Skills & Feats -->
+                @if (activeTab == 5)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-secondary text-white">
+                            <h4 class="mb-0"><i class="bi bi-star-fill me-2"></i>Skills & Feats (Optional)</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="mb-3">Choose Feats</h5>
+                            @if (availableFeats == null)
+                            {
+                                <div class="text-center py-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row g-3 mb-4">
+                                    @foreach (var feat in availableFeats.Take(8))
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="card hover-card @(selectedFeats.Contains(feat) ? "border-primary border-2" : "")" 
+                                                 @onclick="() => ToggleFeat(feat)"
+                                                 style="cursor: pointer;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">
+                                                        @feat.Name
+                                                        @if (selectedFeats.Contains(feat))
+                                                        {
+                                                            <span class="badge bg-primary float-end">
+                                                                <i class="bi bi-check"></i>
+                                                            </span>
+                                                        }
+                                                    </h6>
+                                                    <p class="card-text small text-muted">@feat.Description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                @if (selectedFeats.Any())
+                                {
+                                    <div class="alert alert-primary">
+                                        <strong>Selected Feats (@selectedFeats.Count):</strong>
+                                        @string.Join(", ", selectedFeats.Select(f => f.Name))
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(4)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-success btn-lg float-end" 
+                                    @onclick="() => { BuildCharacter(); SetActiveTab(6); }">
+                                Complete & Preview <i class="bi bi-check-circle ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 6: Preview & Export -->
+                @if (activeTab == 6)
+                {
+                    <div class="animate-slide-in">
+                        @if (builtCharacter != null)
+                        {
+                            <div class="card shadow-lg border-0 mb-4">
+                                <div class="card-header bg-gradient-success text-white">
+                                    <h4 class="mb-0">
+                                        <i class="bi bi-check-circle-fill me-2"></i>
+                                        Character Complete: @builtCharacter.Information?.Name
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex gap-2 mb-4 flex-wrap">
+                                        <button class="btn btn-primary btn-lg" @onclick="GeneratePDF" disabled="@isGeneratingPDF">
+                                            @if (isGeneratingPDF)
+                                            {
+                                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                                <span>Generating...</span>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-file-pdf me-2"></i>
+                                                <span>Generate PDF</span>
+                                            }
+                                        </button>
+                                        <button class="btn btn-success btn-lg" @onclick="DownloadPDF" disabled="@string.IsNullOrEmpty(pdfDataUrl)">
+                                            <i class="bi bi-download me-2"></i> Download PDF
+                                        </button>
+                                        <button class="btn btn-outline-warning btn-lg" @onclick="ResetBuilder">
+                                            <i class="bi bi-arrow-clockwise me-2"></i> Start Over
+                                        </button>
+                                    </div>
+
+                                    @if (!string.IsNullOrEmpty(pdfDataUrl))
+                                    {
+                                        <div class="mb-4">
+                                            <iframe src="@pdfDataUrl" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <CharacterSheetDisplay Character="builtCharacter" />
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                Please complete all previous steps to build your character.
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .character-tabs .nav-link {
+        padding: 1rem;
+        transition: all 0.3s ease;
+        border-radius: 0.5rem;
+        margin: 0 0.25rem;
+    }
+    
+    .character-tabs .nav-link:not(.active):hover {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        transform: translateY(-2px);
+    }
+    
+    .character-tabs .nav-link.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .bg-gradient-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .bg-gradient-success { background: linear-gradient(135deg, #52c234 0%, #061700 100%); }
+    .bg-gradient-warning { background: linear-gradient(135deg, #FFD93D 0%, #FF8C38 100%); }
+    .bg-gradient-info { background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); }
+    .bg-gradient-danger { background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%); }
+    .bg-gradient-secondary { background: linear-gradient(135deg, #6c757d 0%, #343a40 100%); }
+    
+    .hover-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .animate-slide-in {
+        animation: slideIn 0.4s ease-out;
+    }
+    
+    @@keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .pulse-button {
+        animation: pulse 2s infinite;
+    }
+    
+    @@keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        opacity: 1;
+    }
+</style>
+
+@code {
+    private int activeTab = 0;
+    private Character? builtCharacter;
+    private string pdfDataUrl = string.Empty;
+    private bool isGeneratingPDF = false;
+
+    // Tab 0: Basic Info
+    private string characterName = "";
+    private CharacterAlignment selectedAlignment = CharacterAlignment.NeutralGood;
+    private string characterDescription = "";
+
+    // Tab 1: Race
+    private List<DndShared.Models.Species>? availableSpecies;
+    private DndShared.Models.Species? selectedSpecies;
+
+    // Tab 2: Class
+    private List<CharacterClass>? availableClasses;
+    private CharacterClass? selectedClass;
+
+    // Tab 3: Background
+    private List<Background>? availableBackgrounds;
+    private Background? selectedBackground;
+
+    // Tab 4: Ability Scores
+    private string abilityScoreMethod = "roll";
+    private int strength = 10;
+    private int dexterity = 10;
+    private int constitution = 10;
+    private int intelligence = 10;
+    private int wisdom = 10;
+    private int charisma = 10;
+    private string lastRollDetails = "";
+
+    // Tab 5: Skills & Feats
+    private List<Feat>? availableFeats;
+    private List<Feat> selectedFeats = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAllData();
+    }
+
+    private async Task LoadAllData()
+    {
+        try
+        {
+            availableSpecies = await SpeciesService.GetAllSpeciesAsync();
+            availableClasses = await ClassService.GetAllClassesAsync();
+            availableBackgrounds = await BackgroundService.GetAllBackgroundsAsync();
+            availableFeats = await FeatService.GetAllFeatsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading data: {ex.Message}");
+        }
+    }
+
+    private void SetActiveTab(int tabIndex)
+    {
+        activeTab = tabIndex;
+        StateHasChanged();
+    }
+
+    private void SelectSpecies(DndShared.Models.Species species)
+    {
+        selectedSpecies = species;
+        StateHasChanged();
+    }
+
+    private void SelectClass(CharacterClass classOption)
+    {
+        selectedClass = classOption;
+        StateHasChanged();
+    }
+
+    private void SelectBackground(Background background)
+    {
+        selectedBackground = background;
+        StateHasChanged();
+    }
+
+    private void ToggleFeat(Feat feat)
+    {
+        if (selectedFeats.Contains(feat))
+            selectedFeats.Remove(feat);
+        else
+            selectedFeats.Add(feat);
+        StateHasChanged();
+    }
+
+    private async Task RollAllAbilityScores()
+    {
+        var rolls = new List<string>();
+        
+        strength = await RollAbilityScore();
+        rolls.Add($"STR: {strength}");
+        
+        dexterity = await RollAbilityScore();
+        rolls.Add($"DEX: {dexterity}");
+        
+        constitution = await RollAbilityScore();
+        rolls.Add($"CON: {constitution}");
+        
+        intelligence = await RollAbilityScore();
+        rolls.Add($"INT: {intelligence}");
+        
+        wisdom = await RollAbilityScore();
+        rolls.Add($"WIS: {wisdom}");
+        
+        charisma = await RollAbilityScore();
+        rolls.Add($"CHA: {charisma}");
+
+        lastRollDetails = $"Rolled: {string.Join(", ", rolls)}";
+        StateHasChanged();
+    }
+
+    private async Task RollSingleAbility(int abilityIndex)
+    {
+        int roll = await RollAbilityScore();
+        
+        switch (abilityIndex)
+        {
+            case 0: strength = roll; break;
+            case 1: dexterity = roll; break;
+            case 2: constitution = roll; break;
+            case 3: intelligence = roll; break;
+            case 4: wisdom = roll; break;
+            case 5: charisma = roll; break;
+        }
+        
+        StateHasChanged();
+    }
+
+    private async Task<int> RollAbilityScore()
+    {
+        // Roll 4d6, drop lowest
+        var rolls = new List<int>();
+        for (int i = 0; i < 4; i++)
+        {
+            rolls.Add(DiceService.RollDice(6));
+            await Task.Delay(1); // Small delay for animation effect
+        }
+        rolls.Sort();
+        rolls.RemoveAt(0); // Remove lowest
+        return rolls.Sum();
+    }
+
+    private void UseStandardArray()
+    {
+        var standardArray = new[] { 15, 14, 13, 12, 10, 8 };
+        strength = standardArray[0];
+        dexterity = standardArray[1];
+        constitution = standardArray[2];
+        intelligence = standardArray[3];
+        wisdom = standardArray[4];
+        charisma = standardArray[5];
+        StateHasChanged();
+    }
+
+    private void BuildCharacter()
+    {
+        builtCharacter = new Character
+        {
+            Information = new CharacterInformation
+            {
+                Name = characterName,
+                Race = selectedSpecies?.Name ?? "Unknown",
+                Class = selectedClass?.Name ?? "Unknown",
+                Background = selectedBackground?.Name ?? "Unknown",
+                Alignment = selectedAlignment
+            },
+            Stats = new CharacterStats
+            {
+                Strength = strength,
+                Dexterity = dexterity,
+                Constitution = constitution,
+                Intelligence = intelligence,
+                Wisdom = wisdom,
+                Charisma = charisma
+            },
+            Race = selectedSpecies,
+            Class = selectedClass,
+            Background = selectedBackground,
+            Feats = selectedFeats
+        };
+    }
+
+    private async Task GeneratePDF()
+    {
+        if (builtCharacter == null) return;
+        
+        isGeneratingPDF = true;
+        StateHasChanged();
+        
+        try
+        {
+            pdfDataUrl = await CharacterSheetService.FillCharacterSheetAsync(builtCharacter, "2024");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
+        finally
+        {
+            isGeneratingPDF = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task DownloadPDF()
+    {
+        if (builtCharacter == null) return;
+        
+        try
+        {
+            await CharacterSheetService.DownloadCharacterSheetAsync(
+                builtCharacter,
+                $"{builtCharacter.Information?.Name ?? "Character"}.pdf",
+                "2024"
+            );
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error downloading PDF: {ex.Message}");
+        }
+    }
+
+    private void ResetBuilder()
+    {
+        activeTab = 0;
+        builtCharacter = null;
+        pdfDataUrl = string.Empty;
+        characterName = "";
+        selectedAlignment = CharacterAlignment.NeutralGood;
+        characterDescription = "";
+        selectedSpecies = null;
+        selectedClass = null;
+        selectedBackground = null;
+        abilityScoreMethod = "roll";
+        strength = dexterity = constitution = intelligence = wisdom = charisma = 10;
+        selectedFeats.Clear();
+        lastRollDetails = "";
+        StateHasChanged();
+    }
+}
