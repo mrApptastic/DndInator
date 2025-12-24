@@ -1,0 +1,520 @@
+@page "/mycharacters"
+@using DndInator.Services
+@using DndShared.Models
+@using DndInator.Components
+@using Microsoft.JSInterop
+@inject IStorageService StorageService
+@inject ICharacterSheetService CharacterSheetService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>My Characters</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="bi bi-people-fill me-2"></i>
+                My Characters
+            </h1>
+            <p class="lead text-muted">Manage your saved D&D characters</p>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="btn-toolbar gap-2" role="toolbar">
+                <button class="btn btn-primary btn-lg" @onclick="CreateNewCharacter">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Create New Character
+                </button>
+                <button class="btn btn-success btn-lg" @onclick="ExportAllCharacters" disabled="@(!characters.Any())">
+                    <i class="bi bi-download me-2"></i>
+                    Export All
+                </button>
+                <button class="btn btn-info btn-lg" @onclick="() => showImportModal = true">
+                    <i class="bi bi-upload me-2"></i>
+                    Import
+                </button>
+                <button class="btn btn-danger btn-lg" @onclick="() => showDeleteAllModal = true" disabled="@(!characters.Any())">
+                    <i class="bi bi-trash me-2"></i>
+                    Delete All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Messages -->
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            @successMessage
+            <button type="button" class="btn-close" @onclick="() => successMessage = string.Empty"></button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            @errorMessage
+            <button type="button" class="btn-close" @onclick="() => errorMessage = string.Empty"></button>
+        </div>
+    }
+
+    <!-- Characters List -->
+    @if (isLoading)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading characters...</p>
+        </div>
+    }
+    else if (!characters.Any())
+    {
+        <div class="card shadow-lg border-0">
+            <div class="card-body text-center py-5">
+                <i class="bi bi-inbox" style="font-size: 5rem; color: #ccc;"></i>
+                <h3 class="mt-4 text-muted">No Characters Yet</h3>
+                <p class="text-muted">Create your first character to get started!</p>
+                <button class="btn btn-primary btn-lg mt-3" @onclick="CreateNewCharacter">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Create Character
+                </button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var character in characters)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card character-card h-100 shadow-sm border-0 hover-lift">
+                        <div class="card-header bg-gradient-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-person-badge me-2"></i>
+                                @(character.Information?.Name ?? "Unnamed Character")
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="character-info">
+                                <p class="mb-2">
+                                    <strong>Race:</strong> 
+                                    <span class="badge bg-success">@(character.Information?.Race ?? "N/A")</span>
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Class:</strong> 
+                                    <span class="badge bg-warning text-dark">@(character.Information?.Class ?? "N/A")</span>
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Background:</strong> 
+                                    <span class="badge bg-info">@(character.Information?.Background ?? "N/A")</span>
+                                </p>
+                                @if (character.Stats != null)
+                                {
+                                    <div class="mt-3">
+                                        <small class="text-muted d-block mb-2">Ability Scores:</small>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            <span class="badge bg-danger">STR @character.Stats.Strength</span>
+                                            <span class="badge bg-success">DEX @character.Stats.Dexterity</span>
+                                            <span class="badge bg-warning text-dark">CON @character.Stats.Constitution</span>
+                                            <span class="badge bg-primary">INT @character.Stats.Intelligence</span>
+                                            <span class="badge bg-info">WIS @character.Stats.Wisdom</span>
+                                            <span class="badge bg-secondary">CHA @character.Stats.Charisma</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-primary flex-fill" @onclick="() => ViewCharacter(character)">
+                                    <i class="bi bi-eye me-1"></i> View
+                                </button>
+                                <button class="btn btn-sm btn-warning" @onclick="() => EditCharacter(character)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-success" @onclick="() => ExportCharacterJson(character)">
+                                    <i class="bi bi-download"></i>
+                                </button>
+                                <button class="btn btn-sm btn-info" @onclick="() => ExportCharacterPdf(character)">
+                                    <i class="bi bi-file-pdf"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" @onclick="() => ConfirmDelete(character)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <!-- View Character Modal -->
+    @if (showViewModal && selectedCharacter != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">
+                            <i class="bi bi-person-badge me-2"></i>
+                            @selectedCharacter.Information?.Name
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseViewModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <CharacterSheetDisplay Character="selectedCharacter" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseViewModal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Delete Confirmation Modal -->
+    @if (showDeleteModal && selectedCharacter != null)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Confirm Delete
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseDeleteModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <strong>@selectedCharacter.Information?.Name</strong>?</p>
+                        <p class="text-danger"><small>This action cannot be undone!</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseDeleteModal">Cancel</button>
+                        <button type="button" class="btn btn-danger" @onclick="DeleteCharacter">
+                            <i class="bi bi-trash me-2"></i>Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Delete All Confirmation Modal -->
+    @if (showDeleteAllModal)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Delete All Characters
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="() => showDeleteAllModal = false"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <strong>ALL @characters.Count character(s)</strong>?</p>
+                        <p class="text-danger"><strong>This action cannot be undone!</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="() => showDeleteAllModal = false">Cancel</button>
+                        <button type="button" class="btn btn-danger" @onclick="DeleteAllCharacters">
+                            <i class="bi bi-trash me-2"></i>Delete All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Import Modal -->
+    @if (showImportModal)
+    {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title">
+                            <i class="bi bi-upload me-2"></i>
+                            Import Characters
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CloseImportModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Paste JSON or select file:</label>
+                            <textarea class="form-control font-monospace" rows="10" 
+                                      @bind="importJson" 
+                                      placeholder='[{"Id":"...","Information":{...}}]'></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Or upload file:</label>
+                            <InputFile class="form-control" OnChange="HandleFileSelected" accept=".json" />
+                        </div>
+                        @if (!string.IsNullOrEmpty(importError))
+                        {
+                            <div class="alert alert-danger">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                @importError
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseImportModal">Cancel</button>
+                        <button type="button" class="btn btn-info" @onclick="ImportCharacters" disabled="@string.IsNullOrEmpty(importJson)">
+                            <i class="bi bi-upload me-2"></i>Import
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .character-card {
+        transition: all 0.3s ease;
+    }
+
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .character-info {
+        min-height: 150px;
+    }
+
+    .modal.show {
+        display: block;
+    }
+</style>
+
+@code {
+    private List<Character> characters = new();
+    private Character? selectedCharacter;
+    private bool isLoading = true;
+    private string successMessage = string.Empty;
+    private string errorMessage = string.Empty;
+    
+    private bool showViewModal = false;
+    private bool showDeleteModal = false;
+    private bool showDeleteAllModal = false;
+    private bool showImportModal = false;
+    
+    private string importJson = string.Empty;
+    private string importError = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCharacters();
+    }
+
+    private async Task LoadCharacters()
+    {
+        isLoading = true;
+        try
+        {
+            characters = await StorageService.GetAllCharactersAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error loading characters: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void CreateNewCharacter()
+    {
+        NavigationManager.NavigateTo("/characterbuilder");
+    }
+
+    private void EditCharacter(Character character)
+    {
+        NavigationManager.NavigateTo($"/editcharacter/{character.Id}");
+    }
+
+    private void ViewCharacter(Character character)
+    {
+        selectedCharacter = character;
+        showViewModal = true;
+    }
+
+    private void CloseViewModal()
+    {
+        showViewModal = false;
+        selectedCharacter = null;
+    }
+
+    private void ConfirmDelete(Character character)
+    {
+        selectedCharacter = character;
+        showDeleteModal = true;
+    }
+
+    private void CloseDeleteModal()
+    {
+        showDeleteModal = false;
+        selectedCharacter = null;
+    }
+
+    private async Task DeleteCharacter()
+    {
+        if (selectedCharacter == null) return;
+
+        try
+        {
+            await StorageService.DeleteCharacterAsync(selectedCharacter.Id);
+            successMessage = $"'{selectedCharacter.Information?.Name}' deleted successfully!";
+            await LoadCharacters();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error deleting character: {ex.Message}";
+        }
+        finally
+        {
+            CloseDeleteModal();
+        }
+    }
+
+    private async Task DeleteAllCharacters()
+    {
+        try
+        {
+            await StorageService.ClearCharactersAsync();
+            successMessage = "All characters deleted successfully!";
+            await LoadCharacters();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error deleting characters: {ex.Message}";
+        }
+        finally
+        {
+            showDeleteAllModal = false;
+        }
+    }
+
+    private async Task ExportCharacterJson(Character character)
+    {
+        try
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(new[] { character }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            var fileName = $"{character.Information?.Name?.Replace(" ", "_") ?? "character"}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            
+            await JSRuntime.InvokeVoidAsync("downloadJsonFile", fileName, json);
+
+            successMessage = $"'{character.Information?.Name}' exported as JSON successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error exporting character: {ex.Message}";
+        }
+    }
+
+    private async Task ExportCharacterPdf(Character character)
+    {
+        try
+        {
+            var fileName = $"{character.Information?.Name?.Replace(" ", "_") ?? "character"}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            await CharacterSheetService.DownloadCharacterSheetAsync(character, fileName);
+            successMessage = $"'{character.Information?.Name}' exported as PDF successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error exporting character sheet: {ex.Message}";
+        }
+    }
+
+    private async Task ExportAllCharacters()
+    {
+        try
+        {
+            var json = await StorageService.ExportCharactersAsync();
+            var fileName = $"all_characters_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            
+            await JSRuntime.InvokeVoidAsync("downloadJsonFile", fileName, json);
+
+            successMessage = $"All {characters.Count} character(s) exported successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error exporting characters: {ex.Message}";
+        }
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        importError = string.Empty;
+        try
+        {
+            var file = e.File;
+            if (file.Size > 5 * 1024 * 1024) // 5MB limit
+            {
+                importError = "File too large. Maximum size is 5MB.";
+                return;
+            }
+
+            using var stream = file.OpenReadStream(5 * 1024 * 1024);
+            using var reader = new StreamReader(stream);
+            importJson = await reader.ReadToEndAsync();
+        }
+        catch (Exception ex)
+        {
+            importError = $"Error reading file: {ex.Message}";
+        }
+    }
+
+    private async Task ImportCharacters()
+    {
+        importError = string.Empty;
+        try
+        {
+            var result = await StorageService.ImportCharactersAsync(importJson);
+            
+            if (result.duplicates > 0)
+            {
+                successMessage = $"Imported {result.imported} character(s). {result.duplicates} duplicate(s) were given new IDs.";
+            }
+            else
+            {
+                successMessage = $"Successfully imported {result.imported} character(s)!";
+            }
+            
+            await LoadCharacters();
+            CloseImportModal();
+        }
+        catch (Exception ex)
+        {
+            importError = $"Error importing: {ex.Message}";
+        }
+    }
+
+    private void CloseImportModal()
+    {
+        showImportModal = false;
+        importJson = string.Empty;
+        importError = string.Empty;
+    }
+}

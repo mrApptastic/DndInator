@@ -9,6 +9,8 @@
 @inject ISpellService SpellService
 @inject IDiceService DiceService
 @inject ICharacterSheetService CharacterSheetService
+@inject IStorageService StorageService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Character Builder</PageTitle>
 
@@ -537,7 +539,28 @@
                                     </h4>
                                 </div>
                                 <div class="card-body">
+                                    @if (!string.IsNullOrEmpty(saveMessage))
+                                    {
+                                        <div class="alert alert-success alert-dismissible fade show">
+                                            <i class="bi bi-check-circle me-2"></i>
+                                            @saveMessage
+                                            <button type="button" class="btn-close" @onclick="() => saveMessage = string.Empty"></button>
+                                        </div>
+                                    }
+
                                     <div class="d-flex gap-2 mb-4 flex-wrap">
+                                        <button class="btn btn-success btn-lg" @onclick="SaveCharacter" disabled="@isSaving">
+                                            @if (isSaving)
+                                            {
+                                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                                <span>Saving...</span>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-floppy me-2"></i>
+                                                <span>Save Character</span>
+                                            }
+                                        </button>
                                         <button class="btn btn-primary btn-lg" @onclick="GeneratePDF" disabled="@isGeneratingPDF">
                                             @if (isGeneratingPDF)
                                             {
@@ -550,8 +573,11 @@
                                                 <span>Generate PDF</span>
                                             }
                                         </button>
-                                        <button class="btn btn-success btn-lg" @onclick="DownloadPDF" disabled="@string.IsNullOrEmpty(pdfDataUrl)">
+                                        <button class="btn btn-info btn-lg" @onclick="DownloadPDF" disabled="@string.IsNullOrEmpty(pdfDataUrl)">
                                             <i class="bi bi-download me-2"></i> Download PDF
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-lg" @onclick="ViewMyCharacters">
+                                            <i class="bi bi-people me-2"></i> My Characters
                                         </button>
                                         <button class="btn btn-outline-warning btn-lg" @onclick="ResetBuilder">
                                             <i class="bi bi-arrow-clockwise me-2"></i> Start Over
@@ -655,6 +681,8 @@
     private Character? builtCharacter;
     private string pdfDataUrl = string.Empty;
     private bool isGeneratingPDF = false;
+    private bool isSaving = false;
+    private string saveMessage = string.Empty;
 
     // Tab 0: Basic Info
     private string characterName = "";
@@ -877,6 +905,36 @@
         }
     }
 
+    private async Task SaveCharacter()
+    {
+        if (builtCharacter == null) return;
+
+        isSaving = true;
+        saveMessage = string.Empty;
+        StateHasChanged();
+
+        try
+        {
+            await StorageService.SaveCharacterAsync(builtCharacter);
+            saveMessage = $"✓ '{builtCharacter.Information?.Name}' saved successfully!";
+        }
+        catch (Exception ex)
+        {
+            saveMessage = $"✗ Error saving character: {ex.Message}";
+            Console.WriteLine($"Error saving character: {ex.Message}");
+        }
+        finally
+        {
+            isSaving = false;
+            StateHasChanged();
+        }
+    }
+
+    private void ViewMyCharacters()
+    {
+        NavigationManager.NavigateTo("/mycharacters");
+    }
+
     private void ResetBuilder()
     {
         activeTab = 0;
@@ -892,6 +950,7 @@
         strength = dexterity = constitution = intelligence = wisdom = charisma = 10;
         selectedFeats.Clear();
         lastRollDetails = "";
+        saveMessage = string.Empty;
         StateHasChanged();
     }
 }

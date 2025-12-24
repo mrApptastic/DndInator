@@ -1,0 +1,423 @@
+@page "/settings"
+@using DndInator.Services
+@inject IStorageService StorageService
+
+<PageTitle>Settings</PageTitle>
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="bi bi-gear-fill me-2"></i>
+                Settings
+            </h1>
+            <p class="lead text-muted">Configure your DndInator preferences</p>
+        </div>
+    </div>
+
+    <!-- Status Messages -->
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            @successMessage
+            <button type="button" class="btn-close" @onclick="() => successMessage = string.Empty"></button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            @errorMessage
+            <button type="button" class="btn-close" @onclick="() => errorMessage = string.Empty"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Storage Settings -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-database-fill me-2"></i>
+                        Storage Settings
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Storage Type</label>
+                        <p class="text-muted small">Choose where your characters are stored</p>
+                        
+                        <div class="form-check form-check-lg mb-3 p-3 border rounded @(selectedStorageType == StorageType.LocalStorage ? "border-primary bg-light" : "")">
+                            <input class="form-check-input" type="radio" 
+                                   id="localStorage" 
+                                   checked="@(selectedStorageType == StorageType.LocalStorage)"
+                                   @onchange="() => SelectStorageType(StorageType.LocalStorage)">
+                            <label class="form-check-label w-100" for="localStorage" style="cursor: pointer;">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-hdd-fill text-primary fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Local Storage</h6>
+                                        <p class="text-muted small mb-0">
+                                            Data persists even after closing the browser. 
+                                            <strong>Recommended for most users.</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-check form-check-lg p-3 border rounded @(selectedStorageType == StorageType.SessionStorage ? "border-primary bg-light" : "")">
+                            <input class="form-check-input" type="radio" 
+                                   id="sessionStorage"
+                                   checked="@(selectedStorageType == StorageType.SessionStorage)"
+                                   @onchange="() => SelectStorageType(StorageType.SessionStorage)">
+                            <label class="form-check-label w-100" for="sessionStorage" style="cursor: pointer;">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-clock-history text-info fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Session Storage</h6>
+                                        <p class="text-muted small mb-0">
+                                            Data is cleared when you close the browser tab.
+                                            Use for temporary or shared devices.
+                                        </p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    @if (hasUnsavedChanges)
+                    {
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            You have unsaved changes. Click "Save Changes" to apply.
+                        </div>
+                    }
+
+                    <button class="btn btn-primary btn-lg" 
+                            @onclick="SaveStorageSettings"
+                            disabled="@(!hasUnsavedChanges)">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Data Management -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-gradient-danger text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Data Management
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5>Clear Character Data</h5>
+                        <p class="text-muted">
+                            Remove all saved characters from <strong>@currentStorageType</strong>. 
+                            This action cannot be undone. Make sure to export your characters first if you want to keep them!
+                        </p>
+                        <button class="btn btn-danger" @onclick="() => showClearConfirmModal = true">
+                            <i class="bi bi-trash me-2"></i>
+                            Clear All Characters
+                        </button>
+                    </div>
+
+                    <hr />
+
+                    <div class="mb-4">
+                        <h5>Clear All Storage</h5>
+                        <p class="text-muted">
+                            This will clear <strong>both</strong> LocalStorage and SessionStorage, 
+                            removing all characters and settings. Use this if you're experiencing issues 
+                            or want a fresh start.
+                        </p>
+                        <button class="btn btn-danger" @onclick="() => showClearAllConfirmModal = true">
+                            <i class="bi bi-exclamation-octagon me-2"></i>
+                            Clear All Storage
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Info -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-gradient-info text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        Storage Information
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded">
+                                <h6 class="text-primary">Current Storage Type</h6>
+                                <p class="mb-0 fs-5 fw-bold">@currentStorageType</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded">
+                                <h6 class="text-success">Saved Characters</h6>
+                                <p class="mb-0 fs-5 fw-bold">@characterCount</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-outline-info" @onclick="RefreshInfo">
+                            <i class="bi bi-arrow-clockwise me-2"></i>
+                            Refresh Info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Help Card -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-gradient-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-question-circle-fill me-2"></i>
+                        Help & Tips
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="text-primary">About Storage Types:</h6>
+                    <ul class="small">
+                        <li><strong>LocalStorage:</strong> Data persists indefinitely until manually cleared</li>
+                        <li><strong>SessionStorage:</strong> Data is cleared when you close the browser tab</li>
+                    </ul>
+
+                    <h6 class="text-primary mt-3">Troubleshooting:</h6>
+                    <ul class="small">
+                        <li>If characters aren't loading, try refreshing the page</li>
+                        <li>If you see errors, clear storage and re-import your characters</li>
+                        <li>Always export important characters before clearing data</li>
+                    </ul>
+
+                    <h6 class="text-primary mt-3">Best Practices:</h6>
+                    <ul class="small">
+                        <li>Regularly export your characters as backup</li>
+                        <li>Use LocalStorage for your main device</li>
+                        <li>Use SessionStorage on shared/public computers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Clear Characters Confirmation Modal -->
+@if (showClearConfirmModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Clear Characters
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="() => showClearConfirmModal = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to clear all characters from <strong>@currentStorageType</strong>?</p>
+                    <p class="text-danger">
+                        <strong>This will delete @characterCount character(s)!</strong><br />
+                        This action cannot be undone.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="() => showClearConfirmModal = false">Cancel</button>
+                    <button type="button" class="btn btn-danger" @onclick="ClearCharacters">
+                        <i class="bi bi-trash me-2"></i>Yes, Clear Characters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Clear All Storage Confirmation Modal -->
+@if (showClearAllConfirmModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-exclamation-octagon me-2"></i>
+                        Clear All Storage
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="() => showClearAllConfirmModal = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger fw-bold">⚠️ DANGER ZONE ⚠️</p>
+                    <p>This will clear <strong>BOTH LocalStorage AND SessionStorage</strong>, removing:</p>
+                    <ul>
+                        <li>All saved characters</li>
+                        <li>All settings</li>
+                        <li>Any other stored data</li>
+                    </ul>
+                    <p class="text-danger"><strong>This action cannot be undone!</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="() => showClearAllConfirmModal = false">Cancel</button>
+                    <button type="button" class="btn btn-danger" @onclick="ClearAllStorage">
+                        <i class="bi bi-exclamation-octagon me-2"></i>Yes, Clear Everything
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .bg-gradient-danger {
+        background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+    }
+
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+    }
+
+    .bg-gradient-secondary {
+        background: linear-gradient(135deg, #6c757d 0%, #343a40 100%);
+    }
+
+    .form-check-lg {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .form-check-lg:hover {
+        transform: translateX(5px);
+    }
+
+    .form-check-input:checked {
+        background-color: #667eea;
+        border-color: #667eea;
+    }
+</style>
+
+@code {
+    private StorageType selectedStorageType = StorageType.LocalStorage;
+    private StorageType originalStorageType = StorageType.LocalStorage;
+    private string currentStorageType = "Local Storage";
+    private int characterCount = 0;
+    private bool hasUnsavedChanges = false;
+    private string successMessage = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool showClearConfirmModal = false;
+    private bool showClearAllConfirmModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSettings();
+    }
+
+    private async Task LoadSettings()
+    {
+        try
+        {
+            selectedStorageType = await StorageService.GetStorageTypeAsync();
+            originalStorageType = selectedStorageType;
+            await RefreshInfo();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error loading settings: {ex.Message}";
+        }
+    }
+
+    private void SelectStorageType(StorageType storageType)
+    {
+        selectedStorageType = storageType;
+        hasUnsavedChanges = selectedStorageType != originalStorageType;
+        StateHasChanged();
+    }
+
+    private async Task SaveStorageSettings()
+    {
+        try
+        {
+            await StorageService.SetStorageTypeAsync(selectedStorageType);
+            originalStorageType = selectedStorageType;
+            hasUnsavedChanges = false;
+            successMessage = $"Storage type changed to {selectedStorageType}";
+            await RefreshInfo();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error saving settings: {ex.Message}";
+        }
+    }
+
+    private async Task RefreshInfo()
+    {
+        try
+        {
+            var storageType = await StorageService.GetStorageTypeAsync();
+            currentStorageType = storageType == StorageType.LocalStorage ? "Local Storage" : "Session Storage";
+            
+            var characters = await StorageService.GetAllCharactersAsync();
+            characterCount = characters.Count;
+            
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error refreshing info: {ex.Message}";
+        }
+    }
+
+    private async Task ClearCharacters()
+    {
+        try
+        {
+            await StorageService.ClearCharactersAsync();
+            successMessage = $"All characters cleared from {currentStorageType}!";
+            await RefreshInfo();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error clearing characters: {ex.Message}";
+        }
+        finally
+        {
+            showClearConfirmModal = false;
+        }
+    }
+
+    private async Task ClearAllStorage()
+    {
+        try
+        {
+            await StorageService.ClearLocalStorage();
+            await StorageService.ClearSessionStorage();
+            successMessage = "All storage cleared! Page will reload.";
+            StateHasChanged();
+            
+            // Reload page after a short delay
+            await Task.Delay(2000);
+            await RefreshInfo();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error clearing storage: {ex.Message}";
+        }
+        finally
+        {
+            showClearAllConfirmModal = false;
+        }
+    }
+}

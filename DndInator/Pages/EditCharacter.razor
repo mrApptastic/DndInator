@@ -1,0 +1,330 @@
+@page "/editcharacter/{CharacterId:guid}"
+@using DndInator.Services
+@using DndShared.Models
+@using DndInator.Components
+@using Microsoft.JSInterop
+@inject IStorageService StorageService
+@inject ICharacterSheetService CharacterSheetService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Edit Character</PageTitle>
+
+<div class="container-fluid py-4">
+    @if (isLoading)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading character...</p>
+        </div>
+    }
+    else if (character == null)
+    {
+        <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            Character not found!
+        </div>
+        <button class="btn btn-primary" @onclick="BackToMyCharacters">
+            <i class="bi bi-arrow-left me-2"></i>Back to My Characters
+        </button>
+    }
+    else
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="display-4 text-primary mb-2">
+                            <i class="bi bi-pencil-fill me-3"></i>
+                            Edit Character
+                        </h1>
+                        <p class="lead text-muted">@(character.Information?.Name ?? "Unnamed Character")</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary btn-lg me-2" @onclick="BackToMyCharacters">
+                            <i class="bi bi-arrow-left me-2"></i>Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        @if (!string.IsNullOrEmpty(successMessage))
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                @successMessage
+                <button type="button" class="btn-close" @onclick="() => successMessage = string.Empty"></button>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                @errorMessage
+                <button type="button" class="btn-close" @onclick="() => errorMessage = string.Empty"></button>
+            </div>
+        }
+
+        <div class="row">
+            <!-- Edit Form -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="bi bi-person-vcard me-2"></i>Basic Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Character Name</label>
+                            <input type="text" class="form-control" @bind="character!.Information!.Name" placeholder="Enter character name" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Race</label>
+                            <input type="text" class="form-control" @bind="character!.Information!.Race" placeholder="e.g., Human, Elf, Dwarf" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Class</label>
+                            <input type="text" class="form-control" @bind="character!.Information!.Class" placeholder="e.g., Fighter, Wizard, Rogue" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Background</label>
+                            <input type="text" class="form-control" @bind="character!.Information!.Background" placeholder="e.g., Soldier, Scholar, Criminal" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Alignment</label>
+                            <select class="form-select" @bind="character!.Information!.Alignment">
+                                <option value="">Select Alignment</option>
+                                @foreach (var alignment in Enum.GetValues<CharacterAlignment>())
+                                {
+                                    <option value="@alignment">@alignment</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="bi bi-graph-up me-2"></i>Ability Scores</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (character!.Stats != null)
+                        {
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Strength</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Strength" min="1" max="30" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Dexterity</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Dexterity" min="1" max="30" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Constitution</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Constitution" min="1" max="30" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Intelligence</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Intelligence" min="1" max="30" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Wisdom</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Wisdom" min="1" max="30" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Charisma</label>
+                                    <input type="number" class="form-control" @bind="character.Stats.Charisma" min="1" max="30" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-lg" @onclick="SaveCharacter" disabled="@isSaving">
+                                @if (isSaving)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2"></span>
+                                    <span>Saving...</span>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-save me-2"></i>
+                                    <span>Save Changes</span>
+                                }
+                            </button>
+                            <button class="btn btn-info btn-lg" @onclick="ExportAsPdf" disabled="@isExporting">
+                                @if (isExporting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2"></span>
+                                    <span>Generating PDF...</span>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-file-pdf me-2"></i>
+                                    <span>Export as PDF</span>
+                                }
+                            </button>
+                            <button class="btn btn-outline-secondary btn-lg" @onclick="ExportAsJson">
+                                <i class="bi bi-download me-2"></i>
+                                Export as JSON
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0"><i class="bi bi-eye me-2"></i>Character Preview</h4>
+                    </div>
+                    <div class="card-body" style="max-height: 80vh; overflow-y: auto;">
+                        <CharacterSheetDisplay Character="character" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .animate-slide-in {
+        animation: slideIn 0.3s ease-out;
+    }
+
+    @@keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+@code {
+    [Parameter]
+    public Guid CharacterId { get; set; }
+
+    private Character? character;
+    private bool isLoading = true;
+    private bool isSaving = false;
+    private bool isExporting = false;
+    private string successMessage = string.Empty;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCharacter();
+    }
+
+    private async Task LoadCharacter()
+    {
+        isLoading = true;
+        try
+        {
+            character = await StorageService.GetCharacterAsync(CharacterId);
+            
+            // Initialize empty objects if null
+            if (character != null)
+            {
+                character.Information ??= new CharacterInformation();
+                character.Stats ??= new CharacterStats();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error loading character: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SaveCharacter()
+    {
+        if (character == null) return;
+
+        isSaving = true;
+        successMessage = string.Empty;
+        errorMessage = string.Empty;
+
+        try
+        {
+            await StorageService.SaveCharacterAsync(character);
+            successMessage = "Character saved successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error saving character: {ex.Message}";
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+
+    private async Task ExportAsPdf()
+    {
+        if (character == null) return;
+
+        isExporting = true;
+        successMessage = string.Empty;
+        errorMessage = string.Empty;
+
+        try
+        {
+            var fileName = $"{character.Information?.Name?.Replace(" ", "_") ?? "character"}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            await CharacterSheetService.DownloadCharacterSheetAsync(character, fileName);
+            successMessage = "Character sheet exported as PDF successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error exporting PDF: {ex.Message}";
+        }
+        finally
+        {
+            isExporting = false;
+        }
+    }
+
+    private async Task ExportAsJson()
+    {
+        if (character == null) return;
+
+        try
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(new[] { character }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            var fileName = $"{character.Information?.Name?.Replace(" ", "_") ?? "character"}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            
+            await JSRuntime.InvokeVoidAsync("downloadJsonFile", fileName, json);
+
+            successMessage = "Character exported as JSON successfully!";
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error exporting JSON: {ex.Message}";
+        }
+    }
+
+    private void BackToMyCharacters()
+    {
+        NavigationManager.NavigateTo("/mycharacters");
+    }
+}
