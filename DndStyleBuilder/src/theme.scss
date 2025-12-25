@@ -1,0 +1,14 @@
+// DndInator Custom Bootstrap Theme
+// Main entry point for the theme compilation
+
+// 1. Include custom fonts first
+@import 'fonts';
+
+// 2. Include custom variables (this overrides Bootstrap defaults)
+@import 'variables';
+
+// 3. Import Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// 4. Include custom styles and extensions
+@import 'custom';

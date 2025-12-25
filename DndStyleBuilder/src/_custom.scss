@@ -1,0 +1,119 @@
+// Custom styles and overrides that extend Bootstrap
+
+// Gradient utilities
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $theme-gradient-start 0%, $theme-gradient-end 100%) !important;
+}
+
+.bg-gradient-primary-vertical {
+  background: linear-gradient(180deg, $theme-gradient-start 0%, $theme-gradient-end 70%) !important;
+}
+
+// Custom button with gradient
+.btn-gradient-primary {
+  background: linear-gradient(135deg, $theme-gradient-start 0%, $theme-gradient-end 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, darken($theme-gradient-start, 5%) 0%, darken($theme-gradient-end, 5%) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Menu button styling (for home page)
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, $theme-gradient-start 0%, $theme-gradient-end 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: $border-radius-lg;
+  transition: all 0.3s ease;
+  box-shadow: $box-shadow;
+  min-height: 150px;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow-lg;
+    background: linear-gradient(135deg, darken($theme-gradient-start, 5%) 0%, darken($theme-gradient-end, 5%) 100%);
+    color: white;
+    text-decoration: none;
+  }
+  
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+// Card with gradient header
+.card-gradient-header {
+  .card-header {
+    background: linear-gradient(135deg, $theme-gradient-start 0%, $theme-gradient-end 100%);
+    color: white;
+    border: none;
+  }
+}
+
+// Text utilities
+.text-gradient {
+  background: linear-gradient(135deg, $theme-gradient-start 0%, $theme-gradient-end 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Sidebar styling
+.sidebar {
+  background-image: linear-gradient(180deg, $theme-gradient-start 0%, $theme-gradient-end 70%);
+  
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+    
+    &.active {
+      background-color: rgba(255, 255, 255, 0.37);
+      color: white;
+    }
+  }
+}
+
+// Top navigation bar
+.top-row {
+  background-color: $light;
+  border-bottom: 1px solid darken($light, 10%);
+  
+  a {
+    color: $body-color;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive utilities
+@include media-breakpoint-down(sm) {
+  .menu-button {
+    min-height: 120px;
+    padding: 1.5rem 0.5rem;
+  }
+}

@@ -1,4 +1,10 @@
+/* Dotnet */
 **/bin/**
 **/obj/**
-
 DndPublish/**
+
+/* Node.js */
+**/node_modules/
+**/dist/
+*.css.map
+**/.sass-cache/

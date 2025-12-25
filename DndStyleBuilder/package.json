@@ -1,0 +1,23 @@
+{
+  "name": "dnd-style-builder",
+  "version": "1.0.0",
+  "description": "Custom Bootstrap theme builder for DndInator",
+  "scripts": {
+    "build": "sass src/theme.scss:dist/dndinator-theme.css --style compressed",
+    "build:expanded": "sass src/theme.scss:dist/dndinator-theme.css --style expanded",
+    "watch": "sass src/theme.scss:dist/dndinator-theme.css --watch --style expanded",
+    "install:bootstrap": "npm install bootstrap@5.3.3",
+    "copy:fonts": "powershell -Command \"if (Test-Path fonts/*.*) { Copy-Item fonts/* ../DndInator/wwwroot/fonts/ -Force }\"",
+    "deploy": "npm run build && npm run copy:fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\"",
+    "deploy:expanded": "npm run build:expanded && npm run copy:fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\""
+  },
+  "keywords": ["bootstrap", "theme", "dnd", "scss"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
