@@ -1,3 +1,7 @@
+div.navbar-dark div.container-fluid a.navbar-brand {
+  color: white;
+}
+
 h1:focus {
     outline: none;
 }
