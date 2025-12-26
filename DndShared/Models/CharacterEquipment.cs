@@ -10,6 +10,7 @@ namespace DndShared.Models
         public List<Tool> Tools { get; set; } = new List<Tool>();
         public List<Poison> Poisons { get; set; } = new List<Poison>();
         public List<CharacterCustomItem> CustomItems { get; set; } = new List<CharacterCustomItem>();
+        public CharacterWealth Wealth { get; set; } = new CharacterWealth();
     }
 
     public class CharacterCustomItem
@@ -17,5 +18,14 @@ namespace DndShared.Models
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? Weight { get; set; }
+    }
+
+    public class CharacterWealth 
+    {
+        public int CopperPieces { get; set; }
+        public int SilverPieces { get; set; }
+        public int ElectrumPieces { get; set; }
+        public int GoldPieces { get; set; }
+        public int PlatinumPieces { get; set; }
     }
 }
