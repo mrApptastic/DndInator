@@ -50,7 +50,6 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
-    background: linear-gradient(135deg, rgb(5, 39, 103) 0%, #3a0647 100%);
     color: white;
     text-decoration: none;
     border-radius: 12px;
@@ -62,7 +61,6 @@
 .menu-button:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    background: linear-gradient(135deg, rgb(6, 48, 127) 0%, #4a0857 100%);
 }
 
 .menu-button:active {

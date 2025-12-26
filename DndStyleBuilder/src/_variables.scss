@@ -8,20 +8,25 @@ $primary-purple: #3a0647;             // Deep purple
 $dnd-red: #D21E3D;
 $dnd-white: #FDFDFD;
 $dnd-blue: #0053B0;
+$dnd-purple: #641C79;
+$dnd-dark: #2A3E62;
+$dnd-green: #4B7720;
+$dnd-supergreen: #17848B;
+$dnd-yellow-belly: #FBE244;
 
 // Primary Brand Colors
 $primary: $dnd-blue;
-$secondary: $dnd-red;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
+$secondary: $dnd-purple;
+$success: $dnd-green;
+$info: $dnd-supergreen;
+$warning: $dnd-yellow-belly;
+$danger: $dnd-red;
 $light: $dnd-white;
-$dark: #343a40;
+$dark: $dnd-dark;
 
 // Custom theme colors
-$theme-gradient-start: $primary-dark;
-$theme-gradient-end: $primary-purple;
+$theme-gradient-start: $dnd-blue;
+$theme-gradient-end: $dnd-purple;
 
 // Body
 $body-bg: #ffffff;
