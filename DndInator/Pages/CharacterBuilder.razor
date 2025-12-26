@@ -2,11 +2,17 @@
 @using DndInator.Services
 @using DndShared.Models
 @using DndInator.Components
+@using Microsoft.AspNetCore.Components.Forms
 @inject ISpeciesService SpeciesService
 @inject IClassService ClassService
 @inject IBackgroundService BackgroundService
 @inject IFeatService FeatService
 @inject ISpellService SpellService
+@inject IWeaponService WeaponService
+@inject IArmorService ArmorService
+@inject IAdventuringGearService AdventuringGearService
+@inject IMagicItemService MagicItemService
+@inject IToolService ToolService
 @inject IDiceService DiceService
 @inject ICharacterSheetService CharacterSheetService
 @inject IStorageService StorageService
@@ -74,14 +80,38 @@
                             @onclick="() => SetActiveTab(5)" 
                             type="button">
                         <i class="bi bi-6-circle-fill d-block fs-4 mb-1"></i>
-                        Skills & Feats
+                        Skills
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link @(activeTab == 6 ? "active" : "")" 
                             @onclick="() => SetActiveTab(6)" 
                             type="button">
+                        <i class="bi bi-6-circle-fill d-block fs-4 mb-1"></i>
+                        Feats
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 7 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(7)" 
+                            type="button">
                         <i class="bi bi-7-circle-fill d-block fs-4 mb-1"></i>
+                        Spells
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 8 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(8)" 
+                            type="button">
+                        <i class="bi bi-8-circle-fill d-block fs-4 mb-1"></i>
+                        Equipment
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @(activeTab == 9 ? "active" : "")" 
+                            @onclick="() => SetActiveTab(9)" 
+                            type="button">
+                        <i class="bi bi-9-circle-fill d-block fs-4 mb-1"></i>
                         Preview & Export
                     </button>
                 </li>
@@ -112,6 +142,33 @@
                                             <option value="@alignment">@alignment.ToString()</option>
                                         }
                                     </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">Level</label>
+                                    <input type="number" class="form-control form-control-lg" 
+                                           @bind="characterLevel" 
+                                           min="1" max="20"
+                                           placeholder="1" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">Experience Points</label>
+                                    <input type="number" class="form-control form-control-lg" 
+                                           @bind="characterExperience" 
+                                           min="0"
+                                           placeholder="0" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Character Portrait (Optional)</label>
+                                    <InputFile OnChange="HandlePortraitUpload" class="form-control" accept="image/*" />
+                                    @if (!string.IsNullOrEmpty(characterPortrait))
+                                    {
+                                        <div class="mt-2">
+                                            <img src="@characterPortrait" alt="Character Portrait" style="max-width: 150px; max-height: 150px; border-radius: 8px;" />
+                                            <button class="btn btn-sm btn-outline-danger ms-2" @onclick="ClearPortrait">
+                                                <i class="bi bi-x-circle"></i> Remove
+                                            </button>
+                                        </div>
+                                    }
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold">Character Description (Optional)</label>
@@ -455,21 +512,188 @@
                             </button>
                             <button class="btn btn-primary btn-lg float-end" 
                                     @onclick="() => SetActiveTab(5)">
-                                Next: Skills & Feats <i class="bi bi-arrow-right ms-2"></i>
+                                Next: Skills <i class="bi bi-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 5: Skills & Feats -->
+                <!-- Tab 5: Skills -->
                 @if (activeTab == 5)
                 {
                     <div class="card shadow-lg border-0 animate-slide-in">
                         <div class="card-header bg-gradient-secondary text-white">
-                            <h4 class="mb-0"><i class="bi bi-star-fill me-2"></i>Skills & Feats (Optional)</h4>
+                            <h4 class="mb-0"><i class="bi bi-list-check me-2"></i>Choose Skills</h4>
                         </div>
                         <div class="card-body p-4">
-                            <h5 class="mb-3">Choose Feats</h5>
+                            <p class="text-muted mb-4">Select the skills your character is proficient in.</p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillAcrobatics" @bind="selectedSkills.Acrobatics" />
+                                        <label class="form-check-label" for="skillAcrobatics">
+                                            <strong>Acrobatics</strong> <small class="text-muted">(DEX)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillAnimalHandling" @bind="selectedSkills.AnimalHandling" />
+                                        <label class="form-check-label" for="skillAnimalHandling">
+                                            <strong>Animal Handling</strong> <small class="text-muted">(WIS)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillArcana" @bind="selectedSkills.Arcana" />
+                                        <label class="form-check-label" for="skillArcana">
+                                            <strong>Arcana</strong> <small class="text-muted">(INT)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillAthletics" @bind="selectedSkills.Athletics" />
+                                        <label class="form-check-label" for="skillAthletics">
+                                            <strong>Athletics</strong> <small class="text-muted">(STR)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillDeception" @bind="selectedSkills.Deception" />
+                                        <label class="form-check-label" for="skillDeception">
+                                            <strong>Deception</strong> <small class="text-muted">(CHA)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillHistory" @bind="selectedSkills.History" />
+                                        <label class="form-check-label" for="skillHistory">
+                                            <strong>History</strong> <small class="text-muted">(INT)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillInsight" @bind="selectedSkills.Insight" />
+                                        <label class="form-check-label" for="skillInsight">
+                                            <strong>Insight</strong> <small class="text-muted">(WIS)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillIntimidation" @bind="selectedSkills.Intimidation" />
+                                        <label class="form-check-label" for="skillIntimidation">
+                                            <strong>Intimidation</strong> <small class="text-muted">(CHA)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillInvestigation" @bind="selectedSkills.Investigation" />
+                                        <label class="form-check-label" for="skillInvestigation">
+                                            <strong>Investigation</strong> <small class="text-muted">(INT)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillMedicine" @bind="selectedSkills.Medicine" />
+                                        <label class="form-check-label" for="skillMedicine">
+                                            <strong>Medicine</strong> <small class="text-muted">(WIS)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillNature" @bind="selectedSkills.Nature" />
+                                        <label class="form-check-label" for="skillNature">
+                                            <strong>Nature</strong> <small class="text-muted">(INT)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillPerception" @bind="selectedSkills.Perception" />
+                                        <label class="form-check-label" for="skillPerception">
+                                            <strong>Perception</strong> <small class="text-muted">(WIS)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillPerformance" @bind="selectedSkills.Performance" />
+                                        <label class="form-check-label" for="skillPerformance">
+                                            <strong>Performance</strong> <small class="text-muted">(CHA)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillPersuasion" @bind="selectedSkills.Persuasion" />
+                                        <label class="form-check-label" for="skillPersuasion">
+                                            <strong>Persuasion</strong> <small class="text-muted">(CHA)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillReligion" @bind="selectedSkills.Religion" />
+                                        <label class="form-check-label" for="skillReligion">
+                                            <strong>Religion</strong> <small class="text-muted">(INT)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillSleightOfHand" @bind="selectedSkills.SleightOfHand" />
+                                        <label class="form-check-label" for="skillSleightOfHand">
+                                            <strong>Sleight of Hand</strong> <small class="text-muted">(DEX)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillStealth" @bind="selectedSkills.Stealth" />
+                                        <label class="form-check-label" for="skillStealth">
+                                            <strong>Stealth</strong> <small class="text-muted">(DEX)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-lg">
+                                        <input class="form-check-input" type="checkbox" id="skillSurvival" @bind="selectedSkills.Survival" />
+                                        <label class="form-check-label" for="skillSurvival">
+                                            <strong>Survival</strong> <small class="text-muted">(WIS)</small>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(4)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(6)">
+                                Next: Feats <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 6: Feats -->
+                @if (activeTab == 6)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-secondary text-white">
+                            <h4 class="mb-0"><i class="bi bi-star-fill me-2"></i>Choose Feats (Optional)</h4>
+                        </div>
+                        <div class="card-body p-4">
                             @if (availableFeats == null)
                             {
                                 <div class="text-center py-3">
@@ -481,7 +705,7 @@
                             else
                             {
                                 <div class="row g-3 mb-4">
-                                    @foreach (var feat in availableFeats.Take(8))
+                                    @foreach (var feat in availableFeats)
                                     {
                                         <div class="col-md-6">
                                             <div class="card hover-card @(selectedFeats.Contains(feat) ? "border-primary border-2" : "")" 
@@ -514,19 +738,373 @@
                             }
                         </div>
                         <div class="card-footer bg-light">
-                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(4)">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(5)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(7)">
+                                Next: Spells <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 7: Spells -->
+                @if (activeTab == 7)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-primary text-white">
+                            <h4 class="mb-0"><i class="bi bi-magic me-2"></i>Choose Spells (Optional)</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            @if (availableSpells == null)
+                            {
+                                <div class="text-center py-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-3 text-muted">Loading spells...</p>
+                                </div>
+                            }
+                            else if (!availableSpells.Any())
+                            {
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    No spells available. This might be because your class doesn't have spellcasting abilities.
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Filter by Level</label>
+                                    <select class="form-select" @bind="selectedSpellLevel">
+                                        <option value="-1">All Levels</option>
+                                        <option value="0">Cantrips</option>
+                                        <option value="1">1st Level</option>
+                                        <option value="2">2nd Level</option>
+                                        <option value="3">3rd Level</option>
+                                        <option value="4">4th Level</option>
+                                        <option value="5">5th Level</option>
+                                        <option value="6">6th Level</option>
+                                        <option value="7">7th Level</option>
+                                        <option value="8">8th Level</option>
+                                        <option value="9">9th Level</option>
+                                    </select>
+                                </div>
+
+                                <div class="row g-3 mb-4">
+                                    @foreach (var spell in GetFilteredSpells())
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="card hover-card @(selectedSpells.Contains(spell) ? "border-primary border-2" : "")" 
+                                                 @onclick="() => ToggleSpell(spell)"
+                                                 style="cursor: pointer;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">
+                                                        @spell.Name
+                                                        @if (selectedSpells.Contains(spell))
+                                                        {
+                                                            <span class="badge bg-primary float-end">
+                                                                <i class="bi bi-check"></i>
+                                                            </span>
+                                                        }
+                                                    </h6>
+                                                    <small class="text-muted d-block">
+                                                        <strong>Level:</strong> @(spell.Level == 0 ? "Cantrip" : spell.Level.ToString())
+                                                        | <strong>School:</strong> @spell.School
+                                                    </small>
+                                                    <p class="card-text small text-muted mt-2">@spell.Description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                @if (selectedSpells.Any())
+                                {
+                                    <div class="alert alert-primary">
+                                        <strong>Selected Spells (@selectedSpells.Count):</strong>
+                                        @string.Join(", ", selectedSpells.Select(s => s.Name))
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(6)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg float-end" 
+                                    @onclick="() => SetActiveTab(8)">
+                                Next: Equipment <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 8: Equipment -->
+                @if (activeTab == 8)
+                {
+                    <div class="card shadow-lg border-0 animate-slide-in">
+                        <div class="card-header bg-gradient-warning text-dark">
+                            <h4 class="mb-0"><i class="bi bi-backpack me-2"></i>Choose Equipment (Optional)</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="nav nav-tabs mb-4" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link @(equipmentTab == 0 ? "active" : "")" 
+                                            @onclick="() => equipmentTab = 0" 
+                                            type="button">
+                                        <i class="bi bi-shield me-1"></i> Armor
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link @(equipmentTab == 1 ? "active" : "")" 
+                                            @onclick="() => equipmentTab = 1" 
+                                            type="button">
+                                        <i class="bi bi-x-diamond me-1"></i> Weapons
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link @(equipmentTab == 2 ? "active" : "")" 
+                                            @onclick="() => equipmentTab = 2" 
+                                            type="button">
+                                        <i class="bi bi-bag me-1"></i> Adventuring Gear
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link @(equipmentTab == 3 ? "active" : "")" 
+                                            @onclick="() => equipmentTab = 3" 
+                                            type="button">
+                                        <i class="bi bi-wrench me-1"></i> Tools
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link @(equipmentTab == 4 ? "active" : "")" 
+                                            @onclick="() => equipmentTab = 4" 
+                                            type="button">
+                                        <i class="bi bi-coin me-1"></i> Wealth
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <!-- Armor Sub-tab -->
+                            @if (equipmentTab == 0)
+                            {
+                                @if (availableArmor == null)
+                                {
+                                    <div class="text-center py-3">
+                                        <div class="spinner-border text-primary" role="status"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row g-3">
+                                        @foreach (var armor in availableArmor)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="card hover-card @(selectedArmor.Contains(armor) ? "border-warning border-2" : "")" 
+                                                     @onclick="() => ToggleArmor(armor)"
+                                                     style="cursor: pointer;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            @armor.Name
+                                                            @if (selectedArmor.Contains(armor))
+                                                            {
+                                                                <span class="badge bg-warning text-dark float-end">
+                                                                    <i class="bi bi-check"></i>
+                                                                </span>
+                                                            }
+                                                        </h6>
+                                                        <small class="text-muted">
+                                                            <div><strong>AC:</strong> @armor.ArmorClass</div>
+                                                            <div><strong>Type:</strong> @armor.Category</div>
+                                                            @if (!string.IsNullOrEmpty(armor.Cost))
+                                                            {
+                                                                <div><strong>Cost:</strong> @armor.Cost</div>
+                                                            }
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                            <!-- Weapons Sub-tab -->
+                            @if (equipmentTab == 1)
+                            {
+                                @if (availableWeapons == null)
+                                {
+                                    <div class="text-center py-3">
+                                        <div class="spinner-border text-primary" role="status"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row g-3">
+                                        @foreach (var weapon in availableWeapons)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="card hover-card @(selectedWeapons.Contains(weapon) ? "border-warning border-2" : "")" 
+                                                     @onclick="() => ToggleWeapon(weapon)"
+                                                     style="cursor: pointer;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            @weapon.Name
+                                                            @if (selectedWeapons.Contains(weapon))
+                                                            {
+                                                                <span class="badge bg-warning text-dark float-end">
+                                                                    <i class="bi bi-check"></i>
+                                                                </span>
+                                                            }
+                                                        </h6>
+                                                        <small class="text-muted">
+                                                            <div><strong>Damage:</strong> @weapon.Damage</div>
+                                                            <div><strong>Type:</strong> @weapon.Type</div>
+                                                            @if (!string.IsNullOrEmpty(weapon.Cost))
+                                                            {
+                                                                <div><strong>Cost:</strong> @weapon.Cost</div>
+                                                            }
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                            <!-- Adventuring Gear Sub-tab -->
+                            @if (equipmentTab == 2)
+                            {
+                                @if (availableAdventuringGear == null)
+                                {
+                                    <div class="text-center py-3">
+                                        <div class="spinner-border text-primary" role="status"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row g-3">
+                                        @foreach (var gear in availableAdventuringGear)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="card hover-card @(selectedAdventuringGear.Contains(gear) ? "border-warning border-2" : "")" 
+                                                     @onclick="() => ToggleAdventuringGear(gear)"
+                                                     style="cursor: pointer;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            @gear.Name
+                                                            @if (selectedAdventuringGear.Contains(gear))
+                                                            {
+                                                                <span class="badge bg-warning text-dark float-end">
+                                                                    <i class="bi bi-check"></i>
+                                                                </span>
+                                                            }
+                                                        </h6>
+                                                        <small class="text-muted">
+                                                            @if (!string.IsNullOrEmpty(gear.Cost))
+                                                            {
+                                                                <div><strong>Cost:</strong> @gear.Cost</div>
+                                                            }
+                                                            @if (!string.IsNullOrEmpty(gear.Weight))
+                                                            {
+                                                                <div><strong>Weight:</strong> @gear.Weight</div>
+                                                            }
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                            <!-- Tools Sub-tab -->
+                            @if (equipmentTab == 3)
+                            {
+                                @if (availableTools == null)
+                                {
+                                    <div class="text-center py-3">
+                                        <div class="spinner-border text-primary" role="status"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row g-3">
+                                        @foreach (var tool in availableTools)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="card hover-card @(selectedTools.Contains(tool) ? "border-warning border-2" : "")" 
+                                                     @onclick="() => ToggleTool(tool)"
+                                                     style="cursor: pointer;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            @tool.Name
+                                                            @if (selectedTools.Contains(tool))
+                                                            {
+                                                                <span class="badge bg-warning text-dark float-end">
+                                                                    <i class="bi bi-check"></i>
+                                                                </span>
+                                                            }
+                                                        </h6>
+                                                        <small class="text-muted">
+                                                            <div><strong>Type:</strong> @tool.Category</div>
+                                                            @if (!string.IsNullOrEmpty(tool.Cost))
+                                                            {
+                                                                <div><strong>Cost:</strong> @tool.Cost</div>
+                                                            }
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                            <!-- Wealth Sub-tab -->
+                            @if (equipmentTab == 4)
+                            {
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold"><i class="bi bi-coin text-warning"></i> Copper Pieces (CP)</label>
+                                        <input type="number" class="form-control" @bind="characterWealth.CopperPieces" min="0" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold"><i class="bi bi-coin text-secondary"></i> Silver Pieces (SP)</label>
+                                        <input type="number" class="form-control" @bind="characterWealth.SilverPieces" min="0" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold"><i class="bi bi-coin text-info"></i> Electrum Pieces (EP)</label>
+                                        <input type="number" class="form-control" @bind="characterWealth.ElectrumPieces" min="0" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold"><i class="bi bi-coin text-warning"></i> Gold Pieces (GP)</label>
+                                        <input type="number" class="form-control" @bind="characterWealth.GoldPieces" min="0" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold"><i class="bi bi-coin text-light"></i> Platinum Pieces (PP)</label>
+                                        <input type="number" class="form-control" @bind="characterWealth.PlatinumPieces" min="0" />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(7)">
                                 <i class="bi bi-arrow-left me-2"></i> Back
                             </button>
                             <button class="btn btn-success btn-lg float-end" 
-                                    @onclick="() => { BuildCharacter(); SetActiveTab(6); }">
+                                    @onclick="() => { BuildCharacter(); SetActiveTab(9); }">
                                 Complete & Preview <i class="bi bi-check-circle ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 6: Preview & Export -->
-                @if (activeTab == 6)
+                <!-- Tab 9: Preview & Export -->
+                @if (activeTab == 9)
                 {
                     <div class="animate-slide-in">
                         @if (builtCharacter != null)
@@ -688,6 +1266,9 @@
     private string characterName = "";
     private CharacterAlignment selectedAlignment = CharacterAlignment.NeutralGood;
     private string characterDescription = "";
+    private int characterLevel = 1;
+    private int characterExperience = 0;
+    private string characterPortrait = "";
 
     // Tab 1: Race
     private List<DndShared.Models.Species>? availableSpecies;
@@ -711,9 +1292,29 @@
     private int charisma = 10;
     private string lastRollDetails = "";
 
-    // Tab 5: Skills & Feats
+    // Tab 5: Skills
+    private CharacterSkills selectedSkills = new();
+
+    // Tab 6: Feats
     private List<Feat>? availableFeats;
     private List<Feat> selectedFeats = new();
+
+    // Tab 7: Spells
+    private List<Spell>? availableSpells;
+    private List<Spell> selectedSpells = new();
+    private int selectedSpellLevel = -1;
+
+    // Tab 8: Equipment
+    private int equipmentTab = 0;
+    private List<DndShared.Models.Armor>? availableArmor;
+    private List<DndShared.Models.Armor> selectedArmor = new();
+    private List<DndShared.Models.Weapon>? availableWeapons;
+    private List<DndShared.Models.Weapon> selectedWeapons = new();
+    private List<DndShared.Models.AdventuringGear>? availableAdventuringGear;
+    private List<DndShared.Models.AdventuringGear> selectedAdventuringGear = new();
+    private List<DndShared.Models.Tool>? availableTools;
+    private List<DndShared.Models.Tool> selectedTools = new();
+    private CharacterWealth characterWealth = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -728,6 +1329,11 @@
             availableClasses = await ClassService.GetAllClassesAsync();
             availableBackgrounds = await BackgroundService.GetAllBackgroundsAsync();
             availableFeats = await FeatService.GetAllFeatsAsync();
+            availableSpells = await SpellService.GetAllSpellsAsync();
+            availableArmor = await ArmorService.GetAllArmorAsync();
+            availableWeapons = await WeaponService.GetAllWeaponsAsync();
+            availableAdventuringGear = await AdventuringGearService.GetAllAdventuringGearAsync();
+            availableTools = await ToolService.GetAllToolsAsync();
         }
         catch (Exception ex)
         {
@@ -738,6 +1344,32 @@
     private void SetActiveTab(int tabIndex)
     {
         activeTab = tabIndex;
+        StateHasChanged();
+    }
+
+    private async Task HandlePortraitUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            try
+            {
+                var buffer = new byte[file.Size];
+                await file.OpenReadStream(maxAllowedSize: 5 * 1024 * 1024).ReadAsync(buffer);
+                var imageType = file.ContentType;
+                characterPortrait = $"data:{imageType};base64,{Convert.ToBase64String(buffer)}";
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error uploading portrait: {ex.Message}");
+            }
+        }
+    }
+
+    private void ClearPortrait()
+    {
+        characterPortrait = "";
         StateHasChanged();
     }
 
@@ -765,6 +1397,61 @@
             selectedFeats.Remove(feat);
         else
             selectedFeats.Add(feat);
+        StateHasChanged();
+    }
+
+    private void ToggleSpell(Spell spell)
+    {
+        if (selectedSpells.Contains(spell))
+            selectedSpells.Remove(spell);
+        else
+            selectedSpells.Add(spell);
+        StateHasChanged();
+    }
+
+    private List<Spell> GetFilteredSpells()
+    {
+        if (availableSpells == null) return new List<Spell>();
+        
+        if (selectedSpellLevel == -1)
+            return availableSpells;
+        
+        return availableSpells.Where(s => s.Level == selectedSpellLevel).ToList();
+    }
+
+    private void ToggleArmor(DndShared.Models.Armor armor)
+    {
+        if (selectedArmor.Contains(armor))
+            selectedArmor.Remove(armor);
+        else
+            selectedArmor.Add(armor);
+        StateHasChanged();
+    }
+
+    private void ToggleWeapon(DndShared.Models.Weapon weapon)
+    {
+        if (selectedWeapons.Contains(weapon))
+            selectedWeapons.Remove(weapon);
+        else
+            selectedWeapons.Add(weapon);
+        StateHasChanged();
+    }
+
+    private void ToggleAdventuringGear(DndShared.Models.AdventuringGear gear)
+    {
+        if (selectedAdventuringGear.Contains(gear))
+            selectedAdventuringGear.Remove(gear);
+        else
+            selectedAdventuringGear.Add(gear);
+        StateHasChanged();
+    }
+
+    private void ToggleTool(DndShared.Models.Tool tool)
+    {
+        if (selectedTools.Contains(tool))
+            selectedTools.Remove(tool);
+        else
+            selectedTools.Add(tool);
         StateHasChanged();
     }
 
@@ -847,7 +1534,26 @@
                 Race = selectedSpecies?.Name ?? "Unknown",
                 Class = selectedClass?.Name ?? "Unknown",
                 Background = selectedBackground?.Name ?? "Unknown",
-                Alignment = selectedAlignment
+                Alignment = selectedAlignment,
+                BaseInformation = new ChraracterSheetInformation
+                {
+                    Level = characterLevel,
+                    ExperiencePoints = characterExperience,
+                    CharacterPortrait = characterPortrait,
+                    Skills = selectedSkills,
+                    Spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
+                    {
+                        Spells = selectedSpells
+                    } : null,
+                    Equipment = new CharacterEquipment
+                    {
+                        Armors = selectedArmor,
+                        Weapons = selectedWeapons,
+                        AdventuringGears = selectedAdventuringGear,
+                        Tools = selectedTools,
+                        Wealth = characterWealth
+                    }
+                }
             },
             Stats = new CharacterStats
             {
@@ -943,12 +1649,24 @@
         characterName = "";
         selectedAlignment = CharacterAlignment.NeutralGood;
         characterDescription = "";
+        characterLevel = 1;
+        characterExperience = 0;
+        characterPortrait = "";
         selectedSpecies = null;
         selectedClass = null;
         selectedBackground = null;
         abilityScoreMethod = "roll";
         strength = dexterity = constitution = intelligence = wisdom = charisma = 10;
+        selectedSkills = new CharacterSkills();
         selectedFeats.Clear();
+        selectedSpells.Clear();
+        selectedSpellLevel = -1;
+        equipmentTab = 0;
+        selectedArmor.Clear();
+        selectedWeapons.Clear();
+        selectedAdventuringGear.Clear();
+        selectedTools.Clear();
+        characterWealth = new CharacterWealth();
         lastRollDetails = "";
         saveMessage = string.Empty;
         StateHasChanged();
