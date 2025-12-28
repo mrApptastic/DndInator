@@ -159,7 +159,10 @@ public class CharacterSheetService : ICharacterSheetService
                 name = f.Name ?? "",
                 description = f.Description ?? "",
                 benefits = f.Benefits ?? new List<string>()
-            }).ToArray()
+            }).ToArray(),
+            
+            // Add character portrait
+            characterPortrait = character.Information?.BaseInformation?.CharacterPortrait
         };
     }
 }

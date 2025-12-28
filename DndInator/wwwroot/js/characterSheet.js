@@ -31,6 +31,12 @@ window.characterSheetModule = {
             // Fill the form fields based on character data
             this.fillFormFields(form, characterData);
             
+            // Add character portrait if available
+            // if (characterData.characterPortrait) {
+            //     console.log('Adding character portrait...');
+            //     await this.addPortraitImage(pdfDoc, characterData.characterPortrait);
+            // }
+            
             console.log('Saving PDF...');
             
             // Serialize the PDFDocument to bytes
@@ -455,6 +461,83 @@ window.characterSheetModule = {
             reader.onerror = reject;
             reader.readAsDataURL(blob);
         });
+    },
+    
+    // Add portrait image to PDF
+    addPortraitImage: async function(pdfDoc, imageDataUrl) {
+        try {
+            // Get the second page (where the portrait box is)
+            const pages = pdfDoc.getPages();
+            const firstPage = pages[1];
+            
+            // Parse the data URL to get the image type and data
+            const matches = imageDataUrl.match(/^data:image\/(png|jpeg|jpg);base64,(.+)$/);
+            if (!matches) {
+                console.warn('Invalid image data URL format');
+                return;
+            }
+            
+            const imageType = matches[1];
+            const imageBase64 = matches[2];
+            
+            // Convert base64 to bytes
+            const imageBytes = Uint8Array.from(atob(imageBase64), c => c.charCodeAt(0));
+            
+            // Embed the image
+            let image;
+            if (imageType === 'png') {
+                image = await pdfDoc.embedPng(imageBytes);
+            } else if (imageType === 'jpeg' || imageType === 'jpg') {
+                image = await pdfDoc.embedJpg(imageBytes);
+            } else {
+                console.warn('Unsupported image type:', imageType);
+                return;
+            }
+            
+            // Portrait box dimensions and position (based on the annotation data provided)
+            // Position is relative to bottom-left corner of page
+            const pageHeight = firstPage.getHeight();
+            const pageWidth = firstPage.getWidth();
+            
+            // From the annotation: left: 68.1435%, top: 17.7558%, width: 29.5358%, height: 21.414%
+            // Convert percentages to actual dimensions
+            const portraitX = pageWidth * 0.681435;
+            const portraitY = pageHeight * (1 - 0.177558 - 0.21414); // Bottom-left origin, so we subtract from top
+            const portraitWidth = pageWidth * 0.295358;
+            const portraitHeight = pageHeight * 0.21414;
+            
+            // Scale the image to fit within the portrait box while maintaining aspect ratio
+            const imgAspectRatio = image.width / image.height;
+            const boxAspectRatio = portraitWidth / portraitHeight;
+            
+            let drawWidth = portraitWidth;
+            let drawHeight = portraitHeight;
+            let drawX = portraitX;
+            let drawY = portraitY;
+            
+            if (imgAspectRatio > boxAspectRatio) {
+                // Image is wider than box
+                drawHeight = portraitWidth / imgAspectRatio;
+                drawY = portraitY + (portraitHeight - drawHeight) / 2;
+            } else {
+                // Image is taller than box
+                drawWidth = portraitHeight * imgAspectRatio;
+                drawX = portraitX + (portraitWidth - drawWidth) / 2;
+            }
+            
+            // Draw the image on the page
+            firstPage.drawImage(image, {
+                x: drawX,
+                y: drawY,
+                width: drawWidth,
+                height: drawHeight
+            });
+            
+            console.log('Portrait image added successfully');
+        } catch (error) {
+            console.error('Error adding portrait image:', error);
+            // Don't throw - continue with PDF generation even if portrait fails
+        }
     },
     
     // Get list of all form fields in a PDF (for debugging)
