@@ -31,12 +31,18 @@ window.characterSheetModule = {
             // Fill the form fields based on character data
             this.fillFormFields(form, characterData);
             
-            // Add character portrait if available
+            // // Flatten the form to convert fields to static content
+            // // This ensures the portrait will be drawn on top
+            // console.log('Flattening form fields...');
+            // form.flatten();
+            
+            // // Add character portrait if available
+            // // Must be done AFTER flattening so it appears on top
             // if (characterData.characterPortrait) {
             //     console.log('Adding character portrait...');
             //     await this.addPortraitImage(pdfDoc, characterData.characterPortrait);
+            //     // await this.drawPortraitOnCanvas('canvas.annotationContent', characterData.characterPortrait);    
             // }
-            
             console.log('Saving PDF...');
             
             // Serialize the PDFDocument to bytes
@@ -468,7 +474,7 @@ window.characterSheetModule = {
         try {
             // Get the second page (where the portrait box is)
             const pages = pdfDoc.getPages();
-            const firstPage = pages[1];
+            const secondPage = pages[1];
             
             // Parse the data URL to get the image type and data
             const matches = imageDataUrl.match(/^data:image\/(png|jpeg|jpg);base64,(.+)$/);
@@ -496,8 +502,8 @@ window.characterSheetModule = {
             
             // Portrait box dimensions and position (based on the annotation data provided)
             // Position is relative to bottom-left corner of page
-            const pageHeight = firstPage.getHeight();
-            const pageWidth = firstPage.getWidth();
+            const pageHeight = secondPage.getHeight();
+            const pageWidth = secondPage.getWidth();
             
             // From the annotation: left: 68.1435%, top: 17.7558%, width: 29.5358%, height: 21.414%
             // Convert percentages to actual dimensions
@@ -526,7 +532,7 @@ window.characterSheetModule = {
             }
             
             // Draw the image on the page
-            firstPage.drawImage(image, {
+            secondPage.drawImage(image, {
                 x: drawX,
                 y: drawY,
                 width: drawWidth,
@@ -538,6 +544,76 @@ window.characterSheetModule = {
             console.error('Error adding portrait image:', error);
             // Don't throw - continue with PDF generation even if portrait fails
         }
+    },
+    
+    // Alternative: Draw portrait directly on canvas after PDF is rendered
+    drawPortraitOnCanvas: function(canvasElement, imageDataUrl, pageNumber = 2) {
+        return new Promise((resolve, reject) => {
+            try {
+                const canvas = typeof canvasElement === 'string' 
+                    ? document.querySelector(canvasElement) 
+                    : canvasElement;
+                
+                if (!canvas) {
+                    console.warn('Canvas element not found');
+                    reject(new Error('Canvas not found'));
+                    return;
+                }
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Create image element
+                const img = new Image();
+                img.onload = function() {
+                    // Portrait box dimensions (as percentages of canvas size)
+                    const portraitLeft = 0.681435;
+                    const portraitTop = 0.177558;
+                    const portraitWidthPercent = 0.295358;
+                    const portraitHeightPercent = 0.21414;
+                    
+                    // Convert to actual canvas coordinates
+                    const portraitX = canvas.width * portraitLeft;
+                    const portraitY = canvas.height * portraitTop;
+                    const portraitWidth = canvas.width * portraitWidthPercent;
+                    const portraitHeight = canvas.height * portraitHeightPercent;
+                    
+                    // Scale image to fit while maintaining aspect ratio
+                    const imgAspectRatio = img.width / img.height;
+                    const boxAspectRatio = portraitWidth / portraitHeight;
+                    
+                    let drawWidth = portraitWidth;
+                    let drawHeight = portraitHeight;
+                    let drawX = portraitX;
+                    let drawY = portraitY;
+                    
+                    if (imgAspectRatio > boxAspectRatio) {
+                        // Image is wider than box
+                        drawHeight = portraitWidth / imgAspectRatio;
+                        drawY = portraitY + (portraitHeight - drawHeight) / 2;
+                    } else {
+                        // Image is taller than box
+                        drawWidth = portraitHeight * imgAspectRatio;
+                        drawX = portraitX + (portraitWidth - drawWidth) / 2;
+                    }
+                    
+                    // Draw the image on canvas
+                    ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+                    
+                    console.log('Portrait drawn on canvas successfully');
+                    resolve();
+                };
+                
+                img.onerror = function() {
+                    console.error('Failed to load portrait image');
+                    reject(new Error('Failed to load image'));
+                };
+                
+                img.src = imageDataUrl;
+            } catch (error) {
+                console.error('Error drawing portrait on canvas:', error);
+                reject(error);
+            }
+        });
     },
     
     // Get list of all form fields in a PDF (for debugging)
