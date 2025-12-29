@@ -1,0 +1,160 @@
+@using DndShared.Models
+@using DndInator.Services
+@inject IFeatService FeatService
+
+<div class="card shadow-sm">
+    <div class="card-header bg-warning text-dark">
+        <h5 class="mb-0">
+            <i class="bi bi-star-fill me-2"></i>
+            Feats (Optional)
+        </h5>
+    </div>
+    <div class="card-body">
+        @if (isLoading)
+        {
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">Loading feats...</p>
+            </div>
+        }
+        else if (availableFeats.Count == 0)
+        {
+            <div class="alert alert-warning">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                No feats available
+            </div>
+        }
+        else
+        {
+            <p class="text-muted mb-3">Select feats for your character (optional).</p>
+            
+            <div class="row g-3">
+                @foreach (var feat in availableFeats)
+                {
+                    <div class="col-md-6">
+                        <div class="card h-100 @(selectedFeats.Contains(feat) ? "border-primary border-2" : "border") hover-card" 
+                             @onclick="() => ToggleFeat(feat)"
+                             style="cursor: pointer;">
+                            <div class="card-body">
+                                <h6 class="card-title d-flex justify-content-between align-items-start">
+                                    <span>@feat.Name</span>
+                                    @if (selectedFeats.Contains(feat))
+                                    {
+                                        <span class="badge bg-primary">
+                                            <i class="bi bi-check-lg"></i>
+                                        </span>
+                                    }
+                                </h6>
+                                <p class="card-text small text-muted mb-0">@feat.Description</p>
+                                @if (!string.IsNullOrEmpty(feat.Prerequisite))
+                                {
+                                    <p class="card-text mt-2">
+                                        <small class="text-info">
+                                            <strong>Prerequisite:</strong> @feat.Prerequisite
+                                        </small>
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @if (selectedFeats.Any())
+            {
+                <div class="alert alert-primary mt-3 mb-0">
+                    <strong><i class="bi bi-check-circle me-2"></i>Selected Feats (@selectedFeats.Count):</strong>
+                    <div class="mt-2">
+                        @foreach (var feat in selectedFeats)
+                        {
+                            <span class="badge bg-primary me-2 mb-1">
+                                @feat.Name
+                                <i class="bi bi-x-circle ms-1" @onclick="() => ToggleFeat(feat)" style="cursor: pointer;"></i>
+                            </span>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: all 0.2s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+</style>
+
+@code {
+    private List<Feat> availableFeats = new();
+    private List<Feat> selectedFeats = new();
+    private bool isLoading = true;
+
+    [Parameter]
+    public List<Feat>? Feats { get; set; }
+
+    [Parameter]
+    public EventCallback<List<Feat>> OnFeatsChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => true; // Feats are optional
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadFeats();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Feats != null)
+        {
+            selectedFeats = new List<Feat>(Feats);
+        }
+    }
+
+    private async Task LoadFeats()
+    {
+        isLoading = true;
+        try
+        {
+            availableFeats = await FeatService.GetAllFeatsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading feats: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task ToggleFeat(Feat feat)
+    {
+        if (selectedFeats.Contains(feat))
+        {
+            selectedFeats.Remove(feat);
+        }
+        else
+        {
+            selectedFeats.Add(feat);
+        }
+
+        await NotifyChanges();
+    }
+
+    private async Task NotifyChanges()
+    {
+        await OnFeatsChanged.InvokeAsync(selectedFeats);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+}

@@ -1,0 +1,197 @@
+@using DndShared.Models
+@using DndInator.Services
+@inject ISpellService SpellService
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-magic me-2"></i>
+            Spells (Optional)
+        </h5>
+    </div>
+    <div class="card-body">
+        @if (isLoading)
+        {
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">Loading spells...</p>
+            </div>
+        }
+        else if (availableSpells.Count == 0)
+        {
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                No spells available. This might be because your class doesn't have spellcasting abilities.
+            </div>
+        }
+        else
+        {
+            <div class="mb-3">
+                <label class="form-label fw-bold">Filter by Level</label>
+                <select class="form-select" @bind="selectedLevel">
+                    <option value="-1">All Levels</option>
+                    <option value="0">Cantrips</option>
+                    @for (int i = 1; i <= 9; i++)
+                    {
+                        <option value="@i">@GetLevelOrdinal(i) Level</option>
+                    }
+                </select>
+            </div>
+
+            <div class="row g-3" style="max-height: 500px; overflow-y: auto;">
+                @foreach (var spell in GetFilteredSpells())
+                {
+                    <div class="col-md-6">
+                        <div class="card h-100 @(selectedSpells.Contains(spell) ? "border-primary border-2" : "border") hover-card" 
+                             @onclick="() => ToggleSpell(spell)"
+                             style="cursor: pointer;">
+                            <div class="card-body">
+                                <h6 class="card-title d-flex justify-content-between align-items-start">
+                                    <span>@spell.Name</span>
+                                    @if (selectedSpells.Contains(spell))
+                                    {
+                                        <span class="badge bg-primary">
+                                            <i class="bi bi-check-lg"></i>
+                                        </span>
+                                    }
+                                </h6>
+                                <small class="text-muted d-block mb-2">
+                                    <strong>Level:</strong> @(spell.Level == 0 ? "Cantrip" : spell.Level.ToString())
+                                    | <strong>School:</strong> @spell.School
+                                </small>
+                                <p class="card-text small text-muted mb-0">@TruncateDescription(spell.Description, 100)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @if (selectedSpells.Any())
+            {
+                <div class="alert alert-primary mt-3 mb-0">
+                    <strong><i class="bi bi-check-circle me-2"></i>Selected Spells (@selectedSpells.Count):</strong>
+                    <div class="mt-2">
+                        @foreach (var spell in selectedSpells.OrderBy(s => s.Level).ThenBy(s => s.Name))
+                        {
+                            <span class="badge bg-primary me-2 mb-1">
+                                @spell.Name (L@spell.Level)
+                                <i class="bi bi-x-circle ms-1" @onclick="() => ToggleSpell(spell)" @onclick:stopPropagation="true" style="cursor: pointer;"></i>
+                            </span>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: all 0.2s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+</style>
+
+@code {
+    private List<Spell> availableSpells = new();
+    private List<Spell> selectedSpells = new();
+    private int selectedLevel = -1;
+    private bool isLoading = true;
+
+    [Parameter]
+    public List<Spell>? Spells { get; set; }
+
+    [Parameter]
+    public EventCallback<List<Spell>> OnSpellsChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => true; // Spells are optional
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSpells();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Spells != null)
+        {
+            selectedSpells = new List<Spell>(Spells);
+        }
+    }
+
+    private async Task LoadSpells()
+    {
+        isLoading = true;
+        try
+        {
+            availableSpells = await SpellService.GetAllSpellsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading spells: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private List<Spell> GetFilteredSpells()
+    {
+        if (selectedLevel == -1)
+            return availableSpells;
+        
+        return availableSpells.Where(s => s.Level == selectedLevel).ToList();
+    }
+
+    private async Task ToggleSpell(Spell spell)
+    {
+        if (selectedSpells.Contains(spell))
+        {
+            selectedSpells.Remove(spell);
+        }
+        else
+        {
+            selectedSpells.Add(spell);
+        }
+
+        await NotifyChanges();
+    }
+
+    private async Task NotifyChanges()
+    {
+        await OnSpellsChanged.InvokeAsync(selectedSpells);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+
+    private string GetLevelOrdinal(int level)
+    {
+        return level switch
+        {
+            1 => "1st",
+            2 => "2nd",
+            3 => "3rd",
+            _ => $"{level}th"
+        };
+    }
+
+    private string TruncateDescription(string? description, int maxLength)
+    {
+        if (string.IsNullOrEmpty(description))
+            return string.Empty;
+        
+        if (description.Length <= maxLength)
+            return description;
+        
+        return description.Substring(0, maxLength) + "...";
+    }
+}

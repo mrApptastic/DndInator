@@ -1,0 +1,202 @@
+@using DndShared.Models
+@using Microsoft.AspNetCore.Components.Forms
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-person-fill me-2"></i>
+            Character Information
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="characterName" class="form-label fw-bold">Character Name <span class="text-danger">*</span></label>
+                <input type="text" 
+                       class="form-control form-control-lg @(IsValid ? "" : "is-invalid")" 
+                       id="characterName"
+                       @bind="characterName"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       placeholder="Enter character name">
+                @if (!IsValid && !string.IsNullOrEmpty(characterName))
+                {
+                    <div class="invalid-feedback d-block">
+                        Character name is required and must be at least 2 characters long.
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="alignment" class="form-label fw-bold">Alignment</label>
+                <select class="form-select form-select-lg" 
+                        id="alignment"
+                        @bind="selectedAlignment"
+                        @bind:after="ValidateAndNotify">
+                    @foreach (var alignment in Enum.GetValues<CharacterAlignment>())
+                    {
+                        <option value="@alignment">@GetAlignmentDisplayName(alignment)</option>
+                    }
+                </select>
+            </div>
+
+            @if (ShowExtendedFields)
+            {
+                <div class="col-md-3 mb-3">
+                    <label for="level" class="form-label fw-bold">Level</label>
+                    <input type="number" 
+                           class="form-control form-control-lg" 
+                           id="level"
+                           @bind="level"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="20"
+                           placeholder="1">
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="experience" class="form-label fw-bold">Experience Points</label>
+                    <input type="number" 
+                           class="form-control form-control-lg" 
+                           id="experience"
+                           @bind="experiencePoints"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="0"
+                           placeholder="0">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="portrait" class="form-label fw-bold">Character Portrait (Optional)</label>
+                    <InputFile OnChange="HandlePortraitUpload" class="form-control" accept="image/*" />
+                    @if (!string.IsNullOrEmpty(portrait))
+                    {
+                        <div class="mt-2">
+                            <img src="@portrait" alt="Character Portrait" style="max-width: 150px; max-height: 150px; border-radius: 8px;" />
+                            <button class="btn btn-sm btn-outline-danger ms-2" @onclick="ClearPortrait">
+                                <i class="bi bi-x-circle"></i> Remove
+                            </button>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="description" class="form-label fw-bold">Character Description (Optional)</label>
+                    <textarea class="form-control" 
+                              rows="3" 
+                              id="description"
+                              @bind="description"
+                              @bind:event="oninput"
+                              @onblur="ValidateAndNotify"
+                              placeholder="Describe your character's appearance, personality, or backstory..."></textarea>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string characterName = string.Empty;
+    private CharacterAlignment selectedAlignment = CharacterAlignment.TrueNeutral;
+    private int level = 1;
+    private int experiencePoints = 0;
+    private string portrait = string.Empty;
+    private string description = string.Empty;
+
+    [Parameter]
+    public CharacterInformation? Information { get; set; }
+
+    [Parameter]
+    public EventCallback<CharacterInformation> OnInformationChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    [Parameter]
+    public bool ShowExtendedFields { get; set; } = false;
+
+    public bool IsValid => !string.IsNullOrWhiteSpace(characterName) && characterName.Length >= 2;
+
+    protected override void OnParametersSet()
+    {
+        if (Information != null)
+        {
+            characterName = Information.Name ?? string.Empty;
+            selectedAlignment = Information.Alignment ?? CharacterAlignment.TrueNeutral;
+            
+            if (Information.BaseInformation != null)
+            {
+                level = Information.BaseInformation.Level ?? 1;
+                experiencePoints = Information.BaseInformation.ExperiencePoints ?? 0;
+                portrait = Information.BaseInformation.CharacterPortrait ?? string.Empty;
+                description = Information.BaseInformation.Personality ?? string.Empty;
+            }
+        }
+    }
+
+    private async Task ValidateAndNotify()
+    {
+        var info = new CharacterInformation
+        {
+            Name = characterName,
+            Alignment = selectedAlignment
+        };
+
+        if (ShowExtendedFields)
+        {
+            info.BaseInformation = new ChraracterSheetInformation
+            {
+                Level = level,
+                ExperiencePoints = experiencePoints,
+                CharacterPortrait = portrait,
+                Personality = description
+            };
+        }
+
+        await OnInformationChanged.InvokeAsync(info);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+
+    private async Task HandlePortraitUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            try
+            {
+                var buffer = new byte[file.Size];
+                await file.OpenReadStream(maxAllowedSize: 5 * 1024 * 1024).ReadAsync(buffer);
+                var imageType = file.ContentType;
+                portrait = $"data:{imageType};base64,{Convert.ToBase64String(buffer)}";
+                await ValidateAndNotify();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error uploading portrait: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task ClearPortrait()
+    {
+        portrait = string.Empty;
+        await ValidateAndNotify();
+    }
+
+    private string GetAlignmentDisplayName(CharacterAlignment alignment)
+    {
+        return alignment switch
+        {
+            CharacterAlignment.LawfulGood => "Lawful Good",
+            CharacterAlignment.NeutralGood => "Neutral Good",
+            CharacterAlignment.ChaoticGood => "Chaotic Good",
+            CharacterAlignment.LawfulNeutral => "Lawful Neutral",
+            CharacterAlignment.TrueNeutral => "True Neutral",
+            CharacterAlignment.ChaoticNeutral => "Chaotic Neutral",
+            CharacterAlignment.LawfulEvil => "Lawful Evil",
+            CharacterAlignment.NeutralEvil => "Neutral Evil",
+            CharacterAlignment.ChaoticEvil => "Chaotic Evil",
+            _ => alignment.ToString()
+        };
+    }
+}

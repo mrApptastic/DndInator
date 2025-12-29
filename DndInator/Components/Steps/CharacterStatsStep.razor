@@ -1,0 +1,176 @@
+@using DndShared.Models
+
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-bar-chart-fill me-2"></i>
+            Ability Scores
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="strength" class="form-label">Strength</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(strength) ? "" : "is-invalid")" 
+                       id="strength"
+                       @bind="strength"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(strength))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="dexterity" class="form-label">Dexterity</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(dexterity) ? "" : "is-invalid")" 
+                       id="dexterity"
+                       @bind="dexterity"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(dexterity))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="constitution" class="form-label">Constitution</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(constitution) ? "" : "is-invalid")" 
+                       id="constitution"
+                       @bind="constitution"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(constitution))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="intelligence" class="form-label">Intelligence</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(intelligence) ? "" : "is-invalid")" 
+                       id="intelligence"
+                       @bind="intelligence"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(intelligence))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="wisdom" class="form-label">Wisdom</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(wisdom) ? "" : "is-invalid")" 
+                       id="wisdom"
+                       @bind="wisdom"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(wisdom))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="charisma" class="form-label">Charisma</label>
+                <input type="number" 
+                       class="form-control @(IsValidScore(charisma) ? "" : "is-invalid")" 
+                       id="charisma"
+                       @bind="charisma"
+                       @bind:event="oninput"
+                       @onblur="ValidateAndNotify"
+                       min="1" max="30">
+                @if (!IsValidScore(charisma))
+                {
+                    <div class="invalid-feedback d-block">
+                        Score must be between 1 and 30
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            <strong>Modifier:</strong> (Score - 10) / 2 (rounded down)
+        </div>
+    </div>
+</div>
+
+@code {
+    private int strength = 10;
+    private int dexterity = 10;
+    private int constitution = 10;
+    private int intelligence = 10;
+    private int wisdom = 10;
+    private int charisma = 10;
+
+    [Parameter]
+    public CharacterStats? Stats { get; set; }
+
+    [Parameter]
+    public EventCallback<CharacterStats> OnStatsChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => IsValidScore(strength) && IsValidScore(dexterity) && 
+                          IsValidScore(constitution) && IsValidScore(intelligence) && 
+                          IsValidScore(wisdom) && IsValidScore(charisma);
+
+    protected override void OnParametersSet()
+    {
+        if (Stats != null)
+        {
+            strength = Stats.Strength;
+            dexterity = Stats.Dexterity;
+            constitution = Stats.Constitution;
+            intelligence = Stats.Intelligence;
+            wisdom = Stats.Wisdom;
+            charisma = Stats.Charisma;
+        }
+    }
+
+    private bool IsValidScore(int score)
+    {
+        return score >= 1 && score <= 30;
+    }
+
+    private async Task ValidateAndNotify()
+    {
+        var stats = new CharacterStats
+        {
+            Strength = strength,
+            Dexterity = dexterity,
+            Constitution = constitution,
+            Intelligence = intelligence,
+            Wisdom = wisdom,
+            Charisma = charisma
+        };
+
+        await OnStatsChanged.InvokeAsync(stats);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+}

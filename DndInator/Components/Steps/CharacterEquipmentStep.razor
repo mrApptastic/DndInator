@@ -1,0 +1,285 @@
+@using DndShared.Models
+@using DndInator.Services
+@inject IWeaponService WeaponService
+@inject IArmorService ArmorService
+
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-backpack me-2"></i>
+            Equipment (Optional)
+        </h5>
+    </div>
+    <div class="card-body">
+        <ul class="nav nav-tabs mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 0 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 0" 
+                        type="button">
+                    <i class="bi bi-shield me-1"></i> Armor
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 1 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 1" 
+                        type="button">
+                    <i class="bi bi-x-diamond me-1"></i> Weapons
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 2 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 2" 
+                        type="button">
+                    <i class="bi bi-coin me-1"></i> Wealth
+                </button>
+            </li>
+        </ul>
+
+        <!-- Armor Tab -->
+        @if (activeSubTab == 0)
+        {
+            @if (isLoadingArmor)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading armor...</p>
+                </div>
+            }
+            else if (availableArmor.Count == 0)
+            {
+                <div class="alert alert-warning">No armor available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var armor in availableArmor)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedArmor.Contains(armor) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleArmor(armor)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@armor.Name</span>
+                                        @if (selectedArmor.Contains(armor))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(armor.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @armor.Cost</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(armor.ArmorClass))
+                                        {
+                                            <div><strong>AC:</strong> @armor.ArmorClass</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Weapons Tab -->
+        @if (activeSubTab == 1)
+        {
+            @if (isLoadingWeapons)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading weapons...</p>
+                </div>
+            }
+            else if (availableWeapons.Count == 0)
+            {
+                <div class="alert alert-warning">No weapons available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var weapon in availableWeapons)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedWeapons.Contains(weapon) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleWeapon(weapon)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@weapon.Name</span>
+                                        @if (selectedWeapons.Contains(weapon))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(weapon.Damage))
+                                        {
+                                            <div><strong>Damage:</strong> @weapon.Damage</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(weapon.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @weapon.Cost</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Wealth Tab -->
+        @if (activeSubTab == 2)
+        {
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold"><i class="bi bi-coin text-warning"></i> Copper Pieces (CP)</label>
+                    <input type="number" class="form-control" @bind="wealth.CopperPieces" @bind:event="oninput" @onblur="NotifyChanges" min="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold"><i class="bi bi-coin text-secondary"></i> Silver Pieces (SP)</label>
+                    <input type="number" class="form-control" @bind="wealth.SilverPieces" @bind:event="oninput" @onblur="NotifyChanges" min="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold"><i class="bi bi-coin text-info"></i> Electrum Pieces (EP)</label>
+                    <input type="number" class="form-control" @bind="wealth.ElectrumPieces" @bind:event="oninput" @onblur="NotifyChanges" min="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold"><i class="bi bi-coin text-warning"></i> Gold Pieces (GP)</label>
+                    <input type="number" class="form-control" @bind="wealth.GoldPieces" @bind:event="oninput" @onblur="NotifyChanges" min="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold"><i class="bi bi-coin text-light"></i> Platinum Pieces (PP)</label>
+                    <input type="number" class="form-control" @bind="wealth.PlatinumPieces" @bind:event="oninput" @onblur="NotifyChanges" min="0" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: all 0.2s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+</style>
+
+@code {
+    private int activeSubTab = 0;
+    private List<DndShared.Models.Armor> availableArmor = new();
+    private List<DndShared.Models.Armor> selectedArmor = new();
+    private List<DndShared.Models.Weapon> availableWeapons = new();
+    private List<DndShared.Models.Weapon> selectedWeapons = new();
+    private CharacterWealth wealth = new();
+    private bool isLoadingArmor = true;
+    private bool isLoadingWeapons = true;
+
+    [Parameter]
+    public CharacterEquipmentData? Equipment { get; set; }
+
+    [Parameter]
+    public EventCallback<CharacterEquipmentData> OnEquipmentChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => true; // Equipment is optional
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.WhenAll(LoadArmor(), LoadWeapons());
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Equipment != null)
+        {
+            selectedArmor = Equipment.Armor ?? new();
+            selectedWeapons = Equipment.Weapons ?? new();
+            wealth = Equipment.Wealth ?? new();
+        }
+    }
+
+    private async Task LoadArmor()
+    {
+        isLoadingArmor = true;
+        try
+        {
+            availableArmor = await ArmorService.GetAllArmorAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading armor: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingArmor = false;
+        }
+    }
+
+    private async Task LoadWeapons()
+    {
+        isLoadingWeapons = true;
+        try
+        {
+            availableWeapons = await WeaponService.GetAllWeaponsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading weapons: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingWeapons = false;
+        }
+    }
+
+    private async Task ToggleArmor(DndShared.Models.Armor armor)
+    {
+        if (selectedArmor.Contains(armor))
+            selectedArmor.Remove(armor);
+        else
+            selectedArmor.Add(armor);
+        
+        await NotifyChanges();
+    }
+
+    private async Task ToggleWeapon(DndShared.Models.Weapon weapon)
+    {
+        if (selectedWeapons.Contains(weapon))
+            selectedWeapons.Remove(weapon);
+        else
+            selectedWeapons.Add(weapon);
+        
+        await NotifyChanges();
+    }
+
+    private async Task NotifyChanges()
+    {
+        var equipmentData = new CharacterEquipmentData
+        {
+            Armor = selectedArmor,
+            Weapons = selectedWeapons,
+            Wealth = wealth
+        };
+
+        await OnEquipmentChanged.InvokeAsync(equipmentData);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+
+    public class CharacterEquipmentData
+    {
+        public List<DndShared.Models.Armor>? Armor { get; set; }
+        public List<DndShared.Models.Weapon>? Weapons { get; set; }
+        public CharacterWealth? Wealth { get; set; }
+    }
+}

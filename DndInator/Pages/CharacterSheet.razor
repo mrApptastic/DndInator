@@ -2,6 +2,7 @@
 @using DndInator.Services
 @using DndShared.Models
 @using DndInator.Components
+@using DndInator.Components.Steps
 @inject ICharacterSheetService CharacterSheetService
 
 <PageTitle>Character Sheet Generator</PageTitle>
@@ -13,110 +14,164 @@
                 <i class="bi bi-file-earmark-pdf-fill me-2"></i>
                 Character Sheet Generator
             </h1>
-            <p class="lead text-muted">Generate a filled D&D 5e character sheet PDF</p>
+            <p class="lead text-muted">Create your D&D 5e character step by step</p>
+        </div>
+    </div>
+
+    <!-- Step Progress Indicator -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="progress" style="height: 30px;">
+                <div class="progress-bar @GetProgressBarClass()" 
+                     role="progressbar" 
+                     style="width: @GetProgressPercentage()%"
+                     aria-valuenow="@currentStep" 
+                     aria-valuemin="0" 
+                     aria-valuemax="@totalSteps">
+                    Step @(currentStep + 1) of @totalSteps
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <CharacterSheetDisplay Character="sampleCharacter" />
-            
+            <!-- Step Content -->
+            @if (currentStep == 0)
+            {
+                <CharacterInformationStep 
+                    Information="character.Information"
+                    OnInformationChanged="HandleInformationChanged"
+                    OnValidationChanged="HandleStepValidation" />
+            }
+            else if (currentStep == 1)
+            {
+                <CharacterSpeciesStep 
+                    Species="character.Race"
+                    OnSpeciesChanged="HandleSpeciesChanged"
+                    OnValidationChanged="HandleStepValidation" />
+            }
+            else if (currentStep == 2)
+            {
+                <CharacterClassStep 
+                    Class="character.Class"
+                    OnClassChanged="HandleClassChanged"
+                    OnValidationChanged="HandleStepValidation" />
+            }
+            else if (currentStep == 3)
+            {
+                <CharacterBackgroundStep 
+                    Background="character.Background"
+                    OnBackgroundChanged="HandleBackgroundChanged"
+                    OnValidationChanged="HandleStepValidation" />
+            }
+            else if (currentStep == 4)
+            {
+                <CharacterStatsStep 
+                    Stats="character.Stats"
+                    OnStatsChanged="HandleStatsChanged"
+                    OnValidationChanged="HandleStepValidation" />
+            }
+
+            <!-- Step Navigation -->
             <div class="card shadow-sm mt-3">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-lg w-100" 
-                            @onclick="GenerateCharacterSheet" 
-                            disabled="@isGenerating">
-                        @if (isGenerating)
-                        {
-                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                            <span>Generating...</span>
-                        }
-                        else
-                        {
-                            <i class="bi bi-file-earmark-pdf-fill me-2"></i>
-                            <span>Generate Character Sheet</span>
-                        }
-                    </button>
-
-                    @if (!string.IsNullOrEmpty(pdfDataUrl))
-                    {
-                        <button class="btn btn-success btn-lg w-100 mt-2" 
-                                @onclick="DownloadCharacterSheet">
-                            <i class="bi bi-download me-2"></i>
-                            Download PDF
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-secondary" 
+                                @onclick="PreviousStep"
+                                disabled="@(currentStep == 0)">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Previous
                         </button>
-                    }
 
-                    @if (!string.IsNullOrEmpty(errorMessage))
-                    {
-                        <div class="alert alert-danger mt-3">
-                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                            @errorMessage
-                        </div>
-                    }
-
-                    @if (!string.IsNullOrEmpty(successMessage))
-                    {
-                        <div class="alert alert-success mt-3">
-                            <i class="bi bi-check-circle-fill me-2"></i>
-                            @successMessage
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <div class="card shadow-sm mt-3">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-info-circle-fill me-2"></i>
-                        Debug Tools
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <button class="btn btn-outline-info w-100" 
-                            @onclick="GetFormFields"
-                            disabled="@isLoadingFields">
-                        @if (isLoadingFields)
+                        @if (currentStep < totalSteps - 1)
                         {
-                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                            <span>Loading...</span>
+                            <button class="btn btn-primary" 
+                                    @onclick="NextStep"
+                                    disabled="@(!isCurrentStepValid)">
+                                Next
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
                         }
                         else
                         {
-                            <i class="bi bi-list-ul me-2"></i>
-                            <span>Get PDF Form Fields</span>
+                            <button class="btn btn-success" 
+                                    @onclick="CompleteCharacterCreation"
+                                    disabled="@(!isCurrentStepValid)">
+                                <i class="bi bi-check-circle me-2"></i>
+                                Complete
+                            </button>
                         }
-                    </button>
-
-                    @if (formFields.Any())
-                    {
-                        <div class="mt-3" style="max-height: 300px; overflow-y: auto;">
-                            <small class="text-muted">Found @formFields.Count fields:</small>
-                            <ul class="list-group list-group-flush mt-2">
-                                @foreach (var field in formFields)
-                                {
-                                    <li class="list-group-item py-1 px-2">
-                                        <small>
-                                            <strong>@field.Name</strong>
-                                            <span class="badge bg-secondary ms-2">@field.Type</span>
-                                        </small>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
+
+            <!-- Character Preview Card -->
+            @if (characterCompleted)
+            {
+                <div class="card shadow-sm mt-3">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person-badge me-2"></i>
+                            Character Preview
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <CharacterSheetDisplay Character="character" />
+                        <CharacterSheetDisplay Character="character" />
+                        
+                        <button class="btn btn-primary btn-lg w-100 mt-3" 
+                                @onclick="GenerateCharacterSheet" 
+                                disabled="@isGenerating">
+                            @if (isGenerating)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                <span>Generating...</span>
+                            }
+                            else
+                            {
+                                <i class="bi bi-file-earmark-pdf-fill me-2"></i>
+                                <span>Generate PDF</span>
+                            }
+                        </button>
+
+                        @if (!string.IsNullOrEmpty(pdfDataUrl))
+                        {
+                            <button class="btn btn-success btn-lg w-100 mt-2" 
+                                    @onclick="DownloadCharacterSheet">
+                                <i class="bi bi-download me-2"></i>
+                                Download PDF
+                            </button>
+                        }
+
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger mt-3">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                @errorMessage
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(successMessage))
+                        {
+                            <div class="alert alert-success mt-3">
+                                <i class="bi bi-check-circle-fill me-2"></i>
+                                @successMessage
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
         </div>
 
         <div class="col-md-6">
             @if (!string.IsNullOrEmpty(pdfDataUrl))
             {
-                <div class="card shadow-sm">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
                     <div class="card-header bg-success text-white">
                         <h5 class="mb-0">
                             <i class="bi bi-eye-fill me-2"></i>
-                            Preview
+                            PDF Preview
                         </h5>
                     </div>
                     <div class="card-body p-0">
@@ -126,12 +181,67 @@
                     </div>
                 </div>
             }
+            else if (characterCompleted)
+            {
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Character Summary
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-3">@character.Information?.Name</h4>
+                        
+                        <div class="mb-3">
+                            <strong>Species:</strong> @character.Race?.Name<br />
+                            <strong>Class:</strong> @character.Class?.Name<br />
+                            <strong>Background:</strong> @character.Background?.Name<br />
+                            <strong>Alignment:</strong> @GetAlignmentDisplayName(character.Information?.Alignment ?? CharacterAlignment.TrueNeutral)
+                        </div>
+
+                        <div class="mb-3">
+                            <strong>Ability Scores:</strong>
+                            <div class="row text-center mt-2">
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">STR: @character.Stats?.Strength</div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">DEX: @character.Stats?.Dexterity</div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">CON: @character.Stats?.Constitution</div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">INT: @character.Stats?.Intelligence</div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">WIS: @character.Stats?.Wisdom</div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <div class="badge bg-primary w-100">CHA: @character.Stats?.Charisma</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Character creation complete! Generate PDF to download your character sheet.
+                        </div>
+                    </div>
+                </div>
+            }
             else
             {
-                <div class="card shadow-sm">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
                     <div class="card-body text-center py-5">
-                        <i class="bi bi-file-earmark-pdf" style="font-size: 5rem; color: #ccc;"></i>
-                        <p class="text-muted mt-3">Generate a character sheet to see preview</p>
+                        <i class="bi bi-clipboard-check" style="font-size: 5rem; color: #ccc;"></i>
+                        <p class="text-muted mt-3">Complete all steps to create your character</p>
+                        <div class="mt-3">
+                            <small class="text-muted">
+                                Current Step: @GetStepName(currentStep)
+                            </small>
+                        </div>
                     </div>
                 </div>
             }
@@ -146,83 +256,165 @@
     .hover-lift:hover {
         transform: translateY(-2px);
     }
+    .sticky-top {
+        position: sticky;
+    }
 </style>
 
 @code {
-    private Character sampleCharacter = new Character();
+    private Character character = new Character();
     private string pdfDataUrl = string.Empty;
     private string errorMessage = string.Empty;
     private string successMessage = string.Empty;
     private bool isGenerating = false;
-    private bool isLoadingFields = false;
-    private List<FormField> formFields = new List<FormField>();
+    
+    // Step management
+    private int currentStep = 0;
+    private const int totalSteps = 5;
+    private bool isCurrentStepValid = false;
+    private bool characterCompleted = false;
 
     protected override void OnInitialized()
     {
-        // Create a sample character for testing
-        sampleCharacter = new Character
+        InitializeCharacter();
+    }
+
+    private void InitializeCharacter()
+    {
+        character = new Character
         {
             Information = new CharacterInformation
             {
-                Name = "Thorin Stonehammer",
-                Race = "Mountain Dwarf",
-                Class = "Fighter",
-                Background = "Soldier",
-                Alignment = CharacterAlignment.LawfulGood
+                Alignment = CharacterAlignment.TrueNeutral
             },
             Stats = new CharacterStats
             {
-                Strength = 16,
-                Dexterity = 12,
-                Constitution = 15,
+                Strength = 10,
+                Dexterity = 10,
+                Constitution = 10,
                 Intelligence = 10,
-                Wisdom = 13,
-                Charisma = 8
-            },
-            Class = new CharacterClass
-            {
-                Name = "Fighter",
-                HitPointDie = "d10",
-                PrimaryAbility = "Strength or Dexterity",
-                SavingThrowProficiencies = "Strength, Constitution",
-                SkillProficiencies = "Choose 2 from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, Survival"
-            },
-            Background = new Background
-            {
-                Name = "Soldier",
-                Description = "War has been your life for as long as you care to remember.",
-                SkillProficiencies = new List<string> { "Athletics", "Intimidation" },
-                ToolProficiency = "Gaming Set or Vehicle (land)",
-                Equipment = "Insignia of rank, trophy, gaming set or deck of cards, common clothes, belt pouch with 10gp"
-            }
-        };
-        
-        // Set up the race separately to avoid compilation issues
-        sampleCharacter.Race = new DndShared.Models.Species
-        {
-            Name = "Mountain Dwarf",
-            Speed = "25 ft.",
-            Size = "Medium",
-            Traits = new List<string> 
-            { 
-                "Darkvision (60 ft.)",
-                "Dwarven Resilience",
-                "Dwarven Combat Training",
-                "Stonecunning"
-            }
-        };
-        
-        // Set up feats
-        sampleCharacter.Feats = new List<Feat>
-        {
-            new Feat
-            {
-                Name = "Tough",
-                Description = "Your hit point maximum increases by an amount equal to twice your level."
+                Wisdom = 10,
+                Charisma = 10
             }
         };
     }
 
+    // Step navigation
+    private void NextStep()
+    {
+        if (isCurrentStepValid && currentStep < totalSteps - 1)
+        {
+            currentStep++;
+            isCurrentStepValid = false;
+        }
+    }
+
+    private void PreviousStep()
+    {
+        if (currentStep > 0)
+        {
+            currentStep--;
+            isCurrentStepValid = true; // Assume previously completed steps are valid
+        }
+    }
+
+    private void CompleteCharacterCreation()
+    {
+        if (isCurrentStepValid)
+        {
+            characterCompleted = true;
+            successMessage = "Character creation completed! You can now generate the PDF.";
+            StateHasChanged();
+        }
+    }
+
+    // Event handlers for step components
+    private void HandleInformationChanged(CharacterInformation info)
+    {
+        character.Information = info;
+    }
+
+    private void HandleSpeciesChanged(DndShared.Models.Species species)
+    {
+        character.Race = species;
+        if (character.Information != null)
+        {
+            character.Information.Race = species.Name;
+        }
+    }
+
+    private void HandleClassChanged(CharacterClass cls)
+    {
+        character.Class = cls;
+        if (character.Information != null)
+        {
+            character.Information.Class = cls.Name;
+        }
+    }
+
+    private void HandleBackgroundChanged(Background background)
+    {
+        character.Background = background;
+        if (character.Information != null)
+        {
+            character.Information.Background = background.Name;
+        }
+    }
+
+    private void HandleStatsChanged(CharacterStats stats)
+    {
+        character.Stats = stats;
+    }
+
+    private void HandleStepValidation(bool isValid)
+    {
+        isCurrentStepValid = isValid;
+    }
+
+    // Helper methods
+    private string GetStepName(int step)
+    {
+        return step switch
+        {
+            0 => "Character Information",
+            1 => "Species Selection",
+            2 => "Class Selection",
+            3 => "Background Selection",
+            4 => "Ability Scores",
+            _ => "Unknown"
+        };
+    }
+
+    private double GetProgressPercentage()
+    {
+        return ((double)(currentStep + 1) / totalSteps) * 100;
+    }
+
+    private string GetProgressBarClass()
+    {
+        return currentStep == totalSteps - 1 && isCurrentStepValid 
+            ? "bg-success" 
+            : "bg-primary";
+    }
+
+    private string GetAlignmentDisplayName(CharacterAlignment alignment)
+    {
+        return alignment switch
+        {
+            CharacterAlignment.LawfulGood => "Lawful Good",
+            CharacterAlignment.NeutralGood => "Neutral Good",
+            CharacterAlignment.ChaoticGood => "Chaotic Good",
+            CharacterAlignment.LawfulNeutral => "Lawful Neutral",
+            CharacterAlignment.TrueNeutral => "True Neutral",
+            CharacterAlignment.ChaoticNeutral => "Chaotic Neutral",
+            CharacterAlignment.LawfulEvil => "Lawful Evil",
+            CharacterAlignment.NeutralEvil => "Neutral Evil",
+            CharacterAlignment.ChaoticEvil => "Chaotic Evil",
+            _ => alignment.ToString()
+        };
+    }
+
+    // PDF generation
     private async Task GenerateCharacterSheet()
     {
         isGenerating = true;
@@ -233,7 +425,7 @@
 
         try
         {
-            pdfDataUrl = await CharacterSheetService.FillCharacterSheetAsync(sampleCharacter, "2024");
+            pdfDataUrl = await CharacterSheetService.FillCharacterSheetAsync(character, "2024");
             successMessage = "Character sheet generated successfully!";
         }
         catch (Exception ex)
@@ -253,8 +445,8 @@
         try
         {
             await CharacterSheetService.DownloadCharacterSheetAsync(
-                sampleCharacter, 
-                $"{sampleCharacter.Information?.Name ?? "Character"}.pdf",
+                character, 
+                $"{character.Information?.Name ?? "Character"}.pdf",
                 "2024"
             );
             successMessage = "Download started!";
@@ -264,26 +456,5 @@
             errorMessage = $"Error downloading: {ex.Message}";
         }
         StateHasChanged();
-    }
-
-    private async Task GetFormFields()
-    {
-        isLoadingFields = true;
-        errorMessage = string.Empty;
-        StateHasChanged();
-
-        try
-        {
-            formFields = await CharacterSheetService.GetFormFieldsAsync("2024");
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Error getting form fields: {ex.Message}";
-        }
-        finally
-        {
-            isLoadingFields = false;
-            StateHasChanged();
-        }
     }
 }

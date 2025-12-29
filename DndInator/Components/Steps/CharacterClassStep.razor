@@ -1,0 +1,191 @@
+@using DndShared.Models
+@using DndInator.Services
+@inject IClassService ClassService
+
+<div class="card shadow-sm">
+    <div class="card-header bg-warning text-dark">
+        <h5 class="mb-0">
+            <i class="bi bi-shield-fill me-2"></i>
+            Class Selection
+        </h5>
+    </div>
+    <div class="card-body">
+        @if (isLoading)
+        {
+            <div class="text-center py-3">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">Loading classes...</p>
+            </div>
+        }
+        else if (availableClasses.Count == 0)
+        {
+            <div class="alert alert-warning">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                No classes available
+            </div>
+        }
+        else
+        {
+            <div class="mb-3">
+                <label for="classSelect" class="form-label">Select Class</label>
+                <select class="form-select @(IsValid ? "" : "is-invalid")" 
+                        id="classSelect"
+                        @onchange="OnClassSelected">
+                    <option value="">Choose a class...</option>
+                    @foreach (var cls in availableClasses)
+                    {
+                        <option value="@cls.Name" selected="@(selectedClass?.Name == cls.Name)">
+                            @cls.Name
+                        </option>
+                    }
+                </select>
+                @if (!IsValid)
+                {
+                    <div class="invalid-feedback d-block">
+                        Please select a class
+                    </div>
+                }
+            </div>
+
+            @if (selectedClass != null)
+            {
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="card-title">@selectedClass.Name</h6>
+                        <p class="card-text small text-muted">@selectedClass.Description</p>
+                        
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <strong>Hit Die:</strong> @selectedClass.HitPointDie
+                            </div>
+                            <div class="col-6">
+                                <strong>Primary:</strong> @selectedClass.PrimaryAbility
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <strong>Saves:</strong> @selectedClass.SavingThrowProficiencies
+                        </div>
+
+                        @if (selectedClass.Subclasses?.Any() == true)
+                        {
+                            <div class="mt-3">
+                                <label for="subclassSelect" class="form-label fw-bold">Subclass (Optional)</label>
+                                <select class="form-select form-select-sm" 
+                                        id="subclassSelect"
+                                        @onchange="OnSubclassSelected">
+                                    <option value="">None selected</option>
+                                    @foreach (var subclass in selectedClass.Subclasses)
+                                    {
+                                        <option value="@subclass.Name" selected="@(selectedSubclass?.Name == subclass.Name)">
+                                            @subclass.Name
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+
+                            @if (selectedSubclass != null)
+                            {
+                                <div class="alert alert-info mt-2 mb-0">
+                                    <small><strong>@selectedSubclass.Name:</strong> @selectedSubclass.Description</small>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private List<CharacterClass> availableClasses = new();
+    private CharacterClass? selectedClass;
+    private Subclass? selectedSubclass;
+    private bool isLoading = true;
+
+    [Parameter]
+    public CharacterClass? Class { get; set; }
+
+    [Parameter]
+    public EventCallback<CharacterClass> OnClassChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => selectedClass != null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadClasses();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Class != null)
+        {
+            selectedClass = availableClasses.FirstOrDefault(c => c.Name == Class.Name);
+        }
+    }
+
+    private async Task LoadClasses()
+    {
+        isLoading = true;
+        try
+        {
+            availableClasses = await ClassService.GetAllClassesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading classes: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task OnClassSelected(ChangeEventArgs e)
+    {
+        var className = e.Value?.ToString();
+        selectedClass = availableClasses.FirstOrDefault(c => c.Name == className);
+        selectedSubclass = null;
+
+        await NotifyChanges();
+    }
+
+    private async Task OnSubclassSelected(ChangeEventArgs e)
+    {
+        var subclassName = e.Value?.ToString();
+        selectedSubclass = selectedClass?.Subclasses?.FirstOrDefault(s => s.Name == subclassName);
+
+        await NotifyChanges();
+    }
+
+    private async Task NotifyChanges()
+    {
+        if (selectedClass != null)
+        {
+            var classToSend = new CharacterClass
+            {
+                Name = selectedClass.Name,
+                Description = selectedClass.Description,
+                HitPointDie = selectedClass.HitPointDie,
+                PrimaryAbility = selectedClass.PrimaryAbility,
+                SavingThrowProficiencies = selectedClass.SavingThrowProficiencies,
+                SkillProficiencies = selectedClass.SkillProficiencies,
+                ArmorTraining = selectedClass.ArmorTraining,
+                WeaponProficiencies = selectedClass.WeaponProficiencies,
+                ToolProficiencies = selectedClass.ToolProficiencies,
+                StartingEquipment = selectedClass.StartingEquipment,
+                Subclasses = selectedSubclass != null ? new List<Subclass> { selectedSubclass } : new List<Subclass>()
+            };
+
+            await OnClassChanged.InvokeAsync(classToSend);
+        }
+
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+}

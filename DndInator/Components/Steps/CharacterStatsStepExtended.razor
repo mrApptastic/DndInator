@@ -1,0 +1,309 @@
+@using DndShared.Models
+@using DndInator.Services
+@inject IDiceService DiceService
+
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">
+            <i class="bi bi-bar-chart-fill me-2"></i>
+            Ability Scores
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="mb-4">
+            <h6 class="fw-bold">Choose a method:</h6>
+            <div class="btn-group w-100" role="group">
+                <button class="btn btn-outline-primary @(method == "roll" ? "active" : "")" 
+                        @onclick='() => SetMethod("roll")'>
+                    <i class="bi bi-dice-5 me-2"></i>Roll 4d6 Drop Lowest
+                </button>
+                <button class="btn btn-outline-primary @(method == "standard" ? "active" : "")" 
+                        @onclick='() => { SetMethod("standard"); UseStandardArray(); }'>
+                    <i class="bi bi-grid-3x3 me-2"></i>Standard Array
+                </button>
+                <button class="btn btn-outline-primary @(method == "manual" ? "active" : "")" 
+                        @onclick='() => SetMethod("manual")'>
+                    <i class="bi bi-pencil me-2"></i>Manual Entry
+                </button>
+            </div>
+        </div>
+
+        @if (method == "roll")
+        {
+            <div class="text-center mb-4">
+                <button class="btn btn-lg btn-danger" @onclick="RollAllAbilityScores">
+                    <i class="bi bi-dice-6-fill me-2"></i>Roll All Ability Scores!
+                </button>
+                @if (!string.IsNullOrEmpty(lastRollDetails))
+                {
+                    <div class="alert alert-info mt-3">
+                        <small>@lastRollDetails</small>
+                    </div>
+                }
+            </div>
+        }
+        else if (method == "standard")
+        {
+            <div class="alert alert-info mb-3">
+                <i class="bi bi-info-circle me-2"></i>
+                Standard Array: 15, 14, 13, 12, 10, 8
+            </div>
+        }
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-danger">Strength (STR)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(strength) ? "" : "is-invalid")" 
+                           @bind="strength"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-danger" @onclick="() => RollSingleAbility(0)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(strength)</small>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-success">Dexterity (DEX)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(dexterity) ? "" : "is-invalid")" 
+                           @bind="dexterity"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-success" @onclick="() => RollSingleAbility(1)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(dexterity)</small>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-warning">Constitution (CON)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(constitution) ? "" : "is-invalid")" 
+                           @bind="constitution"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-warning" @onclick="() => RollSingleAbility(2)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(constitution)</small>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-primary">Intelligence (INT)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(intelligence) ? "" : "is-invalid")" 
+                           @bind="intelligence"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-primary" @onclick="() => RollSingleAbility(3)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(intelligence)</small>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-info">Wisdom (WIS)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(wisdom) ? "" : "is-invalid")" 
+                           @bind="wisdom"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-info" @onclick="() => RollSingleAbility(4)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(wisdom)</small>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label fw-bold text-secondary">Charisma (CHA)</label>
+                <div class="input-group">
+                    <input type="number" 
+                           class="form-control @(IsValidScore(charisma) ? "" : "is-invalid")" 
+                           @bind="charisma"
+                           @bind:event="oninput"
+                           @onblur="ValidateAndNotify"
+                           min="1" max="30">
+                    @if (method == "roll")
+                    {
+                        <button class="btn btn-outline-secondary" @onclick="() => RollSingleAbility(5)">
+                            <i class="bi bi-dice-3"></i>
+                        </button>
+                    }
+                </div>
+                <small class="text-muted">Modifier: @GetModifier(charisma)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int strength = 10;
+    private int dexterity = 10;
+    private int constitution = 10;
+    private int intelligence = 10;
+    private int wisdom = 10;
+    private int charisma = 10;
+    private string method = "roll";
+    private string lastRollDetails = string.Empty;
+
+    [Parameter]
+    public CharacterStats? Stats { get; set; }
+
+    [Parameter]
+    public EventCallback<CharacterStats> OnStatsChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    public bool IsValid => IsValidScore(strength) && IsValidScore(dexterity) && 
+                          IsValidScore(constitution) && IsValidScore(intelligence) && 
+                          IsValidScore(wisdom) && IsValidScore(charisma);
+
+    protected override void OnParametersSet()
+    {
+        if (Stats != null)
+        {
+            strength = Stats.Strength;
+            dexterity = Stats.Dexterity;
+            constitution = Stats.Constitution;
+            intelligence = Stats.Intelligence;
+            wisdom = Stats.Wisdom;
+            charisma = Stats.Charisma;
+        }
+    }
+
+    private void SetMethod(string newMethod)
+    {
+        method = newMethod;
+        StateHasChanged();
+    }
+
+    private bool IsValidScore(int score)
+    {
+        return score >= 1 && score <= 30;
+    }
+
+    private string GetModifier(int score)
+    {
+        int modifier = (score - 10) / 2;
+        return modifier >= 0 ? $"+{modifier}" : modifier.ToString();
+    }
+
+    private async Task ValidateAndNotify()
+    {
+        var stats = new CharacterStats
+        {
+            Strength = strength,
+            Dexterity = dexterity,
+            Constitution = constitution,
+            Intelligence = intelligence,
+            Wisdom = wisdom,
+            Charisma = charisma
+        };
+
+        await OnStatsChanged.InvokeAsync(stats);
+        await OnValidationChanged.InvokeAsync(IsValid);
+    }
+
+    private async Task RollSingleAbility(int abilityIndex)
+    {
+        var rolls = new List<int>
+        {
+            DiceService.RollDice(6),
+            DiceService.RollDice(6),
+            DiceService.RollDice(6),
+            DiceService.RollDice(6)
+        };
+        rolls.Sort();
+        var score = rolls[1] + rolls[2] + rolls[3]; // Drop lowest (rolls[0])
+        lastRollDetails = $"Rolled: {string.Join(", ", rolls)} → Dropped {rolls[0]} → Total: {score}";
+
+        switch (abilityIndex)
+        {
+            case 0: strength = score; break;
+            case 1: dexterity = score; break;
+            case 2: constitution = score; break;
+            case 3: intelligence = score; break;
+            case 4: wisdom = score; break;
+            case 5: charisma = score; break;
+        }
+
+        await ValidateAndNotify();
+    }
+
+    private async Task RollAllAbilityScores()
+    {
+        var allRolls = new List<int>();
+        var details = new List<string>();
+
+        for (int i = 0; i < 6; i++)
+        {
+            var rolls = new List<int>
+            {
+                DiceService.RollDice(6),
+                DiceService.RollDice(6),
+                DiceService.RollDice(6),
+                DiceService.RollDice(6)
+            };
+            rolls.Sort();
+            var total = rolls[1] + rolls[2] + rolls[3];
+            allRolls.Add(total);
+            details.Add($"{string.Join(",", rolls)}→{total}");
+        }
+
+        strength = allRolls[0];
+        dexterity = allRolls[1];
+        constitution = allRolls[2];
+        intelligence = allRolls[3];
+        wisdom = allRolls[4];
+        charisma = allRolls[5];
+
+        lastRollDetails = $"Rolls: [{string.Join(" | ", details)}]";
+        await ValidateAndNotify();
+    }
+
+    private async Task UseStandardArray()
+    {
+        strength = 15;
+        dexterity = 14;
+        constitution = 13;
+        intelligence = 12;
+        wisdom = 10;
+        charisma = 8;
+
+        lastRollDetails = string.Empty;
+        await ValidateAndNotify();
+    }
+}
