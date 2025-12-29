@@ -1,0 +1,192 @@
+@using DndShared.Models
+@using DndInator.Services
+@using DndInator.Components
+@using Microsoft.JSInterop
+@inject ICharacterSheetService CharacterSheetService
+@inject IJSRuntime JSRuntime
+
+<div class="character-preview-with-actions">
+    <div class="card shadow-lg border-0 mb-4">
+        <div class="card-header bg-gradient-success text-white">
+            <h4 class="mb-0">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                @HeaderText: @Character.Information?.Name
+            </h4>
+        </div>
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(StatusMessage))
+            {
+                <div class="alert @(StatusMessage.StartsWith("✓") ? "alert-success" : "alert-danger") alert-dismissible fade show">
+                    <i class="bi @(StatusMessage.StartsWith("✓") ? "bi-check-circle" : "bi-exclamation-triangle") me-2"></i>
+                    @StatusMessage
+                    <button type="button" class="btn-close" @onclick="() => StatusMessage = string.Empty"></button>
+                </div>
+            }
+
+            <div class="d-flex gap-2 mb-4 flex-wrap">
+                @if (ShowSaveButton && OnSave.HasDelegate)
+                {
+                    <button class="btn btn-success btn-lg" @onclick="HandleSave" disabled="@IsSaving">
+                        @if (IsSaving)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2"></span>
+                            <span>Saving...</span>
+                        }
+                        else
+                        {
+                            <i class="bi bi-floppy me-2"></i>
+                            <span>Save Character</span>
+                        }
+                    </button>
+                }
+
+                <button class="btn btn-primary btn-lg" @onclick="HandleGeneratePDF" disabled="@IsGeneratingPDF">
+                    @if (IsGeneratingPDF)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2"></span>
+                        <span>Generating...</span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-file-pdf me-2"></i>
+                        <span>Generate PDF</span>
+                    }
+                </button>
+
+                <button class="btn btn-info btn-lg" @onclick="HandleDownloadPDF" disabled="@string.IsNullOrEmpty(pdfDataUrl)">
+                    <i class="bi bi-download me-2"></i> Download PDF
+                </button>
+
+                @if (ShowExportJsonButton)
+                {
+                    <button class="btn btn-warning btn-lg" @onclick="HandleExportJson">
+                        <i class="bi bi-filetype-json me-2"></i> Export JSON
+                    </button>
+                }
+
+                @if (AdditionalActions != null)
+                {
+                    @AdditionalActions
+                }
+            </div>
+
+            @if (!string.IsNullOrEmpty(pdfDataUrl))
+            {
+                <div class="mb-4">
+                    <iframe src="@pdfDataUrl" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+                </div>
+            }
+        </div>
+    </div>
+
+    <CharacterSheetDisplay Character="Character" />
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Character Character { get; set; } = null!;
+
+    [Parameter]
+    public string HeaderText { get; set; } = "Character Preview";
+
+    [Parameter]
+    public bool ShowSaveButton { get; set; } = false;
+
+    [Parameter]
+    public bool ShowExportJsonButton { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<Character> OnSave { get; set; }
+
+    [Parameter]
+    public RenderFragment? AdditionalActions { get; set; }
+
+    [Parameter]
+    public string StatusMessage { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> StatusMessageChanged { get; set; }
+
+    private bool IsSaving = false;
+    private bool IsGeneratingPDF = false;
+    private string pdfDataUrl = string.Empty;
+
+    private async Task HandleSave()
+    {
+        if (OnSave.HasDelegate)
+        {
+            IsSaving = true;
+            StateHasChanged();
+
+            try
+            {
+                await OnSave.InvokeAsync(Character);
+            }
+            finally
+            {
+                IsSaving = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task HandleGeneratePDF()
+    {
+        IsGeneratingPDF = true;
+        StateHasChanged();
+
+        try
+        {
+            pdfDataUrl = await CharacterSheetService.FillCharacterSheetAsync(Character, "2024");
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"✗ Error generating PDF: {ex.Message}";
+            await StatusMessageChanged.InvokeAsync(StatusMessage);
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
+        finally
+        {
+            IsGeneratingPDF = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleDownloadPDF()
+    {
+        try
+        {
+            await CharacterSheetService.DownloadCharacterSheetAsync(
+                Character,
+                $"{Character.Information?.Name ?? "Character"}.pdf",
+                "2024"
+            );
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"✗ Error downloading PDF: {ex.Message}";
+            await StatusMessageChanged.InvokeAsync(StatusMessage);
+            Console.WriteLine($"Error downloading PDF: {ex.Message}");
+        }
+    }
+
+    private async Task HandleExportJson()
+    {
+        try
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(new[] { Character }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            var fileName = $"{Character.Information?.Name?.Replace(" ", "_") ?? "character"}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+
+            await JSRuntime.InvokeVoidAsync("downloadJsonFile", fileName, json);
+
+            StatusMessage = $"✓ '{Character.Information?.Name}' exported as JSON successfully!";
+            await StatusMessageChanged.InvokeAsync(StatusMessage);
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"✗ Error exporting character: {ex.Message}";
+            await StatusMessageChanged.InvokeAsync(StatusMessage);
+            Console.WriteLine($"Error exporting character: {ex.Message}");
+        }
+    }
+}

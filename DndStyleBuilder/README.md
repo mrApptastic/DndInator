@@ -107,7 +107,28 @@ To use it, reference it in `wwwroot/index.html`:
 
 ## Bootstrap Version
 
-This theme is built on Bootstrap 5.3.3. To update Bootstrap:
+This theme is built on Bootstrap 5.3.3 and Bootstrap Icons 1.11.3. 
+
+To update Bootstrap:
 ```bash
 npm install bootstrap@latest
+```
+
+To update Bootstrap Icons:
+```bash
+npm install bootstrap-icons@latest
+```
+
+## Included Components
+
+### Bootstrap 5.3.3
+Full Bootstrap framework with custom variable overrides
+
+### Bootstrap Icons 1.11.3
+Complete icon font library included in the compiled CSS. Icon fonts are automatically deployed to `wwwroot/fonts/`.
+
+Usage in HTML:
+```html
+<i class="bi bi-heart-fill"></i>
+<i class="bi bi-arrow-repeat"></i>
 ```

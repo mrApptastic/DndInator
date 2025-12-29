@@ -4,7 +4,7 @@
 // Quentin - Heading Font (OTF)
 @font-face {
   font-family: 'Quentin';
-  src: url('../fonts/QuentinEF_Medium.ttf') format('truetype');
+  src: url('./fonts/QuentinEF_Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 // Souvenir - Body Text Font (TTF)
 @font-face {
   font-family: 'Souvenir';
-  src: url('../fonts/Souvenir.ttf') format('truetype');
+  src: url('./fonts/Souvenir.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Souvenir';
-  src: url('../fonts/SouvenirB.ttf') format('truetype');
+  src: url('./fonts/SouvenirB.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Souvenir';
-  src: url('../fonts/SouvenirI.ttf') format('truetype');
+  src: url('./fonts/SouvenirI.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: 'Souvenir';
-  src: url('../fonts/SouvenirBI.ttf') format('truetype');
+  src: url('./fonts/SouvenirBI.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;

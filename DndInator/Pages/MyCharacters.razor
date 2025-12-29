@@ -170,7 +170,18 @@
                         <button type="button" class="btn-close btn-close-white" @onclick="CloseViewModal"></button>
                     </div>
                     <div class="modal-body">
-                        <CharacterSheetDisplay Character="selectedCharacter" />
+                        <CharacterPreviewWithActions 
+                            Character="selectedCharacter"
+                            HeaderText="Character Details"
+                            ShowExportJsonButton="true"
+                            StatusMessage="@statusMessage"
+                            StatusMessageChanged="(msg) => statusMessage = msg">
+                            <AdditionalActions>
+                                <button class="btn btn-warning btn-lg" @onclick="() => EditCharacter(selectedCharacter)">
+                                    <i class="bi bi-pencil me-2"></i> Edit Character
+                                </button>
+                            </AdditionalActions>
+                        </CharacterPreviewWithActions>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @onclick="CloseViewModal">Close</button>
@@ -313,6 +324,7 @@
     private bool isLoading = true;
     private string successMessage = string.Empty;
     private string errorMessage = string.Empty;
+    private string statusMessage = string.Empty;
     
     private bool showViewModal = false;
     private bool showDeleteModal = false;

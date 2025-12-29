@@ -308,69 +308,23 @@
                     <div class="animate-slide-in">
                         @if (builtCharacter != null)
                         {
-                            <div class="card shadow-lg border-0 mb-4">
-                                <div class="card-header bg-gradient-success text-white">
-                                    <h4 class="mb-0">
-                                        <i class="bi bi-check-circle-fill me-2"></i>
-                                        Character Complete: @builtCharacter.Information?.Name
-                                    </h4>
-                                </div>
-                                <div class="card-body">
-                                    @if (!string.IsNullOrEmpty(saveMessage))
-                                    {
-                                        <div class="alert alert-success alert-dismissible fade show">
-                                            <i class="bi bi-check-circle me-2"></i>
-                                            @saveMessage
-                                            <button type="button" class="btn-close" @onclick="() => saveMessage = string.Empty"></button>
-                                        </div>
-                                    }
-
-                                    <div class="d-flex gap-2 mb-4 flex-wrap">
-                                        <button class="btn btn-success btn-lg" @onclick="SaveCharacter" disabled="@isSaving">
-                                            @if (isSaving)
-                                            {
-                                                <span class="spinner-border spinner-border-sm me-2"></span>
-                                                <span>Saving...</span>
-                                            }
-                                            else
-                                            {
-                                                <i class="bi bi-floppy me-2"></i>
-                                                <span>Save Character</span>
-                                            }
-                                        </button>
-                                        <button class="btn btn-primary btn-lg" @onclick="GeneratePDF" disabled="@isGeneratingPDF">
-                                            @if (isGeneratingPDF)
-                                            {
-                                                <span class="spinner-border spinner-border-sm me-2"></span>
-                                                <span>Generating...</span>
-                                            }
-                                            else
-                                            {
-                                                <i class="bi bi-file-pdf me-2"></i>
-                                                <span>Generate PDF</span>
-                                            }
-                                        </button>
-                                        <button class="btn btn-info btn-lg" @onclick="DownloadPDF" disabled="@string.IsNullOrEmpty(pdfDataUrl)">
-                                            <i class="bi bi-download me-2"></i> Download PDF
-                                        </button>
-                                        <button class="btn btn-outline-secondary btn-lg" @onclick="ViewMyCharacters">
-                                            <i class="bi bi-people me-2"></i> My Characters
-                                        </button>
-                                        <button class="btn btn-outline-warning btn-lg" @onclick="ResetBuilder">
-                                            <i class="bi bi-arrow-clockwise me-2"></i> Start Over
-                                        </button>
-                                    </div>
-
-                                    @if (!string.IsNullOrEmpty(pdfDataUrl))
-                                    {
-                                        <div class="mb-4">
-                                            <iframe src="@pdfDataUrl" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-
-                            <CharacterSheetDisplay Character="builtCharacter" />
+                            <CharacterPreviewWithActions 
+                                Character="builtCharacter"
+                                HeaderText="Character Complete"
+                                ShowSaveButton="true"
+                                ShowExportJsonButton="true"
+                                OnSave="SaveCharacter"
+                                StatusMessage="@saveMessage"
+                                StatusMessageChanged="(msg) => saveMessage = msg">
+                                <AdditionalActions>
+                                    <button class="btn btn-outline-secondary btn-lg" @onclick="ViewMyCharacters">
+                                        <i class="bi bi-people me-2"></i> My Characters
+                                    </button>
+                                    <button class="btn btn-outline-warning btn-lg" @onclick="ResetBuilder">
+                                        <i class="bi bi-arrow-clockwise me-2"></i> Start Over
+                                    </button>
+                                </AdditionalActions>
+                            </CharacterPreviewWithActions>
                         }
                         else
                         {
@@ -462,21 +416,10 @@
     };
     private bool[] stepValid = new bool[10];
     private Character? builtCharacter;
-    private string pdfDataUrl = string.Empty;
-    private bool isGeneratingPDF = false;
-    private bool isSaving = false;
     private string saveMessage = string.Empty;
     
     // For CharacterEquipmentStep
     private CharacterEquipmentStep.CharacterEquipmentData? equipmentData;
-
-    // Tab 0: Basic Info
-    private string characterName = "";
-    private CharacterAlignment selectedAlignment = CharacterAlignment.NeutralGood;
-    private string characterDescription = "";
-    private int characterLevel = 1;
-    private int characterExperience = 0;
-    private string characterPortrait = "";
 
     // Tab 1: Race
     private List<DndShared.Models.Species>? availableSpecies;
@@ -491,7 +434,6 @@
     private Background? selectedBackground;
 
     // Tab 4: Ability Scores
-    private string abilityScoreMethod = "roll";
     private int strength = 10;
     private int dexterity = 10;
     private int constitution = 10;
@@ -513,7 +455,6 @@
     private int selectedSpellLevel = -1;
 
     // Tab 8: Equipment
-    private int equipmentTab = 0;
     private List<DndShared.Models.Armor>? availableArmor;
     private List<DndShared.Models.Armor> selectedArmor = new();
     private List<DndShared.Models.Weapon>? availableWeapons;
@@ -637,7 +578,12 @@
                 var buffer = new byte[file.Size];
                 await file.OpenReadStream(maxAllowedSize: 5 * 1024 * 1024).ReadAsync(buffer);
                 var imageType = file.ContentType;
-                characterPortrait = $"data:{imageType};base64,{Convert.ToBase64String(buffer)}";
+                
+                if (character.Information?.BaseInformation != null)
+                {
+                    character.Information.BaseInformation.CharacterPortrait = $"data:{imageType};base64,{Convert.ToBase64String(buffer)}";
+                }
+                
                 StateHasChanged();
             }
             catch (Exception ex)
@@ -649,7 +595,10 @@
 
     private void ClearPortrait()
     {
-        characterPortrait = "";
+        if (character.Information?.BaseInformation != null)
+        {
+            character.Information.BaseInformation.CharacterPortrait = "";
+        }
         StateHasChanged();
     }
 
@@ -806,113 +755,70 @@
 
     private void BuildCharacter()
     {
-        builtCharacter = new Character
+        // Update character Information with current selections
+        if (character.Information == null)
         {
-            Information = new CharacterInformation
-            {
-                Name = characterName,
-                Race = selectedSpecies?.Name ?? "Unknown",
-                Class = selectedClass?.Name ?? "Unknown",
-                Background = selectedBackground?.Name ?? "Unknown",
-                Alignment = selectedAlignment,
-                BaseInformation = new ChraracterSheetInformation
-                {
-                    Level = characterLevel,
-                    ExperiencePoints = characterExperience,
-                    CharacterPortrait = characterPortrait,
-                    Skills = selectedSkills,
-                    Spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
-                    {
-                        Spells = selectedSpells
-                    } : null,
-                    Equipment = new CharacterEquipment
-                    {
-                        Armors = selectedArmor,
-                        Weapons = selectedWeapons,
-                        AdventuringGears = selectedAdventuringGear,
-                        Tools = selectedTools,
-                        Wealth = characterWealth
-                    }
-                }
-            },
-            Stats = new CharacterStats
-            {
-                Strength = strength,
-                Dexterity = dexterity,
-                Constitution = constitution,
-                Intelligence = intelligence,
-                Wisdom = wisdom,
-                Charisma = charisma
-            },
-            Race = selectedSpecies,
-            Class = selectedClass,
-            Background = selectedBackground,
-            Feats = selectedFeats
+            character.Information = new CharacterInformation();
+        }
+        
+        character.Information.Race = selectedSpecies?.Name ?? "Unknown";
+        character.Information.Class = selectedClass?.Name ?? "Unknown";
+        character.Information.Background = selectedBackground?.Name ?? "Unknown";
+        
+        // Update BaseInformation if it doesn't exist
+        if (character.Information.BaseInformation == null)
+        {
+            character.Information.BaseInformation = new ChraracterSheetInformation();
+        }
+        
+        character.Information.BaseInformation.Skills = selectedSkills;
+        character.Information.BaseInformation.Spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
+        {
+            Spells = selectedSpells
+        } : null;
+        character.Information.BaseInformation.Equipment = new CharacterEquipment
+        {
+            Armors = selectedArmor,
+            Weapons = selectedWeapons,
+            AdventuringGears = selectedAdventuringGear,
+            Tools = selectedTools,
+            Wealth = characterWealth
         };
+
+        // Update Stats
+        character.Stats = new CharacterStats
+        {
+            Strength = strength,
+            Dexterity = dexterity,
+            Constitution = constitution,
+            Intelligence = intelligence,
+            Wisdom = wisdom,
+            Charisma = charisma
+        };
+        
+        // Update other properties
+        character.Race = selectedSpecies;
+        character.Class = selectedClass;
+        character.Background = selectedBackground;
+        character.Feats = selectedFeats;
+        
+        // Set built character to the updated character
+        builtCharacter = character;
     }
 
-    private async Task GeneratePDF()
+    private async Task SaveCharacter(Character character)
     {
-        if (builtCharacter == null) return;
-        
-        isGeneratingPDF = true;
-        StateHasChanged();
-        
-        try
-        {
-            pdfDataUrl = await CharacterSheetService.FillCharacterSheetAsync(builtCharacter, "2024");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error generating PDF: {ex.Message}");
-        }
-        finally
-        {
-            isGeneratingPDF = false;
-            StateHasChanged();
-        }
-    }
-
-    private async Task DownloadPDF()
-    {
-        if (builtCharacter == null) return;
-        
-        try
-        {
-            await CharacterSheetService.DownloadCharacterSheetAsync(
-                builtCharacter,
-                $"{builtCharacter.Information?.Name ?? "Character"}.pdf",
-                "2024"
-            );
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error downloading PDF: {ex.Message}");
-        }
-    }
-
-    private async Task SaveCharacter()
-    {
-        if (builtCharacter == null) return;
-
-        isSaving = true;
-        saveMessage = string.Empty;
-        StateHasChanged();
+        if (character == null) return;
 
         try
         {
-            await StorageService.SaveCharacterAsync(builtCharacter);
-            saveMessage = $"✓ '{builtCharacter.Information?.Name}' saved successfully!";
+            await StorageService.SaveCharacterAsync(character);
+            saveMessage = $"✓ '{character.Information?.Name}' saved successfully!";
         }
         catch (Exception ex)
         {
             saveMessage = $"✗ Error saving character: {ex.Message}";
             Console.WriteLine($"Error saving character: {ex.Message}");
-        }
-        finally
-        {
-            isSaving = false;
-            StateHasChanged();
         }
     }
 
@@ -925,23 +831,31 @@
     {
         activeTab = 0;
         builtCharacter = null;
-        pdfDataUrl = string.Empty;
-        characterName = "";
-        selectedAlignment = CharacterAlignment.NeutralGood;
-        characterDescription = "";
-        characterLevel = 1;
-        characterExperience = 0;
-        characterPortrait = "";
+        
+        // Reset the main character object
+        character = new Character
+        {
+            Information = new CharacterInformation
+            {
+                Alignment = CharacterAlignment.NeutralGood,
+                BaseInformation = new ChraracterSheetInformation
+                {
+                    Level = 1,
+                    ExperiencePoints = 0
+                }
+            },
+            Stats = new CharacterStats()
+        };
+        
+        // Reset selections
         selectedSpecies = null;
         selectedClass = null;
         selectedBackground = null;
-        abilityScoreMethod = "roll";
         strength = dexterity = constitution = intelligence = wisdom = charisma = 10;
         selectedSkills = new CharacterSkills();
         selectedFeats.Clear();
         selectedSpells.Clear();
         selectedSpellLevel = -1;
-        equipmentTab = 0;
         selectedArmor.Clear();
         selectedWeapons.Clear();
         selectedAdventuringGear.Clear();

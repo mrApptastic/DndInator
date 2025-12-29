@@ -7,17 +7,24 @@
     "build:expanded": "sass src/theme.scss:dist/dndinator-theme.css --style expanded",
     "watch": "sass src/theme.scss:dist/dndinator-theme.css --watch --style expanded",
     "install:bootstrap": "npm install bootstrap@5.3.3",
-    "copy:fonts": "powershell -Command \"if (Test-Path fonts/*.*) { Copy-Item fonts/* ../DndInator/wwwroot/fonts/ -Force }\"",
-    "deploy": "npm run build && npm run copy:fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\"",
-    "deploy:expanded": "npm run build:expanded && npm run copy:fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\""
+    "copy:fonts": "powershell -Command \"New-Item -ItemType Directory -Path ../DndInator/wwwroot/css/fonts -Force | Out-Null; Copy-Item fonts/* ../DndInator/wwwroot/css/fonts/ -Force\"",
+    "copy:icon-fonts": "powershell -Command \"Copy-Item node_modules/bootstrap-icons/font/fonts/* ../DndInator/wwwroot/css/fonts/ -Force\"",
+    "deploy": "npm run build && npm run copy:fonts && npm run copy:icon-fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\"",
+    "deploy:expanded": "npm run build:expanded && npm run copy:fonts && npm run copy:icon-fonts && powershell -Command \"Copy-Item dist/dndinator-theme.css ../DndInator/wwwroot/css/ -Force\""
   },
-  "keywords": ["bootstrap", "theme", "dnd", "scss"],
+  "keywords": [
+    "bootstrap",
+    "theme",
+    "dnd",
+    "scss"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.77.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3"
   }
 }
