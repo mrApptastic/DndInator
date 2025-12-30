@@ -2,6 +2,11 @@
 @using DndInator.Services
 @inject IWeaponService WeaponService
 @inject IArmorService ArmorService
+@inject IAdventuringGearService AdventuringGearService
+@inject IMagicItemService MagicItemService
+@inject IMountAndVehicleService MountAndVehicleService
+@inject IPoisonService PoisonService
+@inject IToolService ToolService
 
 <div class="card shadow-sm">
     <div class="card-header bg-info text-white">
@@ -29,6 +34,41 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link @(activeSubTab == 2 ? "active" : "")" 
                         @onclick="() => activeSubTab = 2" 
+                        type="button">
+                    <i class="bi bi-backpack me-1"></i> Adventuring Gear
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 3 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 3" 
+                        type="button">
+                    <i class="bi bi-gem me-1"></i> Magic Items
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 4 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 4" 
+                        type="button">
+                    <i class="bi bi-truck me-1"></i> Mounts & Vehicles
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 5 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 5" 
+                        type="button">
+                    <i class="bi bi-droplet me-1"></i> Poisons
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 6 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 6" 
+                        type="button">
+                    <i class="bi bi-wrench me-1"></i> Tools
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(activeSubTab == 7 ? "active" : "")" 
+                        @onclick="() => activeSubTab = 7" 
                         type="button">
                     <i class="bi bi-coin me-1"></i> Wealth
                 </button>
@@ -133,8 +173,253 @@
             }
         }
 
-        <!-- Wealth Tab -->
+        <!-- Adventuring Gear Tab -->
         @if (activeSubTab == 2)
+        {
+            @if (isLoadingAdventuringGear)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading adventuring gear...</p>
+                </div>
+            }
+            else if (availableAdventuringGear.Count == 0)
+            {
+                <div class="alert alert-warning">No adventuring gear available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var gear in availableAdventuringGear)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedAdventuringGear.Contains(gear) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleAdventuringGear(gear)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@gear.Name</span>
+                                        @if (selectedAdventuringGear.Contains(gear))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(gear.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @gear.Cost</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(gear.Weight))
+                                        {
+                                            <div><strong>Weight:</strong> @gear.Weight</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Magic Items Tab -->
+        @if (activeSubTab == 3)
+        {
+            @if (isLoadingMagicItems)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading magic items...</p>
+                </div>
+            }
+            else if (availableMagicItems.Count == 0)
+            {
+                <div class="alert alert-warning">No magic items available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var item in availableMagicItems)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedMagicItems.Contains(item) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleMagicItem(item)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@item.Name</span>
+                                        @if (selectedMagicItems.Contains(item))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(item.Rarity))
+                                        {
+                                            <div><strong>Rarity:</strong> @item.Rarity</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(item.Type))
+                                        {
+                                            <div><strong>Type:</strong> @item.Type</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Mounts & Vehicles Tab -->
+        @if (activeSubTab == 4)
+        {
+            @if (isLoadingMountsAndVehicles)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading mounts and vehicles...</p>
+                </div>
+            }
+            else if (availableMountsAndVehicles.Count == 0)
+            {
+                <div class="alert alert-warning">No mounts and vehicles available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var mount in availableMountsAndVehicles)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedMountsAndVehicles.Contains(mount) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleMountAndVehicle(mount)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@mount.Name</span>
+                                        @if (selectedMountsAndVehicles.Contains(mount))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(mount.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @mount.Cost</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(mount.Speed))
+                                        {
+                                            <div><strong>Speed:</strong> @mount.Speed</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Poisons Tab -->
+        @if (activeSubTab == 5)
+        {
+            @if (isLoadingPoisons)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading poisons...</p>
+                </div>
+            }
+            else if (availablePoisons.Count == 0)
+            {
+                <div class="alert alert-warning">No poisons available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var poison in availablePoisons)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedPoisons.Contains(poison) ? "border-primary border-2" : "")" 
+                                 @onclick="() => TogglePoison(poison)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@poison.Name</span>
+                                        @if (selectedPoisons.Contains(poison))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(poison.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @poison.Cost</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(poison.Type))
+                                        {
+                                            <div><strong>Type:</strong> @poison.Type</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Tools Tab -->
+        @if (activeSubTab == 6)
+        {
+            @if (isLoadingTools)
+            {
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading tools...</p>
+                </div>
+            }
+            else if (availableTools.Count == 0)
+            {
+                <div class="alert alert-warning">No tools available</div>
+            }
+            else
+            {
+                <div class="row g-3" style="max-height: 400px; overflow-y: auto;">
+                    @foreach (var tool in availableTools)
+                    {
+                        <div class="col-md-6">
+                            <div class="card hover-card @(selectedTools.Contains(tool) ? "border-primary border-2" : "")" 
+                                 @onclick="() => ToggleTool(tool)"
+                                 style="cursor: pointer;">
+                                <div class="card-body">
+                                    <h6 class="card-title d-flex justify-content-between">
+                                        <span>@tool.Name</span>
+                                        @if (selectedTools.Contains(tool))
+                                        {
+                                            <span class="badge bg-primary"><i class="bi bi-check"></i></span>
+                                        }
+                                    </h6>
+                                    <small class="text-muted">
+                                        @if (!string.IsNullOrEmpty(tool.Cost))
+                                        {
+                                            <div><strong>Cost:</strong> @tool.Cost</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(tool.Weight))
+                                        {
+                                            <div><strong>Weight:</strong> @tool.Weight</div>
+                                        }
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+        <!-- Wealth Tab -->
+        @if (activeSubTab == 7)
         {
             <div class="row g-3">
                 <div class="col-md-6">
@@ -179,9 +464,24 @@
     private List<DndShared.Models.Armor> selectedArmor = new();
     private List<DndShared.Models.Weapon> availableWeapons = new();
     private List<DndShared.Models.Weapon> selectedWeapons = new();
+    private List<AdventuringGear> availableAdventuringGear = new();
+    private List<AdventuringGear> selectedAdventuringGear = new();
+    private List<MagicItem> availableMagicItems = new();
+    private List<MagicItem> selectedMagicItems = new();
+    private List<MountAndVehicle> availableMountsAndVehicles = new();
+    private List<MountAndVehicle> selectedMountsAndVehicles = new();
+    private List<Poison> availablePoisons = new();
+    private List<Poison> selectedPoisons = new();
+    private List<Tool> availableTools = new();
+    private List<Tool> selectedTools = new();
     private CharacterWealth wealth = new();
     private bool isLoadingArmor = true;
     private bool isLoadingWeapons = true;
+    private bool isLoadingAdventuringGear = true;
+    private bool isLoadingMagicItems = true;
+    private bool isLoadingMountsAndVehicles = true;
+    private bool isLoadingPoisons = true;
+    private bool isLoadingTools = true;
 
     [Parameter]
     public CharacterEquipmentData? Equipment { get; set; }
@@ -196,7 +496,15 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.WhenAll(LoadArmor(), LoadWeapons());
+        await Task.WhenAll(
+            LoadArmor(), 
+            LoadWeapons(), 
+            LoadAdventuringGear(), 
+            LoadMagicItems(), 
+            LoadMountsAndVehicles(), 
+            LoadPoisons(), 
+            LoadTools()
+        );
     }
 
     protected override void OnParametersSet()
@@ -205,6 +513,11 @@
         {
             selectedArmor = Equipment.Armor ?? new();
             selectedWeapons = Equipment.Weapons ?? new();
+            selectedAdventuringGear = Equipment.AdventuringGear ?? new();
+            selectedMagicItems = Equipment.MagicItems ?? new();
+            selectedMountsAndVehicles = Equipment.MountsAndVehicles ?? new();
+            selectedPoisons = Equipment.Poisons ?? new();
+            selectedTools = Equipment.Tools ?? new();
             wealth = Equipment.Wealth ?? new();
         }
     }
@@ -243,6 +556,91 @@
         }
     }
 
+    private async Task LoadAdventuringGear()
+    {
+        isLoadingAdventuringGear = true;
+        try
+        {
+            availableAdventuringGear = await AdventuringGearService.GetAllAdventuringGearAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading adventuring gear: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingAdventuringGear = false;
+        }
+    }
+
+    private async Task LoadMagicItems()
+    {
+        isLoadingMagicItems = true;
+        try
+        {
+            availableMagicItems = await MagicItemService.GetAllMagicItemsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading magic items: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingMagicItems = false;
+        }
+    }
+
+    private async Task LoadMountsAndVehicles()
+    {
+        isLoadingMountsAndVehicles = true;
+        try
+        {
+            availableMountsAndVehicles = await MountAndVehicleService.GetAllMountsAndVehiclesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading mounts and vehicles: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingMountsAndVehicles = false;
+        }
+    }
+
+    private async Task LoadPoisons()
+    {
+        isLoadingPoisons = true;
+        try
+        {
+            availablePoisons = await PoisonService.GetAllPoisonsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading poisons: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingPoisons = false;
+        }
+    }
+
+    private async Task LoadTools()
+    {
+        isLoadingTools = true;
+        try
+        {
+            availableTools = await ToolService.GetAllToolsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading tools: {ex.Message}");
+        }
+        finally
+        {
+            isLoadingTools = false;
+        }
+    }
+
     private async Task ToggleArmor(DndShared.Models.Armor armor)
     {
         if (selectedArmor.Contains(armor))
@@ -263,12 +661,67 @@
         await NotifyChanges();
     }
 
+    private async Task ToggleAdventuringGear(AdventuringGear gear)
+    {
+        if (selectedAdventuringGear.Contains(gear))
+            selectedAdventuringGear.Remove(gear);
+        else
+            selectedAdventuringGear.Add(gear);
+        
+        await NotifyChanges();
+    }
+
+    private async Task ToggleMagicItem(MagicItem item)
+    {
+        if (selectedMagicItems.Contains(item))
+            selectedMagicItems.Remove(item);
+        else
+            selectedMagicItems.Add(item);
+        
+        await NotifyChanges();
+    }
+
+    private async Task ToggleMountAndVehicle(MountAndVehicle mount)
+    {
+        if (selectedMountsAndVehicles.Contains(mount))
+            selectedMountsAndVehicles.Remove(mount);
+        else
+            selectedMountsAndVehicles.Add(mount);
+        
+        await NotifyChanges();
+    }
+
+    private async Task TogglePoison(Poison poison)
+    {
+        if (selectedPoisons.Contains(poison))
+            selectedPoisons.Remove(poison);
+        else
+            selectedPoisons.Add(poison);
+        
+        await NotifyChanges();
+    }
+
+    private async Task ToggleTool(Tool tool)
+    {
+        if (selectedTools.Contains(tool))
+            selectedTools.Remove(tool);
+        else
+            selectedTools.Add(tool);
+        
+        await NotifyChanges();
+    }
+
     private async Task NotifyChanges()
     {
         var equipmentData = new CharacterEquipmentData
         {
             Armor = selectedArmor,
             Weapons = selectedWeapons,
+            AdventuringGear = selectedAdventuringGear,
+            MagicItems = selectedMagicItems,
+            MountsAndVehicles = selectedMountsAndVehicles,
+            Poisons = selectedPoisons,
+            Tools = selectedTools,
             Wealth = wealth
         };
 
@@ -280,6 +733,11 @@
     {
         public List<DndShared.Models.Armor>? Armor { get; set; }
         public List<DndShared.Models.Weapon>? Weapons { get; set; }
+        public List<AdventuringGear>? AdventuringGear { get; set; }
+        public List<MagicItem>? MagicItems { get; set; }
+        public List<MountAndVehicle>? MountsAndVehicles { get; set; }
+        public List<Poison>? Poisons { get; set; }
+        public List<Tool>? Tools { get; set; }
         public CharacterWealth? Wealth { get; set; }
     }
 }
