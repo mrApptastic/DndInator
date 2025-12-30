@@ -1,6 +1,5 @@
 using Microsoft.JSInterop;
 using DndShared.Models;
-using System.Text.Json;
 
 namespace DndInator.Services;
 
@@ -39,7 +38,7 @@ public class CharacterSheetService : ICharacterSheetService
             var pdfUrl = $"data/{edition}/CharacterSheet.pdf";
             
             // Prepare character data for JavaScript
-            var characterData = PrepareCharacterData(character);
+            var characterData = CharacterSheetMapper.Map(character);
             
             // Call JavaScript to fill the PDF
             var dataUrl = await _jsRuntime.InvokeAsync<string>(
@@ -103,67 +102,7 @@ public class CharacterSheetService : ICharacterSheetService
     /// </summary>
     private object PrepareCharacterData(Character character)
     {
-        // Create a clean object with all the character data
-        // This will be serialized to JSON and passed to JavaScript
-        return new
-        {
-            information = character.Information != null ? new
-            {
-                name = character.Information.Name ?? "",
-                race = character.Information.Race ?? "",
-                @class = character.Information.Class ?? "",
-                background = character.Information.Background ?? "",
-                alignment = character.Information.Alignment?.ToString() ?? "",
-                playerName = "", // Add to model if needed
-                experiencePoints = "" // Add to model if needed
-            } : null,
-            
-            stats = character.Stats != null ? new
-            {
-                strength = character.Stats.Strength,
-                dexterity = character.Stats.Dexterity,
-                constitution = character.Stats.Constitution,
-                intelligence = character.Stats.Intelligence,
-                wisdom = character.Stats.Wisdom,
-                charisma = character.Stats.Charisma
-            } : null,
-            
-            @class = character.Class != null ? new
-            {
-                name = character.Class.Name ?? "",
-                hitPointDie = character.Class.HitPointDie ?? "",
-                primaryAbility = character.Class.PrimaryAbility ?? "",
-                savingThrowProficiencies = character.Class.SavingThrowProficiencies ?? "",
-                skillProficiencies = character.Class.SkillProficiencies ?? ""
-            } : null,
-            
-            background = character.Background != null ? new
-            {
-                name = character.Background.Name ?? "",
-                description = character.Background.Description ?? "",
-                skillProficiencies = character.Background.SkillProficiencies ?? new List<string>(),
-                toolProficiency = character.Background.ToolProficiency ?? "",
-                equipment = character.Background.Equipment ?? ""
-            } : null,
-            
-            race = character.Race != null ? new
-            {
-                name = character.Race.Name ?? "",
-                speed = character.Race.Speed ?? "",
-                size = character.Race.Size ?? "",
-                traits = character.Race.Traits ?? new List<string>()
-            } : null,
-            
-            feats = character.Feats?.Select(f => new
-            {
-                name = f.Name ?? "",
-                description = f.Description ?? "",
-                benefits = f.Benefits ?? new List<string>()
-            }).ToArray(),
-            
-            // Add character portrait
-            characterPortrait = character.Information?.BaseInformation?.CharacterPortrait
-        };
+        return CharacterSheetMapper.Map(character);
     }
 }
 

@@ -18,7 +18,7 @@
                     <i class="bi bi-dice-5 me-2"></i>Roll 4d6 Drop Lowest
                 </button>
                 <button class="btn btn-outline-primary @(method == "standard" ? "active" : "")" 
-                        @onclick='() => { SetMethod("standard"); UseStandardArray(); }'>
+                    @onclick="UseStandardArraySelected">
                     <i class="bi bi-grid-3x3 me-2"></i>Standard Array
                 </button>
                 <button class="btn btn-outline-primary @(method == "manual" ? "active" : "")" 
@@ -208,6 +208,12 @@
     {
         method = newMethod;
         StateHasChanged();
+    }
+
+    private async Task UseStandardArraySelected()
+    {
+        SetMethod("standard");
+        await UseStandardArray();
     }
 
     private bool IsValidScore(int score)

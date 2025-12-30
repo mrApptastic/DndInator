@@ -411,7 +411,14 @@
     private int activeTab = 0;
     private Character character = new()
     {
-        Information = new CharacterInformation(),
+        Information = new CharacterInformation
+        {
+            BaseInformation = new ChraracterSheetInformation
+            {
+                Level = 1,
+                ExperiencePoints = 0
+            }
+        },
         Stats = new CharacterStats()
     };
     private bool[] stepValid = new bool[10];
@@ -770,13 +777,33 @@
         {
             character.Information.BaseInformation = new ChraracterSheetInformation();
         }
-        
-        character.Information.BaseInformation.Skills = selectedSkills;
-        character.Information.BaseInformation.Spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
+
+        var baseInfo = character.Information.BaseInformation;
+        baseInfo.Level ??= 1;
+        baseInfo.ExperiencePoints ??= 0;
+        baseInfo.Skills = selectedSkills;
+
+        // Derive spellcasting basics from selections
+        var spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
         {
+            SpellcastingAbility = selectedClass?.PrimaryAbility,
             Spells = selectedSpells
-        } : null;
-        character.Information.BaseInformation.Equipment = new CharacterEquipment
+        } : baseInfo.Spellcasting;
+
+        if (spellcasting != null && character.Stats != null)
+        {
+            var abilityMod = GetAbilityModifierByName(character.Stats, spellcasting.SpellcastingAbility);
+            var profBonus = DetermineProficiencyBonus(baseInfo.Level ?? 1);
+            spellcasting.SpellCastingModifier ??= abilityMod;
+            spellcasting.SpellSaveDC ??= 8 + profBonus + abilityMod;
+            spellcasting.SpellAttackBonus ??= profBonus + abilityMod;
+        }
+
+        baseInfo.Spellcasting = spellcasting;
+
+        // Equipment aggregation with derived shield flag
+        var firstArmor = selectedArmor.FirstOrDefault();
+        baseInfo.Equipment = new CharacterEquipment
         {
             Armors = selectedArmor,
             Weapons = selectedWeapons,
@@ -784,6 +811,65 @@
             Tools = selectedTools,
             Wealth = characterWealth
         };
+
+        // Core combat stats
+        if (character.Stats != null)
+        {
+            var dexMod = character.Stats.GetDexterityModifier();
+            baseInfo.Initiative ??= dexMod;
+            baseInfo.PassivePerception ??= 10 + character.Stats.GetWisdomModifier() + (selectedSkills?.Perception == true ? DetermineProficiencyBonus(baseInfo.Level ?? 1) : 0);
+
+            if (baseInfo.ArmorClass == null)
+            {
+                baseInfo.ArmorClass = ParseArmorClass(firstArmor?.ArmorClass, dexMod);
+            }
+        }
+
+        // Speed from species if missing
+        if (baseInfo.Speed == null && selectedSpecies?.Speed != null)
+        {
+            baseInfo.Speed = ParseSpeed(selectedSpecies.Speed);
+        }
+
+        // Hit dice and proficiency bonus
+        if (baseInfo.HitDice == null && selectedClass?.HitPointDie != null)
+        {
+            baseInfo.HitDice = ParseHitDice(selectedClass.HitPointDie, baseInfo.Level ?? 1);
+        }
+
+        baseInfo.ProficiencyBonus ??= DetermineProficiencyBonus(baseInfo.Level ?? 1);
+
+        // Proficiencies and trainings
+        baseInfo.SavingThrows ??= SplitCsv(selectedClass?.SavingThrowProficiencies);
+        baseInfo.WeaponTraining ??= SplitCsv(selectedClass?.WeaponProficiencies);
+        baseInfo.ArmorTraining ??= SplitCsv(selectedClass?.ArmorTraining);
+
+        // Tools and languages
+        baseInfo.Tools ??= new List<string>();
+        if (!string.IsNullOrWhiteSpace(selectedBackground?.ToolProficiency))
+        {
+            baseInfo.Tools.Add(selectedBackground.ToolProficiency);
+        }
+        if (selectedTools.Any())
+        {
+            baseInfo.Tools.AddRange(selectedTools.Select(t => t.Name ?? string.Empty).Where(n => !string.IsNullOrWhiteSpace(n)));
+        }
+        baseInfo.Languages ??= new List<string>();
+
+        // Traits and features placeholders from race/class
+        baseInfo.SpecialTraits ??= selectedSpecies?.Traits;
+        if (selectedClass?.FullContent != null)
+        {
+            baseInfo.ClassFeatures ??= new List<string> { selectedClass.FullContent };
+        }
+
+        // Weapons convenience list for PDF weapon table
+        baseInfo.Weapons ??= selectedWeapons.Select(w => new CharacterWeapon
+        {
+            Name = w.Name,
+            Damage = w.Damage,
+            Notes = w.Properties
+        }).ToList();
 
         // Update Stats
         character.Stats = new CharacterStats
@@ -864,5 +950,69 @@
         lastRollDetails = "";
         saveMessage = string.Empty;
         StateHasChanged();
+    }
+
+    private static int DetermineProficiencyBonus(int level)
+    {
+        if (level < 1) return 2;
+        return (int)Math.Ceiling(level / 4.0) + 1;
+    }
+
+    private static int GetAbilityModifierByName(CharacterStats stats, string? abilityName)
+    {
+        if (string.IsNullOrWhiteSpace(abilityName)) return 0;
+        return abilityName.ToLowerInvariant() switch
+        {
+            "strength" => stats.GetStrengthModifier(),
+            "dexterity" => stats.GetDexterityModifier(),
+            "constitution" => stats.GetConstitutionModifier(),
+            "intelligence" => stats.GetIntelligenceModifier(),
+            "wisdom" => stats.GetWisdomModifier(),
+            "charisma" => stats.GetCharismaModifier(),
+            _ => 0
+        };
+    }
+
+    private static int ParseArmorClass(string? armorClass, int dexMod)
+    {
+        if (!string.IsNullOrWhiteSpace(armorClass))
+        {
+            var numeric = new string(armorClass.TakeWhile(c => char.IsDigit(c)).ToArray());
+            if (int.TryParse(numeric, out var ac))
+            {
+                return ac;
+            }
+        }
+        return 10 + dexMod;
+    }
+
+    private static int? ParseSpeed(string speed)
+    {
+        var numeric = new string(speed.TakeWhile(char.IsDigit).ToArray());
+        if (int.TryParse(numeric, out var value))
+        {
+            return value;
+        }
+        return null;
+    }
+
+    private static int? ParseHitDice(string hitDie, int level)
+    {
+        var numeric = new string(hitDie.Where(char.IsDigit).ToArray());
+        if (int.TryParse(numeric, out var die))
+        {
+            return level; // store count of dice; original string kept in class
+        }
+        return null;
+    }
+
+    private static List<string> SplitCsv(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value)
+            ? new List<string>()
+            : value.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .Select(v => v.Trim())
+                .Where(v => !string.IsNullOrWhiteSpace(v))
+                .ToList();
     }
 }

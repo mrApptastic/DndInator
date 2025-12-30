@@ -1,0 +1,73 @@
+Character Name:
+<input type="text" value="NAME" data-element-id="618R" name="Name" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_618R">
+
+Background:
+<input type="text" value="BACKGROUND" data-element-id="621R" name="Background" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_621R">
+
+Class:
+<input type="text" value="CLASS" data-element-id="626R" name="Class" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_626R">
+
+Species:
+<input type="text" value="SPECIES" data-element-id="631R" name="Species" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_631R">
+
+Subclass:
+<input type="text" value="SUBCLASS" data-element-id="635R" name="Subclass" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_635R">
+
+Level:
+<input type="text" value="" data-element-id="640R" name="Level" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_640R">
+
+XP:
+<input type="text" value="" data-element-id="645R" name="XP Points" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_645R">
+
+AC:
+<input type="text" value="" data-element-id="653R" name="Armor Class" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_653R">
+
+Shield:
+<input data-element-id="1670R" aria-required="false" type="checkbox" name="shield chk" exportvalue="Yes" tabindex="0" style="background-color: transparent;">
+
+Hit Points:
+<input type="text" value="123456" data-element-id="659R" name="Max HP" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_659R">
+
+Hit Dice:
+<input type="text" value="123456" data-element-id="661R" name="Max HD" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_661R">
+
+Proficiency Bonus:
+<input type="text" value="" data-element-id="558R" name="PROF BONUS" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_558R">
+
+Strength Modifier:
+<input type="text" value="" data-element-id="558R" name="PROF BONUS" tabindex="0" aria-required="false" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_558R">
+
+Strength Score:
+<input type="text" value="123" data-element-id="674R" name="STR SCORE" tabindex="0" aria-required="false" maxlength="3" style="font-size: calc(9px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_674R">
+
+Strength Saving Throw Proficient:
+<input data-element-id="1566R" aria-required="false" type="checkbox" name="Check Box18" exportvalue="Yes" tabindex="0" style="background-color: transparent;">
+
+Strength Saving Throw:
+<input type="text" value="" data-element-id="951R" name="STR SAVE" tabindex="0" aria-required="false" maxlength="3" style="font-size: calc(8.7px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_951R">
+
+Athletics Proficent:
+<input data-element-id="1575R" aria-required="false" type="checkbox" name="Check Box19" exportvalue="Yes" tabindex="0" style="background-color: transparent;">
+
+Ahletics Modifier:
+<input type="text" value="" data-element-id="955R" name="ATHLETICS" tabindex="0" aria-required="false" maxlength="3" style="font-size: calc(8.7px * var(--total-scale-factor)); color: rgb(0, 0, 0); text-align: center; background-color: transparent;" id="pdfjs_internal_id_955R">
+
+Class Feateres Box 1:
+<textarea data-element-id="473R" name="CLASS FEATURES 1" tabindex="0" aria-required="false" style="font-size: calc(10px * var(--total-scale-factor)); color: rgb(0, 0, 0); background-color: transparent;" id="pdfjs_internal_id_473R"></textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
