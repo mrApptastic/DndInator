@@ -148,40 +148,104 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-gem' viewBox='0 0 16 16'%3E%3Cpath d='M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z'/%3E%3C/svg%3E");
 }
 
+.bi-person-plus::before {
+    content: "" !important;
+}
+
+.bi-people::before {
+    content: "" !important;
+}
+
+.bi-gear::before {
+    content: "" !important;
+}
+
+.bi-person-badge::before {
+    content: "" !important;
+}
+
+.bi-shield::before {
+    content: "" !important;
+}
+
+.bi-journal-text::before {
+    content: "" !important;
+}
+
+.bi-trophy::before {
+    content: "" !important;
+}
+
+.bi-stars::before {
+    content: "" !important;
+}
+
+.bi-gem::before {
+    content: "" !important;
+}
+
+.bi-crosshair::before {
+    content: "" !important;
+}
+
+.bi-shield-fill::before {
+    content: "" !important;
+}
+
+.bi-backpack::before {
+    content: "" !important;
+}
+
+.bi-tools::before {
+    content: "" !important;
+}
+
+.bi-truck::before {
+    content: "" !important;
+}
+
+.bi-droplet::before {
+    content: "" !important;
+}
+
+.bi-gem-trinket::before {
+    content: "" !important;
+}
+
 /* Mobile optimization */
 @media (max-width: 640px) {
     .home-container h1 {
         font-size: 2rem;
     }
-    
+
     .subtitle {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
-    
+
     .menu-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
-    
+
     .menu-button {
         min-height: 120px;
         padding: 1.5rem 0.5rem;
     }
-    
+
     .menu-button-icon {
         width: 2.5rem;
         height: 2.5rem;
     }
-    
+
     .menu-button-text {
         font-size: 0.875rem;
     }
-    
+
     .menu-section {
         margin-bottom: 2rem;
     }
-    
+
     .menu-section h2 {
         font-size: 1.25rem;
     }
