@@ -1,0 +1,216 @@
+@typeparam TItem
+@using System.Collections.Generic
+@using System.Linq
+
+<div class="selection-list-container">
+    <div class="row h-100">
+        <!-- Available Items Column -->
+        <div class="col-md-6 available-column">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-header bg-light">
+                    <h6 class="mb-3">Available @ItemTypeName</h6>
+                    <input type="text" 
+                           class="form-control form-control-sm" 
+                           placeholder="Search..."
+                           @bind="searchText"
+                           @bind:event="oninput" />
+                </div>
+                <div class="card-body overflow-auto flex-grow-1">
+                    @if (FilteredAvailableItems.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var item in FilteredAvailableItems.Skip(availablePage * itemsPerPage).Take(itemsPerPage))
+                            {
+                                <button type="button" 
+                                        class="list-group-item list-group-item-action"
+                                        @onclick="() => AddItem(item)">
+                                    <span>@GetItemDisplay(item)</span>
+                                    <i class="bi bi-plus-lg float-end"></i>
+                                </button>
+                            }
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(searchText))
+                    {
+                        <div class="alert alert-info mb-0">
+                            No items match your search.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning mb-0">
+                            No items available.
+                        </div>
+                    }
+                </div>
+                @if (FilteredAvailableItems.Count > itemsPerPage)
+                {
+                    <div class="card-footer text-center border-top">
+                        <button class="btn btn-sm btn-outline-secondary" 
+                                @onclick="PrevAvailablePage"
+                                disabled="@(availablePage == 0)">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <span class="ms-2 me-2">Page @(availablePage + 1) of @((FilteredAvailableItems.Count + itemsPerPage - 1) / itemsPerPage)</span>
+                        <button class="btn btn-sm btn-outline-secondary"
+                                @onclick="NextAvailablePage"
+                                disabled="@((availablePage + 1) * itemsPerPage >= FilteredAvailableItems.Count)">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Selected Items Column -->
+        <div class="col-md-6 selected-column">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">Selected @ItemTypeName (@SelectedItems.Count)</h6>
+                </div>
+                <div class="card-body overflow-auto flex-grow-1">
+                    @if (SelectedItems.Any())
+                    {
+                        <div class="selected-items-list">
+                            @foreach (var item in SelectedItems)
+                            {
+                                <div class="selected-item mb-2">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">@GetItemDisplay(item)</div>
+                                            @if (ItemMetadataDisplay != null)
+                                            {
+                                                <small class="text-muted d-block">@ItemMetadataDisplay.Invoke(item)</small>
+                                            }
+                                        </div>
+                                        <button type="button" 
+                                                class="btn btn-sm btn-outline-danger ms-2"
+                                                @onclick="() => RemoveItem(item)">
+                                            <i class="bi bi-x"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mb-0">
+                            No items selected yet. Add items from the left column.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .selection-list-container {
+        height: 500px;
+    }
+    
+    .available-column, .selected-column {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .selected-item {
+        padding: 0.75rem;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+    
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public List<TItem> AvailableItems { get; set; } = new();
+
+    [Parameter]
+    public List<TItem> SelectedItems { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<List<TItem>> SelectedItemsChanged { get; set; }
+
+    [Parameter]
+    public Func<TItem, string> GetDisplayName { get; set; } = (item) => item?.ToString() ?? string.Empty;
+
+    [Parameter]
+    public Func<TItem, string>? ItemMetadataDisplay { get; set; }
+
+    [Parameter]
+    public string ItemTypeName { get; set; } = "Items";
+
+    [Parameter]
+    public int ItemsPerPage { get; set; } = 10;
+
+    private string searchText = string.Empty;
+    private int availablePage = 0;
+    private int itemsPerPage = 10;
+
+    protected override void OnParametersSet()
+    {
+        itemsPerPage = ItemsPerPage;
+    }
+
+    private List<TItem> FilteredAvailableItems
+    {
+        get
+        {
+            var filtered = AvailableItems.Where(item => !SelectedItems.Contains(item)).ToList();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+                return filtered;
+
+            var search = searchText.ToLowerInvariant();
+            return filtered.Where(item => 
+                GetDisplayName(item).Contains(search, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+
+    private string GetItemDisplay(TItem item) => GetDisplayName(item);
+
+    private async Task AddItem(TItem item)
+    {
+        if (!SelectedItems.Contains(item))
+        {
+            SelectedItems.Add(item);
+            await SelectedItemsChanged.InvokeAsync(SelectedItems);
+            searchText = string.Empty;
+            availablePage = 0;
+            StateHasChanged();
+        }
+    }
+
+    private async Task RemoveItem(TItem item)
+    {
+        SelectedItems.Remove(item);
+        await SelectedItemsChanged.InvokeAsync(SelectedItems);
+        StateHasChanged();
+    }
+
+    private void PrevAvailablePage()
+    {
+        if (availablePage > 0)
+        {
+            availablePage--;
+            StateHasChanged();
+        }
+    }
+
+    private void NextAvailablePage()
+    {
+        if ((availablePage + 1) * itemsPerPage < FilteredAvailableItems.Count)
+        {
+            availablePage++;
+            StateHasChanged();
+        }
+    }
+}

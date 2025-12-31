@@ -1,0 +1,144 @@
+@using DndShared.Models
+@using System.Collections.Generic
+@using System.Linq
+
+<div class="class-selection-container">
+    @if (AvailableClasses?.Any() == true)
+    {
+        <div class="mb-3">
+            <label class="form-label">Select a Class:</label>
+            <select class="form-select" @onchange="SelectClass">
+                <option value="">-- Choose a Class --</option>
+                @foreach (var cls in AvailableClasses)
+                {
+                    <option value="@cls.Id">@cls.Name</option>
+                }
+            </select>
+        </div>
+
+        @if (selectedClassId != Guid.Empty && currentSelectedClass != null)
+        {
+            <div class="card mb-3">
+                <div class="card-header bg-light">
+                    <h6>@currentSelectedClass.Name</h6>
+                </div>
+                <div class="card-body">
+                    <p><small class="text-muted">@currentSelectedClass.Description</small></p>
+                    <div class="mb-3">
+                        <label class="form-label">Level:</label>
+                        <input type="number" 
+                               class="form-control" 
+                               min="1" 
+                               max="20" 
+                               @bind="classLevel"
+                               @bind:event="oninput" />
+                    </div>
+                    <button type="button" 
+                            class="btn btn-success"
+                            @onclick="AddClass">
+                        <i class="bi bi-plus-circle me-2"></i>Add @currentSelectedClass.Name Level @classLevel
+                    </button>
+                </div>
+            </div>
+        }
+    }
+
+    @if (Classes?.Any() == true)
+    {
+        <div class="card">
+            <div class="card-header bg-light">
+                <h6 class="mb-0">Selected Classes (Total Level: @Classes.Sum(c => c.Level))</h6>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    @foreach (var classLevel in Classes)
+                    {
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>@classLevel.Class?.Name</strong>
+                                <span class="badge bg-primary ms-2">Level @classLevel.Level</span>
+                            </div>
+                            <button type="button" 
+                                    class="btn btn-sm btn-outline-danger"
+                                    @onclick="() => RemoveClass(classLevel)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No classes selected yet. Choose a class above to begin.
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<CharacterClassLevel>? Classes { get; set; } = new();
+
+    [Parameter]
+    public List<CharacterClass>? AvailableClasses { get; set; }
+
+    [Parameter]
+    public EventCallback<List<CharacterClassLevel>> OnClassesChanged { get; set; }
+
+    private Guid selectedClassId = Guid.Empty;
+    private CharacterClass? currentSelectedClass;
+    private int classLevel = 1;
+
+    private void SelectClass(ChangeEventArgs e)
+    {
+        if (Guid.TryParse(e.Value?.ToString(), out var classId))
+        {
+            selectedClassId = classId;
+            currentSelectedClass = AvailableClasses?.FirstOrDefault(c => c.Id == classId);
+            classLevel = 1;
+        }
+        else
+        {
+            selectedClassId = Guid.Empty;
+            currentSelectedClass = null;
+        }
+        StateHasChanged();
+    }
+
+    private async Task AddClass()
+    {
+        if (currentSelectedClass != null && classLevel > 0)
+        {
+            // Check if class already exists, update level if so
+            var existing = Classes?.FirstOrDefault(c => c.Class?.Id == selectedClassId);
+            if (existing != null)
+            {
+                existing.Level = classLevel;
+            }
+            else
+            {
+                Classes?.Add(new CharacterClassLevel
+                {
+                    Class = currentSelectedClass,
+                    Level = classLevel,
+                    ClassFeatures = new List<string>()
+                });
+            }
+
+            await OnClassesChanged.InvokeAsync(Classes);
+            selectedClassId = Guid.Empty;
+            currentSelectedClass = null;
+            classLevel = 1;
+            StateHasChanged();
+        }
+    }
+
+    private async Task RemoveClass(CharacterClassLevel classLevel)
+    {
+        Classes?.Remove(classLevel);
+        await OnClassesChanged.InvokeAsync(Classes);
+        StateHasChanged();
+    }
+}

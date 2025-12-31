@@ -371,7 +371,7 @@ window.characterSheetModule = {
                 // Spell slots
                 for (let level = 1; level <= 9; level++) {
                     const slots = character.spellcasting[`level${level}Slots`];
-                    if (slots !== undefined) {
+                    if (slots !== undefined && slots !== null) {
                         setTextField(`LVL${level} TOTAL`, slots.toString());
                     }
                 }

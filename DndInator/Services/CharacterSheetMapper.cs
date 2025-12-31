@@ -25,26 +25,26 @@ public static class CharacterSheetMapper
             charisma = stats.Charisma
         } : null;
 
-        var skills = baseInfo?.Skills != null ? new Dictionary<string, bool>
+        var skills = baseInfo?.Skills != null ? new Dictionary<string, object>
         {
-            ["Acrobatics"] = baseInfo.Skills.Acrobatics,
-            ["Animal Handling"] = baseInfo.Skills.AnimalHandling,
-            ["Arcana"] = baseInfo.Skills.Arcana,
-            ["Athletics"] = baseInfo.Skills.Athletics,
-            ["Deception"] = baseInfo.Skills.Deception,
-            ["History"] = baseInfo.Skills.History,
-            ["Insight"] = baseInfo.Skills.Insight,
-            ["Intimidation"] = baseInfo.Skills.Intimidation,
-            ["Investigation"] = baseInfo.Skills.Investigation,
-            ["Medicine"] = baseInfo.Skills.Medicine,
-            ["Nature"] = baseInfo.Skills.Nature,
-            ["Perception"] = baseInfo.Skills.Perception,
-            ["Performance"] = baseInfo.Skills.Performance,
-            ["Persuasion"] = baseInfo.Skills.Persuasion,
-            ["Religion"] = baseInfo.Skills.Religion,
-            ["Sleight of Hand"] = baseInfo.Skills.SleightOfHand,
-            ["Stealth"] = baseInfo.Skills.Stealth,
-            ["Survival"] = baseInfo.Skills.Survival
+            ["Acrobatics"] = baseInfo.Skills.Acrobatics.ToString(),
+            ["Animal Handling"] = baseInfo.Skills.AnimalHandling.ToString(),
+            ["Arcana"] = baseInfo.Skills.Arcana.ToString(),
+            ["Athletics"] = baseInfo.Skills.Athletics.ToString(),
+            ["Deception"] = baseInfo.Skills.Deception.ToString(),
+            ["History"] = baseInfo.Skills.History.ToString(),
+            ["Insight"] = baseInfo.Skills.Insight.ToString(),
+            ["Intimidation"] = baseInfo.Skills.Intimidation.ToString(),
+            ["Investigation"] = baseInfo.Skills.Investigation.ToString(),
+            ["Medicine"] = baseInfo.Skills.Medicine.ToString(),
+            ["Nature"] = baseInfo.Skills.Nature.ToString(),
+            ["Perception"] = baseInfo.Skills.Perception.ToString(),
+            ["Performance"] = baseInfo.Skills.Performance.ToString(),
+            ["Persuasion"] = baseInfo.Skills.Persuasion.ToString(),
+            ["Religion"] = baseInfo.Skills.Religion.ToString(),
+            ["Sleight of Hand"] = baseInfo.Skills.SleightOfHand.ToString(),
+            ["Stealth"] = baseInfo.Skills.Stealth.ToString(),
+            ["Survival"] = baseInfo.Skills.Survival.ToString()
         } : null;
 
         var spellcasting = baseInfo?.Spellcasting != null ? new
@@ -163,17 +163,17 @@ public static class CharacterSheetMapper
                 }
                 : null;
 
-        var classPayload = character.Class != null ? new
+        var classPayload = character.Classes != null && character.Classes.Any() ? new
         {
-            name = character.Class.Name,
+            name = string.Join(" / ", character.Classes.Select(c => c.Class?.Name)),
             subclassName = information?.Subclass,
-            savingThrowProficiencies = SplitCsv(character.Class.SavingThrowProficiencies),
-            skillProficiencies = character.Class.SkillProficiencies,
-            weaponProficiencies = SplitCsv(character.Class.WeaponProficiencies),
-            armorTraining = SplitCsv(character.Class.ArmorTraining),
-            toolProficiencies = SplitCsv(character.Class.ToolProficiencies),
-            startingEquipment = character.Class.StartingEquipment,
-            source = character.Class.Source
+            savingThrowProficiencies = AggregateClassProficiencies(character.Classes, c => c.Class?.SavingThrowProficiencies),
+            skillProficiencies = AggregateClassSkills(character.Classes),
+            weaponProficiencies = AggregateClassProficiencies(character.Classes, c => c.Class?.WeaponProficiencies),
+            armorTraining = AggregateClassProficiencies(character.Classes, c => c.Class?.ArmorTraining),
+            toolProficiencies = AggregateClassProficiencies(character.Classes, c => c.Class?.ToolProficiencies),
+            startingEquipment = character.Classes.FirstOrDefault()?.Class?.StartingEquipment,
+            source = character.Classes.FirstOrDefault()?.Class?.Source
         } : null;
 
         var background = character.Background != null ? new
@@ -230,6 +230,45 @@ public static class CharacterSheetMapper
                 .Select(v => v.Trim())
                 .Where(v => !string.IsNullOrWhiteSpace(v))
                 .ToList();
+    }
+
+    private static List<string> AggregateClassProficiencies(List<CharacterClassLevel>? classes, Func<CharacterClassLevel, string?> selector)
+    {
+        if (classes == null || !classes.Any())
+            return new List<string>();
+
+        var proficiencies = new HashSet<string>();
+        foreach (var classLevel in classes)
+        {
+            var value = selector(classLevel);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                foreach (var prof in SplitCsv(value))
+                {
+                    proficiencies.Add(prof);
+                }
+            }
+        }
+        return proficiencies.ToList();
+    }
+
+    private static string? AggregateClassSkills(List<CharacterClassLevel>? classes)
+    {
+        if (classes == null || !classes.Any())
+            return null;
+
+        var skills = new HashSet<string>();
+        foreach (var classLevel in classes)
+        {
+            if (!string.IsNullOrWhiteSpace(classLevel.Class?.SkillProficiencies))
+            {
+                foreach (var skill in SplitCsv(classLevel.Class.SkillProficiencies))
+                {
+                    skills.Add(skill);
+                }
+            }
+        }
+        return skills.Any() ? string.Join(", ", skills) : null;
     }
 
     private static int? ParseSpeed(string? speed)

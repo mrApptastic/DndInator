@@ -40,7 +40,7 @@
                             @onclick="() => SetActiveTab(0)" 
                             type="button">
                         <i class="bi bi-1-circle-fill d-block fs-4 mb-1"></i>
-                        Basic Info
+                        Ability Scores
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -48,7 +48,7 @@
                             @onclick="() => SetActiveTab(1)" 
                             type="button">
                         <i class="bi bi-2-circle-fill d-block fs-4 mb-1"></i>
-                        Race
+                        Origin
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -56,7 +56,7 @@
                             @onclick="() => SetActiveTab(2)" 
                             type="button">
                         <i class="bi bi-3-circle-fill d-block fs-4 mb-1"></i>
-                        Class
+                        Basic Info
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -64,7 +64,7 @@
                             @onclick="() => SetActiveTab(3)" 
                             type="button">
                         <i class="bi bi-4-circle-fill d-block fs-4 mb-1"></i>
-                        Background
+                        Skills
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -72,7 +72,7 @@
                             @onclick="() => SetActiveTab(4)" 
                             type="button">
                         <i class="bi bi-5-circle-fill d-block fs-4 mb-1"></i>
-                        Ability Scores
+                        Feats
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -80,36 +80,28 @@
                             @onclick="() => SetActiveTab(5)" 
                             type="button">
                         <i class="bi bi-6-circle-fill d-block fs-4 mb-1"></i>
-                        Skills
+                        Spells
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link @(activeTab == 6 ? "active" : "")" 
                             @onclick="() => SetActiveTab(6)" 
                             type="button">
-                        <i class="bi bi-6-circle-fill d-block fs-4 mb-1"></i>
-                        Feats
+                        <i class="bi bi-7-circle-fill d-block fs-4 mb-1"></i>
+                        Equipment
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link @(activeTab == 7 ? "active" : "")" 
                             @onclick="() => SetActiveTab(7)" 
                             type="button">
-                        <i class="bi bi-7-circle-fill d-block fs-4 mb-1"></i>
-                        Spells
+                        <i class="bi bi-8-circle-fill d-block fs-4 mb-1"></i>
+                        Details
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link @(activeTab == 8 ? "active" : "")" 
                             @onclick="() => SetActiveTab(8)" 
-                            type="button">
-                        <i class="bi bi-8-circle-fill d-block fs-4 mb-1"></i>
-                        Equipment
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link @(activeTab == 9 ? "active" : "")" 
-                            @onclick="() => SetActiveTab(9)" 
                             type="button">
                         <i class="bi bi-9-circle-fill d-block fs-4 mb-1"></i>
                         Preview & Export
@@ -119,53 +111,72 @@
 
             <!-- Tab Content -->
             <div class="tab-content">
-                <!-- Tab 0: Basic Info -->
+                <!-- Tab 0: Ability Scores -->
                 @if (activeTab == 0)
+                {
+                    <div class="animate-slide-in">
+                        <CharacterStatsStepExtended 
+                            Stats="character.Stats"
+                            OnStatsChanged="HandleStatsChanged"
+                            OnValidationChanged="(isValid) => stepValid[0] = isValid" />
+                        <div class="mt-3 d-flex justify-content-end">
+                            <button class="btn btn-primary btn-lg" 
+                                    @onclick="() => SetActiveTab(1)">
+                                Next: Choose Origin <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 1: Origin (Race, Class, Background) -->
+                @if (activeTab == 1)
+                {
+                    <div class="animate-slide-in">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h5>Choose Race</h5>
+                                <CharacterSpeciesStep 
+                                    Species="character.Race"
+                                    OnSpeciesChanged="HandleSpeciesChanged"
+                                    OnValidationChanged="(isValid) => stepValid[1] = isValid" />
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5>Choose Class(es)</h5>
+                                <CharacterOriginClassStep 
+                                    Classes="character.Classes"
+                                    AvailableClasses="availableClasses"
+                                    OnClassesChanged="HandleClassesChanged" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <h5>Choose Background</h5>
+                                <CharacterBackgroundStep 
+                                    Background="character.Background"
+                                    OnBackgroundChanged="HandleBackgroundChanged"
+                                    OnValidationChanged="(isValid) => stepValid[1] = stepValid[1] && isValid" />
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(0)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg" 
+                                    @onclick="() => SetActiveTab(2)">
+                                Next: Basic Info <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 2: Basic Info -->
+                @if (activeTab == 2)
                 {
                     <div class="animate-slide-in">
                         <CharacterInformationStep 
                             Information="character.Information"
                             ShowExtendedFields="true"
                             OnInformationChanged="HandleInformationChanged"
-                            OnValidationChanged="(isValid) => stepValid[0] = isValid" />
-                        <div class="mt-3 d-flex justify-content-end">
-                            <button class="btn btn-primary btn-lg" 
-                                    @onclick="() => SetActiveTab(1)"
-                                    disabled="@(!stepValid[0])">
-                                Next: Choose Race <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                }
-
-                <!-- Tab 1: Race Selection -->
-                @if (activeTab == 1)
-                {
-                    <div class="animate-slide-in">
-                        <CharacterSpeciesStep 
-                            Species="character.Race"
-                            OnSpeciesChanged="HandleSpeciesChanged"
-                            OnValidationChanged="(isValid) => stepValid[1] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
-                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(0)">
-                                <i class="bi bi-arrow-left me-2"></i> Back
-                            </button>
-                            <button class="btn btn-primary btn-lg" 
-                                    @onclick="() => SetActiveTab(2)"
-                                    disabled="@(!stepValid[1])">
-                                Next: Choose Class <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                }
-
-                <!-- Tab 2: Class Selection -->
-                @if (activeTab == 2)
-                {
-                    <div class="animate-slide-in">
-                        <CharacterClassStep 
-                            Class="character.Class"
-                            OnClassChanged="HandleClassChanged"
                             OnValidationChanged="(isValid) => stepValid[2] = isValid" />
                         <div class="mt-3 d-flex justify-content-between">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(1)">
@@ -174,61 +185,67 @@
                             <button class="btn btn-primary btn-lg" 
                                     @onclick="() => SetActiveTab(3)"
                                     disabled="@(!stepValid[2])">
-                                Next: Choose Background <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                }
-
-                <!-- Tab 3: Background Selection -->
-                @if (activeTab == 3)
-                {
-                    <div class="animate-slide-in">
-                        <CharacterBackgroundStep 
-                            Background="character.Background"
-                            OnBackgroundChanged="HandleBackgroundChanged"
-                            OnValidationChanged="(isValid) => stepValid[3] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
-                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(2)">
-                                <i class="bi bi-arrow-left me-2"></i> Back
-                            </button>
-                            <button class="btn btn-primary btn-lg" 
-                                    @onclick="() => SetActiveTab(4)"
-                                    disabled="@(!stepValid[3])">
-                                Next: Ability Scores <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                }
-
-                <!-- Tab 4: Ability Scores -->
-                @if (activeTab == 4)
-                {
-                    <div class="animate-slide-in">
-                        <CharacterStatsStepExtended 
-                            Stats="character.Stats"
-                            OnStatsChanged="HandleStatsChanged"
-                            OnValidationChanged="(isValid) => stepValid[4] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
-                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(3)">
-                                <i class="bi bi-arrow-left me-2"></i> Back
-                            </button>
-                            <button class="btn btn-primary btn-lg" 
-                                    @onclick="() => SetActiveTab(5)"
-                                    disabled="@(!stepValid[4])">
                                 Next: Skills <i class="bi bi-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 5: Skills -->
-                @if (activeTab == 5)
+                <!-- Tab 3: Skills -->
+                @if (activeTab == 3)
                 {
                     <div class="animate-slide-in">
                         <CharacterSkillsStep 
                             Skills="character.Information?.BaseInformation?.Skills"
                             OnSkillsChanged="HandleSkillsChanged"
+                            OnValidationChanged="(isValid) => stepValid[3] = isValid" />
+                        <div class="mt-3 d-flex justify-content-between">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(2)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg" 
+                                    @onclick="() => SetActiveTab(4)">
+                                Next: Feats <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 4: Feats -->
+                @if (activeTab == 4)
+                {
+                    <div class="animate-slide-in">
+                        <CharacterSelectionListComponent 
+                            @ref="featsComponent"
+                            TItem="Feat"
+                            AvailableItems="availableFeats ?? new List<Feat>()"
+                            SelectedItems="selectedFeats"
+                            SelectedItemsChanged="HandleFeatsChanged"
+                            GetDisplayName="@(f => f.Name ?? string.Empty)"
+                            ItemMetadataDisplay="@(f => f.Prerequisite ?? string.Empty)"
+                            ItemTypeName="Feats"
+                            ItemsPerPage="10" />
+                        <div class="mt-3 d-flex justify-content-between">
+                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(3)">
+                                <i class="bi bi-arrow-left me-2"></i> Back
+                            </button>
+                            <button class="btn btn-primary btn-lg" 
+                                    @onclick="() => SetActiveTab(5)">
+                                Next: Spells <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <!-- Tab 5: Spells -->
+                @if (activeTab == 5)
+                {
+                    <div class="animate-slide-in">
+                        <CharacterSpellsStep 
+                            Classes="character.Classes"
+                            AvailableSpells="availableSpells ?? new List<Spell>()"
+                            SelectedSpells="selectedSpells"
+                            OnSpellsChanged="HandleSpellsChanged"
                             OnValidationChanged="(isValid) => stepValid[5] = isValid" />
                         <div class="mt-3 d-flex justify-content-between">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(4)">
@@ -236,19 +253,19 @@
                             </button>
                             <button class="btn btn-primary btn-lg" 
                                     @onclick="() => SetActiveTab(6)">
-                                Next: Feats <i class="bi bi-arrow-right ms-2"></i>
+                                Next: Equipment <i class="bi bi-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 6: Feats -->
+                <!-- Tab 6: Equipment -->
                 @if (activeTab == 6)
                 {
                     <div class="animate-slide-in">
-                        <CharacterFeatsStep 
-                            Feats="character.Feats"
-                            OnFeatsChanged="HandleFeatsChanged"
+                        <CharacterEquipmentStep 
+                            Equipment="equipmentData"
+                            OnEquipmentChanged="HandleEquipmentChanged"
                             OnValidationChanged="(isValid) => stepValid[6] = isValid" />
                         <div class="mt-3 d-flex justify-content-between">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(5)">
@@ -256,54 +273,34 @@
                             </button>
                             <button class="btn btn-primary btn-lg" 
                                     @onclick="() => SetActiveTab(7)">
-                                Next: Spells <i class="bi bi-arrow-right ms-2"></i>
+                                Next: Details <i class="bi bi-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 7: Spells -->
+                <!-- Tab 7: Manual Override / Details -->
                 @if (activeTab == 7)
                 {
                     <div class="animate-slide-in">
-                        <CharacterSpellsStep 
-                            Spells="character.Information?.BaseInformation?.Spellcasting?.Spells"
-                            OnSpellsChanged="HandleSpellsChanged"
+                        <CharacterManualOverrideStep 
+                            Character="character"
+                            OnCharacterChanged="HandleCharacterChanged"
                             OnValidationChanged="(isValid) => stepValid[7] = isValid" />
                         <div class="mt-3 d-flex justify-content-between">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(6)">
                                 <i class="bi bi-arrow-left me-2"></i> Back
                             </button>
-                            <button class="btn btn-primary btn-lg" 
-                                    @onclick="() => SetActiveTab(8)">
-                                Next: Equipment <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                }
-
-                <!-- Tab 8: Equipment -->
-                @if (activeTab == 8)
-                {
-                    <div class="animate-slide-in">
-                        <CharacterEquipmentStep 
-                            Equipment="equipmentData"
-                            OnEquipmentChanged="HandleEquipmentChanged"
-                            OnValidationChanged="(isValid) => stepValid[8] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
-                            <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(7)">
-                                <i class="bi bi-arrow-left me-2"></i> Back
-                            </button>
                             <button class="btn btn-success btn-lg" 
-                                    @onclick="() => { BuildCharacter(); SetActiveTab(9); }">
+                                    @onclick="() => { BuildCharacter(); SetActiveTab(8); }">
                                 Complete & Preview <i class="bi bi-check-circle ms-2"></i>
                             </button>
                         </div>
                     </div>
                 }
 
-                <!-- Tab 9: Preview & Export -->
-                @if (activeTab == 9)
+                <!-- Tab 8: Preview & Export -->
+                @if (activeTab == 8)
                 {
                     <div class="animate-slide-in">
                         @if (builtCharacter != null)
@@ -415,32 +412,29 @@
         {
             BaseInformation = new ChraracterSheetInformation
             {
-                Level = 1,
                 ExperiencePoints = 0
             }
         },
-        Stats = new CharacterStats()
+        Stats = new CharacterStats(),
+        Classes = new List<CharacterClassLevel>()
     };
-    private bool[] stepValid = new bool[10];
+    private bool[] stepValid = new bool[9];
     private Character? builtCharacter;
     private string saveMessage = string.Empty;
     
     // For CharacterEquipmentStep
     private CharacterEquipmentStep.CharacterEquipmentData? equipmentData;
 
-    // Tab 1: Race
+    // Tab 1: Origin
     private List<DndShared.Models.Species>? availableSpecies;
     private DndShared.Models.Species? selectedSpecies;
 
-    // Tab 2: Class
     private List<CharacterClass>? availableClasses;
-    private CharacterClass? selectedClass;
 
-    // Tab 3: Background
     private List<Background>? availableBackgrounds;
     private Background? selectedBackground;
 
-    // Tab 4: Ability Scores
+    // Tab 0: Ability Scores
     private int strength = 10;
     private int dexterity = 10;
     private int constitution = 10;
@@ -449,19 +443,19 @@
     private int charisma = 10;
     private string lastRollDetails = "";
 
-    // Tab 5: Skills
+    // Tab 3: Skills
     private CharacterSkills selectedSkills = new();
 
-    // Tab 6: Feats
+    // Tab 4: Feats
     private List<Feat>? availableFeats;
     private List<Feat> selectedFeats = new();
+    private CharacterSelectionListComponent<Feat>? featsComponent;
 
-    // Tab 7: Spells
+    // Tab 5: Spells
     private List<Spell>? availableSpells;
     private List<Spell> selectedSpells = new();
-    private int selectedSpellLevel = -1;
 
-    // Tab 8: Equipment
+    // Tab 6: Equipment
     private List<DndShared.Models.Armor>? availableArmor;
     private List<DndShared.Models.Armor> selectedArmor = new();
     private List<DndShared.Models.Weapon>? availableWeapons;
@@ -517,10 +511,10 @@
         return Task.CompletedTask;
     }
 
-    private Task HandleClassChanged(CharacterClass classOption)
+    private Task HandleClassesChanged(List<CharacterClassLevel> classes)
     {
-        character.Class = classOption;
-        selectedClass = classOption;
+        character.Classes = classes;
+        StateHasChanged();
         return Task.CompletedTask;
     }
 
@@ -575,120 +569,10 @@
         return Task.CompletedTask;
     }
 
-    private async Task HandlePortraitUpload(InputFileChangeEventArgs e)
+    private Task HandleCharacterChanged(Character updatedCharacter)
     {
-        var file = e.File;
-        if (file != null)
-        {
-            try
-            {
-                var buffer = new byte[file.Size];
-                await file.OpenReadStream(maxAllowedSize: 5 * 1024 * 1024).ReadAsync(buffer);
-                var imageType = file.ContentType;
-                
-                if (character.Information?.BaseInformation != null)
-                {
-                    character.Information.BaseInformation.CharacterPortrait = $"data:{imageType};base64,{Convert.ToBase64String(buffer)}";
-                }
-                
-                StateHasChanged();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error uploading portrait: {ex.Message}");
-            }
-        }
-    }
-
-    private void ClearPortrait()
-    {
-        if (character.Information?.BaseInformation != null)
-        {
-            character.Information.BaseInformation.CharacterPortrait = "";
-        }
-        StateHasChanged();
-    }
-
-    private void SelectSpecies(DndShared.Models.Species species)
-    {
-        selectedSpecies = species;
-        StateHasChanged();
-    }
-
-    private void SelectClass(CharacterClass classOption)
-    {
-        selectedClass = classOption;
-        StateHasChanged();
-    }
-
-    private void SelectBackground(Background background)
-    {
-        selectedBackground = background;
-        StateHasChanged();
-    }
-
-    private void ToggleFeat(Feat feat)
-    {
-        if (selectedFeats.Contains(feat))
-            selectedFeats.Remove(feat);
-        else
-            selectedFeats.Add(feat);
-        StateHasChanged();
-    }
-
-    private void ToggleSpell(Spell spell)
-    {
-        if (selectedSpells.Contains(spell))
-            selectedSpells.Remove(spell);
-        else
-            selectedSpells.Add(spell);
-        StateHasChanged();
-    }
-
-    private List<Spell> GetFilteredSpells()
-    {
-        if (availableSpells == null) return new List<Spell>();
-        
-        if (selectedSpellLevel == -1)
-            return availableSpells;
-        
-        return availableSpells.Where(s => s.Level == selectedSpellLevel).ToList();
-    }
-
-    private void ToggleArmor(DndShared.Models.Armor armor)
-    {
-        if (selectedArmor.Contains(armor))
-            selectedArmor.Remove(armor);
-        else
-            selectedArmor.Add(armor);
-        StateHasChanged();
-    }
-
-    private void ToggleWeapon(DndShared.Models.Weapon weapon)
-    {
-        if (selectedWeapons.Contains(weapon))
-            selectedWeapons.Remove(weapon);
-        else
-            selectedWeapons.Add(weapon);
-        StateHasChanged();
-    }
-
-    private void ToggleAdventuringGear(DndShared.Models.AdventuringGear gear)
-    {
-        if (selectedAdventuringGear.Contains(gear))
-            selectedAdventuringGear.Remove(gear);
-        else
-            selectedAdventuringGear.Add(gear);
-        StateHasChanged();
-    }
-
-    private void ToggleTool(DndShared.Models.Tool tool)
-    {
-        if (selectedTools.Contains(tool))
-            selectedTools.Remove(tool);
-        else
-            selectedTools.Add(tool);
-        StateHasChanged();
+        character = updatedCharacter;
+        return Task.CompletedTask;
     }
 
     private async Task RollAllAbilityScores()
@@ -768,9 +652,9 @@
             character.Information = new CharacterInformation();
         }
         
-        character.Information.Race = selectedSpecies?.Name ?? "Unknown";
-        character.Information.Class = selectedClass?.Name ?? "Unknown";
-        character.Information.Background = selectedBackground?.Name ?? "Unknown";
+        character.Information.Race = character.Race?.Name ?? "Unknown";
+        character.Information.Class = character.Classes?.FirstOrDefault()?.Class?.Name ?? "Unknown";
+        character.Information.Background = character.Background?.Name ?? "Unknown";
         
         // Update BaseInformation if it doesn't exist
         if (character.Information.BaseInformation == null)
@@ -779,21 +663,22 @@
         }
 
         var baseInfo = character.Information.BaseInformation;
-        baseInfo.Level ??= 1;
+        var totalLevel = character.GetTotalLevel();
         baseInfo.ExperiencePoints ??= 0;
         baseInfo.Skills = selectedSkills;
 
-        // Derive spellcasting basics from selections
-        var spellcasting = selectedSpells.Any() ? new CharacterSpellcasting
+        // Derive spellcasting basics from first spell-casting class
+        var primarySpellClass = character.GetPrimarySpellcastingClass();
+        var spellcasting = selectedSpells.Any() && primarySpellClass != null ? new CharacterSpellcasting
         {
-            SpellcastingAbility = selectedClass?.PrimaryAbility,
+            SpellcastingAbility = primarySpellClass.PrimaryAbility,
             Spells = selectedSpells
         } : baseInfo.Spellcasting;
 
         if (spellcasting != null && character.Stats != null)
         {
             var abilityMod = GetAbilityModifierByName(character.Stats, spellcasting.SpellcastingAbility);
-            var profBonus = DetermineProficiencyBonus(baseInfo.Level ?? 1);
+            var profBonus = DetermineProficiencyBonus(totalLevel);
             spellcasting.SpellCastingModifier ??= abilityMod;
             spellcasting.SpellSaveDC ??= 8 + profBonus + abilityMod;
             spellcasting.SpellAttackBonus ??= profBonus + abilityMod;
@@ -801,7 +686,7 @@
 
         baseInfo.Spellcasting = spellcasting;
 
-        // Equipment aggregation with derived shield flag
+        // Equipment aggregation
         var firstArmor = selectedArmor.FirstOrDefault();
         baseInfo.Equipment = new CharacterEquipment
         {
@@ -817,7 +702,7 @@
         {
             var dexMod = character.Stats.GetDexterityModifier();
             baseInfo.Initiative ??= dexMod;
-            baseInfo.PassivePerception ??= 10 + character.Stats.GetWisdomModifier() + (selectedSkills?.Perception == true ? DetermineProficiencyBonus(baseInfo.Level ?? 1) : 0);
+            baseInfo.PassivePerception ??= 10 + character.Stats.GetWisdomModifier() + (selectedSkills?.Perception != SkillProficiency.None ? DetermineProficiencyBonus(totalLevel) : 0);
 
             if (baseInfo.ArmorClass == null)
             {
@@ -826,29 +711,33 @@
         }
 
         // Speed from species if missing
-        if (baseInfo.Speed == null && selectedSpecies?.Speed != null)
+        if (baseInfo.Speed == null && character.Race?.Speed != null)
         {
-            baseInfo.Speed = ParseSpeed(selectedSpecies.Speed);
+            baseInfo.Speed = ParseSpeed(character.Race.Speed);
         }
 
-        // Hit dice and proficiency bonus
-        if (baseInfo.HitDice == null && selectedClass?.HitPointDie != null)
+        baseInfo.ProficiencyBonus ??= DetermineProficiencyBonus(totalLevel);
+
+        // Proficiencies and trainings from all classes
+        baseInfo.SavingThrows ??= new List<string>();
+        baseInfo.WeaponTraining ??= new List<string>();
+        baseInfo.ArmorTraining ??= new List<string>();
+
+        foreach (var classLevel in character.Classes ?? new List<CharacterClassLevel>())
         {
-            baseInfo.HitDice = ParseHitDice(selectedClass.HitPointDie, baseInfo.Level ?? 1);
+            if (classLevel.Class != null)
+            {
+                baseInfo.SavingThrows = baseInfo.SavingThrows.Union(SplitCsv(classLevel.Class.SavingThrowProficiencies)).ToList();
+                baseInfo.WeaponTraining = baseInfo.WeaponTraining.Union(SplitCsv(classLevel.Class.WeaponProficiencies)).ToList();
+                baseInfo.ArmorTraining = baseInfo.ArmorTraining.Union(SplitCsv(classLevel.Class.ArmorTraining)).ToList();
+            }
         }
-
-        baseInfo.ProficiencyBonus ??= DetermineProficiencyBonus(baseInfo.Level ?? 1);
-
-        // Proficiencies and trainings
-        baseInfo.SavingThrows ??= SplitCsv(selectedClass?.SavingThrowProficiencies);
-        baseInfo.WeaponTraining ??= SplitCsv(selectedClass?.WeaponProficiencies);
-        baseInfo.ArmorTraining ??= SplitCsv(selectedClass?.ArmorTraining);
 
         // Tools and languages
         baseInfo.Tools ??= new List<string>();
-        if (!string.IsNullOrWhiteSpace(selectedBackground?.ToolProficiency))
+        if (!string.IsNullOrWhiteSpace(character.Background?.ToolProficiency))
         {
-            baseInfo.Tools.Add(selectedBackground.ToolProficiency);
+            baseInfo.Tools.Add(character.Background.ToolProficiency);
         }
         if (selectedTools.Any())
         {
@@ -856,14 +745,18 @@
         }
         baseInfo.Languages ??= new List<string>();
 
-        // Traits and features placeholders from race/class
-        baseInfo.SpecialTraits ??= selectedSpecies?.Traits;
-        if (selectedClass?.FullContent != null)
+        // Traits and features
+        baseInfo.SpecialTraits ??= character.Race?.Traits;
+        baseInfo.ClassFeatures ??= new List<string>();
+        foreach (var classLevel in character.Classes ?? new List<CharacterClassLevel>())
         {
-            baseInfo.ClassFeatures ??= new List<string> { selectedClass.FullContent };
+            if (classLevel.Class?.FullContent != null)
+            {
+                baseInfo.ClassFeatures.Add(classLevel.Class.FullContent);
+            }
         }
 
-        // Weapons convenience list for PDF weapon table
+        // Weapons convenience list
         baseInfo.Weapons ??= selectedWeapons.Select(w => new CharacterWeapon
         {
             Name = w.Name,
@@ -882,10 +775,6 @@
             Charisma = charisma
         };
         
-        // Update other properties
-        character.Race = selectedSpecies;
-        character.Class = selectedClass;
-        character.Background = selectedBackground;
         character.Feats = selectedFeats;
         
         // Set built character to the updated character
@@ -926,22 +815,20 @@
                 Alignment = CharacterAlignment.NeutralGood,
                 BaseInformation = new ChraracterSheetInformation
                 {
-                    Level = 1,
                     ExperiencePoints = 0
                 }
             },
-            Stats = new CharacterStats()
+            Stats = new CharacterStats(),
+            Classes = new List<CharacterClassLevel>()
         };
         
         // Reset selections
         selectedSpecies = null;
-        selectedClass = null;
         selectedBackground = null;
         strength = dexterity = constitution = intelligence = wisdom = charisma = 10;
         selectedSkills = new CharacterSkills();
         selectedFeats.Clear();
         selectedSpells.Clear();
-        selectedSpellLevel = -1;
         selectedArmor.Clear();
         selectedWeapons.Clear();
         selectedAdventuringGear.Clear();
@@ -992,16 +879,6 @@
         if (int.TryParse(numeric, out var value))
         {
             return value;
-        }
-        return null;
-    }
-
-    private static int? ParseHitDice(string hitDie, int level)
-    {
-        var numeric = new string(hitDie.Where(char.IsDigit).ToArray());
-        if (int.TryParse(numeric, out var die))
-        {
-            return level; // store count of dice; original string kept in class
         }
         return null;
     }

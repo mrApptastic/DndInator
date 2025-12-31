@@ -113,28 +113,31 @@
         }
 
         <!-- Class Information -->
-        @if (Character.Class != null)
+        @{
+            var primaryClass = Character.Classes?.FirstOrDefault()?.Class;
+        }
+        @if (primaryClass != null)
         {
             <div class="card shadow-sm mb-3">
                 <div class="card-header bg-gradient-success text-white">
                     <h5 class="mb-0">
                         <i class="bi bi-shield-fill-check me-2"></i>
-                        Class: @Character.Class.Name
+                        Class: @primaryClass.Name
                     </h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong>Hit Die:</strong> <span class="badge bg-danger">@Character.Class.HitPointDie</span></p>
-                            <p><strong>Primary Ability:</strong> @Character.Class.PrimaryAbility</p>
+                            <p><strong>Hit Die:</strong> <span class="badge bg-danger">@primaryClass.HitPointDie</span></p>
+                            <p><strong>Primary Ability:</strong> @primaryClass.PrimaryAbility</p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>Saving Throws:</strong> @Character.Class.SavingThrowProficiencies</p>
+                            <p><strong>Saving Throws:</strong> @primaryClass.SavingThrowProficiencies</p>
                         </div>
                     </div>
-                    @if (!string.IsNullOrEmpty(Character.Class.SkillProficiencies))
+                    @if (!string.IsNullOrEmpty(primaryClass.SkillProficiencies))
                     {
-                        <p><strong>Skill Proficiencies:</strong> @Character.Class.SkillProficiencies</p>
+                        <p><strong>Skill Proficiencies:</strong> @primaryClass.SkillProficiencies</p>
                     }
                 </div>
             </div>

@@ -1,0 +1,58 @@
+@{
+    var displayValue = !string.IsNullOrWhiteSpace(OverriddenValue) ? OverriddenValue : CalculatedValue ?? "—";
+    var isOverridden = !string.IsNullOrWhiteSpace(OverriddenValue);
+}
+
+<div class="override-field">
+    <label class="form-label">
+        @Label
+        @if (isOverridden)
+        {
+            <span class="badge bg-warning text-dark ms-2">Overridden</span>
+        }
+    </label>
+    
+    <div class="input-group">
+        <input type="text" 
+               class="form-control"
+               @bind="OverriddenValue"
+               placeholder="@(CalculatedValue ?? "—")"
+               aria-label="@Label override" />
+        <button class="btn btn-outline-secondary" type="button" @onclick="ResetValue">
+            <i class="bi bi-arrow-counterclockwise"></i> Reset
+        </button>
+    </div>
+    
+    @if (!string.IsNullOrWhiteSpace(CalculatedValue))
+    {
+        <small class="text-muted d-block mt-1">
+            Calculated: <span class="text-secondary">@CalculatedValue</span>
+        </small>
+    }
+</div>
+
+<style>
+    .override-field {
+        margin-bottom: 1rem;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? CalculatedValue { get; set; }
+
+    [Parameter]
+    public string? OverriddenValue { get; set; }
+
+    [Parameter]
+    public EventCallback<string?> OverriddenValueChanged { get; set; }
+
+    private async Task ResetValue()
+    {
+        OverriddenValue = null;
+        await OverriddenValueChanged.InvokeAsync(null);
+    }
+}

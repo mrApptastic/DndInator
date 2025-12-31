@@ -1,5 +1,12 @@
 namespace DndShared.Models
 {
+    public enum SkillProficiency
+    {
+        None = 0,
+        Proficiency = 1,
+        Expertise = 2
+    }
+
     public class CharacterInformation
     {
         public string? Name { get; set; }
@@ -43,24 +50,24 @@ namespace DndShared.Models
 
     public class CharacterSkills
     {
-        public bool Acrobatics { get; set; }
-        public bool AnimalHandling { get; set; }
-        public bool Arcana { get; set; }
-        public bool Athletics { get; set; }
-        public bool Deception { get; set; }
-        public bool History { get; set; }
-        public bool Insight { get; set; }
-        public bool Intimidation { get; set; }
-        public bool Investigation { get; set; }
-        public bool Medicine { get; set; }
-        public bool Nature { get; set; }
-        public bool Perception { get; set; }
-        public bool Performance { get; set; }
-        public bool Persuasion { get; set; }
-        public bool Religion { get; set; }
-        public bool SleightOfHand { get; set; }
-        public bool Stealth { get; set; }
-        public bool Survival { get; set; }
+        public SkillProficiency Acrobatics { get; set; } = SkillProficiency.None;
+        public SkillProficiency AnimalHandling { get; set; } = SkillProficiency.None;
+        public SkillProficiency Arcana { get; set; } = SkillProficiency.None;
+        public SkillProficiency Athletics { get; set; } = SkillProficiency.None;
+        public SkillProficiency Deception { get; set; } = SkillProficiency.None;
+        public SkillProficiency History { get; set; } = SkillProficiency.None;
+        public SkillProficiency Insight { get; set; } = SkillProficiency.None;
+        public SkillProficiency Intimidation { get; set; } = SkillProficiency.None;
+        public SkillProficiency Investigation { get; set; } = SkillProficiency.None;
+        public SkillProficiency Medicine { get; set; } = SkillProficiency.None;
+        public SkillProficiency Nature { get; set; } = SkillProficiency.None;
+        public SkillProficiency Perception { get; set; } = SkillProficiency.None;
+        public SkillProficiency Performance { get; set; } = SkillProficiency.None;
+        public SkillProficiency Persuasion { get; set; } = SkillProficiency.None;
+        public SkillProficiency Religion { get; set; } = SkillProficiency.None;
+        public SkillProficiency SleightOfHand { get; set; } = SkillProficiency.None;
+        public SkillProficiency Stealth { get; set; } = SkillProficiency.None;
+        public SkillProficiency Survival { get; set; } = SkillProficiency.None;
     }
 
     public class CharacterWeapon

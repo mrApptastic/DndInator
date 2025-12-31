@@ -1,0 +1,309 @@
+@using DndShared.Models
+@using System.Collections.Generic
+
+<div class="manual-override-container">
+    <div class="alert alert-warning mb-4">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <strong>Fine-Tune Your Character</strong>
+        <p class="mb-0 mt-2">Override any automatically calculated values. Auto-calculated values appear in gray.</p>
+    </div>
+
+    <ul class="nav nav-tabs mb-3" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="combat-tab" data-bs-toggle="tab" data-bs-target="#combat-content" type="button" role="tab">
+                <i class="bi bi-shield me-2"></i>Combat Stats
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="spell-tab" data-bs-toggle="tab" data-bs-target="#spell-content" type="button" role="tab">
+                <i class="bi bi-magic me-2"></i>Spellcasting
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="prof-tab" data-bs-toggle="tab" data-bs-target="#prof-content" type="button" role="tab">
+                <i class="bi bi-bookmark me-2"></i>Proficiencies
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features-content" type="button" role="tab">
+                <i class="bi bi-star me-2"></i>Features
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="descriptive-tab" data-bs-toggle="tab" data-bs-target="#descriptive-content" type="button" role="tab">
+                <i class="bi bi-file-text me-2"></i>Descriptive
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Combat Stats Tab -->
+        <div class="tab-pane fade show active" id="combat-content" role="tabpanel">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <OverrideField Label="Armor Class" 
+                                   CalculatedValue="@CalculateArmorClass()?.ToString()" 
+                                   @bind-OverriddenValue="armorClassOverride" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <OverrideField Label="Initiative" 
+                                   CalculatedValue="@character.Stats?.GetDexterityModifier().ToString()" 
+                                   @bind-OverriddenValue="initiativeOverride" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <OverrideField Label="Hit Points" 
+                                   CalculatedValue="@CalculateHitPoints().ToString()" 
+                                   @bind-OverriddenValue="hitPointsOverride" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <OverrideField Label="Speed" 
+                                   CalculatedValue="@character.Race?.Speed" 
+                                   @bind-OverriddenValue="@speedOverride" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Hit Dice</label>
+                    <input type="text" class="form-control" @bind="character.Information!.BaseInformation!.HitDice" placeholder="e.g., 1d8" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Passive Perception</label>
+                    <input type="number" class="form-control" @bind="character.Information!.BaseInformation!.PassivePerception" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Spellcasting Tab -->
+        <div class="tab-pane fade" id="spell-content" role="tabpanel">
+            @if (character.Information?.BaseInformation?.Spellcasting != null)
+            {
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Spellcasting Ability</label>
+                        <input type="text" class="form-control" @bind="character.Information.BaseInformation.Spellcasting.SpellcastingAbility" placeholder="e.g., Intelligence" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <OverrideField Label="Spell Casting Modifier" 
+                                       CalculatedValue="@CalculateSpellCastingModifier()?.ToString()" 
+                                       @bind-OverriddenValue="spellModifierOverride" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <OverrideField Label="Spell Save DC" 
+                                       CalculatedValue="@CalculateSpellSaveDC()?.ToString()" 
+                                       @bind-OverriddenValue="spellSaveDCOverride" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <OverrideField Label="Spell Attack Bonus" 
+                                       CalculatedValue="@CalculateSpellAttackBonus()?.ToString()" 
+                                       @bind-OverriddenValue="spellAttackBonusOverride" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    No spellcasting selected. Spellcasting details will appear here once you add spells.
+                </div>
+            }
+        </div>
+
+        <!-- Proficiencies Tab -->
+        <div class="tab-pane fade" id="prof-content" role="tabpanel">
+            <div class="mb-3">
+                <label class="form-label">Languages (comma-separated)</label>
+                <textarea class="form-control" rows="2" @bind="languagesText" placeholder="Common, Elvish, Draconic"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tools & Instruments (comma-separated)</label>
+                <textarea class="form-control" rows="2" @bind="toolsText" placeholder="Lute, Smith's Tools"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Saving Throw Proficiencies (comma-separated)</label>
+                <textarea class="form-control" rows="2" @bind="savingThrowsText" placeholder="Dexterity, Constitution"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Weapon Training (comma-separated)</label>
+                <textarea class="form-control" rows="2" @bind="weaponTrainingText" placeholder="Simple melee, Longsword"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Armor Training (comma-separated)</label>
+                <textarea class="form-control" rows="2" @bind="armorTrainingText" placeholder="Light armor, Medium armor"></textarea>
+            </div>
+        </div>
+
+        <!-- Features Tab -->
+        <div class="tab-pane fade" id="features-content" role="tabpanel">
+            <div class="mb-3">
+                <label class="form-label">Class Features & Abilities</label>
+                <textarea class="form-control" rows="4" @bind="classFeaturesText" placeholder="List your class features, one per line"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Special Traits & Racial Features</label>
+                <textarea class="form-control" rows="4" @bind="specialTraitsText" placeholder="List your special traits, one per line"></textarea>
+            </div>
+        </div>
+
+        <!-- Descriptive Tab -->
+        <div class="tab-pane fade" id="descriptive-content" role="tabpanel">
+            <div class="mb-3">
+                <label class="form-label">Personality Traits & Description</label>
+                <textarea class="form-control" rows="5" @bind="character.Information!.BaseInformation!.Personality" placeholder="Describe your character's personality and background..."></textarea>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="inspiration-check" 
+                       @bind="character.Information!.BaseInformation!.HeroicInspiration" />
+                <label class="form-check-label" for="inspiration-check">
+                    Has Heroic Inspiration
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Character? Character { get; set; }
+
+    [Parameter]
+    public EventCallback<Character> OnCharacterChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnValidationChanged { get; set; }
+
+    private string languagesText = string.Empty;
+    private string toolsText = string.Empty;
+    private string savingThrowsText = string.Empty;
+    private string weaponTrainingText = string.Empty;
+    private string armorTrainingText = string.Empty;
+    private string classFeaturesText = string.Empty;
+    private string specialTraitsText = string.Empty;
+    private string? speedOverride;
+    private string? hitPointsOverride;
+    private string? armorClassOverride;
+    private string? initiativeOverride;
+    private string? spellModifierOverride;
+    private string? spellSaveDCOverride;
+    private string? spellAttackBonusOverride;
+    private Character character = new();
+
+    protected override void OnParametersSet()
+    {
+        if (Character != null)
+        {
+            character = Character;
+            
+            // Load current values into text fields
+            if (character.Information?.BaseInformation?.Languages != null)
+                languagesText = string.Join(", ", character.Information.BaseInformation.Languages);
+            
+            if (character.Information?.BaseInformation?.Tools != null)
+                toolsText = string.Join(", ", character.Information.BaseInformation.Tools);
+            
+            if (character.Information?.BaseInformation?.SavingThrows != null)
+                savingThrowsText = string.Join(", ", character.Information.BaseInformation.SavingThrows);
+            
+            if (character.Information?.BaseInformation?.WeaponTraining != null)
+                weaponTrainingText = string.Join(", ", character.Information.BaseInformation.WeaponTraining);
+            
+            if (character.Information?.BaseInformation?.ArmorTraining != null)
+                armorTrainingText = string.Join(", ", character.Information.BaseInformation.ArmorTraining);
+            
+            if (character.Information?.BaseInformation?.ClassFeatures != null)
+                classFeaturesText = string.Join("\n", character.Information.BaseInformation.ClassFeatures);
+            
+            if (character.Information?.BaseInformation?.SpecialTraits != null)
+                specialTraitsText = string.Join("\n", character.Information.BaseInformation.SpecialTraits);
+            
+            speedOverride = character.Information?.BaseInformation?.Speed?.ToString();
+        }
+    }
+
+    private int? CalculateArmorClass()
+    {
+        if (character.Information?.BaseInformation?.Equipment?.Armors?.FirstOrDefault()?.ArmorClass == null)
+            return 10 + character.Stats?.GetDexterityModifier();
+        
+        var armor = character.Information.BaseInformation.Equipment.Armors.First();
+        var armorAc = int.TryParse(armor.ArmorClass?.TakeWhile(c => char.IsDigit(c)).ToString(), out var ac) ? ac : 10;
+        return armorAc;
+    }
+
+    private int? CalculateHitPoints()
+    {
+        var totalLevel = character.GetTotalLevel();
+        var conMod = character.Stats?.GetConstitutionModifier() ?? 0;
+        return (8 + conMod) * totalLevel; // Rough estimate
+    }
+
+    private int? CalculateSpellCastingModifier()
+    {
+        var ability = character.Information?.BaseInformation?.Spellcasting?.SpellcastingAbility;
+        if (ability == null || character.Stats == null)
+            return null;
+        
+        return ability.ToLowerInvariant() switch
+        {
+            "intelligence" => character.Stats.GetIntelligenceModifier(),
+            "wisdom" => character.Stats.GetWisdomModifier(),
+            "charisma" => character.Stats.GetCharismaModifier(),
+            _ => 0
+        };
+    }
+
+    private int? CalculateSpellSaveDC()
+    {
+        var mod = CalculateSpellCastingModifier();
+        var profBonus = DetermineProficiencyBonus(character.GetTotalLevel());
+        return 8 + (mod ?? 0) + profBonus;
+    }
+
+    private int? CalculateSpellAttackBonus()
+    {
+        var mod = CalculateSpellCastingModifier();
+        var profBonus = DetermineProficiencyBonus(character.GetTotalLevel());
+        return (mod ?? 0) + profBonus;
+    }
+
+    private static int DetermineProficiencyBonus(int level)
+    {
+        if (level < 1) return 2;
+        return (int)Math.Ceiling(level / 4.0) + 1;
+    }
+
+    private void UpdateLists()
+    {
+        if (character.Information?.BaseInformation != null)
+        {
+            character.Information.BaseInformation.Languages = SplitList(languagesText);
+            character.Information.BaseInformation.Tools = SplitList(toolsText);
+            character.Information.BaseInformation.SavingThrows = SplitList(savingThrowsText);
+            character.Information.BaseInformation.WeaponTraining = SplitList(weaponTrainingText);
+            character.Information.BaseInformation.ArmorTraining = SplitList(armorTrainingText);
+            character.Information.BaseInformation.ClassFeatures = SplitList(classFeaturesText, "\n");
+            character.Information.BaseInformation.SpecialTraits = SplitList(specialTraitsText, "\n");
+            
+            if (int.TryParse(speedOverride, out var speed))
+                character.Information.BaseInformation.Speed = speed;
+        }
+        
+        StateHasChanged();
+    }
+
+    private List<string> SplitList(string? text, string separator = ",")
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return new List<string>();
+        
+        return text.Split(separator, StringSplitOptions.RemoveEmptyEntries)
+            .Select(s => s.Trim())
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .ToList();
+    }
+}
+
+<!-- Helper component for override fields -->
+<div @key="character.Id"></div>

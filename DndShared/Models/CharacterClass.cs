@@ -14,6 +14,7 @@ public class CharacterClass
     public string? ArmorTraining { get; set; }
     public string? ToolProficiencies { get; set; }
     public string? StartingEquipment { get; set; }
+    public string? SpellList { get; set; }
     public List<string> SubclassNames { get; set; }
     public List<Subclass> Subclasses { get; set; }
     public string? FullContent { get; set; }

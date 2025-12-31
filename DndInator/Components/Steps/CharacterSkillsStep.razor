@@ -8,169 +8,151 @@
         </h5>
     </div>
     <div class="card-body">
-        <p class="text-muted mb-3">Select the skills your character is proficient in.</p>
+        <p class="text-muted mb-3">Select proficiency level for each skill.</p>
         <div class="row g-3">
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillAcrobatics" 
-                           @bind="skills.Acrobatics" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillAcrobatics">
-                        <strong>Acrobatics</strong> <small class="text-muted">(DEX)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Acrobatics</strong> <small class="text-muted">(DEX)</small></label>
+                <select class="form-select" @bind="skills.Acrobatics" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillAnimalHandling" 
-                           @bind="skills.AnimalHandling" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillAnimalHandling">
-                        <strong>Animal Handling</strong> <small class="text-muted">(WIS)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Animal Handling</strong> <small class="text-muted">(WIS)</small></label>
+                <select class="form-select" @bind="skills.AnimalHandling" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillArcana" 
-                           @bind="skills.Arcana" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillArcana">
-                        <strong>Arcana</strong> <small class="text-muted">(INT)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Arcana</strong> <small class="text-muted">(INT)</small></label>
+                <select class="form-select" @bind="skills.Arcana" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillAthletics" 
-                           @bind="skills.Athletics" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillAthletics">
-                        <strong>Athletics</strong> <small class="text-muted">(STR)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Athletics</strong> <small class="text-muted">(STR)</small></label>
+                <select class="form-select" @bind="skills.Athletics" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillDeception" 
-                           @bind="skills.Deception" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillDeception">
-                        <strong>Deception</strong> <small class="text-muted">(CHA)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Deception</strong> <small class="text-muted">(CHA)</small></label>
+                <select class="form-select" @bind="skills.Deception" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillHistory" 
-                           @bind="skills.History" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillHistory">
-                        <strong>History</strong> <small class="text-muted">(INT)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>History</strong> <small class="text-muted">(INT)</small></label>
+                <select class="form-select" @bind="skills.History" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillInsight" 
-                           @bind="skills.Insight" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillInsight">
-                        <strong>Insight</strong> <small class="text-muted">(WIS)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Insight</strong> <small class="text-muted">(WIS)</small></label>
+                <select class="form-select" @bind="skills.Insight" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillIntimidation" 
-                           @bind="skills.Intimidation" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillIntimidation">
-                        <strong>Intimidation</strong> <small class="text-muted">(CHA)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Intimidation</strong> <small class="text-muted">(CHA)</small></label>
+                <select class="form-select" @bind="skills.Intimidation" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillInvestigation" 
-                           @bind="skills.Investigation" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillInvestigation">
-                        <strong>Investigation</strong> <small class="text-muted">(INT)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Investigation</strong> <small class="text-muted">(INT)</small></label>
+                <select class="form-select" @bind="skills.Investigation" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillMedicine" 
-                           @bind="skills.Medicine" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillMedicine">
-                        <strong>Medicine</strong> <small class="text-muted">(WIS)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Medicine</strong> <small class="text-muted">(WIS)</small></label>
+                <select class="form-select" @bind="skills.Medicine" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillNature" 
-                           @bind="skills.Nature" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillNature">
-                        <strong>Nature</strong> <small class="text-muted">(INT)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Nature</strong> <small class="text-muted">(INT)</small></label>
+                <select class="form-select" @bind="skills.Nature" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillPerception" 
-                           @bind="skills.Perception" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillPerception">
-                        <strong>Perception</strong> <small class="text-muted">(WIS)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Perception</strong> <small class="text-muted">(WIS)</small></label>
+                <select class="form-select" @bind="skills.Perception" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillPerformance" 
-                           @bind="skills.Performance" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillPerformance">
-                        <strong>Performance</strong> <small class="text-muted">(CHA)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Performance</strong> <small class="text-muted">(CHA)</small></label>
+                <select class="form-select" @bind="skills.Performance" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillPersuasion" 
-                           @bind="skills.Persuasion" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillPersuasion">
-                        <strong>Persuasion</strong> <small class="text-muted">(CHA)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Persuasion</strong> <small class="text-muted">(CHA)</small></label>
+                <select class="form-select" @bind="skills.Persuasion" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillReligion" 
-                           @bind="skills.Religion" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillReligion">
-                        <strong>Religion</strong> <small class="text-muted">(INT)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Religion</strong> <small class="text-muted">(INT)</small></label>
+                <select class="form-select" @bind="skills.Religion" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillSleightOfHand" 
-                           @bind="skills.SleightOfHand" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillSleightOfHand">
-                        <strong>Sleight of Hand</strong> <small class="text-muted">(DEX)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Sleight of Hand</strong> <small class="text-muted">(DEX)</small></label>
+                <select class="form-select" @bind="skills.SleightOfHand" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillStealth" 
-                           @bind="skills.Stealth" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillStealth">
-                        <strong>Stealth</strong> <small class="text-muted">(DEX)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Stealth</strong> <small class="text-muted">(DEX)</small></label>
+                <select class="form-select" @bind="skills.Stealth" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
-            <div class="col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="skillSurvival" 
-                           @bind="skills.Survival" @bind:after="ValidateAndNotify" />
-                    <label class="form-check-label" for="skillSurvival">
-                        <strong>Survival</strong> <small class="text-muted">(WIS)</small>
-                    </label>
-                </div>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Survival</strong> <small class="text-muted">(WIS)</small></label>
+                <select class="form-select" @bind="skills.Survival" @bind:after="ValidateAndNotify">
+                    <option value="@SkillProficiency.None">None</option>
+                    <option value="@SkillProficiency.Proficiency">Proficiency</option>
+                    <option value="@SkillProficiency.Expertise">Expertise</option>
+                </select>
             </div>
         </div>
     </div>

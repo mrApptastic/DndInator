@@ -54,8 +54,8 @@
             else if (currentStep == 2)
             {
                 <CharacterClassStep 
-                    Class="character.Class"
-                    OnClassChanged="HandleClassChanged"
+                    Classes="character.Classes"
+                    OnClassesChanged="HandleClassesChanged"
                     OnValidationChanged="HandleStepValidation" />
             }
             else if (currentStep == 3)
@@ -195,7 +195,7 @@
                         
                         <div class="mb-3">
                             <strong>Species:</strong> @character.Race?.Name<br />
-                            <strong>Class:</strong> @character.Class?.Name<br />
+                            <strong>Class:</strong> @(character.Classes?.FirstOrDefault()?.Class?.Name ?? "—")<br />
                             <strong>Background:</strong> @character.Background?.Name<br />
                             <strong>Alignment:</strong> @GetAlignmentDisplayName(character.Information?.Alignment ?? CharacterAlignment.TrueNeutral)
                         </div>
@@ -343,12 +343,12 @@
         }
     }
 
-    private void HandleClassChanged(CharacterClass cls)
+    private void HandleClassesChanged(List<CharacterClassLevel> classes)
     {
-        character.Class = cls;
-        if (character.Information != null)
+        character.Classes = classes;
+        if (character.Information != null && classes?.FirstOrDefault() != null)
         {
-            character.Information.Class = cls.Name;
+            character.Information.Class = classes.FirstOrDefault()!.Class?.Name;
         }
     }
 

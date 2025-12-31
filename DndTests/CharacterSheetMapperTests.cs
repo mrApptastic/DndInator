@@ -36,8 +36,8 @@ public class CharacterSheetMapperTests
                     Tools = new List<string> { "Thieves' Tools" },
                     Skills = new CharacterSkills
                     {
-                        Acrobatics = true,
-                        Stealth = true
+                        Acrobatics = SkillProficiency.Proficiency,
+                        Stealth = SkillProficiency.Proficiency
                     },
                     WeaponTraining = new List<string> { "Simple weapons", "Hand crossbows" },
                     ArmorTraining = new List<string> { "Light armor" },
@@ -79,10 +79,17 @@ public class CharacterSheetMapperTests
                 Size = "Medium",
                 Traits = new List<string> { "Darkvision" }
             },
-            Class = new CharacterClass
+            Classes = new List<CharacterClassLevel>
             {
-                Name = "Rogue",
-                SavingThrowProficiencies = "Dexterity, Intelligence"
+                new CharacterClassLevel
+                {
+                    Class = new CharacterClass
+                    {
+                        Name = "Rogue",
+                        SavingThrowProficiencies = "Dexterity, Intelligence"
+                    },
+                    Level = 1
+                }
             },
             Background = new Background
             {
