@@ -33,6 +33,19 @@
                                @bind="classLevel"
                                @bind:event="oninput" />
                     </div>
+                    @if (currentSelectedClass?.Subclasses?.Any() == true)
+                    {
+                        <div class="mb-3">
+                            <label class="form-label">Subclass:</label>
+                            <select class="form-select" @onchange="SelectSubclass">
+                                <option value="">-- Choose a Subclass --</option>
+                                @foreach (var subclass in currentSelectedClass.Subclasses)
+                                {
+                                    <option value="@subclass.Id">@subclass.Name</option>
+                                }
+                            </select>
+                        </div>
+                    }
                     <button type="button" 
                             class="btn btn-success"
                             @onclick="AddClass">
@@ -57,6 +70,10 @@
                             <div>
                                 <strong>@classLevel.Class?.Name</strong>
                                 <span class="badge bg-primary ms-2">Level @classLevel.Level</span>
+                                @if (classLevel.Subclass != null)
+                                {
+                                    <span class="badge bg-info ms-2">@classLevel.Subclass.Name</span>
+                                }
                             </div>
                             <button type="button" 
                                     class="btn btn-sm btn-outline-danger"
@@ -90,6 +107,8 @@
     private Guid selectedClassId = Guid.Empty;
     private CharacterClass? currentSelectedClass;
     private int classLevel = 1;
+    private Guid selectedSubclassId = Guid.Empty;
+    private Subclass? currentSelectedSubclass;
 
     private void SelectClass(ChangeEventArgs e)
     {
@@ -98,11 +117,28 @@
             selectedClassId = classId;
             currentSelectedClass = AvailableClasses?.FirstOrDefault(c => c.Id == classId);
             classLevel = 1;
+            selectedSubclassId = Guid.Empty;
+            currentSelectedSubclass = null;
         }
         else
         {
             selectedClassId = Guid.Empty;
             currentSelectedClass = null;
+        }
+        StateHasChanged();
+    }
+
+    private void SelectSubclass(ChangeEventArgs e)
+    {
+        if (Guid.TryParse(e.Value?.ToString(), out var subclassId))
+        {
+            selectedSubclassId = subclassId;
+            currentSelectedSubclass = currentSelectedClass?.Subclasses?.FirstOrDefault(s => s.Id == subclassId);
+        }
+        else
+        {
+            selectedSubclassId = Guid.Empty;
+            currentSelectedSubclass = null;
         }
         StateHasChanged();
     }
@@ -116,6 +152,7 @@
             if (existing != null)
             {
                 existing.Level = classLevel;
+                existing.Subclass = currentSelectedSubclass;
             }
             else
             {
@@ -123,6 +160,7 @@
                 {
                     Class = currentSelectedClass,
                     Level = classLevel,
+                    Subclass = currentSelectedSubclass,
                     ClassFeatures = new List<string>()
                 });
             }
@@ -131,6 +169,8 @@
             selectedClassId = Guid.Empty;
             currentSelectedClass = null;
             classLevel = 1;
+            selectedSubclassId = Guid.Empty;
+            currentSelectedSubclass = null;
             StateHasChanged();
         }
     }

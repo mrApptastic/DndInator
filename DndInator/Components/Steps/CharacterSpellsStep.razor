@@ -1,12 +1,11 @@
 @using DndShared.Models
 
-<div class="spells-step-container">
-    <div class="alert alert-info mb-4">
-        <i class="bi bi-info-circle me-2"></i>
-        Spells available are filtered based on your selected classes.
-    </div>
+<div class="alert alert-info mb-4">
+    <i class="bi bi-info-circle me-2"></i>
+    Spells available are filtered based on your selected classes.
+</div>
 
-    <CharacterSelectionListComponent 
+<CharacterSelectionListComponent 
         @ref="spellsComponent"
         TItem="Spell"
         AvailableItems="FilteredAvailableSpells"
@@ -16,7 +15,6 @@
         ItemMetadataDisplay="@(s => s.School ?? string.Empty)"
         ItemTypeName="Spells"
         ItemsPerPage="15" />
-</div>
 
 @code {
     [Parameter]
