@@ -115,23 +115,23 @@
         <div class="tab-pane fade" id="prof-content" role="tabpanel">
             <div class="mb-3">
                 <label class="form-label">Languages (comma-separated)</label>
-                <textarea class="form-control" rows="2" @bind="languagesText" placeholder="Common, Elvish, Draconic"></textarea>
+                <textarea class="form-control" rows="2" @bind="languagesText" @onblur="UpdateLists" placeholder="Common, Elvish, Draconic"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Tools & Instruments (comma-separated)</label>
-                <textarea class="form-control" rows="2" @bind="toolsText" placeholder="Lute, Smith's Tools"></textarea>
+                <textarea class="form-control" rows="2" @bind="toolsText" @onblur="UpdateLists" placeholder="Lute, Smith's Tools"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Saving Throw Proficiencies (comma-separated)</label>
-                <textarea class="form-control" rows="2" @bind="savingThrowsText" placeholder="Dexterity, Constitution"></textarea>
+                <textarea class="form-control" rows="2" @bind="savingThrowsText" @onblur="UpdateLists" placeholder="Dexterity, Constitution"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Weapon Training (comma-separated)</label>
-                <textarea class="form-control" rows="2" @bind="weaponTrainingText" placeholder="Simple melee, Longsword"></textarea>
+                <textarea class="form-control" rows="2" @bind="weaponTrainingText" @onblur="UpdateLists" placeholder="Simple melee, Longsword"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Armor Training (comma-separated)</label>
-                <textarea class="form-control" rows="2" @bind="armorTrainingText" placeholder="Light armor, Medium armor"></textarea>
+                <textarea class="form-control" rows="2" @bind="armorTrainingText" @onblur="UpdateLists" placeholder="Light armor, Medium armor"></textarea>
             </div>
         </div>
 
@@ -139,11 +139,11 @@
         <div class="tab-pane fade" id="features-content" role="tabpanel">
             <div class="mb-3">
                 <label class="form-label">Class Features & Abilities</label>
-                <textarea class="form-control" rows="4" @bind="classFeaturesText" placeholder="List your class features, one per line"></textarea>
+                <textarea class="form-control" rows="4" @bind="classFeaturesText" @onblur="UpdateLists" placeholder="List your class features, one per line"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Special Traits & Racial Features</label>
-                <textarea class="form-control" rows="4" @bind="specialTraitsText" placeholder="List your special traits, one per line"></textarea>
+                <textarea class="form-control" rows="4" @bind="specialTraitsText" @onblur="UpdateLists" placeholder="List your special traits, one per line"></textarea>
             </div>
         </div>
 
@@ -274,7 +274,7 @@
         return (int)Math.Ceiling(level / 4.0) + 1;
     }
 
-    private void UpdateLists()
+    private async Task UpdateLists()
     {
         if (character.Information?.BaseInformation != null)
         {
@@ -290,6 +290,7 @@
                 character.Information.BaseInformation.Speed = speed;
         }
         
+        await OnCharacterChanged.InvokeAsync(character);
         StateHasChanged();
     }
 

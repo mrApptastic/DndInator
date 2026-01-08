@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DndShared.Models;
+using DndShared.Helpers;
 
 namespace DndInator.Services;
 
@@ -123,12 +124,18 @@ public static class CharacterSheetMapper
             traits = character.Race.Traits
         } : null;
 
+        var totalLevel = character.GetTotalLevel();
+        var levelDisplay = character.Classes != null && character.Classes.Count > 1
+            ? string.Join("/", character.Classes.Select(c => c.Level))
+            : totalLevel.ToString();
+
         var baseInformation = baseInfo != null
             ? (object)new
             {
                 characterName = information?.Name,
                 name = information?.Name,
-                level = baseInfo.Level ?? 1,
+                level = totalLevel,
+                levelDisplay = levelDisplay,
                 experiencePoints = baseInfo.ExperiencePoints ?? 0,
                 armorClass = baseInfo.ArmorClass,
                 initiative = baseInfo.Initiative ?? stats?.GetDexterityModifier(),
@@ -163,10 +170,19 @@ public static class CharacterSheetMapper
                 }
                 : null;
 
+        var subclassNames = character.Classes != null && character.Classes.Any()
+            ? TextHelpers.JoinNonEmpty(character.Classes.Select(c => c.Subclass?.Name), " / ")
+            : information?.Subclass ?? string.Empty;
+
+        var classFeatures = baseInfo?.ClassFeatures != null && baseInfo.ClassFeatures.Any()
+            ? string.Join("\n\n", baseInfo.ClassFeatures)
+            : string.Empty;
+
         var classPayload = character.Classes != null && character.Classes.Any() ? new
         {
             name = string.Join(" / ", character.Classes.Select(c => c.Class?.Name)),
-            subclassName = information?.Subclass,
+            subclassName = subclassNames,
+            features = classFeatures,
             savingThrowProficiencies = AggregateClassProficiencies(character.Classes, c => c.Class?.SavingThrowProficiencies),
             skillProficiencies = AggregateClassSkills(character.Classes),
             weaponProficiencies = AggregateClassProficiencies(character.Classes, c => c.Class?.WeaponProficiencies),
@@ -193,6 +209,8 @@ public static class CharacterSheetMapper
             benefits = f.Benefits ?? new List<string>()
         }).ToList();
 
+        var specialTraits = baseInfo?.SpecialTraits ?? new List<string>();
+
         return new
         {
             baseInformation,
@@ -218,6 +236,7 @@ public static class CharacterSheetMapper
             proficiencies,
             languages = baseInfo?.Languages ?? new List<string>(),
             feats,
+            specialTraits,
             characterPortrait = baseInfo?.CharacterPortrait ?? information?.BaseInformation?.CharacterPortrait
         };
     }

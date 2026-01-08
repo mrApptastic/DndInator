@@ -2,6 +2,29 @@
 // Uses pdf-lib to fill form-fillable PDFs
 
 window.characterSheetModule = {
+    // Truncation limits for PDF fields (in characters)
+    TRUNCATE_LIMITS: {
+        name: 60,
+        className: 30,
+        race: 30,
+        subclass: 30,
+        level: 12,
+        armorClass: 4,
+        hitPoints: 6,
+        hitDice: 8,
+        equipmentName: 24,
+        featName: 30,
+        featDescription: 200,
+        spellName: 28,
+        spellNotes: 180
+    },
+
+    // Truncate text to max length with ellipsis
+    truncate: function(text, maxLength) {
+        if (!text || text.length <= maxLength) return text || '';
+        return text.substring(0, maxLength - 1) + '…';
+    },
+
     // Fill a PDF character sheet and return as data URL
     fillCharacterSheet: async function(pdfUrl, characterData) {
         try {
@@ -137,8 +160,8 @@ window.characterSheetModule = {
             // Basic Information - support both old and new structure
             const baseInfo = character.baseInformation || character.information;
             if (baseInfo) {
-                setTextField('Name', baseInfo.characterName || baseInfo.name);
-                setTextField('Level', baseInfo.level);
+                setTextField('Name', this.truncate(baseInfo.characterName || baseInfo.name, this.TRUNCATE_LIMITS.name));
+                setTextField('Level', this.truncate(baseInfo.levelDisplay || baseInfo.level, this.TRUNCATE_LIMITS.level));
                 setTextField('XP Points', baseInfo.experiencePoints);
                 setTextField('PERSONALITY', baseInfo.description || baseInfo.personalityTraits);
             }
@@ -150,8 +173,8 @@ window.characterSheetModule = {
             
             // Class
             if (character.class) {
-                setTextField('Class', character.class.name);
-                setTextField('Subclass', character.class.subclassName || '');
+                setTextField('Class', this.truncate(character.class.name, this.TRUNCATE_LIMITS.className));
+                setTextField('Subclass', this.truncate(character.class.subclassName || '', this.TRUNCATE_LIMITS.subclass));
                 
                 // Proficiency bonus - use level if available
                 const level = baseInfo?.level || 1;
@@ -161,16 +184,26 @@ window.characterSheetModule = {
             // Species/Race - support both names
             const species = character.species || character.race;
             if (species) {
-                setTextField('Species', species.name);
+                setTextField('Species', this.truncate(species.name, this.TRUNCATE_LIMITS.race));
                 setTextField('SPEED', species.speed);
                 setTextField('SIZE', species.size);
                 
                 // Species traits
+                let traitsText = '';
                 if (species.traits && species.traits.length > 0) {
-                    const traits = Array.isArray(species.traits[0]) 
+                    traitsText = Array.isArray(species.traits[0]) 
                         ? species.traits.map(t => `${t.name}: ${t.description}`).join('\n\n')
                         : species.traits.join('\n');
-                    setTextField('SPECIES TRAITS', traits);
+                }
+                
+                // Append Special Traits from overrides if present
+                if (character.specialTraits && character.specialTraits.length > 0) {
+                    if (traitsText) traitsText += '\n\n';
+                    traitsText += 'Special Traits:\n' + character.specialTraits.join('\n');
+                }
+                
+                if (traitsText) {
+                    setTextField('SPECIES TRAITS', traitsText);
                 }
             }
             
@@ -302,19 +335,19 @@ window.characterSheetModule = {
                 // Armor Class (from armor)
                 const armor = character.equipment?.armor;
                 if (armor) {
-                    setTextField('Armor Class', armor.armorClass || '10');
+                    setTextField('Armor Class', this.truncate(armor.armorClass || '10', this.TRUNCATE_LIMITS.armorClass));
                     setCheckBox('shield chk', armor.isShield || false);
                 }
                 
                 // Hit Points
                 const combat = character.combat || {};
-                setTextField('Max HP', combat.maxHP || '');
-                setTextField('Current HP', combat.currentHP || '');
-                setTextField('Temp HP', combat.tempHP || '');
+                setTextField('Max HP', this.truncate(combat.maxHP || '', this.TRUNCATE_LIMITS.hitPoints));
+                setTextField('Current HP', this.truncate(combat.currentHP || '', this.TRUNCATE_LIMITS.hitPoints));
+                setTextField('Temp HP', this.truncate(combat.tempHP || '', this.TRUNCATE_LIMITS.hitPoints));
                 
                 // Hit Dice
-                setTextField('Max HD', combat.maxHitDice || '');
-                setTextField('Spent HD', combat.spentHitDice || '');
+                setTextField('Max HD', this.truncate(combat.maxHitDice || '', this.TRUNCATE_LIMITS.hitDice));
+                setTextField('Spent HD', this.truncate(combat.spentHitDice || '', this.TRUNCATE_LIMITS.hitDice));
             }
             
             // Weapons
@@ -323,7 +356,7 @@ window.characterSheetModule = {
                     const weapon = character.equipment.weapons[i];
                     const weaponNum = i + 1;
                     
-                    setTextField(`NAME - WEAPON ${weaponNum}`, weapon.name);
+                    setTextField(`NAME - WEAPON ${weaponNum}`, this.truncate(weapon.name, this.TRUNCATE_LIMITS.equipmentName));
                     setTextField(`BONUS/DC - WEAPON ${weaponNum}`, weapon.attackBonus || '');
                     setTextField(`DAMAGE/TYPE - WEAPON ${weaponNum}`, weapon.damage || '');
                     setTextField(`NOTES - WEAPON ${weaponNum}`, weapon.properties || '');
@@ -332,15 +365,17 @@ window.characterSheetModule = {
             
             // Feats
             if (character.feats && character.feats.length > 0) {
-                const featText = character.feats.map(f => `${f.name}\n${f.description}`).join('\n\n');
+                const featText = character.feats.map(f => {
+                    const name = this.truncate(f.name, this.TRUNCATE_LIMITS.featName);
+                    const desc = this.truncate(f.description, this.TRUNCATE_LIMITS.featDescription);
+                    return `${name}\n${desc}`;
+                }).join('\n\n');
                 setTextField('FEATS', featText);
             }
             
-            // Class Features
+            // Class Features (from overrides or class data)
             if (character.class?.features) {
-                const featuresText = Array.isArray(character.class.features)
-                    ? character.class.features.join('\n\n')
-                    : character.class.features;
+                const featuresText = character.class.features;
                 setTextField('CLASS FEATURES 1', featuresText);
             }
             
@@ -382,7 +417,7 @@ window.characterSheetModule = {
                         const spell = character.spellcasting.spells[i];
                         
                         setTextField(`SPELL LEVEL${i}`, spell.level !== undefined ? spell.level.toString() : '');
-                        setTextField(`SPELL NAME${i}`, spell.name);
+                        setTextField(`SPELL NAME${i}`, this.truncate(spell.name, this.TRUNCATE_LIMITS.spellName));
                         setTextField(`CASTING TIME${i}`, spell.castingTime || '');
                         setTextField(`RANGE${i}`, spell.range || '');
                         
@@ -398,7 +433,7 @@ window.characterSheetModule = {
                             setCheckBox(`Check Box${i * 3 + 2}`, mChecked);
                         }
                         
-                        setTextField(`SPELL NOTES${i}`, spell.description || spell.notes || '');
+                        setTextField(`SPELL NOTES${i}`, this.truncate(spell.description || spell.notes || '', this.TRUNCATE_LIMITS.spellNotes));
                     }
                 }
             }
@@ -414,19 +449,31 @@ window.characterSheetModule = {
                 const equipmentList = [];
                 
                 if (character.equipment.armor) {
-                    equipmentList.push(character.equipment.armor.name);
+                    equipmentList.push(this.truncate(character.equipment.armor.name, this.TRUNCATE_LIMITS.equipmentName));
                 }
                 
                 if (character.equipment.weapons) {
-                    equipmentList.push(...character.equipment.weapons.map(w => w.name));
+                    equipmentList.push(...character.equipment.weapons.map(w => this.truncate(w.name, this.TRUNCATE_LIMITS.equipmentName)));
                 }
                 
                 if (character.equipment.adventuringGear) {
-                    equipmentList.push(...character.equipment.adventuringGear.map(g => g.name));
+                    equipmentList.push(...character.equipment.adventuringGear.map(g => this.truncate(g.name, this.TRUNCATE_LIMITS.equipmentName)));
                 }
                 
                 if (character.equipment.tools) {
-                    equipmentList.push(...character.equipment.tools.map(t => t.name));
+                    equipmentList.push(...character.equipment.tools.map(t => this.truncate(t.name, this.TRUNCATE_LIMITS.equipmentName)));
+                }
+                
+                if (character.equipment.magicItems) {
+                    equipmentList.push(...character.equipment.magicItems.map(m => this.truncate(m.name, this.TRUNCATE_LIMITS.equipmentName)));
+                }
+                
+                if (character.equipment.mountAndVehicles) {
+                    equipmentList.push(...character.equipment.mountAndVehicles.map(m => this.truncate(m.name, this.TRUNCATE_LIMITS.equipmentName)));
+                }
+                
+                if (character.equipment.poisons) {
+                    equipmentList.push(...character.equipment.poisons.map(p => this.truncate(p.name, this.TRUNCATE_LIMITS.equipmentName)));
                 }
                 
                 if (equipmentList.length > 0) {
@@ -438,7 +485,7 @@ window.characterSheetModule = {
             if (character.equipment?.magicItems) {
                 for (let i = 0; i < Math.min(3, character.equipment.magicItems.length); i++) {
                     const item = character.equipment.magicItems[i];
-                    setTextField(`ATTUNMENT ${i + 1}`, item.name);
+                    setTextField(`ATTUNMENT ${i + 1}`, this.truncate(item.name, this.TRUNCATE_LIMITS.equipmentName));
                     setCheckBox(`Check Box${61 + i}`, item.requiresAttunement || false);
                 }
             }

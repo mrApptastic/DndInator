@@ -1,4 +1,5 @@
 @using DndShared.Models
+@using DndShared.Helpers
 
 @if (Character != null)
 {
@@ -16,13 +17,17 @@
                     <div class="col-md-3">
                         <div class="info-box p-3 bg-light rounded">
                             <small class="text-muted d-block">Race</small>
-                            <strong>@(Character.Information?.Race ?? "None")</strong>
+                            <strong title="@(Character.Information?.Race ?? "None")">
+                                @TextHelpers.Truncate(Character.Information?.Race, 30)
+                            </strong>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="info-box p-3 bg-light rounded">
                             <small class="text-muted d-block">Class</small>
-                            <strong>@(Character.Information?.Class ?? "None")</strong>
+                            <strong title="@(Character.Information?.Class ?? "None")">
+                                @TextHelpers.Truncate(Character.Information?.Class, 30)
+                            </strong>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -113,31 +118,47 @@
         }
 
         <!-- Class Information -->
-        @{
-            var primaryClass = Character.Classes?.FirstOrDefault()?.Class;
-        }
-        @if (primaryClass != null)
+        @if (Character.Classes != null && Character.Classes.Any())
         {
             <div class="card shadow-sm mb-3">
                 <div class="card-header bg-gradient-success text-white">
                     <h5 class="mb-0">
                         <i class="bi bi-shield-fill-check me-2"></i>
-                        Class: @primaryClass.Name
+                        @(Character.Classes.Count > 1 ? "Classes" : "Class")
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Hit Die:</strong> <span class="badge bg-danger">@primaryClass.HitPointDie</span></p>
-                            <p><strong>Primary Ability:</strong> @primaryClass.PrimaryAbility</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Saving Throws:</strong> @primaryClass.SavingThrowProficiencies</p>
-                        </div>
-                    </div>
-                    @if (!string.IsNullOrEmpty(primaryClass.SkillProficiencies))
+                    @foreach (var classLevel in Character.Classes)
                     {
-                        <p><strong>Skill Proficiencies:</strong> @primaryClass.SkillProficiencies</p>
+                        var cls = classLevel.Class;
+                        if (cls != null)
+                        {
+                            <div class="class-entry mb-3 pb-3 @(classLevel != Character.Classes.Last() ? "border-bottom" : "")">
+                                <h6 class="d-flex align-items-center mb-2">
+                                    <span class="me-2" title="@cls.Name">@TextHelpers.Truncate(cls.Name, 30)</span>
+                                    <span class="badge bg-primary">Level @classLevel.Level</span>
+                                    @if (classLevel.Subclass != null)
+                                    {
+                                        <span class="badge bg-info ms-2" title="@classLevel.Subclass.Name">
+                                            @TextHelpers.Truncate(classLevel.Subclass.Name, 24)
+                                        </span>
+                                    }
+                                </h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="mb-1"><strong>Hit Die:</strong> <span class="badge bg-danger">@cls.HitPointDie</span></p>
+                                        <p class="mb-1"><strong>Primary Ability:</strong> @cls.PrimaryAbility</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="mb-1"><strong>Saving Throws:</strong> @cls.SavingThrowProficiencies</p>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(cls.SkillProficiencies))
+                                {
+                                    <p class="mb-0"><strong>Skill Proficiencies:</strong> @cls.SkillProficiencies</p>
+                                }
+                            </div>
+                        }
                     }
                 </div>
             </div>

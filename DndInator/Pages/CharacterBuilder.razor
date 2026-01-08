@@ -15,6 +15,9 @@
 @inject IWeaponService WeaponService
 @inject IAdventuringGearService AdventuringGearService
 @inject IToolService ToolService
+@inject IMagicItemService MagicItemService
+@inject IMountAndVehicleService MountAndVehicleService
+@inject IPoisonService PoisonService
 @inject IDiceService DiceService
 @inject NavigationManager NavigationManager
 
@@ -225,7 +228,7 @@
                             ItemMetadataDisplay="@(f => f.Prerequisite ?? string.Empty)"
                             ItemTypeName="Feats"
                             ItemsPerPage="10" />
-                        <div class="mt-3 d-flex justify-content-between">
+                        <div class="mt-3 d-flex justify-content-between step-actions-sticky">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(3)">
                                 <i class="bi bi-arrow-left me-2"></i> Back
                             </button>
@@ -247,7 +250,7 @@
                             SelectedSpells="selectedSpells"
                             OnSpellsChanged="HandleSpellsChanged"
                             OnValidationChanged="(isValid) => stepValid[5] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
+                        <div class="mt-3 d-flex justify-content-between step-actions-sticky">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(4)">
                                 <i class="bi bi-arrow-left me-2"></i> Back
                             </button>
@@ -267,7 +270,7 @@
                             Equipment="equipmentData"
                             OnEquipmentChanged="HandleEquipmentChanged"
                             OnValidationChanged="(isValid) => stepValid[6] = isValid" />
-                        <div class="mt-3 d-flex justify-content-between">
+                        <div class="mt-3 d-flex justify-content-between step-actions-sticky">
                             <button class="btn btn-secondary btn-lg" @onclick="() => SetActiveTab(5)">
                                 <i class="bi bi-arrow-left me-2"></i> Back
                             </button>
@@ -402,6 +405,16 @@
     input[type="number"]::-webkit-outer-spin-button {
         opacity: 1;
     }
+    
+    .step-actions-sticky {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding: 1rem 0;
+        z-index: 10;
+        border-top: 1px solid #dee2e6;
+        margin-top: 1rem;
+    }
 </style>
 
 @code {
@@ -464,6 +477,12 @@
     private List<DndShared.Models.AdventuringGear> selectedAdventuringGear = new();
     private List<DndShared.Models.Tool>? availableTools;
     private List<DndShared.Models.Tool> selectedTools = new();
+    private List<DndShared.Models.MagicItem>? availableMagicItems;
+    private List<DndShared.Models.MagicItem> selectedMagicItems = new();
+    private List<DndShared.Models.MountAndVehicle>? availableMountsAndVehicles;
+    private List<DndShared.Models.MountAndVehicle> selectedMountsAndVehicles = new();
+    private List<DndShared.Models.Poison>? availablePoisons;
+    private List<DndShared.Models.Poison> selectedPoisons = new();
     private CharacterWealth characterWealth = new();
 
     protected override async Task OnInitializedAsync()
@@ -484,6 +503,9 @@
             availableWeapons = await WeaponService.GetAllWeaponsAsync();
             availableAdventuringGear = await AdventuringGearService.GetAllAdventuringGearAsync();
             availableTools = await ToolService.GetAllToolsAsync();
+            availableMagicItems = await MagicItemService.GetAllMagicItemsAsync();
+            availableMountsAndVehicles = await MountAndVehicleService.GetAllMountsAndVehiclesAsync();
+            availablePoisons = await PoisonService.GetAllPoisonsAsync();
         }
         catch (Exception ex)
         {
@@ -565,6 +587,11 @@
         equipmentData = data;
         selectedArmor = data.Armor ?? new List<DndShared.Models.Armor>();
         selectedWeapons = data.Weapons ?? new List<DndShared.Models.Weapon>();
+        selectedAdventuringGear = data.AdventuringGear ?? new List<DndShared.Models.AdventuringGear>();
+        selectedTools = data.Tools ?? new List<DndShared.Models.Tool>();
+        selectedMagicItems = data.MagicItems ?? new List<DndShared.Models.MagicItem>();
+        selectedMountsAndVehicles = data.MountsAndVehicles ?? new List<DndShared.Models.MountAndVehicle>();
+        selectedPoisons = data.Poisons ?? new List<DndShared.Models.Poison>();
         characterWealth = data.Wealth ?? new CharacterWealth();
         return Task.CompletedTask;
     }
@@ -664,6 +691,7 @@
 
         var baseInfo = character.Information.BaseInformation;
         var totalLevel = character.GetTotalLevel();
+        baseInfo.Level = totalLevel;
         baseInfo.ExperiencePoints ??= 0;
         baseInfo.Skills = selectedSkills;
 
@@ -694,6 +722,9 @@
             Weapons = selectedWeapons,
             AdventuringGears = selectedAdventuringGear,
             Tools = selectedTools,
+            MagicItems = selectedMagicItems,
+            MountsAndVehicles = selectedMountsAndVehicles,
+            Poisons = selectedPoisons,
             Wealth = characterWealth
         };
 
@@ -833,6 +864,9 @@
         selectedWeapons.Clear();
         selectedAdventuringGear.Clear();
         selectedTools.Clear();
+        selectedMagicItems.Clear();
+        selectedMountsAndVehicles.Clear();
+        selectedPoisons.Clear();
         characterWealth = new CharacterWealth();
         lastRollDetails = "";
         saveMessage = string.Empty;
