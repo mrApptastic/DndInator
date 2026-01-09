@@ -6,6 +6,87 @@ namespace DndScraper.Helpers;
 
 public class FeatScraper
 {
+    private const int DelayMs = 800;
+
+    public static async Task<List<Feat>> ScrapeFeats2014()
+    {
+        var candidateUrls = new[]
+        {
+            "https://dnd5e.wikidot.com/feats",
+            "https://dnd5e.wikidot.com/feat:all"
+        };
+
+        var feats = new List<Feat>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            foreach (var featUrl in candidateUrls)
+            {
+                try
+                {
+                    Console.WriteLine($"\n=== Scraping feats from {featUrl} ===");
+
+                    var html = await client.GetStringAsync(featUrl);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+                    if (pageContent == null)
+                    {
+                        Console.WriteLine("No page-content found");
+                        continue;
+                    }
+
+                    var links = pageContent.SelectNodes(".//a[@href]");
+                    if (links == null)
+                    {
+                        Console.WriteLine("No feat links found");
+                        continue;
+                    }
+
+                    foreach (var link in links)
+                    {
+                        var href = link.GetAttributeValue("href", string.Empty);
+                        if (!href.StartsWith("/feat:")) continue;
+
+                        var name = link.InnerText.Trim();
+                        var detailUrl = "https://dnd5e.wikidot.com" + href;
+
+                        if (seen.Contains(detailUrl)) continue;
+                        seen.Add(detailUrl);
+
+                        var feat = new Feat
+                        {
+                            Name = name,
+                            Category = "General"
+                        };
+
+                        feats.Add(feat);
+                        Console.WriteLine($"Found feat: {feat.Name}");
+
+                        await ScrapeFeatDetails(client, feat, detailUrl);
+                        await Task.Delay(DelayMs);
+                    }
+
+                    if (feats.Count > 0)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error scraping feats from {featUrl}: {ex.Message}");
+                }
+            }
+        }
+
+        Console.WriteLine($"\n=== Total feats found: {feats.Count} ===");
+        return feats;
+    }
+
     public static async Task<List<Feat>> ScrapeFeats2024()
     {
         string featUrl = "http://dnd2024.wikidot.com/feat:all";

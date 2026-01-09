@@ -6,6 +6,83 @@ namespace DndScraper.Helpers;
 
 public class PoisonScraper
 {
+    private const int DelayMs = 800;
+
+    public static async Task<List<Poison>> ScrapePoisons2014()
+    {
+        var candidateUrls = new[]
+        {
+            "https://dnd5e.wikidot.com/poisons",
+            "https://dnd5e.wikidot.com/equipment:poison"
+        };
+
+        var poisonList = new List<Poison>();
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            foreach (var poisonUrl in candidateUrls)
+            {
+                try
+                {
+                    Console.WriteLine($"\n=== Scraping poisons from {poisonUrl} ===");
+
+                    var html = await client.GetStringAsync(poisonUrl);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var table = htmlDoc.DocumentNode.SelectSingleNode("//table[@class='wiki-content-table']");
+
+                    if (table == null)
+                    {
+                        Console.WriteLine("No table found");
+                        continue;
+                    }
+
+                    var rows = table.SelectNodes(".//tr");
+
+                    if (rows == null || rows.Count < 2)
+                    {
+                        Console.WriteLine("No rows found in table");
+                        continue;
+                    }
+
+                    foreach (var row in rows.Skip(1))
+                    {
+                        var cells = row.SelectNodes("td");
+                        if (cells == null || cells.Count < 4) continue;
+
+                        var poison = new Poison
+                        {
+                            Name = cells[0].InnerText.Trim(),
+                            Type = cells[1].InnerText.Trim(),
+                            Cost = cells[2].InnerText.Trim(),
+                            Effect = cells[3].InnerText.Trim()
+                        };
+
+                        poisonList.Add(poison);
+                        Console.WriteLine($"Found poison: {poison.Name} ({poison.Type}, {poison.Cost})");
+                    }
+
+                    Console.WriteLine($"\n=== Total poisons found: {poisonList.Count} ===");
+
+                    if (poisonList.Count > 0)
+                    {
+                        await Task.Delay(DelayMs);
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error scraping poisons from {poisonUrl}: {ex.Message}");
+                }
+            }
+        }
+
+        return poisonList;
+    }
+
     public static async Task<List<Poison>> ScrapePoisons2024()
     {
         string poisonUrl = "http://dnd2024.wikidot.com/equipment:poison";

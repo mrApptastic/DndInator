@@ -6,6 +6,87 @@ namespace DndScraper.Helpers;
 
 public class BackgroundScraper
 {
+    private const int DelayMs = 800;
+
+    public static async Task<List<Background>> ScrapeBackgrounds2014()
+    {
+        var candidateUrls = new[]
+        {
+            "https://dnd5e.wikidot.com/background",
+            "https://dnd5e.wikidot.com/backgrounds"
+        };
+
+        var backgrounds = new List<Background>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            foreach (var backgroundUrl in candidateUrls)
+            {
+                try
+                {
+                    Console.WriteLine($"\n=== Scraping backgrounds from {backgroundUrl} ===");
+
+                    var html = await client.GetStringAsync(backgroundUrl);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+                    if (pageContent == null)
+                    {
+                        Console.WriteLine("No page-content found");
+                        continue;
+                    }
+
+                    var links = pageContent.SelectNodes(".//a[@href]");
+                    if (links == null)
+                    {
+                        Console.WriteLine("No background links found");
+                        continue;
+                    }
+
+                    foreach (var link in links)
+                    {
+                        var href = link.GetAttributeValue("href", string.Empty);
+                        if (!href.StartsWith("/background:")) continue;
+
+                        var name = link.InnerText.Trim();
+                        var detailUrl = "https://dnd5e.wikidot.com" + href;
+
+                        if (seen.Contains(detailUrl)) continue;
+                        seen.Add(detailUrl);
+
+                        var background = new Background
+                        {
+                            Name = name,
+                            Category = "Background"
+                        };
+
+                        backgrounds.Add(background);
+                        Console.WriteLine($"Found background: {background.Name}");
+
+                        await ScrapeBackgroundDetails(client, background, detailUrl);
+                        await Task.Delay(DelayMs);
+                    }
+
+                    if (backgrounds.Count > 0)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error scraping backgrounds from {backgroundUrl}: {ex.Message}");
+                }
+            }
+        }
+
+        Console.WriteLine($"\n=== Total backgrounds found: {backgrounds.Count} ===");
+        return backgrounds;
+    }
+
     public static async Task<List<Background>> ScrapeBackgrounds2024()
     {
         string backgroundUrl = "http://dnd2024.wikidot.com/background:all";

@@ -6,6 +6,87 @@ namespace DndScraper.Helpers;
 
 public class SpeciesScraper
 {
+    private const int DelayMs = 800;
+
+    public static async Task<List<Species>> ScrapeSpecies2014()
+    {
+        var candidateUrls = new[]
+        {
+            "https://dnd5e.wikidot.com/race",
+            "https://dnd5e.wikidot.com/races"
+        };
+
+        var speciesList = new List<Species>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            foreach (var speciesUrl in candidateUrls)
+            {
+                try
+                {
+                    Console.WriteLine($"\n=== Scraping species from {speciesUrl} ===");
+
+                    var html = await client.GetStringAsync(speciesUrl);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+                    if (pageContent == null)
+                    {
+                        Console.WriteLine("No page-content found");
+                        continue;
+                    }
+
+                    var links = pageContent.SelectNodes(".//a[@href]");
+                    if (links == null)
+                    {
+                        Console.WriteLine("No species links found");
+                        continue;
+                    }
+
+                    foreach (var link in links)
+                    {
+                        var href = link.GetAttributeValue("href", string.Empty);
+                        if (!href.StartsWith("/race:")) continue;
+
+                        var name = link.InnerText.Trim();
+                        var detailUrl = "https://dnd5e.wikidot.com" + href;
+
+                        if (seen.Contains(detailUrl)) continue;
+                        seen.Add(detailUrl);
+
+                        var species = new Species
+                        {
+                            Name = name,
+                            Category = "Race"
+                        };
+
+                        speciesList.Add(species);
+                        Console.WriteLine($"Found species: {species.Name}");
+
+                        await ScrapeSpeciesDetails(client, species, detailUrl);
+                        await Task.Delay(DelayMs);
+                    }
+
+                    if (speciesList.Count > 0)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error scraping species from {speciesUrl}: {ex.Message}");
+                }
+            }
+        }
+
+        Console.WriteLine($"\n=== Total species found: {speciesList.Count} ===");
+        return speciesList;
+    }
+
     public static async Task<List<Species>> ScrapeSpecies2024()
     {
         string speciesUrl = "http://dnd2024.wikidot.com/species:all";

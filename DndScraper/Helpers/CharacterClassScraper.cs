@@ -6,6 +6,205 @@ namespace DndScraper.Helpers;
 
 public class CharacterClassScraper
 {
+    private const int DelayMs = 800;
+
+    public static async Task<List<CharacterClass>> ScrapeClasses2014()
+    {
+        var classSlugs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "Artificer", "artificer" },
+            { "Barbarian", "barbarian" },
+            { "Bard", "bard" },
+            { "Cleric", "cleric" },
+            { "Druid", "druid" },
+            { "Fighter", "fighter" },
+            { "Monk", "monk" },
+            { "Paladin", "paladin" },
+            { "Ranger", "ranger" },
+            { "Rogue", "rogue" },
+            { "Sorcerer", "sorcerer" },
+            { "Warlock", "warlock" },
+            { "Wizard", "wizard" }
+        };
+
+        var classList = new List<CharacterClass>();
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            Console.WriteLine($"\n=== Scraping character classes from dnd5e.wikidot.com ===");
+
+            foreach (var kvp in classSlugs)
+            {
+                var className = kvp.Key;
+                var slug = kvp.Value;
+                var url = $"https://dnd5e.wikidot.com/{slug}";
+
+                try
+                {
+                    Console.WriteLine($"\n--- Scraping {className} ---");
+
+                    var html = await client.GetStringAsync(url);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+                    if (pageContent == null)
+                    {
+                        Console.WriteLine($"Could not find page content for {className}");
+                        continue;
+                    }
+
+                    var characterClass = new CharacterClass
+                    {
+                        Name = className,
+                        FullContent = pageContent.InnerText
+                    };
+
+                    var sourceParagraph = pageContent.SelectSingleNode(".//p[starts-with(text(), 'Source:')]");
+                    if (sourceParagraph != null)
+                    {
+                        characterClass.Source = sourceParagraph.InnerText.Replace("Source:", "").Trim();
+                    }
+
+                    var paragraphs = pageContent.SelectNodes(".//p");
+                    if (paragraphs != null && paragraphs.Count > 0)
+                    {
+                        var descriptionParts = new List<string>();
+                        bool skippedSource = false;
+
+                        foreach (var p in paragraphs)
+                        {
+                            var text = p.InnerText.Trim();
+                            if (text.StartsWith("Source:"))
+                            {
+                                skippedSource = true;
+                                continue;
+                            }
+
+                            if (skippedSource && !string.IsNullOrWhiteSpace(text))
+                            {
+                                descriptionParts.Add(text);
+                                if (descriptionParts.Count >= 3) break;
+                            }
+                        }
+
+                        characterClass.Description = string.Join("\n\n", descriptionParts);
+                    }
+
+                    // Find subclass links på siden
+                    var subclassLinks = pageContent.SelectNodes($".//a[starts-with(@href, '/{slug}:')]");
+                    if (subclassLinks != null)
+                    {
+                        foreach (var link in subclassLinks)
+                        {
+                            var name = link.InnerText.Trim();
+                            if (!string.IsNullOrWhiteSpace(name))
+                            {
+                                characterClass.SubclassNames.Add(name);
+                            }
+                        }
+                    }
+
+                    classList.Add(characterClass);
+                    Console.WriteLine($"✓ Scraped {className} successfully");
+                    await Task.Delay(DelayMs);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"✗ Error scraping {className}: {ex.Message}");
+                }
+            }
+        }
+
+        Console.WriteLine($"\n=== Total classes found: {classList.Count} ===");
+        return classList;
+    }
+
+    public static async Task<List<Subclass>> ScrapeSubclasses2014()
+    {
+        var classSlugs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "Artificer", "artificer" },
+            { "Barbarian", "barbarian" },
+            { "Bard", "bard" },
+            { "Cleric", "cleric" },
+            { "Druid", "druid" },
+            { "Fighter", "fighter" },
+            { "Monk", "monk" },
+            { "Paladin", "paladin" },
+            { "Ranger", "ranger" },
+            { "Rogue", "rogue" },
+            { "Sorcerer", "sorcerer" },
+            { "Warlock", "warlock" },
+            { "Wizard", "wizard" }
+        };
+
+        var subclassList = new List<Subclass>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+            Console.WriteLine($"\n=== Scraping subclasses from dnd5e.wikidot.com ===");
+
+            foreach (var kvp in classSlugs)
+            {
+                var className = kvp.Key;
+                var slug = kvp.Value;
+                var url = $"https://dnd5e.wikidot.com/{slug}";
+
+                try
+                {
+                    var html = await client.GetStringAsync(url);
+                    var htmlDoc = new HtmlDocument();
+                    htmlDoc.LoadHtml(html);
+
+                    var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+                    if (pageContent == null)
+                    {
+                        Console.WriteLine($"Could not find page content for {className}");
+                        continue;
+                    }
+
+                    var links = pageContent.SelectNodes($".//a[starts-with(@href, '/{slug}:')]");
+                    if (links == null) continue;
+
+                    foreach (var link in links)
+                    {
+                        var href = link.GetAttributeValue("href", string.Empty);
+                        var name = link.InnerText.Trim();
+                        if (string.IsNullOrWhiteSpace(href) || string.IsNullOrWhiteSpace(name)) continue;
+
+                        var detailUrl = "https://dnd5e.wikidot.com" + href;
+                        if (seen.Contains(detailUrl)) continue;
+                        seen.Add(detailUrl);
+
+                        var subclass = new Subclass
+                        {
+                            Name = name,
+                            ParentClass = className
+                        };
+
+                        subclassList.Add(subclass);
+                        Console.WriteLine($"--- Scraping {name} ({className}) ---");
+
+                        await ScrapeSubclassDetails2014(client, subclass, detailUrl);
+                        await Task.Delay(DelayMs);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"✗ Error scraping subclasses for {className}: {ex.Message}");
+                }
+            }
+        }
+
+        Console.WriteLine($"\n=== Total subclasses found: {subclassList.Count} ===");
+        return subclassList;
+    }
     public static async Task<List<CharacterClass>> ScrapeClasses2024()
     {
         var classList = new List<CharacterClass>();
@@ -340,5 +539,61 @@ public class CharacterClassScraper
         }
 
         return subclassList;
+    }
+
+    private static async Task ScrapeSubclassDetails2014(HttpClient client, Subclass subclass, string url)
+    {
+        try
+        {
+            var html = await client.GetStringAsync(url);
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
+
+            var pageContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='page-content']");
+            if (pageContent == null)
+            {
+                Console.WriteLine($"Could not find page content for {subclass.Name}");
+                return;
+            }
+
+            subclass.FullContent = pageContent.InnerText;
+
+            var sourceParagraph = pageContent.SelectSingleNode(".//p[starts-with(text(), 'Source:')]");
+            if (sourceParagraph != null)
+            {
+                subclass.Source = sourceParagraph.InnerText.Replace("Source:", "").Trim();
+            }
+
+            var paragraphs = pageContent.SelectNodes(".//p");
+            if (paragraphs != null && paragraphs.Count > 0)
+            {
+                var descriptionParts = new List<string>();
+                bool skippedSource = false;
+
+                foreach (var p in paragraphs)
+                {
+                    var text = p.InnerText.Trim();
+                    if (text.StartsWith("Source:"))
+                    {
+                        skippedSource = true;
+                        continue;
+                    }
+
+                    if (skippedSource && !string.IsNullOrWhiteSpace(text))
+                    {
+                        descriptionParts.Add(text);
+                        if (descriptionParts.Count >= 2) break;
+                    }
+                }
+
+                subclass.Description = string.Join("\n\n", descriptionParts);
+            }
+
+            Console.WriteLine($"✓ Scraped {subclass.Name} successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"✗ Error scraping {subclass.Name}: {ex.Message}");
+        }
     }
 }
