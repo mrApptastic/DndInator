@@ -46,7 +46,7 @@ public class ToolScraper
                         if (headerRow == null) continue;
 
                         var headers = headerRow.SelectNodes("th");
-                        if (headers == null || headers.Count < 4) continue;
+                        if (headers == null || headers.Count < 3) continue;
 
                         var firstHeader = headers[0].InnerText.Trim();
                         string category = "Unknown";
@@ -79,15 +79,17 @@ public class ToolScraper
                         foreach (var row in rows.Skip(1))
                         {
                             var cells = row.SelectNodes("td");
-                            if (cells == null || cells.Count < 4) continue;
+                            if (cells == null || cells.Count < 3) continue;
+
+                            // Skip category header rows (som "Artisan's tools")
+                            if (cells[0].SelectSingleNode(".//th") != null) continue;
 
                             var tool = new Tool
                             {
                                 Category = category,
                                 Name = cells[0].InnerText.Trim(),
-                                Ability = cells[1].InnerText.Trim(),
-                                Weight = cells[2].InnerText.Trim(),
-                                Cost = cells[3].InnerText.Trim()
+                                Cost = cells[1].InnerText.Trim(),
+                                Weight = cells[2].InnerText.Trim()
                             };
 
                             if (tool.Weight == "—" || tool.Weight == "-") tool.Weight = null;

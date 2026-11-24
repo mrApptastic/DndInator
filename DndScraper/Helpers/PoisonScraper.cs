@@ -51,14 +51,13 @@ public class PoisonScraper
                     foreach (var row in rows.Skip(1))
                     {
                         var cells = row.SelectNodes("td");
-                        if (cells == null || cells.Count < 4) continue;
+                        if (cells == null || cells.Count < 3) continue;
 
                         var poison = new Poison
                         {
                             Name = cells[0].InnerText.Trim(),
                             Type = cells[1].InnerText.Trim(),
-                            Cost = cells[2].InnerText.Trim(),
-                            Effect = cells[3].InnerText.Trim()
+                            Cost = cells[2].InnerText.Trim()
                         };
 
                         poisonList.Add(poison);

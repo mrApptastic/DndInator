@@ -12,8 +12,7 @@ public class SpeciesScraper
     {
         var candidateUrls = new[]
         {
-            "https://dnd5e.wikidot.com/race",
-            "https://dnd5e.wikidot.com/races"
+            "https://dnd5e.wikidot.com/"
         };
 
         var speciesList = new List<Species>();

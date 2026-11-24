@@ -12,8 +12,7 @@ public class FeatScraper
     {
         var candidateUrls = new[]
         {
-            "https://dnd5e.wikidot.com/feats",
-            "https://dnd5e.wikidot.com/feat:all"
+            "https://dnd5e.wikidot.com/"
         };
 
         var feats = new List<Feat>();

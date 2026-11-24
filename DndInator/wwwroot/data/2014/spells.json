@@ -1,6 +1,6 @@
 [
   {
-    "Id": "889d814e-f5c6-41f0-9224-7ba30d949d9a",
+    "Id": "339464b4-91d1-431c-a56a-ab9de7a2a153",
     "Level": 0,
     "Name": "Acid Splash",
     "School": "Conjuration",
@@ -14,7 +14,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c04ee39b-f7b3-454c-abb7-3327b72f9719",
+    "Id": "83482f1f-1387-4e6e-9b3e-a63517a17212",
     "Level": 0,
     "Name": "Blade Ward",
     "School": "Abjuration",
@@ -33,7 +33,7 @@
     ]
   },
   {
-    "Id": "f96b97fe-265a-42f1-bbed-393a2d474a12",
+    "Id": "906994ea-dc8e-46f6-a9d1-38d3e5b3296c",
     "Level": 0,
     "Name": "Booming Blade",
     "School": "Evocation",
@@ -47,7 +47,7 @@
     "SpellLists": []
   },
   {
-    "Id": "9f94ca44-b754-42ca-b3f0-e5e8825db3de",
+    "Id": "52ac51bc-2597-4ec2-8abc-3bd3e6a7e9cf",
     "Level": 0,
     "Name": "Chill Touch",
     "School": "Necromancy",
@@ -61,7 +61,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c91dd3dc-f03a-4640-96b5-53be03130c1b",
+    "Id": "2e6f13ad-3f0b-4b37-87da-99068da7f741",
     "Level": 0,
     "Name": "Control Flames",
     "School": "Transmutation",
@@ -79,7 +79,7 @@
     ]
   },
   {
-    "Id": "257f9a81-6541-48ff-9b16-582cce80f169",
+    "Id": "6338e329-586b-493d-a61f-0726aeec591b",
     "Level": 0,
     "Name": "Create Bonfire",
     "School": "Conjuration",
@@ -93,7 +93,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e465da84-caa1-4f38-b64e-03d44c2c93c7",
+    "Id": "75fb653b-e3c6-46bc-b168-b2539c236d3b",
     "Level": 0,
     "Name": "Dancing Lights",
     "School": "Evocation",
@@ -112,7 +112,7 @@
     ]
   },
   {
-    "Id": "158a6ede-bd62-4907-93e1-a4df811959df",
+    "Id": "b656d328-e46c-46c9-b873-c1f00f5aa362",
     "Level": 0,
     "Name": "Druidcraft",
     "School": "Transmutation",
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "Id": "9432e2ea-e53c-42ab-afde-7d485630748f",
+    "Id": "05d7318e-13a1-4bd1-9da0-0a920d023589",
     "Level": 0,
     "Name": "Eldritch Blast",
     "School": "Evocation",
@@ -142,7 +142,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c2631f32-93cb-4e41-9a76-707e16879d05",
+    "Id": "4aa5d372-7cbf-43f1-bb8b-3b5371a65430",
     "Level": 0,
     "Name": "Encode Thoughts",
     "School": "Enchantment",
@@ -158,7 +158,7 @@
     ]
   },
   {
-    "Id": "5b0d0bbc-42da-49a5-aef1-ec65b6524d44",
+    "Id": "83943e80-b7c1-4948-b2bf-985e78d3503e",
     "Level": 0,
     "Name": "Fire Bolt",
     "School": "Evocation",
@@ -172,7 +172,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3d9028b6-7b61-4c3d-b45c-a5b2542bbfc0",
+    "Id": "7fe399ef-c6b9-43a3-b94c-501fbcc65e3a",
     "Level": 0,
     "Name": "Friends",
     "School": "Enchantment",
@@ -191,7 +191,7 @@
     ]
   },
   {
-    "Id": "a6537dd2-6e0d-427b-9a40-35302a17b3e5",
+    "Id": "079ae0a8-66ba-4ade-94d5-12ceab10ddf4",
     "Level": 0,
     "Name": "Frostbite",
     "School": "Evocation",
@@ -205,7 +205,7 @@
     "SpellLists": []
   },
   {
-    "Id": "73ebb1ba-57a2-43ed-ae74-3ef8fb253475",
+    "Id": "791dda66-7a34-4f76-9b0d-c21606f87c22",
     "Level": 0,
     "Name": "Green-Flame Blade",
     "School": "Evocation",
@@ -219,7 +219,7 @@
     "SpellLists": []
   },
   {
-    "Id": "459b314c-210f-4060-a1ef-5c0b07509416",
+    "Id": "1bad6f79-4bcc-4376-8916-32140ee5700d",
     "Level": 0,
     "Name": "Guidance",
     "School": "Divination",
@@ -237,7 +237,7 @@
     ]
   },
   {
-    "Id": "6f1ab201-58cb-4abc-a5b0-fc6be2396f52",
+    "Id": "1cefeb88-9f76-4602-822e-5e69ecaed3fd",
     "Level": 0,
     "Name": "Gust",
     "School": "Transmutation",
@@ -255,7 +255,7 @@
     ]
   },
   {
-    "Id": "6317bd9f-42ff-46c4-8351-9defe8af8bfc",
+    "Id": "3b1d11e9-933d-42e0-ae7f-bf6eef5fbfbc",
     "Level": 0,
     "Name": "Hand of Radiance (UA)",
     "School": "Evocation",
@@ -269,7 +269,7 @@
     "SpellLists": []
   },
   {
-    "Id": "62f124f9-c0cc-4a5b-b088-f3af29989a06",
+    "Id": "6f952cce-381d-4364-95c6-7d060be2941f",
     "Level": 0,
     "Name": "Infestation",
     "School": "Conjuration",
@@ -283,7 +283,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b3a7b3b6-bd48-42c0-9f3c-87ca356bd17b",
+    "Id": "333cb18d-0f0b-4ad5-9980-cb78ebe5bc25",
     "Level": 0,
     "Name": "Light",
     "School": "Evocation",
@@ -303,7 +303,7 @@
     ]
   },
   {
-    "Id": "893edea8-3632-4bd7-b52f-23f0b27ad5d2",
+    "Id": "5eb251b2-a656-4103-9128-31d34a0297ab",
     "Level": 0,
     "Name": "Lightning Lure",
     "School": "Evocation",
@@ -317,7 +317,7 @@
     "SpellLists": []
   },
   {
-    "Id": "385b8e16-7a79-45ab-8fd1-df0c51050c42",
+    "Id": "48c9004f-6963-4711-acfc-069fff3d3c46",
     "Level": 0,
     "Name": "Mage Hand",
     "School": "Conjuration",
@@ -337,7 +337,7 @@
     ]
   },
   {
-    "Id": "cfc38a9c-f77c-4b23-bfdc-2d1555374046",
+    "Id": "75ba5b29-3066-4245-91ef-bcb898dc8119",
     "Level": 0,
     "Name": "Magic Stone",
     "School": "Transmutation",
@@ -355,7 +355,7 @@
     ]
   },
   {
-    "Id": "db7a439d-f467-4087-b6d2-97eaa39709f5",
+    "Id": "a7a072b9-f0ef-4c0f-b6b7-c9b2b9f5aee5",
     "Level": 0,
     "Name": "Mending",
     "School": "Transmutation",
@@ -376,7 +376,7 @@
     ]
   },
   {
-    "Id": "db74eac5-9ccf-4d4d-aab6-3747c5e7db87",
+    "Id": "dbb7a118-1883-474a-99a6-3fca744b8529",
     "Level": 0,
     "Name": "Message",
     "School": "Transmutation",
@@ -395,7 +395,7 @@
     ]
   },
   {
-    "Id": "b274db23-d007-4241-9c1b-35fb6009a657",
+    "Id": "5904e2c0-fb85-43d2-b9d2-67727f8ae95e",
     "Level": 0,
     "Name": "Mind Sliver",
     "School": "Enchantment",
@@ -409,7 +409,7 @@
     "SpellLists": []
   },
   {
-    "Id": "30cedc5f-f17c-4ef4-bda1-26c197a3422f",
+    "Id": "ee04c98d-bb8f-49e7-96bc-71e34f3e3ac6",
     "Level": 0,
     "Name": "Minor Illusion",
     "School": "Illusion",
@@ -428,7 +428,7 @@
     ]
   },
   {
-    "Id": "5f081069-6d38-4390-9fac-1971aed080e8",
+    "Id": "fa5a657b-0d01-4fd6-ad59-1caecab3773b",
     "Level": 0,
     "Name": "Mold Earth",
     "School": "Transmutation",
@@ -446,7 +446,7 @@
     ]
   },
   {
-    "Id": "646d08bb-dfeb-4cfb-a30c-5cd1651d162a",
+    "Id": "3977f12d-a4a4-4f80-9bbf-0704b0a58b72",
     "Level": 0,
     "Name": "On/Off (UA)",
     "School": "Transmutation T",
@@ -464,7 +464,7 @@
     ]
   },
   {
-    "Id": "cfbe74a8-8f29-420c-83a2-a3345cf6248d",
+    "Id": "d800b27b-b5ec-4204-ba29-94ab4cd768af",
     "Level": 0,
     "Name": "Poison Spray",
     "School": "Conjuration",
@@ -478,7 +478,7 @@
     "SpellLists": []
   },
   {
-    "Id": "fbe572cc-63a9-4a8a-816d-822bba0780c3",
+    "Id": "2f6a1171-2f3e-44d6-9969-2a01a39e0130",
     "Level": 0,
     "Name": "Prestidigitation",
     "School": "Transmutation",
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "Id": "6b3dc026-2062-46ef-97db-fe66b171c93f",
+    "Id": "468cde8b-4c9b-48ed-8705-98e2ed7f29b2",
     "Level": 0,
     "Name": "Primal Savagery",
     "School": "Transmutation",
@@ -512,7 +512,7 @@
     "SpellLists": []
   },
   {
-    "Id": "db3d144f-1180-40c5-9dbe-ee13fe2ea36e",
+    "Id": "76beb95c-f999-4a43-a221-fc54cba4ece1",
     "Level": 0,
     "Name": "Produce Flame",
     "School": "Conjuration",
@@ -526,7 +526,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e7fd838b-a630-415e-9eae-9af8b834871d",
+    "Id": "7f688539-5b74-42e1-91c1-e08bb65bf4be",
     "Level": 0,
     "Name": "Ray of Frost",
     "School": "Evocation",
@@ -540,7 +540,7 @@
     "SpellLists": []
   },
   {
-    "Id": "81d2eada-4e9b-4fa4-82c8-3960c09657ac",
+    "Id": "85f89330-e3ae-4e46-b9a3-422911dcbe07",
     "Level": 0,
     "Name": "Resistance",
     "School": "Abjuration",
@@ -558,7 +558,7 @@
     ]
   },
   {
-    "Id": "dda3e68a-761d-49a9-8824-9236c09da5c7",
+    "Id": "664033bc-3b5b-4323-9da6-ebb8af3b0242",
     "Level": 0,
     "Name": "Sacred Flame",
     "School": "Evocation",
@@ -572,7 +572,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c05c846c-96a3-41af-9f85-9233dd5d1794",
+    "Id": "637e2b19-6e4b-4d8f-bfa9-fa0f3c0fab2d",
     "Level": 0,
     "Name": "Sapping Sting",
     "School": "Necromancy D",
@@ -586,7 +586,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4356c66e-4314-446b-93f1-40f187245d3d",
+    "Id": "bcd69fd2-84cb-4c69-96bc-26809b04683e",
     "Level": 0,
     "Name": "Shape Water",
     "School": "Transmutation",
@@ -604,7 +604,7 @@
     ]
   },
   {
-    "Id": "d8c3aa02-46b5-41f9-8c96-107756df6d92",
+    "Id": "6433237f-af58-474a-ae4e-0acc711a77ed",
     "Level": 0,
     "Name": "Shillelagh",
     "School": "Transmutation",
@@ -620,7 +620,7 @@
     ]
   },
   {
-    "Id": "f9b37751-af32-4131-b83f-93657571b4e1",
+    "Id": "dfd26b3c-fd30-49cd-8c6e-c27c8c023213",
     "Level": 0,
     "Name": "Shocking Grasp",
     "School": "Evocation",
@@ -634,7 +634,7 @@
     "SpellLists": []
   },
   {
-    "Id": "80b3230f-3466-4fd2-aa9f-4b44e837cc71",
+    "Id": "601cfa6f-5b4b-4f6d-8513-06d5fa0e237d",
     "Level": 0,
     "Name": "Spare the Dying",
     "School": "Necromancy",
@@ -651,7 +651,7 @@
     ]
   },
   {
-    "Id": "3d5959e0-0459-412f-b49d-ff63ceff2e8b",
+    "Id": "cdfe1b59-ea0c-427f-8654-448bf37e68c5",
     "Level": 0,
     "Name": "Sword Burst",
     "School": "Conjuration",
@@ -665,7 +665,7 @@
     "SpellLists": []
   },
   {
-    "Id": "95db1937-8d67-4873-a92c-95b3034c351f",
+    "Id": "19a3557c-1efc-44cd-9e5f-84f7b9230e6b",
     "Level": 0,
     "Name": "Thaumaturgy",
     "School": "Transmutation",
@@ -681,7 +681,7 @@
     ]
   },
   {
-    "Id": "471dd7b3-6575-4b75-8070-e91fea26d686",
+    "Id": "3754a511-80b4-46ef-b298-5e4edcfaf0b7",
     "Level": 0,
     "Name": "Thorn Whip",
     "School": "Transmutation",
@@ -695,7 +695,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8f59d0f2-3ed5-497a-ad89-a604a393c98e",
+    "Id": "351b7a24-8bf4-4047-a6f5-5a1c74f5b58a",
     "Level": 0,
     "Name": "Thunderclap",
     "School": "Evocation",
@@ -709,7 +709,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f38ceee0-3521-49d5-9073-e3f0a267e2f2",
+    "Id": "4384769c-526a-4ae3-a677-89b76d097fb3",
     "Level": 0,
     "Name": "Toll the Dead",
     "School": "Necromancy",
@@ -723,7 +723,7 @@
     "SpellLists": []
   },
   {
-    "Id": "a2746515-87d3-42f6-8c8a-e7eb00c603ea",
+    "Id": "c2031eb3-0b74-4498-b098-73758f514803",
     "Level": 0,
     "Name": "True Strike",
     "School": "Divination",
@@ -742,7 +742,7 @@
     ]
   },
   {
-    "Id": "911ac378-898b-4571-bb88-a3af7bf19bf2",
+    "Id": "89722c3f-a47f-49b5-a3f2-ba848602d180",
     "Level": 0,
     "Name": "Vicious Mockery",
     "School": "Enchantment",
@@ -756,7 +756,7 @@
     "SpellLists": []
   },
   {
-    "Id": "acb1d8ac-03db-4fd8-9326-8952a60c7503",
+    "Id": "9ffe3a2b-e01d-4ab9-84a2-acf2432e06d3",
     "Level": 0,
     "Name": "Virtue (UA)",
     "School": "Abjuration",
@@ -772,7 +772,7 @@
     ]
   },
   {
-    "Id": "3ed510f8-4b9e-4fc8-906c-95199567e0ad",
+    "Id": "a6fef46e-0240-4fc3-960d-baf5f4353371",
     "Level": 0,
     "Name": "Word of Radiance",
     "School": "Evocation",
@@ -786,7 +786,7 @@
     "SpellLists": []
   },
   {
-    "Id": "2630efee-14e0-46fd-9aa5-e09a790d92ed",
+    "Id": "4a52a584-cb70-4d8f-9f1a-c080cae5e66a",
     "Level": 1,
     "Name": "Absorb Elements",
     "School": "Abjuration",
@@ -800,7 +800,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1e41ddfa-531e-458d-ab92-ba9dc1e995e8",
+    "Id": "204016a8-5810-49fe-9897-5108467285fc",
     "Level": 1,
     "Name": "Acid Stream (UA)",
     "School": "Evocation",
@@ -814,7 +814,7 @@
     "SpellLists": []
   },
   {
-    "Id": "25f558af-8a87-4ea7-ad5d-6c948437c7a0",
+    "Id": "0d342746-aad7-4fa6-b4fa-244b9a85303e",
     "Level": 1,
     "Name": "Alarm",
     "School": "Abjuration",
@@ -832,7 +832,7 @@
     ]
   },
   {
-    "Id": "071f2765-dc32-4ddf-a2dd-ed26fd2765fc",
+    "Id": "674f8c16-25fb-4c80-b5a6-31ad9e842ad5",
     "Level": 1,
     "Name": "Animal Friendship",
     "School": "Enchantment",
@@ -846,7 +846,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f85f82c8-08df-4766-b10d-69ab7db7c14c",
+    "Id": "3d0c7efe-7dc9-4387-b387-f15e151bd43f",
     "Level": 1,
     "Name": "Arcane Weapon (UA)",
     "School": "Transmutation",
@@ -860,7 +860,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4ea387b0-6e08-4710-953e-7014a545dec4",
+    "Id": "71512a73-29fe-4008-9fa9-bd65aa3565ff",
     "Level": 1,
     "Name": "Armor of Agathys",
     "School": "Abjuration",
@@ -874,7 +874,7 @@
     "SpellLists": []
   },
   {
-    "Id": "76e39c62-c155-4fe9-a282-39a0b02204f6",
+    "Id": "9423ed61-e677-44b3-b915-7092f49ef592",
     "Level": 1,
     "Name": "Arms of Hadar",
     "School": "Conjuration",
@@ -888,7 +888,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c95bad66-5d48-4639-a8eb-288ef0ef6347",
+    "Id": "a81e3e51-e4f0-42cb-a3d7-da861a0cf0ce",
     "Level": 1,
     "Name": "Bane",
     "School": "Enchantment",
@@ -902,7 +902,7 @@
     "SpellLists": []
   },
   {
-    "Id": "329648b1-fc83-4a81-9eb0-95cb0deed33a",
+    "Id": "bed3c9df-8020-4958-8c96-97a241856a6e",
     "Level": 1,
     "Name": "Beast Bond",
     "School": "Divination",
@@ -919,7 +919,7 @@
     ]
   },
   {
-    "Id": "d939c674-a05a-41d8-918c-8d684d9f7eca",
+    "Id": "0aaf7a79-59d1-49ad-85f8-c771331b444b",
     "Level": 1,
     "Name": "Bless",
     "School": "Enchantment",
@@ -933,7 +933,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7abdd741-b0b4-42c6-af2a-cfa4580342fd",
+    "Id": "867b3027-c2c9-47a6-834e-87ecfc46024f",
     "Level": 1,
     "Name": "Burning Hands",
     "School": "Evocation",
@@ -947,7 +947,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c5df0dff-733d-4023-948b-13f4d8b4328e",
+    "Id": "5148ee2c-8af8-48cc-acea-ecab14141bc3",
     "Level": 1,
     "Name": "Catapult",
     "School": "Transmutation",
@@ -961,7 +961,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e5795458-3155-4fa1-bae3-f5d65ed30b51",
+    "Id": "5df16418-ca81-4d51-a4ea-d6110a02cd3b",
     "Level": 1,
     "Name": "Cause Fear",
     "School": "Necromancy",
@@ -975,7 +975,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3f12c85e-3290-4911-94d9-e4edd032c68b",
+    "Id": "e8c0db70-74ea-4e90-9fc1-704e537df853",
     "Level": 1,
     "Name": "Ceremony",
     "School": "Abjuration",
@@ -992,7 +992,7 @@
     ]
   },
   {
-    "Id": "40d55b36-4722-4248-a0ed-3875f788d5be",
+    "Id": "3d19d5e2-440b-4a2f-ab54-2c15b7728111",
     "Level": 1,
     "Name": "Chaos Bolt",
     "School": "Evocation",
@@ -1006,7 +1006,7 @@
     "SpellLists": []
   },
   {
-    "Id": "32f5bfd2-7ad6-4f64-a831-b7db36dfc8c2",
+    "Id": "a6e71afa-4f25-4bd9-a65a-dae4be4db9ad",
     "Level": 1,
     "Name": "Charm Person",
     "School": "Enchantment",
@@ -1020,7 +1020,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8ac32946-271d-43a4-bcc4-02ad2f157eb4",
+    "Id": "11b5358e-6afe-4927-9e33-7460137e36f8",
     "Level": 1,
     "Name": "Chromatic Orb",
     "School": "Evocation",
@@ -1034,7 +1034,7 @@
     "SpellLists": []
   },
   {
-    "Id": "523ec9a2-1b93-4c97-a4a0-5b4e81dfdd9d",
+    "Id": "c4f7dd1a-8d44-45bc-8e54-6f34bd31f4e7",
     "Level": 1,
     "Name": "Color Spray",
     "School": "Illusion",
@@ -1048,7 +1048,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c7901eb1-9d0b-4058-846d-4f9ed9f38268",
+    "Id": "3b02c36b-33a1-4551-b8a1-2bc36bf50d9e",
     "Level": 1,
     "Name": "Command",
     "School": "Enchantment",
@@ -1062,7 +1062,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f7b13cd4-fcb8-476a-96cc-ee7064334cca",
+    "Id": "c9cfdcf2-441d-4838-9228-953f1590d6b1",
     "Level": 1,
     "Name": "Compelled Duel",
     "School": "Enchantment",
@@ -1078,7 +1078,7 @@
     ]
   },
   {
-    "Id": "7e3567b1-3f00-4fc9-bc34-2dc74940002a",
+    "Id": "ab73789d-cfed-4df0-8cce-3aa559eeed08",
     "Level": 1,
     "Name": "Comprehend Languages",
     "School": "Divination",
@@ -1097,7 +1097,7 @@
     ]
   },
   {
-    "Id": "7e0f2412-2349-4a9d-b146-ae7b9b4f88ff",
+    "Id": "90002b26-d894-4fd9-a52d-1a3c183bcba9",
     "Level": 1,
     "Name": "Create or Destroy Water",
     "School": "Transmutation",
@@ -1111,7 +1111,7 @@
     "SpellLists": []
   },
   {
-    "Id": "bb3fc28e-57a4-4c5d-af99-25c8e55c24f2",
+    "Id": "099acece-cd94-4e33-9cad-a77c24660c9c",
     "Level": 1,
     "Name": "Cure Wounds",
     "School": "Evocation",
@@ -1125,7 +1125,7 @@
     "SpellLists": []
   },
   {
-    "Id": "96c93edc-ec81-44aa-9afa-8c8077b17341",
+    "Id": "39a9b98e-6871-4178-b052-a2809c233205",
     "Level": 1,
     "Name": "Detect Evil and Good",
     "School": "Divination",
@@ -1142,7 +1142,7 @@
     ]
   },
   {
-    "Id": "1507b522-2cb0-4162-8dc4-165274671321",
+    "Id": "ce76bef9-2941-4b29-bc59-322464be0ca1",
     "Level": 1,
     "Name": "Detect Magic",
     "School": "Divination",
@@ -1165,7 +1165,7 @@
     ]
   },
   {
-    "Id": "09a61888-8162-4d65-8e39-dd431b45c2c9",
+    "Id": "62e85989-5ce9-469e-a054-e5c6a9f094dc",
     "Level": 1,
     "Name": "Detect Poison and Disease",
     "School": "Divination",
@@ -1184,7 +1184,7 @@
     ]
   },
   {
-    "Id": "a212b023-2853-4991-8ca7-53e5e2410640",
+    "Id": "15cfeb68-a43e-4699-86cd-8825166d3b08",
     "Level": 1,
     "Name": "Disguise Self",
     "School": "Illusion",
@@ -1203,7 +1203,7 @@
     ]
   },
   {
-    "Id": "d4ab5cf9-d13e-457d-853e-83786ef0f5fe",
+    "Id": "83fa0a9d-fb3d-431c-a523-7cc90003e703",
     "Level": 1,
     "Name": "Dissonant Whispers",
     "School": "Enchantment",
@@ -1217,7 +1217,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e4d86d0e-0100-42d5-bf0a-355418a42689",
+    "Id": "6920c858-f30a-4652-a1ef-2a44997a65a8",
     "Level": 1,
     "Name": "Distort Value",
     "School": "Illusion",
@@ -1231,7 +1231,7 @@
     "SpellLists": []
   },
   {
-    "Id": "5a4537b4-ded4-4f7b-b828-a6f3d4f89fa2",
+    "Id": "31f6bc8a-ffbc-4667-aee8-a4a02406d682",
     "Level": 1,
     "Name": "Divine Favor",
     "School": "Evocation",
@@ -1247,7 +1247,7 @@
     ]
   },
   {
-    "Id": "53b92450-614f-4815-8499-7b3ba96caff3",
+    "Id": "1698d978-3593-4972-8a0e-b22b33bd45f5",
     "Level": 1,
     "Name": "Earth Tremor",
     "School": "Evocation",
@@ -1261,7 +1261,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8925800a-f583-4d6b-aa5e-fe07edf8d062",
+    "Id": "b76f963f-f886-42af-a592-741249af11ee",
     "Level": 1,
     "Name": "Ensnaring Strike",
     "School": "Conjuration",
@@ -1275,7 +1275,7 @@
     "SpellLists": []
   },
   {
-    "Id": "88f1c741-12c1-49c6-b64b-41afa6136cec",
+    "Id": "30623828-2940-4e2f-a10c-2335c0f6a57b",
     "Level": 1,
     "Name": "Entangle",
     "School": "Conjuration",
@@ -1292,7 +1292,7 @@
     ]
   },
   {
-    "Id": "c7c43e43-5efb-4325-8d3b-9125e8f30998",
+    "Id": "0855b020-06e2-4b6f-b564-bfb4f69b92bd",
     "Level": 1,
     "Name": "Expeditious Retreat",
     "School": "Transmutation",
@@ -1311,7 +1311,7 @@
     ]
   },
   {
-    "Id": "441701b2-dda9-454f-965a-202de8c7c79f",
+    "Id": "4e66a67e-2129-4336-aa90-0fec6a013bf4",
     "Level": 1,
     "Name": "Faerie Fire",
     "School": "Evocation",
@@ -1329,7 +1329,7 @@
     ]
   },
   {
-    "Id": "2505cc44-c01d-48b7-bc41-faec3cf2a576",
+    "Id": "2f9c4e89-2802-4c48-bc29-fc7f0c64b3c2",
     "Level": 1,
     "Name": "False Life",
     "School": "Necromancy",
@@ -1343,7 +1343,7 @@
     "SpellLists": []
   },
   {
-    "Id": "db79e0d7-6247-415a-b905-df1e488daa92",
+    "Id": "9b0b0f88-4e91-4f40-abf1-d03c57705092",
     "Level": 1,
     "Name": "Feather Fall",
     "School": "Transmutation",
@@ -1362,7 +1362,7 @@
     ]
   },
   {
-    "Id": "4c128e1b-10ff-4443-a57a-31236f87dafd",
+    "Id": "64adaecd-ec53-45c2-9a94-b32aaa9688e4",
     "Level": 1,
     "Name": "Find Familiar",
     "School": "Conjuration",
@@ -1378,7 +1378,7 @@
     ]
   },
   {
-    "Id": "a6f6593b-a355-4add-9923-947f6554b0ac",
+    "Id": "ee8276c3-e96f-491b-bc2e-94057a02cc81",
     "Level": 1,
     "Name": "Fog Cloud",
     "School": "Conjuration",
@@ -1392,7 +1392,7 @@
     "SpellLists": []
   },
   {
-    "Id": "2c37b97c-6e30-4e3a-8769-5ea3c84fd3dd",
+    "Id": "8936b9cd-200c-4e41-99c1-cb8dafedee76",
     "Level": 1,
     "Name": "Frost Fingers",
     "School": "Evocation",
@@ -1406,7 +1406,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ef8d2e10-85d7-4937-b4f2-1c6ab4cb4c5b",
+    "Id": "fc4e6d11-1de1-45f9-8868-b84dbefd30d6",
     "Level": 1,
     "Name": "Gift of Alacrity",
     "School": "Divination DC",
@@ -1422,7 +1422,7 @@
     ]
   },
   {
-    "Id": "98607192-fd66-4583-acd2-d6fce5acad7a",
+    "Id": "31fe1fff-f0e3-4458-8640-b39e413fee0c",
     "Level": 1,
     "Name": "Goodberry",
     "School": "Transmutation",
@@ -1439,7 +1439,7 @@
     ]
   },
   {
-    "Id": "aa590402-d88f-4a54-8d4a-28df1711c055",
+    "Id": "9c7e0766-2a83-4063-a7d5-897ecb8b9442",
     "Level": 1,
     "Name": "Grease",
     "School": "Conjuration",
@@ -1457,7 +1457,7 @@
     ]
   },
   {
-    "Id": "859f9f41-c38a-4b74-8478-a099d6569f44",
+    "Id": "95717535-baf9-4c5a-9949-ade881e57019",
     "Level": 1,
     "Name": "Guiding Bolt",
     "School": "Evocation",
@@ -1471,7 +1471,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6e13bb6c-37e3-448d-9815-fa2b04aa0a89",
+    "Id": "48b8d322-a240-45cf-af70-002a97647533",
     "Level": 1,
     "Name": "Guiding Hand (UA)",
     "School": "Divination",
@@ -1490,7 +1490,7 @@
     ]
   },
   {
-    "Id": "a146c8b6-9442-4e58-9576-fc31ce34c8fb",
+    "Id": "dfe62d26-4f4c-4da9-8009-6aa7e30a8f16",
     "Level": 1,
     "Name": "Hail of Thorns",
     "School": "Conjuration",
@@ -1504,7 +1504,7 @@
     "SpellLists": []
   },
   {
-    "Id": "66a73102-1b99-478a-bf13-e87bd83d0f41",
+    "Id": "713b671c-c92e-41d2-b554-45b9b6b01fa6",
     "Level": 1,
     "Name": "Healing Elixir (UA)",
     "School": "Conjuration",
@@ -1521,7 +1521,7 @@
     ]
   },
   {
-    "Id": "1a9b20b1-f2f3-4fed-8375-cd3645a8be02",
+    "Id": "83840100-a296-40f2-9863-824b34d1040e",
     "Level": 1,
     "Name": "Healing Word",
     "School": "Evocation",
@@ -1535,7 +1535,7 @@
     "SpellLists": []
   },
   {
-    "Id": "944e3ed3-a274-4acd-9167-f33db18466b6",
+    "Id": "4cda3f46-6c23-488b-ac5a-3bbb78c5490d",
     "Level": 1,
     "Name": "Hellish Rebuke",
     "School": "Evocation",
@@ -1549,7 +1549,7 @@
     "SpellLists": []
   },
   {
-    "Id": "57a1f466-f0d8-48e4-a97c-f9db28901c32",
+    "Id": "13a341ac-1896-4299-8a8a-71b3d04970a4",
     "Level": 1,
     "Name": "Heroism",
     "School": "Enchantment",
@@ -1563,7 +1563,7 @@
     "SpellLists": []
   },
   {
-    "Id": "61c8f1c8-d8e1-4d69-af10-c9b6fab7905e",
+    "Id": "15c6aafe-def7-46b0-b684-129ccbcc6e22",
     "Level": 1,
     "Name": "Hex",
     "School": "Enchantment",
@@ -1577,7 +1577,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b9a9a08f-804d-4fa6-84aa-9ba37f690057",
+    "Id": "9482816f-f6d1-4840-b7a0-dcddceb20641",
     "Level": 1,
     "Name": "Hunter\u0027s Mark",
     "School": "Divination",
@@ -1591,7 +1591,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3881a1ac-58b2-4648-8035-f2655f62ec7a",
+    "Id": "08ac2f96-ec8b-4500-b318-c04fa13cc2a2",
     "Level": 1,
     "Name": "Ice Knife",
     "School": "Conjuration",
@@ -1605,7 +1605,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f7671cd0-1946-4a5f-afc5-89b2a6484034",
+    "Id": "d3d22329-d0da-42c5-ae0b-da9fc9069fb1",
     "Level": 1,
     "Name": "Id Insinuation (UA)",
     "School": "Enchantment",
@@ -1623,7 +1623,7 @@
     ]
   },
   {
-    "Id": "8ce380e8-4801-4797-a05d-2fd0cfab1f1a",
+    "Id": "ef1f3725-7a9b-4f9d-aa11-92ca4c23cd72",
     "Level": 1,
     "Name": "Identify",
     "School": "Divination",
@@ -1641,7 +1641,7 @@
     ]
   },
   {
-    "Id": "72a4b275-1d7e-4cbb-9a6a-ebaa7451ccf2",
+    "Id": "5508ecb8-226c-4c59-85c6-f9e4b2ceafc2",
     "Level": 1,
     "Name": "Illusory Script",
     "School": "Illusion",
@@ -1659,7 +1659,7 @@
     ]
   },
   {
-    "Id": "b37bba14-db01-4c2e-af70-0c11fe8e478a",
+    "Id": "a537e5e8-a932-4c7d-a6c6-c0aa74c04fc3",
     "Level": 1,
     "Name": "Infallible Relay (UA)",
     "School": "Divination T",
@@ -1677,7 +1677,7 @@
     ]
   },
   {
-    "Id": "6c460c10-3b66-411d-baee-24afed04623b",
+    "Id": "c1dddc70-8f97-4f2c-8bca-f4bebc2e14b4",
     "Level": 1,
     "Name": "Inflict Wounds",
     "School": "Necromancy",
@@ -1691,7 +1691,7 @@
     "SpellLists": []
   },
   {
-    "Id": "a53a54be-09de-4413-baef-60fcf2356aec",
+    "Id": "a00021a1-78ab-465c-94e5-1969f3e72035",
     "Level": 1,
     "Name": "Jim\u0027s Magic Missile",
     "School": "Evocation",
@@ -1705,7 +1705,7 @@
     "SpellLists": []
   },
   {
-    "Id": "38abce88-f031-497e-9106-b949ad209eb1",
+    "Id": "c3df647c-1d4d-4552-abb6-127e39af10f5",
     "Level": 1,
     "Name": "Jump",
     "School": "Transmutation",
@@ -1725,7 +1725,7 @@
     ]
   },
   {
-    "Id": "96af6002-7057-450f-9a43-824a7de3e418",
+    "Id": "6b90af3c-63fd-4141-8c90-4be8387c4ac6",
     "Level": 1,
     "Name": "Longstrider",
     "School": "Transmutation",
@@ -1739,7 +1739,7 @@
     "SpellLists": []
   },
   {
-    "Id": "247a2954-1bc4-4785-b90b-85714196beae",
+    "Id": "86f480af-b3a3-4de5-a3bb-86eca0b9b8bf",
     "Level": 1,
     "Name": "Mage Armor",
     "School": "Abjuration",
@@ -1756,7 +1756,7 @@
     ]
   },
   {
-    "Id": "bf1724ef-a065-4612-9af1-021ffc4d88b2",
+    "Id": "0021eb93-d7e0-4bc4-8eb8-cf1b7e7ca9e0",
     "Level": 1,
     "Name": "Magic Missile",
     "School": "Evocation",
@@ -1770,7 +1770,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c8231de2-b88b-4ca0-90c6-e39bc98a98f7",
+    "Id": "e01fba23-a3fb-4af8-8280-a632c38461b0",
     "Level": 1,
     "Name": "Magnify Gravity",
     "School": "Transmutation DG",
@@ -1784,7 +1784,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7b62dd68-5a55-4ca1-9290-1880aff7d899",
+    "Id": "270bb514-dd45-4b56-b6c9-51ff68a1e478",
     "Level": 1,
     "Name": "Protection from Evil and Good",
     "School": "Abjuration",
@@ -1804,7 +1804,7 @@
     ]
   },
   {
-    "Id": "252ea8ef-74e2-4df5-bac0-febe3a4c2915",
+    "Id": "39ad204f-154f-4db4-87c3-a48333dc8dc4",
     "Level": 1,
     "Name": "Puppet (UA)",
     "School": "Enchantment",
@@ -1822,7 +1822,7 @@
     ]
   },
   {
-    "Id": "12a1d4fe-6933-4628-a41e-da8f1ebae45f",
+    "Id": "00dea10a-8e1f-428f-bb8e-6149c242bbda",
     "Level": 1,
     "Name": "Purify Food and Drink",
     "School": "Transmutation",
@@ -1841,7 +1841,7 @@
     ]
   },
   {
-    "Id": "34270407-4546-417a-83fe-de8fa49fbd25",
+    "Id": "4f6ca255-433e-44f5-b096-0ab7aff169e0",
     "Level": 1,
     "Name": "Ray of Sickness",
     "School": "Necromancy",
@@ -1855,7 +1855,7 @@
     "SpellLists": []
   },
   {
-    "Id": "58e117d0-0d16-4f6e-ab77-2d42ad0fe537",
+    "Id": "71a07014-3e77-4f90-a43e-6587d0e6fcdb",
     "Level": 1,
     "Name": "Remote Access (UA)",
     "School": "Transmutation T",
@@ -1873,7 +1873,7 @@
     ]
   },
   {
-    "Id": "1cab693f-96a2-48e8-ab32-c201a159eaf5",
+    "Id": "98dc10fe-3daf-4abc-9b98-87bf7f3b95d8",
     "Level": 1,
     "Name": "Sanctuary",
     "School": "Abjuration",
@@ -1890,7 +1890,7 @@
     ]
   },
   {
-    "Id": "5d0fad47-89a9-49c2-b961-0c44091e3784",
+    "Id": "5863dbfd-613e-4bd4-8201-8f2d0f4a0943",
     "Level": 1,
     "Name": "Searing Smite",
     "School": "Evocation",
@@ -1904,7 +1904,7 @@
     "SpellLists": []
   },
   {
-    "Id": "5d512f24-f3aa-4514-8ac5-58f2f3dd150c",
+    "Id": "c176df91-d525-4a78-bc92-59b323c415f9",
     "Level": 1,
     "Name": "Sense Emotion (UA)",
     "School": "Divination",
@@ -1922,7 +1922,7 @@
     ]
   },
   {
-    "Id": "720e203a-1e5c-45bb-989f-f2e8d7b29daf",
+    "Id": "75608a4a-0809-443e-959e-84e3ad919a5f",
     "Level": 1,
     "Name": "Shield",
     "School": "Abjuration",
@@ -1939,7 +1939,7 @@
     ]
   },
   {
-    "Id": "d2172175-2e1c-4bd1-9793-2ddbba63e8bc",
+    "Id": "dff1de9f-6b77-4409-814f-9a9502cfc404",
     "Level": 1,
     "Name": "Shield of Faith",
     "School": "Abjuration",
@@ -1956,7 +1956,7 @@
     ]
   },
   {
-    "Id": "2a47707c-24b5-4a93-bb07-269bcc86a780",
+    "Id": "448198b5-45fe-46d1-bd30-0a2636db43aa",
     "Level": 1,
     "Name": "Silent Image",
     "School": "Illusion",
@@ -1974,7 +1974,7 @@
     ]
   },
   {
-    "Id": "bf4b3661-12c0-4c34-b20a-3904c7f0d066",
+    "Id": "65961771-b58f-4f8a-bfc1-e430eaa9d90c",
     "Level": 1,
     "Name": "Silvery Barbs",
     "School": "Enchantment",
@@ -1992,7 +1992,7 @@
     ]
   },
   {
-    "Id": "5ba1072b-7a0c-4536-9cf9-d1a29d0b469f",
+    "Id": "76587f3b-dd88-44e8-9b7a-3cde5524404e",
     "Level": 1,
     "Name": "Sleep",
     "School": "Enchantment",
@@ -2006,7 +2006,7 @@
     "SpellLists": []
   },
   {
-    "Id": "18caa81c-84f0-4d61-a50d-d9fabd2ac6d5",
+    "Id": "c13ae77b-2073-4cc7-a9a8-d99728ae7500",
     "Level": 1,
     "Name": "Snare",
     "School": "Abjuration",
@@ -2025,7 +2025,7 @@
     ]
   },
   {
-    "Id": "9873b612-f4d6-4475-b5dc-8051379da3a0",
+    "Id": "b58e8f46-73f2-4d63-90bf-38b2021a9c9b",
     "Level": 1,
     "Name": "Speak with Animals",
     "School": "Divination",
@@ -2043,7 +2043,7 @@
     ]
   },
   {
-    "Id": "a0012d03-bf69-4bb0-84d7-f83cd2421fa9",
+    "Id": "ad415791-9e9d-4cff-8b4e-7de24f8cdedc",
     "Level": 1,
     "Name": "Sudden Awakening (UA)",
     "School": "Enchantment",
@@ -2062,7 +2062,7 @@
     ]
   },
   {
-    "Id": "4be01307-96b9-467b-9a7a-e6cde443804b",
+    "Id": "f21839b8-889c-486f-9570-989f33f139d6",
     "Level": 1,
     "Name": "Tasha\u0027s Caustic Brew",
     "School": "Evocation",
@@ -2076,7 +2076,7 @@
     "SpellLists": []
   },
   {
-    "Id": "36d0b3ad-3cc9-4daa-a93d-faf54d710bbb",
+    "Id": "7461c19a-5e26-48d5-971e-89cd6b51129a",
     "Level": 1,
     "Name": "Tasha\u0027s Hideous Laughter",
     "School": "Enchantment",
@@ -2093,7 +2093,7 @@
     ]
   },
   {
-    "Id": "43ff7e25-627c-46fe-87af-cfe5408d91d6",
+    "Id": "a0c980f7-127f-484c-a01f-7586e7a1b8cb",
     "Level": 1,
     "Name": "Tenser\u0027s Floating Disk",
     "School": "Conjuration",
@@ -2109,7 +2109,7 @@
     ]
   },
   {
-    "Id": "6dfa278f-efcc-4a46-b133-08bf8ff984b4",
+    "Id": "f9c45320-9016-42f4-ac7e-32abb62d737d",
     "Level": 1,
     "Name": "Thunderous Smite",
     "School": "Evocation",
@@ -2125,7 +2125,7 @@
     ]
   },
   {
-    "Id": "4fda5d92-084e-45ab-9df8-31f6d7a38e2a",
+    "Id": "e31b6bfa-c526-4d1f-8602-93eba7b13193",
     "Level": 1,
     "Name": "Thunderwave",
     "School": "Evocation",
@@ -2139,7 +2139,7 @@
     "SpellLists": []
   },
   {
-    "Id": "89223026-1dc6-4fe7-8979-7227b3be11a8",
+    "Id": "e3bd07d3-b968-4aa3-8426-e53c69fffc60",
     "Level": 1,
     "Name": "Unearthly Chorus (UA)",
     "School": "Illusion",
@@ -2155,7 +2155,7 @@
     ]
   },
   {
-    "Id": "5a5b38d5-354f-4bf3-b734-c0d0523684fe",
+    "Id": "5a5a8bdc-4e91-455b-9938-0f51a29945c1",
     "Level": 1,
     "Name": "Unseen Servant",
     "School": "Conjuration",
@@ -2173,7 +2173,7 @@
     ]
   },
   {
-    "Id": "1c623b95-7c7b-465d-a96f-addc2b58dc15",
+    "Id": "47cb0862-bfb8-47ba-8fd7-d986b890dd87",
     "Level": 1,
     "Name": "Wild Cunning (UA)",
     "School": "Transmutation",
@@ -2190,7 +2190,7 @@
     ]
   },
   {
-    "Id": "33e11f71-feb8-40e6-bd51-e89f0c4ee79b",
+    "Id": "a76b785d-1bea-4899-9655-6a550e4658d0",
     "Level": 1,
     "Name": "Witch Bolt",
     "School": "Evocation",
@@ -2204,7 +2204,7 @@
     "SpellLists": []
   },
   {
-    "Id": "06da3064-46fb-403f-b454-ad19e099e4fc",
+    "Id": "2dad32e3-3374-4f93-b1bb-165c8fe7ab7b",
     "Level": 1,
     "Name": "Wrathful Smite",
     "School": "Evocation",
@@ -2220,7 +2220,7 @@
     ]
   },
   {
-    "Id": "d2ad0bcf-1043-4175-882f-8b7c4e846ceb",
+    "Id": "034da105-00f0-48b2-8b0d-219c9d94745a",
     "Level": 1,
     "Name": "Zephyr Strike",
     "School": "Transmutation",
@@ -2236,7 +2236,7 @@
     ]
   },
   {
-    "Id": "de65431e-25ba-438f-8b89-e4838e9ffb2b",
+    "Id": "2c4b9a24-c6d6-47cb-bb99-f3b3ab87d74a",
     "Level": 2,
     "Name": "Aganazzar\u0027s Scorcher",
     "School": "Evocation",
@@ -2250,7 +2250,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4ec8782f-1e98-4b81-abcd-2f3013c05966",
+    "Id": "4e215538-2fdd-48ce-8acf-d38374a8e9a4",
     "Level": 2,
     "Name": "Aid",
     "School": "Abjuration",
@@ -2264,7 +2264,7 @@
     "SpellLists": []
   },
   {
-    "Id": "dd0488c2-dff2-4dd5-94b0-724f4b3faca5",
+    "Id": "1c35313c-ab23-4485-90d9-b4f2e87c6059",
     "Level": 2,
     "Name": "Air Bubble",
     "School": "Conjuration",
@@ -2278,7 +2278,7 @@
     "SpellLists": []
   },
   {
-    "Id": "9c7a24b3-5c6b-4ba5-807b-5464a3fc5f47",
+    "Id": "57c8dffe-1fe8-4574-9fc9-30c24e75241d",
     "Level": 2,
     "Name": "Alter Self",
     "School": "Transmutation",
@@ -2296,7 +2296,7 @@
     ]
   },
   {
-    "Id": "f70891de-3f6f-4bb8-804e-ba4513110182",
+    "Id": "078da18b-8daa-4107-be1e-0b8e41ed1117",
     "Level": 2,
     "Name": "Animal Messenger",
     "School": "Enchantment",
@@ -2310,7 +2310,7 @@
     "SpellLists": []
   },
   {
-    "Id": "69b2a6e1-cd64-4eb7-83b6-173430f7787f",
+    "Id": "90e2e3b7-fff4-4075-8955-26c3d89cff26",
     "Level": 2,
     "Name": "Arcane Hacking (UA)",
     "School": "Transmutation T",
@@ -2324,7 +2324,7 @@
     "SpellLists": []
   },
   {
-    "Id": "9b7b5065-7411-4d01-ae6e-fc9b09584493",
+    "Id": "6886e13d-a4fb-4694-90bc-1c6cb0d744bf",
     "Level": 2,
     "Name": "Arcane Lock",
     "School": "Abjuration",
@@ -2341,7 +2341,7 @@
     ]
   },
   {
-    "Id": "2cd38f4e-9b1c-4fcf-88ca-ff1981a839cf",
+    "Id": "825e3409-1e14-4094-8bf5-49f9d80e04c7",
     "Level": 2,
     "Name": "Augury",
     "School": "Divination",
@@ -2359,7 +2359,7 @@
     ]
   },
   {
-    "Id": "7237c7b3-c050-4b86-8387-5d278d3d6c98",
+    "Id": "d2819adc-0302-4f6e-9fcc-16281ccbd99c",
     "Level": 2,
     "Name": "Barkskin",
     "School": "Transmutation",
@@ -2376,7 +2376,7 @@
     ]
   },
   {
-    "Id": "e2c708e6-1fee-4f77-9eb0-b96e5aa6ba6b",
+    "Id": "94685bce-4ba9-43a8-bfc3-9eeca81edcf7",
     "Level": 2,
     "Name": "Beast Sense",
     "School": "Divination",
@@ -2393,7 +2393,7 @@
     ]
   },
   {
-    "Id": "3e6deb5d-0ef6-4ea2-a5c0-7626747cc50f",
+    "Id": "d6fdd3e7-f2bd-456c-9e0d-38464110975f",
     "Level": 2,
     "Name": "Blindness/Deafness",
     "School": "Necromancy",
@@ -2407,7 +2407,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b9e24fdf-ae82-4368-b8bf-76c0b79f8d9c",
+    "Id": "c3aca3e7-d11f-429c-82d6-4bc34263eed8",
     "Level": 2,
     "Name": "Blur",
     "School": "Illusion",
@@ -2425,7 +2425,7 @@
     ]
   },
   {
-    "Id": "bb7b26eb-3975-424d-bd81-a0e46d69e26b",
+    "Id": "508de3c0-3f7a-44f1-afba-c9b5d757cf29",
     "Level": 2,
     "Name": "Borrowed Knowledge",
     "School": "Divination",
@@ -2444,7 +2444,7 @@
     ]
   },
   {
-    "Id": "5533b0f9-8987-4877-b002-23f5dbc85a62",
+    "Id": "22882dcb-77d6-484c-9879-707974c86794",
     "Level": 2,
     "Name": "Branding Smite",
     "School": "Evocation",
@@ -2458,7 +2458,7 @@
     "SpellLists": []
   },
   {
-    "Id": "23d4bdd4-6663-4a57-be3b-24abff0a213f",
+    "Id": "e4dc5b1e-0b1b-4ac4-9c20-72001c930ee9",
     "Level": 2,
     "Name": "Calm Emotions",
     "School": "Enchantment",
@@ -2475,7 +2475,7 @@
     ]
   },
   {
-    "Id": "269458c9-a8c0-4f22-838d-cf52a64ea4aa",
+    "Id": "87e1245f-992f-4d10-9322-2341da6affab",
     "Level": 2,
     "Name": "Cloud of Daggers",
     "School": "Conjuration",
@@ -2489,7 +2489,7 @@
     "SpellLists": []
   },
   {
-    "Id": "49b31644-305d-461b-a6ff-b9decaa40b24",
+    "Id": "3c63cdc5-3eb4-4066-9b26-e0b7e8ae1ab7",
     "Level": 2,
     "Name": "Continual Flame",
     "School": "Evocation",
@@ -2508,7 +2508,7 @@
     ]
   },
   {
-    "Id": "07d3403d-6e15-4f18-a20a-ab269d393dd2",
+    "Id": "4fba80cb-9375-419f-a1b0-aeeb678bf56a",
     "Level": 2,
     "Name": "Cordon of Arrows",
     "School": "Transmutation",
@@ -2522,7 +2522,7 @@
     "SpellLists": []
   },
   {
-    "Id": "af9a3491-603a-493f-801a-5287b91d493c",
+    "Id": "611e2f37-e2c2-4f80-95d5-28e7cb554486",
     "Level": 2,
     "Name": "Crown of Madness",
     "School": "Enchantment",
@@ -2541,7 +2541,7 @@
     ]
   },
   {
-    "Id": "4581fda2-a8f5-4f82-b9e9-d4c35313a675",
+    "Id": "204cc6f1-59ed-40f6-a5ed-2e09088248e0",
     "Level": 2,
     "Name": "Darkness",
     "School": "Evocation",
@@ -2559,7 +2559,7 @@
     ]
   },
   {
-    "Id": "52b69a56-d55b-4b1b-8989-5aafd7165c90",
+    "Id": "b70a4224-c71b-40f0-b64b-354b099aef65",
     "Level": 2,
     "Name": "Darkvision",
     "School": "Transmutation",
@@ -2579,7 +2579,7 @@
     ]
   },
   {
-    "Id": "412fc733-1045-4a80-89fb-7d080c3da703",
+    "Id": "108c18a5-2347-4e77-9744-7e4178328f6f",
     "Level": 2,
     "Name": "Detect Thoughts",
     "School": "Divination",
@@ -2597,7 +2597,7 @@
     ]
   },
   {
-    "Id": "f411710e-6506-48c0-9e56-35ec83c51a74",
+    "Id": "ad1f8dc5-1f05-4374-9df1-b73b700b8724",
     "Level": 2,
     "Name": "Digital Phantom (UA)",
     "School": "Abjuration T",
@@ -2615,7 +2615,7 @@
     ]
   },
   {
-    "Id": "7792a258-3f64-4e3d-85bb-b0916c3476bb",
+    "Id": "0c8c21f8-079f-4669-82d9-5b814d9d97ed",
     "Level": 2,
     "Name": "Dragon\u0027s Breath",
     "School": "Transmutation",
@@ -2629,7 +2629,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b3e0486a-f3a8-442e-8678-62ec403f0b61",
+    "Id": "958e59b2-d1d5-4536-a987-ab91ea5c7578",
     "Level": 2,
     "Name": "Dust Devil",
     "School": "Conjuration",
@@ -2643,7 +2643,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e33aca14-fd02-4128-a624-2be2149c48b4",
+    "Id": "b6beec4d-f62a-4862-bfa2-e2cc61e79f1e",
     "Level": 2,
     "Name": "Earthbind",
     "School": "Transmutation",
@@ -2662,7 +2662,7 @@
     ]
   },
   {
-    "Id": "a33111ea-b038-4332-848c-bb6023044da9",
+    "Id": "1d1f529a-7492-444a-ab31-c758a81796f9",
     "Level": 2,
     "Name": "Enhance Ability",
     "School": "Transmutation",
@@ -2676,7 +2676,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f964b5ba-84d6-4b42-9b5a-06fcdacd8af7",
+    "Id": "62e16bca-e8b5-4db8-a4e4-73a19b6e0635",
     "Level": 2,
     "Name": "Enlarge/Reduce",
     "School": "Transmutation",
@@ -2696,7 +2696,7 @@
     ]
   },
   {
-    "Id": "4747a4df-6794-4a15-8c70-8c1f83ecc53c",
+    "Id": "7134229c-320d-4859-b1d1-bb0239e35d56",
     "Level": 2,
     "Name": "Enthrall",
     "School": "Enchantment",
@@ -2713,7 +2713,7 @@
     ]
   },
   {
-    "Id": "da5dc5d9-1626-4e86-8aa5-334669ece409",
+    "Id": "da5141ed-a6b1-4494-98be-cfb0f4cefdce",
     "Level": 2,
     "Name": "Find Steed",
     "School": "Conjuration",
@@ -2729,7 +2729,7 @@
     ]
   },
   {
-    "Id": "5b7dbcd2-0ad3-45c4-a367-3101e6dde4eb",
+    "Id": "5aaec671-a402-4d0a-943b-d010671b5b6c",
     "Level": 2,
     "Name": "Find Traps",
     "School": "Divination",
@@ -2747,7 +2747,7 @@
     ]
   },
   {
-    "Id": "df6b9f3a-aa15-45da-8490-c1f2b5b5e7e7",
+    "Id": "2fe56a29-06b6-4622-9ee4-b58bfcf05e53",
     "Level": 2,
     "Name": "Find Vehicle (UA)",
     "School": "Conjuration T",
@@ -2761,7 +2761,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ab79b4f6-cd57-4603-8b37-2ae275ea7faa",
+    "Id": "a7ea45b5-e315-4e20-bfb6-8839c2c6ccb4",
     "Level": 2,
     "Name": "Flame Blade",
     "School": "Evocation",
@@ -2775,7 +2775,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4752681a-3bc0-4be1-8360-2bb4027b87c1",
+    "Id": "a546db7b-4aad-498c-a560-c74ea0e4ed85",
     "Level": 2,
     "Name": "Flaming Sphere",
     "School": "Conjuration",
@@ -2789,7 +2789,7 @@
     "SpellLists": []
   },
   {
-    "Id": "975c68f1-67e1-46c7-bda0-b9d3810cde15",
+    "Id": "b96c1475-e98b-4bd6-a34f-324c27e514f8",
     "Level": 2,
     "Name": "Flock of Familiars",
     "School": "Conjuration",
@@ -2803,7 +2803,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d5a0db09-fb11-4e77-9872-492d7eaa8f47",
+    "Id": "80912653-ae64-47f6-9cc9-05e5f1ed0ea5",
     "Level": 2,
     "Name": "Fortune\u0027s Favor",
     "School": "Divination D",
@@ -2817,7 +2817,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1c75d5cc-d7b5-40b7-b772-bf86eb3cf9e7",
+    "Id": "7e1565d9-fef2-4411-aa63-aa2c734d50a4",
     "Level": 2,
     "Name": "Gentle Repose",
     "School": "Necromancy",
@@ -2835,7 +2835,7 @@
     ]
   },
   {
-    "Id": "a57df8db-52f8-438f-8148-1b43df278223",
+    "Id": "cd502029-9096-4396-a22a-7e662332780c",
     "Level": 2,
     "Name": "Gift of Gab",
     "School": "Enchantment",
@@ -2852,7 +2852,7 @@
     ]
   },
   {
-    "Id": "4b6c1ed8-252d-4742-a44e-12dce7e15e18",
+    "Id": "0aad7423-b21a-445c-a7f2-ba8b3d869788",
     "Level": 2,
     "Name": "Gust of Wind",
     "School": "Evocation",
@@ -2871,7 +2871,7 @@
     ]
   },
   {
-    "Id": "b9c0a53a-ab83-450b-93b7-e938504fcfb6",
+    "Id": "8e5b98fb-142a-4ba7-afb8-fecd262f50e2",
     "Level": 2,
     "Name": "Healing Spirit",
     "School": "Conjuration",
@@ -2885,7 +2885,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3111358e-e45a-465b-99ef-572be57adeec",
+    "Id": "12e941cc-80d8-47b0-b1d4-338cbd28f07f",
     "Level": 2,
     "Name": "Heat Metal",
     "School": "Transmutation",
@@ -2899,7 +2899,7 @@
     "SpellLists": []
   },
   {
-    "Id": "aae945bf-83e7-4f2b-824f-1d2cefecccfc",
+    "Id": "4c5b3199-8ab0-4079-ba83-0df93b98a7d6",
     "Level": 2,
     "Name": "Hold Person",
     "School": "Enchantment",
@@ -2913,7 +2913,7 @@
     "SpellLists": []
   },
   {
-    "Id": "abc62036-6183-4d3b-904d-75d211506683",
+    "Id": "dc70dd3c-d8ca-4e07-9035-c72526a7f1ee",
     "Level": 2,
     "Name": "Icingdeath\u0027s Frost (UA)",
     "School": "Evocation",
@@ -2927,7 +2927,7 @@
     "SpellLists": []
   },
   {
-    "Id": "363e02af-aaaf-47bb-a496-ff855c655069",
+    "Id": "f06b9c47-990a-4400-8bf8-6f0054c41ee6",
     "Level": 2,
     "Name": "Immovable Object",
     "School": "Transmutation DG",
@@ -2941,7 +2941,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6c9665c4-3ddb-4a0a-8fb8-8f745a32ed94",
+    "Id": "93ccdda2-db17-4c07-8598-bd8935d2caf7",
     "Level": 2,
     "Name": "Invisibility",
     "School": "Illusion",
@@ -2955,7 +2955,7 @@
     "SpellLists": []
   },
   {
-    "Id": "fb2e18a8-c68f-42a1-8f21-bd2644fa896e",
+    "Id": "ea383cef-0f6f-46c8-a3c2-9817aed6ef99",
     "Level": 2,
     "Name": "Jim\u0027s Glowing Coin",
     "School": "Enchantment",
@@ -2971,7 +2971,7 @@
     ]
   },
   {
-    "Id": "1155e35d-c005-4862-a911-cc2851b9ca78",
+    "Id": "6fcbbab9-6db7-494e-bb0e-f859484b5648",
     "Level": 2,
     "Name": "Kinetic Jaunt",
     "School": "Transmutation",
@@ -2990,7 +2990,7 @@
     ]
   },
   {
-    "Id": "11ffffdf-03b4-457c-8920-8d3d2a540aeb",
+    "Id": "cc7ebc55-ec3e-4ac8-8545-0b0226f07e11",
     "Level": 2,
     "Name": "Knock",
     "School": "Transmutation",
@@ -3008,7 +3008,7 @@
     ]
   },
   {
-    "Id": "46404ef0-2dcb-401d-a11e-af5412c9b89f",
+    "Id": "d8678759-97d7-4256-81da-36bc3c33c6f4",
     "Level": 2,
     "Name": "Lesser Restoration",
     "School": "Abjuration",
@@ -3029,7 +3029,7 @@
     ]
   },
   {
-    "Id": "fd98961b-b4d2-4218-b113-1c3e1f9b8d91",
+    "Id": "40bc21d4-4476-49d6-b332-95bc85aace40",
     "Level": 2,
     "Name": "Levitate",
     "School": "Transmutation",
@@ -3047,7 +3047,7 @@
     ]
   },
   {
-    "Id": "1c3a758d-17d4-433e-ad3c-84f54e17d7d2",
+    "Id": "b1681e37-3548-493b-bd1a-8f91b46b4b5d",
     "Level": 2,
     "Name": "Locate Animals or Plants",
     "School": "Divination",
@@ -3065,7 +3065,7 @@
     ]
   },
   {
-    "Id": "27f3ded6-4b20-4c35-af57-8e4345d540c0",
+    "Id": "0e81c5ca-620f-40b6-89ae-6893b8a353e3",
     "Level": 2,
     "Name": "Locate Object",
     "School": "Divination",
@@ -3086,7 +3086,7 @@
     ]
   },
   {
-    "Id": "e9cffed5-d061-4e8b-ae3c-16eb0e25b45f",
+    "Id": "7d62109b-2756-49c8-b167-d6ed2fa010c9",
     "Level": 2,
     "Name": "Magic Mouth",
     "School": "Illusion",
@@ -3104,7 +3104,7 @@
     ]
   },
   {
-    "Id": "65d11aa0-02ff-439e-a69a-3e0c14fa58db",
+    "Id": "73049eb7-5d69-43a2-8884-dcb7272ed03a",
     "Level": 2,
     "Name": "Magic Weapon",
     "School": "Transmutation",
@@ -3118,7 +3118,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e61cf933-827a-40d2-af30-5301be00a4f7",
+    "Id": "25d269c4-3c51-4687-8b45-0cea2bd1e603",
     "Level": 2,
     "Name": "Maximillian\u0027s Earthen Grasp",
     "School": "Transmutation",
@@ -3135,7 +3135,7 @@
     ]
   },
   {
-    "Id": "ca5d913c-8f63-4620-92e2-7f389ddcde00",
+    "Id": "05daee9f-39de-4422-8660-5eda7b5f8139",
     "Level": 2,
     "Name": "Melf\u0027s Acid Arrow",
     "School": "Evocation",
@@ -3149,7 +3149,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0989d992-cf1c-4cef-960d-d4a33505f527",
+    "Id": "4304f4d8-bce1-4c00-8f49-3c95aa3d0081",
     "Level": 2,
     "Name": "Mental Barrier (UA)",
     "School": "Abjuration",
@@ -3167,7 +3167,7 @@
     ]
   },
   {
-    "Id": "9f1e8db2-f46b-4b4e-a6c1-1ad224823647",
+    "Id": "b4f09c08-3cf3-494d-b4b2-02b2b32d8e0f",
     "Level": 2,
     "Name": "Mind Spike",
     "School": "Divination",
@@ -3181,7 +3181,7 @@
     "SpellLists": []
   },
   {
-    "Id": "139a4caa-3b7e-4df5-91c5-8f9a176fa80e",
+    "Id": "6c372cfc-9185-4534-888d-793e608ef8bb",
     "Level": 2,
     "Name": "Mind Thrust (UA)",
     "School": "Enchantment",
@@ -3195,7 +3195,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7b56da8d-abef-4dad-85fe-00e9897230a7",
+    "Id": "49b08075-3071-437c-a4b0-c773df81a219",
     "Level": 2,
     "Name": "Mirror Image",
     "School": "Illusion",
@@ -3214,7 +3214,7 @@
     ]
   },
   {
-    "Id": "ca60a69f-9cd9-4ca7-9bdf-504267bf1c65",
+    "Id": "d48f5dec-1d5b-4b58-b268-b569b08849cd",
     "Level": 2,
     "Name": "Misty Step",
     "School": "Conjuration",
@@ -3232,7 +3232,7 @@
     ]
   },
   {
-    "Id": "c3227e1c-c398-4754-ac25-bc76992327ec",
+    "Id": "b793b6fb-acce-4dd8-a9e9-8f54c60a0cdd",
     "Level": 2,
     "Name": "Moonbeam",
     "School": "Evocation",
@@ -3246,7 +3246,7 @@
     "SpellLists": []
   },
   {
-    "Id": "9cf40cb0-6092-4f24-95a6-2fe911dfb01d",
+    "Id": "cd5e853d-c9fc-4051-8812-563de6197eb7",
     "Level": 2,
     "Name": "Nathair\u0027s Mischief",
     "School": "Illusion",
@@ -3264,7 +3264,7 @@
     ]
   },
   {
-    "Id": "229d9a05-3cbe-4576-825b-2c4ccebcceda",
+    "Id": "42099a7c-d17d-4a77-bf6d-5fb9a471d527",
     "Level": 2,
     "Name": "Nathair\u0027s Mischief (UA)",
     "School": "Illusion",
@@ -3282,7 +3282,7 @@
     ]
   },
   {
-    "Id": "709f4797-eac7-4ce0-81a7-c083ea5906c9",
+    "Id": "02f4b5ba-de0c-4845-aa86-c8a68f263a22",
     "Level": 2,
     "Name": "Nystul\u0027s Magic Aura",
     "School": "Illusion",
@@ -3298,7 +3298,7 @@
     ]
   },
   {
-    "Id": "f7db314c-0bb2-42e0-b9ec-631809fbd543",
+    "Id": "3f9008a7-0be1-4a3b-89db-fbf1ef6dcd0d",
     "Level": 2,
     "Name": "Pass Without Trace",
     "School": "Abjuration",
@@ -3315,7 +3315,7 @@
     ]
   },
   {
-    "Id": "ef62a003-01a9-4c7c-bf41-481a96f5f092",
+    "Id": "b92581b4-f3b1-4f28-9e54-7b69081b8dee",
     "Level": 2,
     "Name": "Phantasmal Force",
     "School": "Illusion",
@@ -3333,7 +3333,7 @@
     ]
   },
   {
-    "Id": "f0325f0a-23de-428b-8112-d2c76ceb6cae",
+    "Id": "05c2657e-6560-423f-a789-b7f127307501",
     "Level": 2,
     "Name": "Prayer of Healing",
     "School": "Evocation",
@@ -3341,13 +3341,13 @@
     "Range": "30 feet",
     "Duration": "Instantaneous",
     "Components": "V",
-    "Description": "Up to six creatures of your choice that you can see within range each regain hit points equal to 2d8 \u002B your spellcasting ability modifier. This spell has no effect on undead or constructs.",
-    "Source": "Player\u0027s Handbook",
-    "AtHigherLevels": "When you cast this spell using a spell slot of 3rd level or higher, the healing increases by 1d8 for each slot level above 2nd.",
+    "Description": null,
+    "Source": null,
+    "AtHigherLevels": null,
     "SpellLists": []
   },
   {
-    "Id": "8bb97f84-8632-4ecf-8cf5-6fa3dbe8c912",
+    "Id": "ec07c607-7166-44f3-a996-1267bc7a995d",
     "Level": 2,
     "Name": "Protection from Poison",
     "School": "Abjuration",
@@ -3367,7 +3367,7 @@
     ]
   },
   {
-    "Id": "ddce3e52-49ab-4c44-bb0c-757f22d6db5f",
+    "Id": "cf1f989d-00e7-48cd-9230-c65a42976fed",
     "Level": 2,
     "Name": "Pyrotechnics",
     "School": "Transmutation",
@@ -3386,7 +3386,7 @@
     ]
   },
   {
-    "Id": "0c20403c-06f3-4a8e-ad4f-9f0341e7238b",
+    "Id": "8cbea771-6658-40e3-8af1-203ba826036c",
     "Level": 2,
     "Name": "Ray of Enfeeblement",
     "School": "Necromancy",
@@ -3403,7 +3403,7 @@
     ]
   },
   {
-    "Id": "6e47ee15-5314-4eaf-8f09-e727d8016d2b",
+    "Id": "1bc849f9-e34f-4ef6-80e8-8c992f385581",
     "Level": 2,
     "Name": "Rime\u0027s Binding Ice",
     "School": "Evocation",
@@ -3417,7 +3417,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e7aa8d4a-b513-4ede-b1a4-9d765b8866ee",
+    "Id": "c344684e-53a9-4edb-b090-832138d06504",
     "Level": 2,
     "Name": "Rope Trick",
     "School": "Transmutation",
@@ -3434,7 +3434,7 @@
     ]
   },
   {
-    "Id": "438c1090-7950-4063-bcdc-d974f1f5dafb",
+    "Id": "83316c1a-4ebe-46a3-89e7-737efcc371cf",
     "Level": 2,
     "Name": "Scorching Ray",
     "School": "Evocation",
@@ -3448,7 +3448,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1fdadf04-cffe-47bf-80a9-f642e55ddea2",
+    "Id": "012a7910-4092-41c1-bd65-26588d09e8d1",
     "Level": 2,
     "Name": "See Invisibility",
     "School": "Divination",
@@ -3467,7 +3467,7 @@
     ]
   },
   {
-    "Id": "dbc827e5-94af-4ff1-8ef1-6aa7767a2f96",
+    "Id": "14532124-70cd-433a-be8b-95fc035cfc12",
     "Level": 2,
     "Name": "Shadow Blade",
     "School": "Illusion",
@@ -3481,7 +3481,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3ad0284a-e487-4e9d-affc-969050f3bd69",
+    "Id": "d0c02cb4-1239-4064-b5e0-cde73e3e0edc",
     "Level": 2,
     "Name": "Shatter",
     "School": "Evocation",
@@ -3495,7 +3495,7 @@
     "SpellLists": []
   },
   {
-    "Id": "815728d9-d22b-4091-97be-2ed72900ae8e",
+    "Id": "d567787b-c69c-4c9e-b80d-af541c018a2c",
     "Level": 2,
     "Name": "Silence",
     "School": "Illusion",
@@ -3513,7 +3513,7 @@
     ]
   },
   {
-    "Id": "7c23da39-a018-4fe1-a111-06191015fee8",
+    "Id": "1f043cda-72ce-4b9d-947e-364892e6c7c7",
     "Level": 2,
     "Name": "Skywrite",
     "School": "Transmutation",
@@ -3532,7 +3532,7 @@
     ]
   },
   {
-    "Id": "0c4c8bf1-8ee3-4764-b4ee-0b81b0836dcc",
+    "Id": "3e8ab7c6-2408-48cc-87b1-81581015943a",
     "Level": 2,
     "Name": "Snilloc\u0027s Snowball Swarm",
     "School": "Evocation",
@@ -3546,7 +3546,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f5d1cdfd-9d1f-4667-9f63-4ccd60064e15",
+    "Id": "5a83cd81-834c-4a29-8cc9-a4f9367f7048",
     "Level": 2,
     "Name": "Spider Climb",
     "School": "Transmutation",
@@ -3565,7 +3565,7 @@
     ]
   },
   {
-    "Id": "f5f36854-42d1-4a1d-a773-a5dc45111b37",
+    "Id": "a1743755-197d-4487-9642-d3dfab90ac54",
     "Level": 2,
     "Name": "Spike Growth",
     "School": "Transmutation",
@@ -3582,7 +3582,7 @@
     ]
   },
   {
-    "Id": "8a1895a8-d659-40d1-80b9-2b2178df6878",
+    "Id": "9e933a72-0e31-4fcf-8ca8-72cc53665c4a",
     "Level": 2,
     "Name": "Spiritual Weapon",
     "School": "Evocation",
@@ -3596,7 +3596,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0a5a798b-6f69-47c0-a4c7-c392c12bc834",
+    "Id": "ade40421-4408-440e-b901-6f194824e270",
     "Level": 2,
     "Name": "Spray Of Cards",
     "School": "Conjuration",
@@ -3610,7 +3610,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c25da408-bd78-498e-9135-15f50dbe2281",
+    "Id": "b5207e0e-c66e-4be7-b818-dcac6d7fd3d0",
     "Level": 2,
     "Name": "Spray of Cards (UA)",
     "School": "Conjuration",
@@ -3624,7 +3624,7 @@
     "SpellLists": []
   },
   {
-    "Id": "273913aa-1c42-4c7e-b858-62e545bcf634",
+    "Id": "bf3fb045-b874-41ff-95ce-56ca06456c79",
     "Level": 2,
     "Name": "Suggestion",
     "School": "Enchantment",
@@ -3643,7 +3643,7 @@
     ]
   },
   {
-    "Id": "a26ced0d-6e8e-4df8-b728-1bdf1e92826f",
+    "Id": "a4fe3454-7892-4071-996a-68ea808cce2d",
     "Level": 2,
     "Name": "Summon Beast",
     "School": "Conjuration",
@@ -3657,7 +3657,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e4a13c2d-bce8-4614-ab60-2b5b20d69656",
+    "Id": "59a63aa2-dc52-4609-9399-5485b6896270",
     "Level": 2,
     "Name": "Tasha\u0027s Mind Whip",
     "School": "Enchantment",
@@ -3671,7 +3671,7 @@
     "SpellLists": []
   },
   {
-    "Id": "23513662-9659-46eb-87aa-908aa7ea1323",
+    "Id": "8a92f957-4f9b-430c-b392-940b6b9dfcfc",
     "Level": 2,
     "Name": "Thought Shield (UA)",
     "School": "Abjuration",
@@ -3689,7 +3689,7 @@
     ]
   },
   {
-    "Id": "cbfa08a4-8dd8-40a5-808a-5d11bf8bb910",
+    "Id": "eac48030-afa5-413a-8a2b-338265df0b32",
     "Level": 2,
     "Name": "Vortex Warp",
     "School": "Conjuration",
@@ -3703,7 +3703,7 @@
     "SpellLists": []
   },
   {
-    "Id": "28cd990e-f3bf-434e-a82b-c1c7cc830087",
+    "Id": "18d11305-0a99-493e-9cdf-899c63aeba9f",
     "Level": 2,
     "Name": "Warding Bond",
     "School": "Abjuration",
@@ -3720,7 +3720,7 @@
     ]
   },
   {
-    "Id": "d9cd625d-6cae-428d-8359-d82e5ef3c842",
+    "Id": "8dc9c210-b327-4d4d-94a9-85562bfc922a",
     "Level": 2,
     "Name": "Warding Wind",
     "School": "Evocation",
@@ -3739,7 +3739,7 @@
     ]
   },
   {
-    "Id": "ffa63bfe-312b-4093-8e11-1a6ebded4458",
+    "Id": "ba71975a-118b-47d8-b3f2-6de4ac16e17e",
     "Level": 2,
     "Name": "Warp Sense",
     "School": "Divination",
@@ -3757,7 +3757,7 @@
     ]
   },
   {
-    "Id": "2965c855-ae2d-4a40-a6e9-a43e38f7f4f4",
+    "Id": "4d1daea5-fb80-4320-9573-ffd9645f1020",
     "Level": 2,
     "Name": "Web",
     "School": "Conjuration",
@@ -3775,7 +3775,7 @@
     ]
   },
   {
-    "Id": "2725d355-aaf1-444e-878c-3958e7c61b4f",
+    "Id": "c824dfa7-3c20-474a-b94f-6b548ce0f991",
     "Level": 2,
     "Name": "Wither and Bloom",
     "School": "Necromancy",
@@ -3789,7 +3789,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ae5532b5-c095-4cd5-983c-bfcf0bf9c96b",
+    "Id": "625dddea-7fa1-47d6-bc73-b7ca9cbf6672",
     "Level": 2,
     "Name": "Wristpocket",
     "School": "Conjuration D",
@@ -3805,7 +3805,7 @@
     ]
   },
   {
-    "Id": "11a23b60-d352-4070-88fa-5c5e9a1f0625",
+    "Id": "fd4f7c3f-5ef3-4dec-8038-eb5255847a0c",
     "Level": 2,
     "Name": "Zone of Truth",
     "School": "Enchantment",
@@ -3823,7 +3823,7 @@
     ]
   },
   {
-    "Id": "90b14153-fef6-4c62-a786-5eb885bf72ec",
+    "Id": "29bd43f8-e3e3-4b6e-97e7-f02c45ae1ce5",
     "Level": 3,
     "Name": "Animate Dead",
     "School": "Necromancy",
@@ -3837,7 +3837,7 @@
     "SpellLists": []
   },
   {
-    "Id": "9060a407-0754-42db-ab9b-5b790fa90cba",
+    "Id": "f11189c4-f6c8-4148-b521-8bb830ec190c",
     "Level": 3,
     "Name": "Antagonize",
     "School": "Enchantment",
@@ -3851,7 +3851,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e98f5326-d41a-4090-8d41-ed1febbea276",
+    "Id": "a57a961a-11a0-492d-9a27-e4463f4e9cc2",
     "Level": 3,
     "Name": "Antagonize (UA)",
     "School": "Enchantment",
@@ -3865,7 +3865,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d9e0076b-0a66-43e9-9b80-3aeaf7ce2d15",
+    "Id": "14bdd595-a40b-4a82-9803-98a0b144e071",
     "Level": 3,
     "Name": "Ashardalon\u0027s Stride",
     "School": "Transmutation",
@@ -3879,7 +3879,7 @@
     "SpellLists": []
   },
   {
-    "Id": "19c1970f-4322-40c5-a3cd-c71407ea6782",
+    "Id": "fe3d535a-fc65-49f3-b5c2-7e15ac126020",
     "Level": 3,
     "Name": "Aura of Vitality",
     "School": "Evocation",
@@ -3897,7 +3897,7 @@
     ]
   },
   {
-    "Id": "c3cb587a-a4ab-4e6d-a920-110313417a6a",
+    "Id": "be8f5baf-4714-417e-9f05-3e4effb872d2",
     "Level": 3,
     "Name": "Beacon of Hope",
     "School": "Abjuration",
@@ -3913,7 +3913,7 @@
     ]
   },
   {
-    "Id": "2240ddfe-fffd-4b3b-93b9-d3f062cd60db",
+    "Id": "cbdca847-d8a1-49b0-b72b-73aed5be9759",
     "Level": 3,
     "Name": "Bestow Curse",
     "School": "Necromancy",
@@ -3927,7 +3927,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0099da02-6fcd-4054-a4ec-79b72ec2af01",
+    "Id": "785eafb9-53f9-4211-9459-64c906b2f903",
     "Level": 3,
     "Name": "Blinding Smite",
     "School": "Evocation",
@@ -3943,7 +3943,7 @@
     ]
   },
   {
-    "Id": "602bccad-7f16-4576-af75-0ff5a4d614ca",
+    "Id": "294b36b4-0ba1-44e5-bce2-e8e9f86c26aa",
     "Level": 3,
     "Name": "Blink",
     "School": "Transmutation",
@@ -3961,7 +3961,7 @@
     ]
   },
   {
-    "Id": "db1d4690-8c09-44b8-a9d5-0cae17225348",
+    "Id": "87cf6345-11d4-474b-a7b9-dfeb9948a167",
     "Level": 3,
     "Name": "Call Lightning",
     "School": "Conjuration",
@@ -3975,7 +3975,7 @@
     "SpellLists": []
   },
   {
-    "Id": "dffaae64-33f6-496c-94ea-4650af4e3912",
+    "Id": "dfec6e7a-ec68-4d79-a7d9-8e890bc2d90c",
     "Level": 3,
     "Name": "Catnap",
     "School": "Enchantment",
@@ -3994,7 +3994,7 @@
     ]
   },
   {
-    "Id": "0a8892d9-cfcd-43ca-8e40-bc91e985292e",
+    "Id": "471f2d48-9953-4600-9ec0-168b23cd2f31",
     "Level": 3,
     "Name": "Clairvoyance",
     "School": "Divination",
@@ -4013,7 +4013,7 @@
     ]
   },
   {
-    "Id": "bb2a162b-a8d3-43bd-9809-1a581b6f238f",
+    "Id": "e390f547-674a-44e3-b66f-70673a846f31",
     "Level": 3,
     "Name": "Conjure Animals",
     "School": "Conjuration",
@@ -4027,7 +4027,7 @@
     "SpellLists": []
   },
   {
-    "Id": "671b4b25-b39a-4c8e-a7b7-cab39331345e",
+    "Id": "19f03f63-a1b0-41c2-ba6e-5da28d6f94d2",
     "Level": 3,
     "Name": "Conjure Barrage",
     "School": "Conjuration",
@@ -4043,7 +4043,7 @@
     ]
   },
   {
-    "Id": "584a5ce7-f0ff-4a46-918d-b77dcffff70d",
+    "Id": "49f47f3b-a936-4ef6-9e47-c096059702aa",
     "Level": 3,
     "Name": "Conjure Lesser Demon (UA)",
     "School": "Conjuration",
@@ -4057,7 +4057,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e7515d67-6e1f-405d-9674-6d76e85ee45c",
+    "Id": "2bb5841d-57a1-418b-a971-a163f4d60dd1",
     "Level": 3,
     "Name": "Counterspell",
     "School": "Abjuration",
@@ -4071,7 +4071,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b36e8a52-27b7-44cd-bb25-d240b546d4e3",
+    "Id": "ee24d760-fddb-477d-be35-e18d94d16ab8",
     "Level": 3,
     "Name": "Create Food and Water",
     "School": "Conjuration",
@@ -4089,7 +4089,7 @@
     ]
   },
   {
-    "Id": "9833991f-af77-479f-bff1-ab1258f6c938",
+    "Id": "1578ddf9-8b0f-419d-9c90-6eafd1534c03",
     "Level": 3,
     "Name": "Crusader\u0027s Mantle",
     "School": "Evocation",
@@ -4105,7 +4105,7 @@
     ]
   },
   {
-    "Id": "a4f0b98e-513c-4099-a25f-f24d74511a47",
+    "Id": "2618ac2d-7f12-4a40-891a-0874f48f70f5",
     "Level": 3,
     "Name": "Daylight",
     "School": "Evocation",
@@ -4125,7 +4125,7 @@
     ]
   },
   {
-    "Id": "76e67541-7683-468a-8411-6c75caad577d",
+    "Id": "4eb41af0-7934-4fa4-92f0-34536c07e05d",
     "Level": 3,
     "Name": "Dispel Magic",
     "School": "Abjuration",
@@ -4139,7 +4139,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d9921a8d-d8ca-47fe-a547-d558534f541b",
+    "Id": "19593f22-d902-4cc0-8dba-b6e8a463bce8",
     "Level": 3,
     "Name": "Elemental Weapon",
     "School": "Transmutation",
@@ -4153,7 +4153,7 @@
     "SpellLists": []
   },
   {
-    "Id": "fa40c5a8-f6c6-444d-a664-f3ce46703084",
+    "Id": "6d8f3d18-e1ff-42af-aa3d-48da025844d3",
     "Level": 3,
     "Name": "Enemies Abound",
     "School": "Enchantment",
@@ -4172,7 +4172,7 @@
     ]
   },
   {
-    "Id": "60ef95d6-2f03-4748-aacc-2ee41308688d",
+    "Id": "c1804bfe-d0ad-4949-859f-6c5870c91ac8",
     "Level": 3,
     "Name": "Erupting Earth",
     "School": "Transmutation",
@@ -4186,7 +4186,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b1297721-69b2-4206-96d8-9217fcc59c14",
+    "Id": "83611954-8c7d-4916-a398-fa5228a914ed",
     "Level": 3,
     "Name": "Fast Friends",
     "School": "Enchantment",
@@ -4200,7 +4200,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1bea32c6-5720-4224-ba86-3ba878b46ec2",
+    "Id": "943e5719-e003-4843-a910-62f582e29a20",
     "Level": 3,
     "Name": "Fear",
     "School": "Illusion",
@@ -4219,7 +4219,7 @@
     ]
   },
   {
-    "Id": "ac1f537c-04be-43dd-b6d0-a2737ea5f17d",
+    "Id": "13c8af9d-8d5f-4f3e-8d7b-26ab91038643",
     "Level": 3,
     "Name": "Feign Death",
     "School": "Necromancy",
@@ -4238,7 +4238,7 @@
     ]
   },
   {
-    "Id": "b28db320-acc8-4617-98f9-9dbca393590e",
+    "Id": "9054ebbe-9303-4b39-a1fc-bc0e16528fe8",
     "Level": 3,
     "Name": "Fireball",
     "School": "Evocation",
@@ -4252,7 +4252,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4ff26c4e-b098-456e-b627-1258ed75a2f1",
+    "Id": "1d3e413c-2d1e-451b-ad65-507254a5be77",
     "Level": 3,
     "Name": "Flame Arrows",
     "School": "Transmutation",
@@ -4266,7 +4266,7 @@
     "SpellLists": []
   },
   {
-    "Id": "273f8bf1-5a03-4a56-9851-cc69c332badb",
+    "Id": "913c25a5-bf0f-42f3-9a2c-15401bdbe660",
     "Level": 3,
     "Name": "Flame Stride (UA)",
     "School": "Transmutation",
@@ -4280,7 +4280,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b0fbec74-08e2-4f35-b760-801ec535c3c5",
+    "Id": "83097c91-d4de-4bb4-b6c0-20b79dbbbd94",
     "Level": 3,
     "Name": "Fly",
     "School": "Transmutation",
@@ -4294,7 +4294,7 @@
     "SpellLists": []
   },
   {
-    "Id": "747aa5bf-5904-4a60-86f7-12595b019242",
+    "Id": "25e19219-a7db-4632-bf75-559cd38454ca",
     "Level": 3,
     "Name": "Galder\u0027s Tower",
     "School": "Conjuration",
@@ -4308,7 +4308,7 @@
     "SpellLists": []
   },
   {
-    "Id": "fc7910de-7049-49fd-b3cd-4a750f422173",
+    "Id": "956288e8-0d0b-4a6a-b304-c9c7327d2a1e",
     "Level": 3,
     "Name": "Gaseous Form",
     "School": "Transmutation",
@@ -4326,7 +4326,7 @@
     ]
   },
   {
-    "Id": "df331b3f-66e6-42af-8e21-593a61ec4892",
+    "Id": "79e28ee7-ffd0-4129-86f3-6287587fa058",
     "Level": 3,
     "Name": "Glyph of Warding",
     "School": "Abjuration",
@@ -4340,7 +4340,7 @@
     "SpellLists": []
   },
   {
-    "Id": "118d5c1a-07d3-4f61-b888-32c2b3d2c61d",
+    "Id": "51b7fafc-e78a-4ba2-a268-b4fd90951e07",
     "Level": 3,
     "Name": "Haste",
     "School": "Transmutation",
@@ -4358,7 +4358,7 @@
     ]
   },
   {
-    "Id": "617014b0-3267-4283-9587-1b55384d0b5e",
+    "Id": "ec7ea502-0621-4c89-85ed-de86239048f8",
     "Level": 3,
     "Name": "Haywire (UA)",
     "School": "Enchantment T",
@@ -4372,7 +4372,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8aeb77a0-250b-4295-aa02-ec445e23bace",
+    "Id": "7844cbeb-b914-46ed-91c9-30711fb8372d",
     "Level": 3,
     "Name": "House of Cards (UA)",
     "School": "Conjuration",
@@ -4391,7 +4391,7 @@
     ]
   },
   {
-    "Id": "977ff640-6914-4948-9efe-8c9e6c6e018b",
+    "Id": "ae286420-833e-4deb-a28a-6f68d4070d05",
     "Level": 3,
     "Name": "Hunger Of Hadar",
     "School": "Conjuration",
@@ -4407,7 +4407,7 @@
     ]
   },
   {
-    "Id": "75e380f5-029d-46e7-9f2a-f6f502ba139e",
+    "Id": "f32ad100-f76e-40fb-8d70-eac26fb35cc1",
     "Level": 3,
     "Name": "Hypnotic Pattern",
     "School": "Illusion",
@@ -4426,7 +4426,7 @@
     ]
   },
   {
-    "Id": "554d9d04-3db3-4a58-9c80-819c17fa9aaf",
+    "Id": "8fc75d53-c003-4fea-b65d-63042fe96bfa",
     "Level": 3,
     "Name": "Incite Greed",
     "School": "Enchantment",
@@ -4445,7 +4445,7 @@
     ]
   },
   {
-    "Id": "faa54234-b63c-4532-a3a3-9e80b451162c",
+    "Id": "2feedf90-565f-4b55-8597-024b4adab4e1",
     "Level": 3,
     "Name": "Intellect Fortress",
     "School": "Abjuration",
@@ -4459,7 +4459,7 @@
     "SpellLists": []
   },
   {
-    "Id": "079902d3-6f37-4747-b7cf-14167f4d51da",
+    "Id": "c4c5176e-5880-48bf-a3b1-ae61a0b93e13",
     "Level": 3,
     "Name": "Invisibility To Cameras (UA)",
     "School": "Illusion T",
@@ -4477,7 +4477,7 @@
     ]
   },
   {
-    "Id": "767a9321-9948-4880-88fb-b538b40ba3a4",
+    "Id": "bf99a1e1-9843-4be8-9fd0-6eeb919f1d3a",
     "Level": 3,
     "Name": "Leomund\u0027s Tiny Hut",
     "School": "Evocation",
@@ -4494,7 +4494,7 @@
     ]
   },
   {
-    "Id": "e49c1c37-a29e-4fa8-8883-f951283dbc5f",
+    "Id": "349175d3-f2f2-4778-ac7c-ec6738322d08",
     "Level": 3,
     "Name": "Life Transference",
     "School": "Necromancy",
@@ -4508,7 +4508,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d473ee0f-8c6a-4607-8a5a-25da423832db",
+    "Id": "18522530-c2c2-4c6d-b80a-2ab6044e264d",
     "Level": 3,
     "Name": "Lightning Arrow",
     "School": "Transmutation",
@@ -4522,7 +4522,7 @@
     "SpellLists": []
   },
   {
-    "Id": "32c19588-6a51-42af-a303-4e31b8d371bc",
+    "Id": "9d8de7a7-69f9-4c19-8b67-eea4dde2ef0b",
     "Level": 3,
     "Name": "Lightning Bolt",
     "School": "Evocation",
@@ -4536,7 +4536,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7f95c4de-c9c2-481b-baed-39783dac6428",
+    "Id": "9045ed33-4b7a-4e9d-acf8-c385ba0ecd92",
     "Level": 3,
     "Name": "Magic Circle",
     "School": "Abjuration",
@@ -4550,7 +4550,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e22adb25-5e24-4772-ada8-b20d3b86e94e",
+    "Id": "e18f2b3d-ac75-4278-9356-2cfa15773df4",
     "Level": 3,
     "Name": "Major Image",
     "School": "Illusion",
@@ -4564,7 +4564,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f39915d4-5d58-473b-b5c1-63c192860a95",
+    "Id": "e405463c-f6f8-4adc-bc89-cc80faa31be7",
     "Level": 3,
     "Name": "Mass Healing Word",
     "School": "Evocation",
@@ -4578,7 +4578,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4e59192e-8b50-4aaf-8fe6-071d2fc43626",
+    "Id": "2aceca14-624b-4c79-9296-da1d6b74f70a",
     "Level": 3,
     "Name": "Meld into Stone",
     "School": "Transmutation",
@@ -4596,7 +4596,7 @@
     ]
   },
   {
-    "Id": "95fbc1b1-ab27-4ce6-abb8-3ca072fba26e",
+    "Id": "a66802e5-4988-456e-a5d6-d1e8b27aaf0b",
     "Level": 3,
     "Name": "Melf\u0027s Minute Meteors",
     "School": "Evocation",
@@ -4610,7 +4610,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3eb9d1f3-a2ca-4315-86ed-50591c601d5e",
+    "Id": "1fe0aa3d-54a9-4031-ae31-a98c0be6d6de",
     "Level": 3,
     "Name": "Motivational Speech",
     "School": "Enchantment",
@@ -4624,7 +4624,7 @@
     "SpellLists": []
   },
   {
-    "Id": "925b3109-7eb1-474e-b6e1-09aa5c580c79",
+    "Id": "333f2b05-ac9c-429c-8f17-44fa963ebdc1",
     "Level": 3,
     "Name": "Nondetection",
     "School": "Abjuration",
@@ -4642,7 +4642,7 @@
     ]
   },
   {
-    "Id": "d2187814-d934-485d-9fd3-203555866ebe",
+    "Id": "ea2e087a-c720-406f-bacb-981ce2552325",
     "Level": 3,
     "Name": "Phantom Steed",
     "School": "Illusion",
@@ -4658,7 +4658,7 @@
     ]
   },
   {
-    "Id": "b5c7c67b-fb4d-43fd-b4ba-f98f066aa651",
+    "Id": "c653f885-4e59-4adb-ba1f-1225cc892e3d",
     "Level": 3,
     "Name": "Plant Growth",
     "School": "Transmutation",
@@ -4676,7 +4676,7 @@
     ]
   },
   {
-    "Id": "6cc8701c-0149-43ff-8287-c381496d5559",
+    "Id": "71f753b8-8678-40c7-9e1d-1d2d1c73815d",
     "Level": 3,
     "Name": "Protection from Ballistics (UA)",
     "School": "Abjuration T",
@@ -4694,7 +4694,7 @@
     ]
   },
   {
-    "Id": "bc47591a-00c2-4bdb-9ff0-8e2c658a5b81",
+    "Id": "1ea27e4d-708f-4254-93f6-4273dbf7edb9",
     "Level": 3,
     "Name": "Protection from Energy",
     "School": "Abjuration",
@@ -4715,7 +4715,7 @@
     ]
   },
   {
-    "Id": "7b4a786c-fc1f-4dac-b203-4f1a79676ce3",
+    "Id": "bb89c460-a4b5-44e3-819a-c0c48cca7364",
     "Level": 3,
     "Name": "Psionic Blast (UA)",
     "School": "Evocation",
@@ -4729,7 +4729,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0d07fea2-43f6-405b-a204-43b808f29f89",
+    "Id": "10edbdb4-f847-49b6-96f1-7eb186ea7661",
     "Level": 3,
     "Name": "Pulse Wave",
     "School": "Evocation D",
@@ -4743,7 +4743,7 @@
     "SpellLists": []
   },
   {
-    "Id": "34b06103-d823-4679-a10f-56b24d7233d8",
+    "Id": "b7cd169d-692b-4c39-9153-90ab827cf9a6",
     "Level": 3,
     "Name": "Remove Curse",
     "School": "Abjuration",
@@ -4762,7 +4762,7 @@
     ]
   },
   {
-    "Id": "c8404e3b-5e85-4ed1-81a9-1fa414d88372",
+    "Id": "b0ae6966-352a-486a-8697-6358aa863876",
     "Level": 3,
     "Name": "Revivify",
     "School": "Necromancy",
@@ -4782,7 +4782,7 @@
     ]
   },
   {
-    "Id": "cf2519d7-78f8-4787-b396-014c489c7d14",
+    "Id": "acca691b-474f-4238-ac3f-587510e7cf17",
     "Level": 3,
     "Name": "Sending",
     "School": "Evocation",
@@ -4800,7 +4800,7 @@
     ]
   },
   {
-    "Id": "60938037-7795-44cf-a6d3-a79be2576a39",
+    "Id": "25dea059-96fb-4941-bd07-3c69c8cb92ba",
     "Level": 3,
     "Name": "Sleet Storm",
     "School": "Conjuration",
@@ -4818,7 +4818,7 @@
     ]
   },
   {
-    "Id": "43e22eba-3d17-4ad5-bc66-181845ee8256",
+    "Id": "c4aadc7a-05d4-400e-8f86-fd778c925cd1",
     "Level": 3,
     "Name": "Slow",
     "School": "Transmutation",
@@ -4836,7 +4836,7 @@
     ]
   },
   {
-    "Id": "d368ad25-13d6-43f1-a0ff-b2a48676d36b",
+    "Id": "3f601891-4daa-4af8-9806-492698e3de83",
     "Level": 3,
     "Name": "Speak with Dead",
     "School": "Necromancy",
@@ -4854,7 +4854,7 @@
     ]
   },
   {
-    "Id": "8c646b3b-3a4b-4e6c-a318-d5ae41bd4f05",
+    "Id": "8b549eef-910e-492e-9179-6aba722fb1c4",
     "Level": 3,
     "Name": "Speak with Plants",
     "School": "Transmutation",
@@ -4872,7 +4872,7 @@
     ]
   },
   {
-    "Id": "0441d7eb-7420-4d35-9d64-239a1d84eda5",
+    "Id": "d4831b43-0fde-4e41-bd0a-f68d870277e3",
     "Level": 3,
     "Name": "Spirit Guardians",
     "School": "Conjuration",
@@ -4886,7 +4886,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b33f95c8-d161-4deb-a9bc-e74123f4dfd9",
+    "Id": "67cef751-75cf-44fe-9ab3-d950bb141cfe",
     "Level": 3,
     "Name": "Spirit Shroud",
     "School": "Necromancy",
@@ -4900,7 +4900,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7cddda84-cb0e-445f-84b5-e97ce9d6a398",
+    "Id": "022a9518-c980-4a41-9493-e789a7822397",
     "Level": 3,
     "Name": "Stinking Cloud",
     "School": "Conjuration",
@@ -4918,7 +4918,7 @@
     ]
   },
   {
-    "Id": "f31c4bd5-86b7-45e3-92b7-deda0dbd63e9",
+    "Id": "925ec425-d1f5-408e-b5e3-70161a445bcf",
     "Level": 3,
     "Name": "Summon Fey",
     "School": "Conjuration",
@@ -4932,7 +4932,7 @@
     "SpellLists": []
   },
   {
-    "Id": "158540d4-5c52-445c-819a-b85422e15080",
+    "Id": "a28cac17-b1b7-40d2-bfbd-04d1994997f2",
     "Level": 3,
     "Name": "Summon Lesser Demons",
     "School": "Conjuration",
@@ -4946,7 +4946,7 @@
     "SpellLists": []
   },
   {
-    "Id": "42c0128f-c97e-4bac-b07c-232ffde1c3af",
+    "Id": "b4fe2807-f11c-4ad9-b6e5-78ed033fc316",
     "Level": 3,
     "Name": "Summon Shadowspawn",
     "School": "Conjuration",
@@ -4960,7 +4960,7 @@
     "SpellLists": []
   },
   {
-    "Id": "92f5abea-88b4-4fc7-9efa-b175f23dcb01",
+    "Id": "8f54e2c2-2e6e-4b54-8b20-1590534e96af",
     "Level": 3,
     "Name": "Summon Undead",
     "School": "Necromancy",
@@ -4974,7 +4974,7 @@
     "SpellLists": []
   },
   {
-    "Id": "cc1a39eb-aa51-4148-8f76-30dc609409a4",
+    "Id": "c6898fbb-6aa1-45f3-8182-50c3f950106d",
     "Level": 3,
     "Name": "Summon Warrior Spirit (UA)",
     "School": "Conjuration",
@@ -4988,7 +4988,7 @@
     "SpellLists": []
   },
   {
-    "Id": "afe6cb19-06e8-4103-b719-8a2020de0fef",
+    "Id": "0fafb4ac-b07e-4ee5-b01d-5121242a34b7",
     "Level": 3,
     "Name": "Thunder Step",
     "School": "Conjuration",
@@ -5002,7 +5002,7 @@
     "SpellLists": []
   },
   {
-    "Id": "293a0a4c-67ff-4b53-a6ce-e149a3abf773",
+    "Id": "3eebb32d-b42b-405b-9e33-818eab48e4b6",
     "Level": 3,
     "Name": "Tidal Wave",
     "School": "Conjuration",
@@ -5020,7 +5020,7 @@
     ]
   },
   {
-    "Id": "65c05e38-6eee-4d5b-ad90-a5df71cf054b",
+    "Id": "61534ab6-297b-41f9-a8fb-5de778c3d83c",
     "Level": 3,
     "Name": "Tiny Servant",
     "School": "Transmutation",
@@ -5034,7 +5034,7 @@
     "SpellLists": []
   },
   {
-    "Id": "24f74d27-e8fb-43a1-8f51-75dffe369f66",
+    "Id": "9d92efdd-2898-4425-b1e1-91c359beaa6a",
     "Level": 3,
     "Name": "Tongues",
     "School": "Divination",
@@ -5054,7 +5054,7 @@
     ]
   },
   {
-    "Id": "b3ed0512-ec26-48b3-a345-e547bfdab4cc",
+    "Id": "cc6961f4-1268-420e-a234-68f77d21e368",
     "Level": 3,
     "Name": "Vampiric Touch",
     "School": "Necromancy",
@@ -5068,7 +5068,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f85b9385-01c7-45bc-aa42-64460588d867",
+    "Id": "87a863ff-c5cf-40e4-a33d-d414f2f33791",
     "Level": 3,
     "Name": "Wall of Sand",
     "School": "Evocation",
@@ -5084,7 +5084,7 @@
     ]
   },
   {
-    "Id": "812a7c11-2ced-4df1-8991-5284b5fa5e97",
+    "Id": "0376d649-3fb0-4d12-af9f-713793b18b1f",
     "Level": 3,
     "Name": "Wall of Water",
     "School": "Evocation",
@@ -5102,7 +5102,7 @@
     ]
   },
   {
-    "Id": "c1d0bc3e-34fc-44f4-a888-df1a4c71ddca",
+    "Id": "07d0e0c2-06d4-487c-93df-f4557d1b1293",
     "Level": 3,
     "Name": "Water Breathing",
     "School": "Transmutation",
@@ -5122,7 +5122,7 @@
     ]
   },
   {
-    "Id": "872a2f5f-6761-4c10-bd07-d96c1333e395",
+    "Id": "49a2dec4-0ac4-4156-8249-67eb48ebb0f0",
     "Level": 3,
     "Name": "Water Walk",
     "School": "Transmutation",
@@ -5142,7 +5142,7 @@
     ]
   },
   {
-    "Id": "8f66c0fe-cfae-42aa-9a04-a89861ef49f6",
+    "Id": "fed41325-a572-4901-9bba-680fbf33c491",
     "Level": 3,
     "Name": "Wind Wall",
     "School": "Evocation",
@@ -5159,7 +5159,7 @@
     ]
   },
   {
-    "Id": "ca351643-b9a1-4741-a9f5-99e1f0e35c8b",
+    "Id": "415d436b-74ca-43f9-9262-2796f61ab289",
     "Level": 4,
     "Name": "Arcane Eye",
     "School": "Divination",
@@ -5176,7 +5176,7 @@
     ]
   },
   {
-    "Id": "d0a287af-47a2-40bd-b9e1-6d8160fe4d33",
+    "Id": "d5e83cf0-6e1e-4b11-be41-261b80df5625",
     "Level": 4,
     "Name": "Aura of Life",
     "School": "Abjuration",
@@ -5193,7 +5193,7 @@
     ]
   },
   {
-    "Id": "2e426905-0db9-4980-ad58-f62910399a9d",
+    "Id": "23c73ed6-4893-4725-bf5a-ea5a05fc135e",
     "Level": 4,
     "Name": "Aura of Purity",
     "School": "Abjuration",
@@ -5210,7 +5210,7 @@
     ]
   },
   {
-    "Id": "b2b05ecc-2f7e-4316-9391-f190fa20a05f",
+    "Id": "c4565c7f-e516-4227-8deb-05d6098d8bbb",
     "Level": 4,
     "Name": "Banishment",
     "School": "Abjuration",
@@ -5224,7 +5224,7 @@
     "SpellLists": []
   },
   {
-    "Id": "801b262e-72c0-4fd4-a27e-31a5e1681d4d",
+    "Id": "e5330a24-d064-4781-a248-1bc56018db84",
     "Level": 4,
     "Name": "Blight",
     "School": "Necromancy",
@@ -5238,7 +5238,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d5596461-15db-4a05-b388-232232441c34",
+    "Id": "c041b406-c05f-448c-a57e-104f259ccaba",
     "Level": 4,
     "Name": "Charm Monster",
     "School": "Enchantment",
@@ -5252,7 +5252,7 @@
     "SpellLists": []
   },
   {
-    "Id": "5f0abf60-0666-4613-b967-292324f384c2",
+    "Id": "3cfa765b-132a-49a7-b3ed-df3f1c5f3b86",
     "Level": 4,
     "Name": "Compulsion",
     "School": "Enchantment",
@@ -5268,7 +5268,7 @@
     ]
   },
   {
-    "Id": "049fe501-dd5e-45a8-88c8-166301fe941c",
+    "Id": "e0e2105b-6ba4-459c-a880-8250f4404f4b",
     "Level": 4,
     "Name": "Confusion",
     "School": "Enchantment",
@@ -5282,7 +5282,7 @@
     "SpellLists": []
   },
   {
-    "Id": "00c12e1f-7625-45c0-8c9e-3637442a87bf",
+    "Id": "1120defe-8fa5-462c-a372-a632a3d7929c",
     "Level": 4,
     "Name": "Conjure Barlgura (UA)",
     "School": "Conjuration",
@@ -5299,7 +5299,7 @@
     ]
   },
   {
-    "Id": "7e57a515-53c6-4c87-90d5-3ab87a2eaf5e",
+    "Id": "97d42fc4-1cac-414c-a544-a9520b9de665",
     "Level": 4,
     "Name": "Conjure Knowbot (UA)",
     "School": "Conjuration T",
@@ -5313,7 +5313,7 @@
     "SpellLists": []
   },
   {
-    "Id": "d444366e-b6b8-4ff6-b935-cac20f5cb399",
+    "Id": "1245b8b2-0942-47e2-bb1b-85e66a4ecbe8",
     "Level": 4,
     "Name": "Conjure Minor Elementals",
     "School": "Conjuration",
@@ -5327,7 +5327,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e5250d0a-fc5d-4dd8-8230-f5f998811844",
+    "Id": "62915373-6514-4e02-bec5-580322a77e43",
     "Level": 4,
     "Name": "Conjure Shadow Demon (UA)",
     "School": "Conjuration",
@@ -5344,7 +5344,7 @@
     ]
   },
   {
-    "Id": "def6f056-189d-40c5-ac69-0be9f21d5642",
+    "Id": "194f32d1-7b70-49de-ad05-28e23f87aeb8",
     "Level": 4,
     "Name": "Conjure Woodland Beings",
     "School": "Conjuration",
@@ -5358,7 +5358,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6826fce5-ebec-4d8d-9727-8435ae22511d",
+    "Id": "ad422051-dc1d-4f78-9032-fb57ae7c374c",
     "Level": 4,
     "Name": "Control Water",
     "School": "Transmutation",
@@ -5376,7 +5376,7 @@
     ]
   },
   {
-    "Id": "1a5de9b8-48be-4e9f-a9e4-014d4b3a0edd",
+    "Id": "09a4b61d-2114-432e-8f94-c4d05b64f91d",
     "Level": 4,
     "Name": "Death Ward",
     "School": "Abjuration",
@@ -5393,7 +5393,7 @@
     ]
   },
   {
-    "Id": "a5459911-f86f-4274-befb-d1d19416771e",
+    "Id": "0090d2dd-0b83-4127-8d88-34ca7693884f",
     "Level": 4,
     "Name": "Dimension Door",
     "School": "Conjuration",
@@ -5412,7 +5412,7 @@
     ]
   },
   {
-    "Id": "564b8128-9e6b-40e3-af0a-5456b9643d10",
+    "Id": "9a9bcb7d-c966-40dc-b712-fe515f61f92e",
     "Level": 4,
     "Name": "Divination",
     "School": "Divination",
@@ -5430,7 +5430,7 @@
     ]
   },
   {
-    "Id": "b1dc0073-42c6-4ad9-a658-ce86138b91b6",
+    "Id": "be55eb07-a87f-46a7-914d-298c854d0f78",
     "Level": 4,
     "Name": "Dominate Beast",
     "School": "Enchantment",
@@ -5444,7 +5444,7 @@
     "SpellLists": []
   },
   {
-    "Id": "530a7a21-6a0d-4940-9f19-dc046909a43c",
+    "Id": "4553129d-0118-45bc-b9a1-5421a2bfbf41",
     "Level": 4,
     "Name": "Ego Whip (UA)",
     "School": "Enchantment",
@@ -5463,7 +5463,7 @@
     ]
   },
   {
-    "Id": "49a2d868-121d-4ceb-8060-f5fd4bccc4a4",
+    "Id": "aed88449-1b6f-4fe4-9e82-9d3f309ae632",
     "Level": 4,
     "Name": "Elemental Bane",
     "School": "Transmutation",
@@ -5477,7 +5477,7 @@
     "SpellLists": []
   },
   {
-    "Id": "eeb4b794-6be7-4721-b57e-4b88db491094",
+    "Id": "eff5400b-5b96-4faf-99f5-1f613cc65201",
     "Level": 4,
     "Name": "Evard\u0027s Black Tentacles",
     "School": "Conjuration",
@@ -5493,7 +5493,7 @@
     ]
   },
   {
-    "Id": "d3aa4a2f-1bbb-4dac-b417-4ea1a35a1ce4",
+    "Id": "4b822a0c-f60b-420e-8257-e09cbb72acb1",
     "Level": 4,
     "Name": "Fabricate",
     "School": "Transmutation",
@@ -5510,7 +5510,7 @@
     ]
   },
   {
-    "Id": "c936c89d-d3b8-4fc0-a354-ca5e1fc626b6",
+    "Id": "7144f11b-86ba-4103-a1c2-60207d264345",
     "Level": 4,
     "Name": "Find Greater Steed",
     "School": "Conjuration",
@@ -5526,7 +5526,7 @@
     ]
   },
   {
-    "Id": "2145504c-8642-4f88-aac0-932e190d2100",
+    "Id": "32e3d03b-e643-428c-a3ce-8777f7de74c7",
     "Level": 4,
     "Name": "Fire Shield",
     "School": "Evocation",
@@ -5544,7 +5544,7 @@
     ]
   },
   {
-    "Id": "57062714-66bc-4665-a1b8-3dcd8cc83223",
+    "Id": "dce64ed5-de6d-4263-815d-74842c4d2887",
     "Level": 4,
     "Name": "Freedom of Movement",
     "School": "Abjuration",
@@ -5564,7 +5564,7 @@
     ]
   },
   {
-    "Id": "1ee5d221-f270-4038-bffc-e3cafe0d101c",
+    "Id": "09d6f73e-3a92-4f67-a8ec-bf856ad5345e",
     "Level": 4,
     "Name": "Galder\u0027s Speedy Courier",
     "School": "Conjuration",
@@ -5578,7 +5578,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7913df8c-f499-4189-9a61-aef9e203ba8b",
+    "Id": "d906852c-0415-47dd-8ca4-470a756b25d9",
     "Level": 4,
     "Name": "Gate Seal",
     "School": "Abjuration",
@@ -5596,7 +5596,7 @@
     ]
   },
   {
-    "Id": "e726046d-51e6-4455-bd45-78a16980770a",
+    "Id": "69b38812-13d7-42a2-8d66-32f4b509d0a7",
     "Level": 4,
     "Name": "Giant Insect",
     "School": "Transmutation",
@@ -5612,7 +5612,7 @@
     ]
   },
   {
-    "Id": "a92ec198-7a56-4d98-a5b2-2b7a1d844d81",
+    "Id": "830cbb39-de00-4166-8836-f3b91eca65fd",
     "Level": 4,
     "Name": "Grasping Vine",
     "School": "Conjuration",
@@ -5629,7 +5629,7 @@
     ]
   },
   {
-    "Id": "73785d46-9231-4e11-8924-6df7d2209171",
+    "Id": "17410964-cb46-4240-893e-45e6eb2728af",
     "Level": 4,
     "Name": "Gravity Sinkhole",
     "School": "Evocation DG",
@@ -5643,7 +5643,7 @@
     "SpellLists": []
   },
   {
-    "Id": "2fafd6fd-0b8a-4e02-91e5-c46c59b5e783",
+    "Id": "88762554-f023-4f2c-8d51-66daa8fa4b98",
     "Level": 4,
     "Name": "Greater Invisibility",
     "School": "Illusion",
@@ -5661,7 +5661,7 @@
     ]
   },
   {
-    "Id": "68afb3ef-d130-470d-bd81-71e403eca03d",
+    "Id": "b14218f9-00a2-4826-b6ed-e8a6c9c6149f",
     "Level": 4,
     "Name": "Guardian of Faith",
     "School": "Conjuration",
@@ -5677,7 +5677,7 @@
     ]
   },
   {
-    "Id": "056af9c7-e0f3-4853-a152-ef96bc774034",
+    "Id": "f84eea0a-da86-40fd-8788-5e4fa0f82a1b",
     "Level": 4,
     "Name": "Guardian of Nature",
     "School": "Transmutation",
@@ -5694,7 +5694,7 @@
     ]
   },
   {
-    "Id": "174bb070-6c15-4bf5-901a-88f0111b21bb",
+    "Id": "1ee1641f-93cd-41a0-9634-f734be87a68f",
     "Level": 4,
     "Name": "Hallucinatory Terrain",
     "School": "Illusion",
@@ -5713,7 +5713,7 @@
     ]
   },
   {
-    "Id": "8868332d-c978-41f1-b6c9-c696d0c8566b",
+    "Id": "a51c3825-5b50-4959-81e0-d4848f086a3c",
     "Level": 4,
     "Name": "Ice Storm",
     "School": "Evocation",
@@ -5727,7 +5727,7 @@
     "SpellLists": []
   },
   {
-    "Id": "91d2f7fc-9940-460e-9ad1-f5db445af08e",
+    "Id": "c57cedf2-b01d-4810-8886-e2ff27258b62",
     "Level": 4,
     "Name": "Leomund\u0027s Secret Chest",
     "School": "Conjuration",
@@ -5744,7 +5744,7 @@
     ]
   },
   {
-    "Id": "a7070d5a-1b95-48f5-bc09-5b45317a312f",
+    "Id": "bc115ed8-c393-4651-afc1-058524cfe078",
     "Level": 4,
     "Name": "Locate Creature",
     "School": "Divination",
@@ -5765,7 +5765,7 @@
     ]
   },
   {
-    "Id": "adf46c7d-a77b-426b-b80e-f230d6f65a8f",
+    "Id": "5bdd31c8-9da7-4193-8a03-c1e2aa6445ad",
     "Level": 4,
     "Name": "Mordenkainen\u0027s Faithful Hound",
     "School": "Conjuration",
@@ -5782,7 +5782,7 @@
     ]
   },
   {
-    "Id": "759ab2ea-a073-4bd2-abc5-be17b774255a",
+    "Id": "b2d9f27c-16d7-419e-a7ee-922b029a664c",
     "Level": 4,
     "Name": "Mordenkainen\u0027s Private Sanctum",
     "School": "Abjuration",
@@ -5796,7 +5796,7 @@
     "SpellLists": []
   },
   {
-    "Id": "07e32ac0-8173-40c8-9598-5b4921f98a25",
+    "Id": "f3152719-4be1-498d-9e1a-4b6b5f0316ea",
     "Level": 4,
     "Name": "Otiluke\u0027s Resilient Sphere",
     "School": "Evocation",
@@ -5813,7 +5813,7 @@
     ]
   },
   {
-    "Id": "4cfc1088-83d9-4f5c-a5ac-80fcf9163b12",
+    "Id": "5036154e-7374-4873-ad81-4db8f91728e2",
     "Level": 4,
     "Name": "Phantasmal Killer",
     "School": "Illusion",
@@ -5827,7 +5827,7 @@
     "SpellLists": []
   },
   {
-    "Id": "87f02269-00a0-479b-9df5-9409f84f1c9e",
+    "Id": "1cbe11f6-5a51-4492-8b4d-22b33ea9a2cf",
     "Level": 4,
     "Name": "Polymorph",
     "School": "Transmutation",
@@ -5846,7 +5846,7 @@
     ]
   },
   {
-    "Id": "2851b912-3430-483d-ba51-362bfaf5e166",
+    "Id": "b25d5e05-ceee-4b96-a44f-2b3488f71d39",
     "Level": 4,
     "Name": "Raulothim\u0027s Psychic Lance",
     "School": "Enchantment",
@@ -5860,7 +5860,7 @@
     "SpellLists": []
   },
   {
-    "Id": "88a1d5aa-35c2-42f7-b614-6b53df2ec17e",
+    "Id": "46da9844-5960-463e-b297-37af64c8a7f4",
     "Level": 4,
     "Name": "Raulothim\u0027s Psychic Lance (UA)",
     "School": "Enchantment",
@@ -5874,7 +5874,7 @@
     "SpellLists": []
   },
   {
-    "Id": "51391032-9d54-4686-abc1-25bb544d76bc",
+    "Id": "d8010316-ba70-4321-80fb-5301fcc39702",
     "Level": 4,
     "Name": "Shadow Of Moil",
     "School": "Necromancy",
@@ -5890,7 +5890,7 @@
     ]
   },
   {
-    "Id": "d2ead48e-bcd4-454c-a869-ab6d99356cf1",
+    "Id": "7f3fb841-282d-402f-8203-a8cadf16ca66",
     "Level": 4,
     "Name": "Sickening Radiance",
     "School": "Evocation",
@@ -5908,7 +5908,7 @@
     ]
   },
   {
-    "Id": "52946b17-ede8-48e4-b521-48622da4a4f9",
+    "Id": "1df93a9d-b737-43ab-91b2-ec6f5fe98b72",
     "Level": 4,
     "Name": "Spirit Of Death",
     "School": "Necromancy",
@@ -5922,7 +5922,7 @@
     "SpellLists": []
   },
   {
-    "Id": "02ba6cae-7aaa-4edb-b1b2-d0b6a5f202bf",
+    "Id": "e3e8ce45-5ec0-42d7-b7c5-78a35c7b2cc5",
     "Level": 4,
     "Name": "Spirit of Death (UA)",
     "School": "Necromancy",
@@ -5936,7 +5936,7 @@
     "SpellLists": []
   },
   {
-    "Id": "4a9a26fa-84cb-49b2-b447-2d989652bca2",
+    "Id": "31559300-d637-4b4a-a1ad-5c343e1bd0da",
     "Level": 4,
     "Name": "Staggering Smite",
     "School": "Evocation",
@@ -5952,7 +5952,7 @@
     ]
   },
   {
-    "Id": "40407500-ec28-4050-aec7-99035db9a3c8",
+    "Id": "afd07f13-c3c4-4667-9f03-ebc781a69275",
     "Level": 4,
     "Name": "Stone Shape",
     "School": "Transmutation",
@@ -5971,7 +5971,7 @@
     ]
   },
   {
-    "Id": "62c5bd6b-3d0d-448f-ab76-4b491bbb3b52",
+    "Id": "089c88a4-43c4-4f2d-900e-4fbeadf2deb8",
     "Level": 4,
     "Name": "Stoneskin",
     "School": "Abjuration",
@@ -5991,7 +5991,7 @@
     ]
   },
   {
-    "Id": "e8fd25f3-1a06-4b25-9924-c9b30164379c",
+    "Id": "0238d58d-fc43-402f-9db1-b57f2194d5cb",
     "Level": 4,
     "Name": "Storm Sphere",
     "School": "Evocation",
@@ -6005,7 +6005,7 @@
     "SpellLists": []
   },
   {
-    "Id": "04ad2842-6af4-4c39-90be-ec62fc9c7ea7",
+    "Id": "61874f25-c5c4-480e-b39f-7ebb0aac1301",
     "Level": 4,
     "Name": "Summon Aberration",
     "School": "Conjuration",
@@ -6019,7 +6019,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0c4c57b4-57b3-412d-8004-6404d7b11e0b",
+    "Id": "dba35e20-36b4-4361-af12-7bee9bf428ef",
     "Level": 4,
     "Name": "Summon Construct",
     "School": "Conjuration",
@@ -6033,7 +6033,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c26f548b-5431-4c26-865f-b9756dc2d348",
+    "Id": "9ff4d4ac-684c-4b68-aea0-7eb2335ff122",
     "Level": 4,
     "Name": "Summon Elemental",
     "School": "Conjuration",
@@ -6047,7 +6047,7 @@
     "SpellLists": []
   },
   {
-    "Id": "19224aeb-f2e2-4e38-a9ba-ae2e6151c9d1",
+    "Id": "9e90020c-162a-4c8d-8e50-2bda54c654b2",
     "Level": 4,
     "Name": "Summon Greater Demon",
     "School": "Conjuration",
@@ -6061,7 +6061,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f274ee96-d80d-407f-a88b-ebd242e06abd",
+    "Id": "dbf2cd1b-2976-4b56-8f82-fd871b4a1886",
     "Level": 4,
     "Name": "Synchronicity (UA)",
     "School": "Enchantment T",
@@ -6079,7 +6079,7 @@
     ]
   },
   {
-    "Id": "b558b925-a9b5-4692-8a35-a37da138dcb1",
+    "Id": "c0d5046b-f25c-40c2-b38c-ed494f5f1ddc",
     "Level": 4,
     "Name": "System Backdoor (UA)",
     "School": "Transmutation T",
@@ -6093,7 +6093,7 @@
     "SpellLists": []
   },
   {
-    "Id": "63e380a8-3520-4567-b503-49a1e5ed3b32",
+    "Id": "920977db-ee1a-4818-ad36-10e905913fab",
     "Level": 4,
     "Name": "Vitriolic Sphere",
     "School": "Evocation",
@@ -6107,7 +6107,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8dcd901b-7246-4d11-a07b-d9b8083d826f",
+    "Id": "66abeef9-4745-481f-83ab-9e7c8df1d848",
     "Level": 4,
     "Name": "Wall of Fire",
     "School": "Evocation",
@@ -6121,7 +6121,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7b432edb-d06b-44b2-8a07-80f7ffd9d1cb",
+    "Id": "bf6144da-0948-467e-a472-beeef65a7c69",
     "Level": 4,
     "Name": "Watery Sphere",
     "School": "Conjuration",
@@ -6139,7 +6139,7 @@
     ]
   },
   {
-    "Id": "def0c6a8-1543-46c6-9280-424b88534628",
+    "Id": "86f24bc9-1927-4c56-9c5d-4f74036527bf",
     "Level": 5,
     "Name": "Animate Objects",
     "School": "Transmutation",
@@ -6153,7 +6153,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6122999f-b7f3-4356-b7c4-ddeca9ee0d41",
+    "Id": "b016c147-9e77-4f69-973f-5647ce80afc7",
     "Level": 5,
     "Name": "Antilife Shell",
     "School": "Abjuration",
@@ -6169,7 +6169,7 @@
     ]
   },
   {
-    "Id": "e3e0c20b-49da-4045-b51b-59ee9241e95f",
+    "Id": "c5301288-b700-44ca-8c10-e8a393875d05",
     "Level": 5,
     "Name": "Awaken",
     "School": "Transmutation",
@@ -6186,7 +6186,7 @@
     ]
   },
   {
-    "Id": "c7bcca25-cfb2-44b7-95fc-38585a5db12c",
+    "Id": "aebb8295-c1f7-4776-acb7-1d84af8b1c5f",
     "Level": 5,
     "Name": "Banishing Smite",
     "School": "Abjuration",
@@ -6202,7 +6202,7 @@
     ]
   },
   {
-    "Id": "96658d13-cc5e-49a5-8fc6-104f58f7b0b0",
+    "Id": "389d8bc6-4aff-4ab1-8a0a-7d05ae2d62dc",
     "Level": 5,
     "Name": "Bigby\u0027s Hand",
     "School": "Evocation",
@@ -6216,7 +6216,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f942e193-733b-4532-9ac9-460f739071a1",
+    "Id": "6f865ca1-6661-4151-80c5-4b660583c0cd",
     "Level": 5,
     "Name": "Circle of Power",
     "School": "Abjuration",
@@ -6232,7 +6232,7 @@
     ]
   },
   {
-    "Id": "7d29382b-1bb5-4311-89a1-e8840ac7af6e",
+    "Id": "4bda9e01-cb2f-499b-8a62-c268513c854b",
     "Level": 5,
     "Name": "Cloudkill",
     "School": "Conjuration",
@@ -6246,7 +6246,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e2b60ffc-9446-4614-ba94-a4e43fdccadd",
+    "Id": "5d7a44fa-4bc3-4efe-ab58-74b63b27a488",
     "Level": 5,
     "Name": "Commune",
     "School": "Divination",
@@ -6262,7 +6262,7 @@
     ]
   },
   {
-    "Id": "3d608325-eb5f-4804-95c6-827a12b58ed2",
+    "Id": "9a4cee3d-79bf-40fb-86c7-2495d7cc69c3",
     "Level": 5,
     "Name": "Commune with City (UA)",
     "School": "Divination T",
@@ -6280,7 +6280,7 @@
     ]
   },
   {
-    "Id": "fe0d2aca-743d-4110-a384-789694fed460",
+    "Id": "6ff4faf2-9dab-4d58-af82-d76e0a801b58",
     "Level": 5,
     "Name": "Commune with Nature",
     "School": "Divination",
@@ -6297,7 +6297,7 @@
     ]
   },
   {
-    "Id": "b0d87203-fca9-4cc9-a530-46e30a90afb0",
+    "Id": "565067ce-2873-46b6-833a-17bb783bc8d1",
     "Level": 5,
     "Name": "Cone of Cold",
     "School": "Evocation",
@@ -6311,7 +6311,7 @@
     "SpellLists": []
   },
   {
-    "Id": "590c5673-a836-40c3-b666-23e412e73800",
+    "Id": "020a61b6-7d24-4d76-9f77-7ca076111f9d",
     "Level": 5,
     "Name": "Conjure Elemental",
     "School": "Conjuration",
@@ -6325,7 +6325,7 @@
     "SpellLists": []
   },
   {
-    "Id": "0e5147a8-9375-4219-a3ab-8d01dafa160d",
+    "Id": "8b30c372-bbfa-45ba-9d84-6eb16d15b74f",
     "Level": 5,
     "Name": "Conjure Volley",
     "School": "Conjuration",
@@ -6341,7 +6341,7 @@
     ]
   },
   {
-    "Id": "1701c4b4-4627-4f02-be6f-34f8fa0c8ce2",
+    "Id": "a258063a-9199-4acf-99b2-9628fa113cfc",
     "Level": 5,
     "Name": "Conjure Vrock (UA)",
     "School": "Conjuration",
@@ -6358,7 +6358,7 @@
     ]
   },
   {
-    "Id": "9b7af8c2-d407-4274-b6fd-08b3bbf3b3f6",
+    "Id": "f32ed0ea-5c19-4661-9024-53909a1d91f1",
     "Level": 5,
     "Name": "Contact Other Plane",
     "School": "Divination",
@@ -6375,7 +6375,7 @@
     ]
   },
   {
-    "Id": "5b8f72be-b829-4ae1-8921-f95f3bfb1411",
+    "Id": "54c04423-a880-4a33-930d-5eaa24145e02",
     "Level": 5,
     "Name": "Contagion",
     "School": "Necromancy",
@@ -6392,7 +6392,7 @@
     ]
   },
   {
-    "Id": "fb4eeb02-3747-44a3-808f-acb24c5ecd2d",
+    "Id": "4a6ba604-00f7-4583-947e-698780137df6",
     "Level": 5,
     "Name": "Control Winds",
     "School": "Transmutation",
@@ -6410,7 +6410,7 @@
     ]
   },
   {
-    "Id": "ed4dbff9-3ec7-4926-8cce-7c2f531e96e4",
+    "Id": "56c7083c-97eb-4da7-97e2-3febe7008a2c",
     "Level": 5,
     "Name": "Create Spelljamming Helm",
     "School": "Transmutation",
@@ -6427,7 +6427,7 @@
     ]
   },
   {
-    "Id": "4da68add-a45e-4821-a17d-1b8cb270ce20",
+    "Id": "aef27b06-7136-4424-9301-91748b4414ef",
     "Level": 5,
     "Name": "Creation",
     "School": "Illusion",
@@ -6441,7 +6441,7 @@
     "SpellLists": []
   },
   {
-    "Id": "01dc6a98-6e13-4656-ba0b-c0c66b6f1ebc",
+    "Id": "7b69a820-3632-4e08-afe2-ce88fc476b77",
     "Level": 5,
     "Name": "Danse Macabre",
     "School": "Necromancy",
@@ -6455,7 +6455,7 @@
     "SpellLists": []
   },
   {
-    "Id": "506c4963-9c8b-48e3-ac68-500ce2161eb6",
+    "Id": "9035352c-fb75-47f0-ad7e-3890b18194a5",
     "Level": 5,
     "Name": "Dawn",
     "School": "Evocation",
@@ -6472,7 +6472,7 @@
     ]
   },
   {
-    "Id": "dd604d60-28e7-4c59-8eb8-62dffd166a7f",
+    "Id": "b0760ee2-9bd8-47fe-a53b-d9cdf7f616d4",
     "Level": 5,
     "Name": "Destructive Wave",
     "School": "Evocation",
@@ -6488,7 +6488,7 @@
     ]
   },
   {
-    "Id": "9d6aada1-1fad-4df9-917a-b4100a02918a",
+    "Id": "6745981c-8260-45d3-8480-1f1c56602c69",
     "Level": 5,
     "Name": "Dispel Evil and Good",
     "School": "Abjuration",
@@ -6505,7 +6505,7 @@
     ]
   },
   {
-    "Id": "bd119e33-a0ad-42c6-b8af-b79cde9fcaae",
+    "Id": "dceacfe0-7b43-41fa-867a-317378fc5d72",
     "Level": 5,
     "Name": "Dominate Person",
     "School": "Enchantment",
@@ -6519,7 +6519,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6f608039-4f59-4c98-a15a-166a7b30095d",
+    "Id": "3fc40482-45f5-441d-abd7-37896968221c",
     "Level": 5,
     "Name": "Dream",
     "School": "Illusion",
@@ -6537,7 +6537,7 @@
     ]
   },
   {
-    "Id": "1523e00b-e377-4a66-81d6-44915dacd719",
+    "Id": "78b8b662-d217-44a5-9e77-1d81fe5e4c85",
     "Level": 5,
     "Name": "Enervation",
     "School": "Necromancy",
@@ -6551,7 +6551,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f072864b-c384-4b51-8b2a-ae13ca3ebc94",
+    "Id": "cc2cbadf-8dea-4243-a989-bc4bf9a99659",
     "Level": 5,
     "Name": "Far Step",
     "School": "Conjuration",
@@ -6569,7 +6569,7 @@
     ]
   },
   {
-    "Id": "89a8335e-ded6-4f22-9206-ec63bd3e6221",
+    "Id": "4814df43-3a87-40f2-b016-c892c8c874c1",
     "Level": 5,
     "Name": "Flame Strike",
     "School": "Evocation",
@@ -6583,7 +6583,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7f456cf3-b1af-439c-919e-f75f682874ea",
+    "Id": "0132f03b-98a5-4615-8ae2-99539d828183",
     "Level": 5,
     "Name": "Geas",
     "School": "Enchantment",
@@ -6597,7 +6597,7 @@
     "SpellLists": []
   },
   {
-    "Id": "7e7a774e-fd56-40b2-868b-44475f17e7f9",
+    "Id": "bfaa336e-ba4b-425f-82b9-550b242f578b",
     "Level": 5,
     "Name": "Greater Restoration",
     "School": "Abjuration",
@@ -6617,7 +6617,7 @@
     ]
   },
   {
-    "Id": "3a9ed700-4285-4f3c-94d8-1234789a6e5f",
+    "Id": "332c534d-0bf9-4cb3-bcf7-128b758a9ffc",
     "Level": 5,
     "Name": "Hallow",
     "School": "Evocation",
@@ -6633,7 +6633,7 @@
     ]
   },
   {
-    "Id": "7110e78c-e603-408b-9fec-5e87ef1719f9",
+    "Id": "b175dfd5-8311-4550-a5a7-ad8de30a480e",
     "Level": 5,
     "Name": "Hold Monster",
     "School": "Enchantment",
@@ -6647,7 +6647,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f4347767-96a9-476a-b2b3-39cbe843def9",
+    "Id": "c787230a-b135-4cf4-bd66-4478d06dbf51",
     "Level": 5,
     "Name": "Holy Weapon",
     "School": "Evocation",
@@ -6664,7 +6664,7 @@
     ]
   },
   {
-    "Id": "48a8af94-c528-4700-a179-6f90168ea31b",
+    "Id": "194fd784-677c-4f9c-961b-5dc7d5556955",
     "Level": 5,
     "Name": "Immolation",
     "School": "Evocation",
@@ -6681,7 +6681,7 @@
     ]
   },
   {
-    "Id": "6c99665b-7884-4835-86ba-d16c7c30a2fc",
+    "Id": "c62d82d1-c568-4b22-829f-1511d4f01efd",
     "Level": 5,
     "Name": "Infernal Calling",
     "School": "Conjuration",
@@ -6695,7 +6695,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1756394a-6b20-425b-9e50-b3bf697c7d9e",
+    "Id": "428e10fa-24c5-4c75-bb21-a3dc3b2cc017",
     "Level": 5,
     "Name": "Insect Plague",
     "School": "Conjuration",
@@ -6709,7 +6709,7 @@
     "SpellLists": []
   },
   {
-    "Id": "aef1a194-f446-4a77-a96f-7df838d9e18d",
+    "Id": "4508fce9-90d6-4d3e-b9d9-9bc518fabb20",
     "Level": 5,
     "Name": "Legend Lore",
     "School": "Divination",
@@ -6727,7 +6727,7 @@
     ]
   },
   {
-    "Id": "52640396-5bd9-491c-89fa-3262eebc7363",
+    "Id": "1f955d58-0bfc-4668-9fab-9e1e697ec715",
     "Level": 5,
     "Name": "Maelstrom",
     "School": "Evocation",
@@ -6743,7 +6743,7 @@
     ]
   },
   {
-    "Id": "f1de6862-2138-4db7-81bc-2ce53dd82e68",
+    "Id": "0954f741-5512-4fdb-b046-f60794324875",
     "Level": 5,
     "Name": "Mass Cure Wounds",
     "School": "Evocation",
@@ -6757,7 +6757,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c7ebdc90-eb45-4ccb-83a5-151a0a20cf89",
+    "Id": "cc060c62-5106-49a7-bf0e-7f7f8034691f",
     "Level": 5,
     "Name": "Mislead",
     "School": "Illusion",
@@ -6775,7 +6775,7 @@
     ]
   },
   {
-    "Id": "db9f107d-6114-4c8a-8272-cc00f999aa8d",
+    "Id": "de0d71cb-394a-4021-ad1c-afa68ca79358",
     "Level": 5,
     "Name": "Modify Memory",
     "School": "Enchantment",
@@ -6789,7 +6789,7 @@
     "SpellLists": []
   },
   {
-    "Id": "bad3f5fb-6075-4fe5-8b83-85c2acebf8e2",
+    "Id": "d077b030-8c3c-457e-ad54-92820a9b3d1e",
     "Level": 5,
     "Name": "Negative Energy Flood",
     "School": "Necromancy",
@@ -6806,7 +6806,7 @@
     ]
   },
   {
-    "Id": "271e2254-2f99-458f-9bc2-0c8dd07ee78b",
+    "Id": "f99a66c8-7363-446c-9340-0b5f8742b709",
     "Level": 5,
     "Name": "Passwall",
     "School": "Transmutation",
@@ -6822,7 +6822,7 @@
     ]
   },
   {
-    "Id": "ab724caf-1702-4460-9312-bd9dbe59b3ff",
+    "Id": "bd3e7211-e8e8-4db9-8896-f1054a58e7e6",
     "Level": 5,
     "Name": "Planar Binding",
     "School": "Abjuration",
@@ -6836,7 +6836,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8a54d3dc-4ec1-4e15-b07f-86f08254ba2c",
+    "Id": "b0519a4f-f9a1-4af3-958c-b54555438913",
     "Level": 5,
     "Name": "Raise Dead",
     "School": "Necromancy",
@@ -6854,7 +6854,7 @@
     ]
   },
   {
-    "Id": "1de15666-9bdf-41d6-9d6a-4f0fa195f8c5",
+    "Id": "faa80f2b-9dbb-4931-baa6-304a6c77757f",
     "Level": 5,
     "Name": "Rary\u0027s Telepathic Bond",
     "School": "Divination",
@@ -6871,7 +6871,7 @@
     ]
   },
   {
-    "Id": "2928642a-7c17-4033-8e79-98be5bcd35fd",
+    "Id": "21848520-b9ef-4805-a020-8714b8155728",
     "Level": 5,
     "Name": "Reincarnate",
     "School": "Transmutation",
@@ -6887,7 +6887,7 @@
     ]
   },
   {
-    "Id": "75dcd518-79b4-4e7c-9eed-b3d370a9b244",
+    "Id": "8cd84a0a-8086-40a3-8e3d-3ca3af34cdc5",
     "Level": 5,
     "Name": "Scrying",
     "School": "Divination",
@@ -6907,7 +6907,7 @@
     ]
   },
   {
-    "Id": "6741f383-2ee4-401b-8010-8cd695bad3ea",
+    "Id": "8d3f1acc-7daa-49af-8319-c86aaab52522",
     "Level": 5,
     "Name": "Seeming",
     "School": "Illusion",
@@ -6925,7 +6925,7 @@
     ]
   },
   {
-    "Id": "cfce649c-f9c4-4c6c-bdd0-376fbc0a2c09",
+    "Id": "2f0722b6-62c8-42a3-a992-85d5dfe27de4",
     "Level": 5,
     "Name": "Shutdown (UA)",
     "School": "Transmutation T",
@@ -6943,7 +6943,7 @@
     ]
   },
   {
-    "Id": "97f40167-cb5c-44f5-8528-0c7816193d26",
+    "Id": "7eaf4772-36fe-4bbe-afac-bb6f0409f3f1",
     "Level": 5,
     "Name": "Skill Empowerment",
     "School": "Transmutation",
@@ -6962,7 +6962,7 @@
     ]
   },
   {
-    "Id": "3d6ae4f6-f336-48c7-abe6-2951648d6320",
+    "Id": "da6b421d-4d31-4740-9495-4f11b7b6296a",
     "Level": 5,
     "Name": "Steel Wind Strike",
     "School": "Conjuration",
@@ -6979,7 +6979,7 @@
     ]
   },
   {
-    "Id": "21178b24-4155-444b-ac0a-b44168e156fb",
+    "Id": "7800be09-8309-499d-acf2-035fccc8e308",
     "Level": 5,
     "Name": "Summon Celestial",
     "School": "Conjuration",
@@ -6993,7 +6993,7 @@
     "SpellLists": []
   },
   {
-    "Id": "58b42ec7-4116-4c79-9228-401a6148d774",
+    "Id": "46054632-17e4-4a66-878d-1aa351f1e40d",
     "Level": 5,
     "Name": "Summon Draconic Spirit",
     "School": "Conjuration",
@@ -7007,7 +7007,7 @@
     "SpellLists": []
   },
   {
-    "Id": "8f1feb19-8bc3-4ca9-988a-0331e131f101",
+    "Id": "dcf10fcb-5e48-468a-820f-c7195ae637ee",
     "Level": 5,
     "Name": "Summon Draconic Spirit (UA)",
     "School": "Conjuration",
@@ -7021,7 +7021,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ebe69262-8eb5-4d95-954e-357a8d2f35a2",
+    "Id": "8b76a15d-eaba-4a66-8255-ccb87931d979",
     "Level": 5,
     "Name": "Swift Quiver",
     "School": "Transmutation",
@@ -7037,7 +7037,7 @@
     ]
   },
   {
-    "Id": "0976d40b-495a-4042-a243-4bb7f1902b7c",
+    "Id": "32318a5d-a5d2-4596-8eb4-3df766ea0f12",
     "Level": 5,
     "Name": "Synaptic Static",
     "School": "Enchantment",
@@ -7056,7 +7056,7 @@
     ]
   },
   {
-    "Id": "9c51a49d-ff27-463f-a937-6d6a06411ec3",
+    "Id": "705afca4-d9fb-47a5-9e11-8d6035fede31",
     "Level": 5,
     "Name": "Telekinesis",
     "School": "Transmutation",
@@ -7073,7 +7073,7 @@
     ]
   },
   {
-    "Id": "d698b8f3-7842-4cb4-9659-91b7467fc2c9",
+    "Id": "678c8c03-995c-43d9-a15d-871f96c08c37",
     "Level": 5,
     "Name": "Teleportation Circle",
     "School": "Conjuration",
@@ -7092,7 +7092,7 @@
     ]
   },
   {
-    "Id": "8534b529-8d13-406d-b268-d37220862819",
+    "Id": "e2230a39-5b70-41cf-8764-268813450a32",
     "Level": 5,
     "Name": "Temporal Shunt",
     "School": "Transmutation DC",
@@ -7106,7 +7106,7 @@
     "SpellLists": []
   },
   {
-    "Id": "296c3ba6-a023-407d-bc67-140d7dfdb885",
+    "Id": "dd4fb72e-d6a9-48dc-8c84-da9554c6f4d4",
     "Level": 5,
     "Name": "Transmute Rock",
     "School": "Transmutation",
@@ -7124,7 +7124,7 @@
     ]
   },
   {
-    "Id": "72952bfc-7727-4b06-a2be-53254795ecde",
+    "Id": "879f236e-a3ce-4494-863a-341992540896",
     "Level": 5,
     "Name": "Tree Stride",
     "School": "Conjuration",
@@ -7141,7 +7141,7 @@
     ]
   },
   {
-    "Id": "daf1fe73-5f71-4915-905c-1c0594b50b30",
+    "Id": "b68dc74e-f23f-4f73-8924-30b678c87611",
     "Level": 5,
     "Name": "Wall of Force",
     "School": "Evocation",
@@ -7157,7 +7157,7 @@
     ]
   },
   {
-    "Id": "3db16c21-0454-47f8-988f-4cd6953b8502",
+    "Id": "df5dec40-3f5c-4390-a513-ce1359beef11",
     "Level": 5,
     "Name": "Wall of Light",
     "School": "Evocation",
@@ -7171,7 +7171,7 @@
     "SpellLists": []
   },
   {
-    "Id": "496d7043-5673-43e7-80df-d2df848b0a40",
+    "Id": "d6ebe281-7264-4062-8a7d-a9c61a4dedd2",
     "Level": 5,
     "Name": "Wall of Stone",
     "School": "Evocation",
@@ -7190,7 +7190,7 @@
     ]
   },
   {
-    "Id": "d573d7ca-3a35-4df9-ba40-a1aa2bd17e2c",
+    "Id": "954c34cc-02fe-4d85-bc88-676206111888",
     "Level": 5,
     "Name": "Wrath Of Nature",
     "School": "Evocation",
@@ -7207,7 +7207,7 @@
     ]
   },
   {
-    "Id": "8f6172f0-4591-4ffd-9434-1e8df6f36238",
+    "Id": "f09d8c9a-e042-481e-97e5-40a2c959a604",
     "Level": 6,
     "Name": "Arcane Gate",
     "School": "Conjuration",
@@ -7225,7 +7225,7 @@
     ]
   },
   {
-    "Id": "ad5aa07d-6c93-40fb-b05c-ae552e428646",
+    "Id": "76d0b253-2ced-4aad-aae4-7750b49d060a",
     "Level": 6,
     "Name": "Blade Barrier",
     "School": "Evocation",
@@ -7241,7 +7241,7 @@
     ]
   },
   {
-    "Id": "5bfb5a4e-3216-4aef-9eb6-3343081c3a0f",
+    "Id": "5769c9e7-6006-4d81-801c-7881f5a45512",
     "Level": 6,
     "Name": "Bones of the Earth",
     "School": "Transmutation",
@@ -7255,7 +7255,7 @@
     "SpellLists": []
   },
   {
-    "Id": "e680821f-b769-4557-bd04-fec4312b3f2d",
+    "Id": "d16567f6-f8fc-4310-95dd-0314f7671c47",
     "Level": 6,
     "Name": "Chain Lightning",
     "School": "Evocation",
@@ -7269,7 +7269,7 @@
     "SpellLists": []
   },
   {
-    "Id": "fc239a27-46a9-4f63-98b6-fc747a79addc",
+    "Id": "ac734375-b0fc-494d-8a4a-14d097751780",
     "Level": 6,
     "Name": "Circle of Death",
     "School": "Necromancy",
@@ -7283,7 +7283,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ae63dd80-c1b3-4235-a024-15479383daf6",
+    "Id": "3413660a-494c-45b5-ac4e-91fba7556b19",
     "Level": 6,
     "Name": "Conjure Fey",
     "School": "Conjuration",
@@ -7297,7 +7297,7 @@
     "SpellLists": []
   },
   {
-    "Id": "3d0e3298-dfac-4ef0-ae38-b6830bc6530b",
+    "Id": "e0190b9d-7e14-4df5-a1bf-8fa2938adbc1",
     "Level": 6,
     "Name": "Contingency",
     "School": "Evocation",
@@ -7313,7 +7313,7 @@
     ]
   },
   {
-    "Id": "1d83898d-b684-4a35-b084-108ce7bd30b9",
+    "Id": "14fb8adb-009c-47eb-a7fb-4a58a522e6fa",
     "Level": 6,
     "Name": "Create Homunculus",
     "School": "Transmutation",
@@ -7329,7 +7329,7 @@
     ]
   },
   {
-    "Id": "a8f1676d-7110-4298-b6a8-d83dc100770d",
+    "Id": "e6eac075-fcdd-47bb-9d2b-53d75b2a0311",
     "Level": 6,
     "Name": "Create Undead",
     "School": "Necromancy",
@@ -7343,7 +7343,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f43a3b78-5bb7-4ce3-8f9b-2ad5b4e0cec1",
+    "Id": "dc722a3d-1514-4f75-9f4d-977310404ec5",
     "Level": 6,
     "Name": "Disintegrate",
     "School": "Transmutation",
@@ -7357,7 +7357,7 @@
     "SpellLists": []
   },
   {
-    "Id": "56d69132-d858-466a-ab79-4c3d59906628",
+    "Id": "e5dc40a9-2357-4ef0-9408-e95a17a9fe1a",
     "Level": 6,
     "Name": "Drawmij\u0027s Instant Summons",
     "School": "Conjuration",
@@ -7373,7 +7373,7 @@
     ]
   },
   {
-    "Id": "4404b97f-499c-49e3-8050-e5049ae2ba98",
+    "Id": "ff7cad97-669d-4c2f-abfb-40688acc7d1e",
     "Level": 6,
     "Name": "Druid Grove",
     "School": "Abjuration",
@@ -7389,7 +7389,7 @@
     ]
   },
   {
-    "Id": "e286c3f7-f096-444f-9b96-8b9538d2a2e0",
+    "Id": "9f3dd5aa-6afc-43eb-990b-66fa4dd8d309",
     "Level": 6,
     "Name": "Eyebite",
     "School": "Necromancy",
@@ -7408,7 +7408,7 @@
     ]
   },
   {
-    "Id": "2355f9e2-7e45-4462-816a-5cc76d18d51d",
+    "Id": "0c753433-fc69-42dd-8265-7a3cc3151094",
     "Level": 6,
     "Name": "Find the Path",
     "School": "Divination",
@@ -7426,7 +7426,7 @@
     ]
   },
   {
-    "Id": "ce6cb709-202e-470d-a480-71ef6a0fd4b1",
+    "Id": "a3204770-a9c4-4354-a447-b13f4b6aa1d2",
     "Level": 6,
     "Name": "Fizban\u0027s Platinum Shield",
     "School": "Abjuration",
@@ -7443,7 +7443,7 @@
     ]
   },
   {
-    "Id": "4dbb629e-bc81-4b1e-b86d-4ee39e2b44d4",
+    "Id": "bcc37ebe-09e8-4b6f-bce4-965390873e99",
     "Level": 6,
     "Name": "Fizban\u0027s Platinum Shield (UA)",
     "School": "Abjuration",
@@ -7460,7 +7460,7 @@
     ]
   },
   {
-    "Id": "dc90f996-716c-4b0d-befc-304058ad1716",
+    "Id": "0698c623-351a-4b42-a944-ff94ded830cb",
     "Level": 6,
     "Name": "Flesh to Stone",
     "School": "Transmutation",
@@ -7479,7 +7479,7 @@
     ]
   },
   {
-    "Id": "f4163c88-518c-4b02-bfbd-ac1a6d4d9b21",
+    "Id": "b0f65a5f-8e3c-436c-bbf7-934550ad6c37",
     "Level": 6,
     "Name": "Forbiddance",
     "School": "Abjuration",
@@ -7495,7 +7495,7 @@
     ]
   },
   {
-    "Id": "dc984eea-efda-4a53-a486-2b1eb8c92b5f",
+    "Id": "5ceb0934-4302-4933-825c-3a5739d99157",
     "Level": 6,
     "Name": "Globe of Invulnerability",
     "School": "Abjuration",
@@ -7509,7 +7509,7 @@
     "SpellLists": []
   },
   {
-    "Id": "c5b15445-d527-4898-996f-cda2c8e2360d",
+    "Id": "975e949f-2848-4e99-9877-fefb45fff155",
     "Level": 6,
     "Name": "Gravity Fissure",
     "School": "Evocation DG",
@@ -7523,7 +7523,7 @@
     "SpellLists": []
   },
   {
-    "Id": "6964e20d-a58c-4b4c-ad82-41b2a5194226",
+    "Id": "eb2f5eb8-c0ad-407c-b5af-88f0dfe93b34",
     "Level": 6,
     "Name": "Guards and Wards",
     "School": "Abjuration",
@@ -7540,7 +7540,7 @@
     ]
   },
   {
-    "Id": "147f2ffd-6b1a-4f8e-8868-53453ae6b231",
+    "Id": "4a6a6d75-600c-4f72-b0d2-98a2565486ab",
     "Level": 6,
     "Name": "Harm",
     "School": "Necromancy",
@@ -7556,7 +7556,7 @@
     ]
   },
   {
-    "Id": "b09d2a69-9bbf-4aaf-98df-149afdb1b622",
+    "Id": "8358be40-fd69-410f-afcf-e45ae8497c54",
     "Level": 6,
     "Name": "Heal",
     "School": "Evocation",
@@ -7570,7 +7570,7 @@
     "SpellLists": []
   },
   {
-    "Id": "054ebc1c-e6f3-4a23-80cb-22de2e69e85a",
+    "Id": "c8bf1cfd-dada-43e8-a940-53d49ccb3bde",
     "Level": 6,
     "Name": "Heroes\u0027 Feast",
     "School": "Conjuration",
@@ -7588,7 +7588,7 @@
     ]
   },
   {
-    "Id": "b44579e0-497e-4c66-b83b-bf8bd82e200c",
+    "Id": "4cb559bf-d27a-4bdd-9670-e1b15636e678",
     "Level": 6,
     "Name": "Investiture of Flame",
     "School": "Transmutation",
@@ -7607,7 +7607,7 @@
     ]
   },
   {
-    "Id": "c474ebbc-bd60-4671-92e9-a4de7cd9c895",
+    "Id": "b4dc1727-b061-427a-8e2d-772584f3f99a",
     "Level": 6,
     "Name": "Investiture of Ice",
     "School": "Transmutation",
@@ -7626,7 +7626,7 @@
     ]
   },
   {
-    "Id": "4ce82889-a5e6-476d-98c5-4fa83170eb3b",
+    "Id": "34621ac3-2583-490d-a7a8-7a701e9e1536",
     "Level": 6,
     "Name": "Investiture of Stone",
     "School": "Transmutation",
@@ -7645,7 +7645,7 @@
     ]
   },
   {
-    "Id": "6be5daad-982b-4e2d-920b-d48e3864debd",
+    "Id": "aa768001-f8b7-4cc5-b4eb-5067617aeb74",
     "Level": 6,
     "Name": "Investiture of Wind",
     "School": "Transmutation",
@@ -7664,7 +7664,7 @@
     ]
   },
   {
-    "Id": "cf6b112c-f5d7-4c11-bc44-b735fa5f12b1",
+    "Id": "23484a05-f316-4192-b96f-dc2fa3b7537d",
     "Level": 6,
     "Name": "Magic Jar",
     "School": "Necromancy",
@@ -7680,7 +7680,7 @@
     ]
   },
   {
-    "Id": "819e0bd8-b758-4fbb-84e0-3beccef4b80a",
+    "Id": "97e7898b-ece9-4d40-9467-c297bc23d784",
     "Level": 6,
     "Name": "Mass Suggestion",
     "School": "Enchantment",
@@ -7694,7 +7694,7 @@
     "SpellLists": []
   },
   {
-    "Id": "5ff3e061-5e95-4a88-ac18-69f738a14ba3",
+    "Id": "084f4e07-1c15-49c7-8c3c-161c2d3731cd",
     "Level": 6,
     "Name": "Mental Prison",
     "School": "Illusion",
@@ -7712,7 +7712,7 @@
     ]
   },
   {
-    "Id": "c2040134-4c83-4307-98cd-0b7590c15138",
+    "Id": "0f1d42e2-d826-42e7-86d9-c2d0637965a9",
     "Level": 6,
     "Name": "Move Earth",
     "School": "Transmutation",
@@ -7730,7 +7730,7 @@
     ]
   },
   {
-    "Id": "3a8af834-3e94-45f1-a23b-ce004761eb06",
+    "Id": "a05a83cf-2da3-4c26-81b0-5c3372dc5d57",
     "Level": 6,
     "Name": "Otherworldly Form (UA)",
     "School": "Transmutation",
@@ -7749,7 +7749,7 @@
     ]
   },
   {
-    "Id": "e20ef469-f944-4557-99b6-aa629b4d75d6",
+    "Id": "b0f15693-4d55-4a8b-929b-23f0bc8dc324",
     "Level": 6,
     "Name": "Otiluke\u0027s Freezing Sphere",
     "School": "Evocation",
@@ -7763,7 +7763,7 @@
     "SpellLists": []
   },
   {
-    "Id": "b7e353cb-6106-4cf0-8521-447e71d59fb1",
+    "Id": "6fd17752-cebb-432c-abf7-342355f60ae9",
     "Level": 6,
     "Name": "Otto\u0027s Irresistible Dance",
     "School": "Enchantment",
@@ -7780,7 +7780,7 @@
     ]
   },
   {
-    "Id": "5e32042d-4398-4e87-8fb0-761fd5bc9175",
+    "Id": "53b7a743-bda9-45f1-9afc-58a7e923c6bc",
     "Level": 6,
     "Name": "Planar Ally",
     "School": "Conjuration",
@@ -7796,7 +7796,7 @@
     ]
   },
   {
-    "Id": "d1e5abf7-4fc6-4cb2-91b8-8232e402bbef",
+    "Id": "c23b6535-d13b-4b63-b695-51496650a831",
     "Level": 6,
     "Name": "Primordial Ward",
     "School": "Abjuration",
@@ -7812,7 +7812,7 @@
     ]
   },
   {
-    "Id": "61412350-e30f-44fe-aa4c-a7508e80eac2",
+    "Id": "ad056d72-0c90-4acd-ac83-d12dffd7ef26",
     "Level": 6,
     "Name": "Programmed Illusion",
     "School": "Illusion",
@@ -7829,7 +7829,7 @@
     ]
   },
   {
-    "Id": "9f20bcd6-0a05-48c6-b730-14b25a203446",
+    "Id": "51da7951-d429-42d5-80bf-9c1368b9e858",
     "Level": 6,
     "Name": "Psychic Crush (UA)",
     "School": "Enchantment",
@@ -7847,7 +7847,7 @@
     ]
   },
   {
-    "Id": "998d692d-f42b-4021-9056-c46562c4907f",
+    "Id": "4c3bfe0e-bbb4-4b0e-9a09-e09cb71a4a8b",
     "Level": 6,
     "Name": "Scatter",
     "School": "Conjuration",
@@ -7865,7 +7865,7 @@
     ]
   },
   {
-    "Id": "85a4936b-593d-4db5-870d-96f04fd8c8ae",
+    "Id": "8a5ce723-e098-4977-bee3-50f45f471fbd",
     "Level": 6,
     "Name": "Soul Cage",
     "School": "Necromancy",
@@ -7882,7 +7882,7 @@
     ]
   },
   {
-    "Id": "58160807-ef4d-4f95-86eb-f3369f8a9fc2",
+    "Id": "c84ef4df-5ffe-44b0-8575-9acf00dfd037",
     "Level": 6,
     "Name": "Summon Fiend",
     "School": "Conjuration",
@@ -7896,7 +7896,7 @@
     "SpellLists": []
   },
   {
-    "Id": "013062f2-5f77-479d-8cfa-633e1ae28982",
+    "Id": "1aaa6629-7dde-41b6-bd4a-2ac73f0159ed",
     "Level": 6,
     "Name": "Sunbeam",
     "School": "Evocation",
@@ -7915,7 +7915,7 @@
     ]
   },
   {
-    "Id": "3fa2e7de-3d8e-4ac5-9a02-f87d65db7b61",
+    "Id": "cc21f675-5491-45a6-ac21-f65bef4b82c6",
     "Level": 6,
     "Name": "Tasha\u0027s Otherworldly Guise",
     "School": "Transmutation",
@@ -7933,7 +7933,7 @@
     ]
   },
   {
-    "Id": "b31299eb-01c6-4b1a-8a5f-0d8e867165c4",
+    "Id": "d3a0a580-d95f-4fcb-856c-7c2e3958b741",
     "Level": 6,
     "Name": "Tenser\u0027s Transformation",
     "School": "Transmutation",
@@ -7949,7 +7949,7 @@
     ]
   },
   {
-    "Id": "ed5e3cd0-73eb-4811-a821-cee04e1f3404",
+    "Id": "897c57e6-e86d-440e-a00b-6a4d854f3213",
     "Level": 6,
     "Name": "Transport via Plants",
     "School": "Conjuration",
@@ -7965,7 +7965,7 @@
     ]
   },
   {
-    "Id": "8d58eb95-49f1-4de5-9f01-9553f4177ee8",
+    "Id": "26680c1a-1cdf-43a3-b5dd-2adba4cc8064",
     "Level": 6,
     "Name": "True Seeing",
     "School": "Divination",
@@ -7985,7 +7985,7 @@
     ]
   },
   {
-    "Id": "95dcaa94-7bbb-4061-bd28-c2d908c95ab7",
+    "Id": "386b2d11-cc6c-4afc-8971-d7c97d0a0309",
     "Level": 6,
     "Name": "Wall of Ice",
     "School": "Evocation",
@@ -7999,7 +7999,7 @@
     "SpellLists": []
   },
   {
-    "Id": "f494b8cb-3b41-4410-bca6-b65fe1170e43",
+    "Id": "5f7de751-43db-406c-af71-c40ea61c7fa0",
     "Level": 6,
     "Name": "Wall of Thorns",
     "School": "Conjuration",
@@ -8013,7 +8013,7 @@
     "SpellLists": []
   },
   {
-    "Id": "5574bd2f-6f54-45c3-af51-8ca591a0253d",
+    "Id": "0979a511-022b-497d-bc0a-4678d559ddd5",
     "Level": 6,
     "Name": "Wind Walk",
     "School": "Transmutation",
@@ -8029,7 +8029,7 @@
     ]
   },
   {
-    "Id": "2b44c964-c96f-40c3-a2d5-340275f13cad",
+    "Id": "f14679cf-4f7a-4c74-9e12-cd862e873874",
     "Level": 6,
     "Name": "Word of Recall",
     "School": "Conjuration",
@@ -8045,7 +8045,7 @@
     ]
   },
   {
-    "Id": "44105807-a46b-4e6c-86b2-39a269c1996c",
+    "Id": "39f2216c-86fc-4321-85b1-15d877cda53c",
     "Level": 7,
     "Name": "Conjure Celestial",
     "School": "Conjuration",
@@ -8059,7 +8059,7 @@
     "SpellLists": []
   },
   {
-    "Id": "dafbd200-ed9a-4f6e-a5c8-4c7670af6b61",
+    "Id": "cbe626d5-bd05-4a05-99dc-c7fa3bac2a5a",
     "Level": 7,
     "Name": "Conjure Hezrou (UA)",
     "School": "Conjuration",
@@ -8076,7 +8076,7 @@
     ]
   },
   {
-    "Id": "a65722ad-b4c7-499e-b8cb-6ac8afa5f927",
+    "Id": "e25bb162-19ba-4219-9df1-90344f7ee4e2",
     "Level": 7,
     "Name": "Create Magen",
     "School": "Transmutation",
@@ -8092,7 +8092,7 @@
     ]
   },
   {
-    "Id": "f49ae1da-959f-425d-b571-de8e46f992ca",
+    "Id": "ec792785-eef6-4262-bd22-217e39d3dcee",
     "Level": 7,
     "Name": "Crown of Stars",
     "School": "Evocation",
@@ -8106,7 +8106,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1a5d5edf-b658-42b2-86a2-0f3ecadcb7b7",
+    "Id": "6038936a-8242-48cb-bfe3-3f183e991781",
     "Level": 7,
     "Name": "Delayed Blast Fireball",
     "School": "Evocation",
@@ -8120,7 +8120,7 @@
     "SpellLists": []
   },
   {
-    "Id": "faa76a58-b1dd-46ef-a7b3-c707ca93dd57",
+    "Id": "fb5be24f-be28-4139-aaad-62355801fce1",
     "Level": 7,
     "Name": "Divine Word",
     "School": "Evocation",
@@ -8136,7 +8136,7 @@
     ]
   },
   {
-    "Id": "6a2eefbd-4086-4611-b57c-7df660215ed5",
+    "Id": "4c097e39-fc48-4963-9f3e-7da031325401",
     "Level": 7,
     "Name": "Draconic Transformation",
     "School": "Transmutation",
@@ -8154,7 +8154,7 @@
     ]
   },
   {
-    "Id": "7453e8af-8de6-4142-89e6-68ca86c4a526",
+    "Id": "9d7e827f-5166-48bd-a7f3-68b15a4a1594",
     "Level": 7,
     "Name": "Draconic Transformation (UA)",
     "School": "Transmutation",
@@ -8172,7 +8172,7 @@
     ]
   },
   {
-    "Id": "28654d73-2f94-42ae-8d77-5301416c65e0",
+    "Id": "d3c0b9a6-fabf-467f-bdbc-aa3cac30022a",
     "Level": 7,
     "Name": "Dream of the Blue Veil",
     "School": "Conjuration",
@@ -8191,7 +8191,7 @@
     ]
   },
   {
-    "Id": "834bb046-83c8-4273-92e5-735a923bf546",
+    "Id": "459cefd3-7c05-401b-8bf9-e5e7bef6bd7d",
     "Level": 7,
     "Name": "Etherealness",
     "School": "Transmutation",
@@ -8205,7 +8205,7 @@
     "SpellLists": []
   },
   {
-    "Id": "ce0ae924-e5e1-4785-9d3c-5be2d2a26d2a",
+    "Id": "f3b08e29-bd2e-4720-9f30-9c7d832935cf",
     "Level": 7,
     "Name": "Finger of Death",
     "School": "Necromancy",
@@ -8223,7 +8223,7 @@
     ]
   },
   {
-    "Id": "aabef368-4171-40c7-9e0e-c7e9ee91715b",
+    "Id": "66a3d53f-4fa8-4572-a40f-68a497bc7671",
     "Level": 7,
     "Name": "Fire Storm",
     "School": "Evocation",
@@ -8241,7 +8241,7 @@
     ]
   },
   {
-    "Id": "2d731ed1-4052-4622-b9b4-ef9cc91487db",
+    "Id": "451f403d-c25c-46a2-90ff-a991edd0ac78",
     "Level": 7,
     "Name": "Forcecage",
     "School": "Evocation",
@@ -8259,7 +8259,7 @@
     ]
   },
   {
-    "Id": "9aa0699a-b9ef-4b60-9cdc-2ef48544dd50",
+    "Id": "b117f645-5a34-40e4-8b36-75b41ae0908b",
     "Level": 7,
     "Name": "Mirage Arcane",
     "School": "Illusion",
@@ -8277,7 +8277,7 @@
     ]
   },
   {
-    "Id": "83c77dbd-d694-418c-8f3c-ac4c684471dc",
+    "Id": "62af476e-8597-4813-82e2-a144311979da",
     "Level": 7,
     "Name": "Mordenkainen\u0027s Magnificent Mansion",
     "School": "Conjuration",
@@ -8294,7 +8294,7 @@
     ]
   },
   {
-    "Id": "4de23c83-d6fb-4708-a01b-78eadcfb3186",
+    "Id": "fa0063ae-7a56-44e9-a84a-817c0016823e",
     "Level": 7,
     "Name": "Mordenkainen\u0027s Sword",
     "School": "Evocation",
@@ -8311,7 +8311,7 @@
     ]
   },
   {
-    "Id": "8979cb75-40cb-4118-98ce-76c9b60c3a80",
+    "Id": "3c17cc10-905c-4284-9e8a-8e4abd99f994",
     "Level": 7,
     "Name": "Plane Shift",
     "School": "Conjuration",
@@ -8331,7 +8331,7 @@
     ]
   },
   {
-    "Id": "45a3b69a-58c5-4b42-b499-cd00df0fcc0e",
+    "Id": "786a9967-b8f9-47ac-be8d-e58f6f6a930c",
     "Level": 7,
     "Name": "Power Word: Pain",
     "School": "Enchantment",
@@ -8349,7 +8349,7 @@
     ]
   },
   {
-    "Id": "f5102cc8-312e-46bd-9cd1-53ecb6c3ad8f",
+    "Id": "00b75397-85be-4f7a-a0e3-887130eccc41",
     "Level": 7,
     "Name": "Prismatic Spray",
     "School": "Evocation",
@@ -8367,7 +8367,7 @@
     ]
   },
   {
-    "Id": "114f7ea2-936d-4f2e-9009-e3ea75d0bc4b",
+    "Id": "138e3a88-123f-4e78-aae3-18790b690171",
     "Level": 7,
     "Name": "Project Image",
     "School": "Illusion",
@@ -8384,7 +8384,7 @@
     ]
   },
   {
-    "Id": "4f03a648-2a8c-40ca-bee3-95d23c17dee5",
+    "Id": "abe76277-2a04-473f-9a6d-270e609882c3",
     "Level": 7,
     "Name": "Regenerate",
     "School": "Transmutation",
@@ -8402,7 +8402,7 @@
     ]
   },
   {
-    "Id": "df453ba8-d5c8-4874-a683-e0023d5b74b8",
+    "Id": "8e144e3c-e401-4b30-8a04-fb3c1b166356",
     "Level": 7,
     "Name": "Resurrection",
     "School": "Necromancy",
@@ -8419,7 +8419,7 @@
     ]
   },
   {
-    "Id": "07b30373-1a44-408a-ae73-9a575b784244",
+    "Id": "59d42d2a-645e-40c2-ae4f-8fc662e405c4",
     "Level": 7,
     "Name": "Reverse Gravity",
     "School": "Transmutation",
@@ -8437,7 +8437,7 @@
     ]
   },
   {
-    "Id": "730171b7-2efe-4b45-913d-cfd3861358c0",
+    "Id": "e5bc974b-83ee-4be0-87cf-6a68ca5f6087",
     "Level": 7,
     "Name": "Sequester",
     "School": "Transmutation",
@@ -8453,7 +8453,7 @@
     ]
   },
   {
-    "Id": "b8ec1fc7-3d8b-4400-b60d-310a0fa17184",
+    "Id": "5609feec-3c99-49b8-9afb-8523761a4ed6",
     "Level": 7,
     "Name": "Simulacrum",
     "School": "Illusion",
@@ -8469,7 +8469,7 @@
     ]
   },
   {
-    "Id": "f2d7af78-6f22-4620-a332-68b730d8fe51",
+    "Id": "c3f851e4-30b8-4f9e-be02-bb0da5cc161c",
     "Level": 7,
     "Name": "Symbol",
     "School": "Abjuration",
@@ -8488,7 +8488,7 @@
     ]
   },
   {
-    "Id": "4a44d8b8-5e4d-473c-be7e-11960e1af06a",
+    "Id": "b945d494-dbfb-4b34-9706-fa491d9c0551",
     "Level": 7,
     "Name": "Teleport",
     "School": "Conjuration",
@@ -8506,7 +8506,7 @@
     ]
   },
   {
-    "Id": "10a90742-7c6f-4e7d-9042-78e838ee47d7",
+    "Id": "e432174c-d2ce-4d9b-9800-90259933d0c3",
     "Level": 7,
     "Name": "Temple of the Gods",
     "School": "Conjuration",
@@ -8522,7 +8522,7 @@
     ]
   },
   {
-    "Id": "d125d184-1a0a-4a48-b94c-ee8ab538bf74",
+    "Id": "384bda6c-a833-4f26-8623-bbb5f874fa39",
     "Level": 7,
     "Name": "Tether Essence",
     "School": "Necromancy D",
@@ -8538,7 +8538,7 @@
     ]
   },
   {
-    "Id": "b93c9763-3692-4fb1-83ca-fd5b74adb0f7",
+    "Id": "06a358b8-f222-4f92-a052-2828ddce9e25",
     "Level": 7,
     "Name": "Whirlwind",
     "School": "Evocation",
@@ -8555,7 +8555,7 @@
     ]
   },
   {
-    "Id": "ff482464-ba6e-4892-b762-43c0c218c1ad",
+    "Id": "eade48c1-ebbe-4172-b126-c4b740a4fdd8",
     "Level": 8,
     "Name": "Abi-Dalzim\u0027s Horrid Wilting",
     "School": "Necromancy",
@@ -8572,7 +8572,7 @@
     ]
   },
   {
-    "Id": "82afdc2f-6f0f-4c17-bf09-52597b8301bc",
+    "Id": "e007742f-b1a0-4951-b7a1-15c82dc7fc2d",
     "Level": 8,
     "Name": "Animal Shapes",
     "School": "Transmutation",
@@ -8588,7 +8588,7 @@
     ]
   },
   {
-    "Id": "05fd366c-70d1-4b66-94f0-d9a4c82050c0",
+    "Id": "fbea4c4f-828d-4678-82c3-52365470a63a",
     "Level": 8,
     "Name": "Antimagic Field",
     "School": "Abjuration",
@@ -8605,7 +8605,7 @@
     ]
   },
   {
-    "Id": "d24f25e7-38fa-4ed3-ab15-2ea7bb2672f2",
+    "Id": "6f988b92-8e1a-488c-b4cd-162e6a403c92",
     "Level": 8,
     "Name": "Antipathy/Sympathy",
     "School": "Enchantment",
@@ -8623,7 +8623,7 @@
     ]
   },
   {
-    "Id": "8bae4f59-e744-4cd9-8813-ceadccadeeaf",
+    "Id": "1a81f4b4-ddd2-4fe7-9d0d-b668071070ac",
     "Level": 8,
     "Name": "Clone",
     "School": "Necromancy",
@@ -8639,7 +8639,7 @@
     ]
   },
   {
-    "Id": "d6d08a08-8f4f-4adc-bbaf-1a2ec2100517",
+    "Id": "627f69f7-e1df-42eb-b902-2f37dbab7ac5",
     "Level": 8,
     "Name": "Control Weather",
     "School": "Transmutation",
@@ -8657,7 +8657,7 @@
     ]
   },
   {
-    "Id": "e2fe5e51-1ac1-4de3-90b8-ce8d2fbf63a5",
+    "Id": "6e0adc61-6b15-4a2b-94e4-b9c265d8ee0c",
     "Level": 8,
     "Name": "Dark Star",
     "School": "Evocation DG",
@@ -8673,7 +8673,7 @@
     ]
   },
   {
-    "Id": "93cf9e54-3197-46b5-a182-7f3bd8f9a85f",
+    "Id": "d5583353-045f-4850-b96b-6fc2b93ff432",
     "Level": 8,
     "Name": "Demiplane",
     "School": "Conjuration",
@@ -8691,7 +8691,7 @@
     ]
   },
   {
-    "Id": "770fa109-788d-49af-ab11-e96955b74aee",
+    "Id": "857015d0-432a-494d-a5e4-fbf75d433fdf",
     "Level": 8,
     "Name": "Dominate Monster",
     "School": "Enchantment",
@@ -8705,7 +8705,7 @@
     "SpellLists": []
   },
   {
-    "Id": "1b758516-d04d-44da-ad08-bffec8ecd26e",
+    "Id": "87a63778-51bb-4578-8856-f973901c98ee",
     "Level": 8,
     "Name": "Earthquake",
     "School": "Evocation",
@@ -8723,7 +8723,7 @@
     ]
   },
   {
-    "Id": "91a0a733-0bf1-4c44-bc1a-b43218fd0777",
+    "Id": "e7c17d67-e6ae-4b90-a0be-e0a21736ce63",
     "Level": 8,
     "Name": "Feeblemind",
     "School": "Enchantment",
@@ -8742,7 +8742,7 @@
     ]
   },
   {
-    "Id": "54469b9a-b093-439c-af57-34f223adb92f",
+    "Id": "3da192e3-e6e7-44ab-abdb-083e6f24f67e",
     "Level": 8,
     "Name": "Glibness",
     "School": "Transmutation",
@@ -8759,7 +8759,7 @@
     ]
   },
   {
-    "Id": "c2ca149f-0302-4907-bf70-187f026a176d",
+    "Id": "dc761ca9-79f4-483f-a58d-4e8aa2c7df4d",
     "Level": 8,
     "Name": "Holy Aura",
     "School": "Abjuration",
@@ -8775,7 +8775,7 @@
     ]
   },
   {
-    "Id": "b8ccf532-0384-47d8-b280-7cac069b6acc",
+    "Id": "56db6074-6a4c-4486-a6d4-79070e9c0b55",
     "Level": 8,
     "Name": "Illusory Dragon",
     "School": "Illusion",
@@ -8791,7 +8791,7 @@
     ]
   },
   {
-    "Id": "7dcdb88e-5908-494c-99e7-4053fc350288",
+    "Id": "ce6893fd-c29a-4d96-b5c0-c4fcb0ae0271",
     "Level": 8,
     "Name": "Incendiary Cloud",
     "School": "Conjuration",
@@ -8809,7 +8809,7 @@
     ]
   },
   {
-    "Id": "6551791a-0a15-46c7-ac26-e0f381e5de51",
+    "Id": "61a38c08-a4df-446d-89a7-bd3fe346450b",
     "Level": 8,
     "Name": "Maddening Darkness",
     "School": "Evocation",
@@ -8826,7 +8826,7 @@
     ]
   },
   {
-    "Id": "c893e56f-c2f6-449c-a173-afb3a84d123c",
+    "Id": "363bc79e-ac0d-4d61-9c74-ec6631810095",
     "Level": 8,
     "Name": "Maze",
     "School": "Conjuration",
@@ -8842,7 +8842,7 @@
     ]
   },
   {
-    "Id": "68b3df16-04d2-408c-9823-a31c31542c68",
+    "Id": "fc110263-a0ee-4351-905f-2c017db805e8",
     "Level": 8,
     "Name": "Mighty Fortress",
     "School": "Conjuration",
@@ -8858,7 +8858,7 @@
     ]
   },
   {
-    "Id": "6df9ddc1-fb3b-4669-ae6a-59d1b62016f7",
+    "Id": "b98dd2b9-9c2a-41c2-8539-730de41705af",
     "Level": 8,
     "Name": "Mind Blank",
     "School": "Abjuration",
@@ -8875,7 +8875,7 @@
     ]
   },
   {
-    "Id": "34abf8dc-c5c2-4a9b-b0fb-8c4855837a86",
+    "Id": "cee7e678-fdc1-4447-bd7a-2b116cb9e6db",
     "Level": 8,
     "Name": "Power Word: Stun",
     "School": "Enchantment",
@@ -8894,7 +8894,7 @@
     ]
   },
   {
-    "Id": "8d6ed90d-e661-4617-9dce-e54c7efe0ee3",
+    "Id": "539696b1-a4f7-4305-8048-75016a56099a",
     "Level": 8,
     "Name": "Reality Break",
     "School": "Conjuration DC",
@@ -8910,7 +8910,7 @@
     ]
   },
   {
-    "Id": "9d89810c-cd35-4fb4-945c-7c7a4412ec96",
+    "Id": "84a673fb-f466-407d-b920-50ac3b0809a5",
     "Level": 8,
     "Name": "Sunburst",
     "School": "Evocation",
@@ -8929,7 +8929,7 @@
     ]
   },
   {
-    "Id": "a80f636f-e165-4b3c-9955-ea4543c3b87e",
+    "Id": "65fee79f-05b6-4341-9970-ecb298d64145",
     "Level": 8,
     "Name": "Telepathy",
     "School": "Evocation",
@@ -8945,7 +8945,7 @@
     ]
   },
   {
-    "Id": "27b32c76-c7f2-45f4-9041-78e21a90cb2e",
+    "Id": "a4c252aa-4b09-452e-8cd8-93e6533e8168",
     "Level": 8,
     "Name": "Tsunami",
     "School": "Conjuration",
@@ -8961,7 +8961,7 @@
     ]
   },
   {
-    "Id": "211f2db6-53b4-499b-a199-d01147fd84a5",
+    "Id": "9fe8513c-86a1-4ae2-a253-b546a5e3bc7b",
     "Level": 9,
     "Name": "Astral Projection",
     "School": "Evocation",
@@ -8979,7 +8979,7 @@
     ]
   },
   {
-    "Id": "eca99bf7-30a8-49c4-96fd-8205d8e75468",
+    "Id": "502443dc-487e-48d1-a448-5d3bda48aaa2",
     "Level": 9,
     "Name": "Blade of Disaster",
     "School": "Conjuration",
@@ -8997,7 +8997,7 @@
     ]
   },
   {
-    "Id": "7c613946-8674-4387-8caa-2c5730ea5536",
+    "Id": "ac298b58-a518-4305-bc29-0cc3c8151a4e",
     "Level": 9,
     "Name": "Foresight",
     "School": "Divination",
@@ -9016,7 +9016,7 @@
     ]
   },
   {
-    "Id": "cb8aff28-b6e2-4814-9ed9-4ce6f4d23484",
+    "Id": "d3bdfb18-afe7-4116-88db-ef51803723e3",
     "Level": 9,
     "Name": "Gate",
     "School": "Conjuration",
@@ -9035,7 +9035,7 @@
     ]
   },
   {
-    "Id": "e392ac6d-110a-4c50-8e19-96231552cd8f",
+    "Id": "58ac456e-4528-45ae-9c24-002c7299bcd5",
     "Level": 9,
     "Name": "Imprisonment",
     "School": "Abjuration",
@@ -9052,7 +9052,7 @@
     ]
   },
   {
-    "Id": "4ccd9925-b5c3-45ba-9a37-837199b5bd60",
+    "Id": "94857061-5b03-4c43-b19b-d40c5f830e8c",
     "Level": 9,
     "Name": "Invulnerability",
     "School": "Abjuration",
@@ -9068,7 +9068,7 @@
     ]
   },
   {
-    "Id": "7c8c8289-a8f5-4228-818d-3920f772da9b",
+    "Id": "5c84225c-4766-4ad4-8320-49675c21ac71",
     "Level": 9,
     "Name": "Mass Heal",
     "School": "Evocation",
@@ -9084,7 +9084,7 @@
     ]
   },
   {
-    "Id": "32bd8ca2-9ccd-4697-901f-91b701f81802",
+    "Id": "e5a8f39b-dd73-4133-a14e-735d99e385a6",
     "Level": 9,
     "Name": "Mass Polymorph",
     "School": "Transmutation",
@@ -9102,7 +9102,7 @@
     ]
   },
   {
-    "Id": "77a63313-ede9-4860-9a99-a15820d50db7",
+    "Id": "68fd8634-8a15-425d-a92e-395c76ce5e27",
     "Level": 9,
     "Name": "Meteor Swarm",
     "School": "Evocation",
@@ -9119,7 +9119,7 @@
     ]
   },
   {
-    "Id": "b424cb19-25b8-47c0-b442-231ff6f95718",
+    "Id": "c0220d47-ef64-44b3-a9f5-eb91bbfda22f",
     "Level": 9,
     "Name": "Power Word: Heal",
     "School": "Evocation",
@@ -9136,7 +9136,7 @@
     ]
   },
   {
-    "Id": "caf092f7-6bce-4418-b5fd-592fe25bcb56",
+    "Id": "977d795b-ab09-44da-8dd2-e8b5fb538617",
     "Level": 9,
     "Name": "Power Word: Kill",
     "School": "Enchantment",
@@ -9155,7 +9155,7 @@
     ]
   },
   {
-    "Id": "d89dc695-8387-474e-a6b8-2d4e746fba79",
+    "Id": "174f85fc-48ce-45b4-ac27-9a630896e50f",
     "Level": 9,
     "Name": "Prismatic Wall",
     "School": "Abjuration",
@@ -9172,7 +9172,7 @@
     ]
   },
   {
-    "Id": "983dd6df-ad21-4a83-82c7-c32a45939fb7",
+    "Id": "45b73163-5405-4a5a-a92e-ebc040e6d8fd",
     "Level": 9,
     "Name": "Psychic Scream",
     "School": "Enchantment",
@@ -9191,7 +9191,7 @@
     ]
   },
   {
-    "Id": "4c1d9d9c-b667-4a11-81a3-b079c454cad5",
+    "Id": "64bc4cd2-6cf0-4168-95a9-3aee08d944c8",
     "Level": 9,
     "Name": "Ravenous Void",
     "School": "Evocation DG",
@@ -9207,7 +9207,7 @@
     ]
   },
   {
-    "Id": "17ae3e91-ff14-4693-a7af-5cbe22a0b6bd",
+    "Id": "b74e5951-bbda-4827-b18b-a271acffe75a",
     "Level": 9,
     "Name": "Shapechange",
     "School": "Transmutation",
@@ -9224,7 +9224,7 @@
     ]
   },
   {
-    "Id": "0a707d1c-904e-4194-988b-ac36097209ce",
+    "Id": "bcbf96cb-571b-412e-ab50-dea9c74c2fe3",
     "Level": 9,
     "Name": "Storm of Vengeance",
     "School": "Conjuration",
@@ -9240,7 +9240,7 @@
     ]
   },
   {
-    "Id": "3819e6ec-3512-4620-9392-c1f0c785fb7c",
+    "Id": "21b98936-5ce2-440d-8334-8f7898ee39a7",
     "Level": 9,
     "Name": "Time Ravage",
     "School": "Necromancy DC",
@@ -9256,7 +9256,7 @@
     ]
   },
   {
-    "Id": "a05012c3-bc5e-48d0-98cb-12e5331795be",
+    "Id": "dbdcd0e1-cb88-4506-b775-ee3fe82d41a1",
     "Level": 9,
     "Name": "Time Stop",
     "School": "Transmutation",
@@ -9273,7 +9273,7 @@
     ]
   },
   {
-    "Id": "45a74477-91a3-487b-8d7e-f14c73075910",
+    "Id": "8f1db20d-fbe1-4462-b6c2-8f52a4a7e01b",
     "Level": 9,
     "Name": "True Polymorph",
     "School": "Transmutation",
@@ -9291,7 +9291,7 @@
     ]
   },
   {
-    "Id": "33b7ff92-79e0-4273-a8ac-4ed12c63b9c8",
+    "Id": "16854ff3-8e69-4827-b58e-1da5c39ca854",
     "Level": 9,
     "Name": "True Resurrection",
     "School": "Necromancy",
@@ -9308,7 +9308,7 @@
     ]
   },
   {
-    "Id": "b92e33e0-9f7d-4424-9b04-2daa5172125f",
+    "Id": "27c87a86-e156-48a6-a262-2ff6f237fac5",
     "Level": 9,
     "Name": "Weird",
     "School": "Illusion",
@@ -9325,7 +9325,7 @@
     ]
   },
   {
-    "Id": "62611f2b-7c6b-49b4-bf0b-8e0780334a2c",
+    "Id": "746ed172-7ed1-4b7e-a61c-eb4674463a59",
     "Level": 9,
     "Name": "Wish",
     "School": "Conjuration",

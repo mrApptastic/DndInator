@@ -1,0 +1,100 @@
+[
+  {
+    "Id": "1bea7720-49d2-481f-9e4a-65db23bf35a3",
+    "Name": "Assassin\u0027s blood",
+    "Type": "Ingested",
+    "Cost": "150 gp",
+    "Effect": null
+  },
+  {
+    "Id": "9f0baec3-c446-4684-b61b-684e2a3a8c3e",
+    "Name": "Burnt Othur Fumes",
+    "Type": "Inhaled",
+    "Cost": "500 gp",
+    "Effect": null
+  },
+  {
+    "Id": "e05f6e0d-1a33-468e-b12d-2f8c31f4cced",
+    "Name": "Carrion Crawler Mucus",
+    "Type": "Contact",
+    "Cost": "200 gp",
+    "Effect": null
+  },
+  {
+    "Id": "8a0aa79d-26d4-4b00-9c2d-9a961f62dc8a",
+    "Name": "Drow Poison",
+    "Type": "Injury",
+    "Cost": "200 gp",
+    "Effect": null
+  },
+  {
+    "Id": "0e3f7357-67ab-4a84-91f6-ecb5181a7d23",
+    "Name": "Essence of Ether",
+    "Type": "Inhaled",
+    "Cost": "300 gp",
+    "Effect": null
+  },
+  {
+    "Id": "edf8ff41-6584-4000-86ba-b704153b92c3",
+    "Name": "Malice",
+    "Type": "Inhaled",
+    "Cost": "250 gp",
+    "Effect": null
+  },
+  {
+    "Id": "7dfc3c1d-ac2a-45e5-843e-b1a4ac5fb64b",
+    "Name": "Midnight Tears",
+    "Type": "Ingested",
+    "Cost": "1,500 gp",
+    "Effect": null
+  },
+  {
+    "Id": "e1cfcb2f-4579-413d-881a-764e88bd602c",
+    "Name": "Oil of Taggit",
+    "Type": "Contact",
+    "Cost": "400 gp",
+    "Effect": null
+  },
+  {
+    "Id": "4648c4d1-195b-4246-979d-87edbe8afab3",
+    "Name": "Pale Tincture",
+    "Type": "Ingested",
+    "Cost": "250 gp",
+    "Effect": null
+  },
+  {
+    "Id": "18d52b23-fedc-4beb-9d0c-6928489f5735",
+    "Name": "Purple Worm Poison",
+    "Type": "Injury",
+    "Cost": "2,000 gp",
+    "Effect": null
+  },
+  {
+    "Id": "0622d413-dd7c-4581-a2ff-5bd7e3c79a6d",
+    "Name": "Serpent Venom",
+    "Type": "Injury",
+    "Cost": "200 gp",
+    "Effect": null
+  },
+  {
+    "Id": "46c02825-b428-451e-941a-5b25cc517efe",
+    "Name": "Torpor",
+    "Type": "Ingested",
+    "Cost": "600 gp",
+    "Effect": null
+  },
+  {
+    "Id": "ba060f53-4deb-4179-b810-76000af54961",
+    "Name": "Truth Serum",
+    "Type": "Ingested",
+    "Cost": "150 gp",
+    "Effect": null
+  },
+  {
+    "Id": "9c945407-b403-4028-94cc-2fdb99f6afe7",
+    "Name": "Wyvern Poison",
+    "Type": "Injury",
+    "Cost": "1,200 gp",
+    "Effect": null
+  }
+]

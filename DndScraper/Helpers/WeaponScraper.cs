@@ -119,18 +119,17 @@ public class WeaponScraper
                         foreach (var row in rows.Skip(1))
                         {
                             var cells = row.SelectNodes("td");
-                            if (cells == null || cells.Count < 6) continue;
+                            if (cells == null || cells.Count < 5) continue;
 
                             var weapon = new Weapon
                             {
                                 Category = currentCategory,
                                 Type = currentType,
                                 Name = cells[0].InnerText.Trim(),
-                                Damage = cells[1].InnerText.Trim(),
-                                Properties = cells[2].InnerText.Trim(),
-                                Mastery = cells[3].InnerText.Trim(),
-                                Weight = cells[4].InnerText.Trim(),
-                                Cost = cells[5].InnerText.Trim()
+                                Cost = cells[1].InnerText.Trim(),
+                                Damage = cells[2].InnerText.Trim(),
+                                Weight = cells[3].InnerText.Trim(),
+                                Properties = cells[4].InnerText.Trim()
                             };
 
                             if (weapon.Properties == "—" || weapon.Properties == "-") weapon.Properties = null;

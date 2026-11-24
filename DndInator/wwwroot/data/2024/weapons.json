@@ -1,6 +1,6 @@
 [
   {
-    "Id": "e009695e-8f00-41dd-92df-5b70730219e3",
+    "Id": "eaa20a45-5165-41c1-b99b-02fb4b0f5ff7",
     "Name": "Club",
     "Category": "Simple",
     "Type": "Melee",
@@ -11,7 +11,7 @@
     "Cost": "1 SP"
   },
   {
-    "Id": "9ada107c-44ee-4d02-9f82-606fff55a9ff",
+    "Id": "3235897c-7082-4ea2-9620-38d847eebda2",
     "Name": "Dagger",
     "Category": "Simple",
     "Type": "Melee",
@@ -22,7 +22,7 @@
     "Cost": "2 GP"
   },
   {
-    "Id": "6ff5a46d-dc14-4c3d-95f6-b7b2faf362ec",
+    "Id": "a6691ccb-6747-47fc-9df3-bcb1120089d3",
     "Name": "Greatclub",
     "Category": "Simple",
     "Type": "Melee",
@@ -33,7 +33,7 @@
     "Cost": "2 SP"
   },
   {
-    "Id": "3a7ec708-ec38-413e-b2a6-38bcbed2014e",
+    "Id": "a2b6e417-90a4-48be-81da-62500bb2daa9",
     "Name": "Handaxe",
     "Category": "Simple",
     "Type": "Melee",
@@ -44,7 +44,7 @@
     "Cost": "5 GP"
   },
   {
-    "Id": "675dd341-2c10-4aa6-aca7-4ca1bdb94bcd",
+    "Id": "dc2657db-36a3-4222-8cba-7d540fb255f3",
     "Name": "Javelin",
     "Category": "Simple",
     "Type": "Melee",
@@ -55,7 +55,7 @@
     "Cost": "5 SP"
   },
   {
-    "Id": "89957893-58a0-4007-9ef7-cec33389acc5",
+    "Id": "a640357f-9f4f-4a23-9b12-b627b683f0c7",
     "Name": "Light Hammer",
     "Category": "Simple",
     "Type": "Melee",
@@ -66,7 +66,7 @@
     "Cost": "2 GP"
   },
   {
-    "Id": "51ced1e9-a0ae-4fed-8527-5e975698582b",
+    "Id": "cd55ebd2-6d81-4b2d-bc2b-5c1d4e1c62aa",
     "Name": "Mace",
     "Category": "Simple",
     "Type": "Melee",
@@ -77,7 +77,7 @@
     "Cost": "5 GP"
   },
   {
-    "Id": "3348d206-00a4-468b-b55f-232380b36ad3",
+    "Id": "74c576a6-8355-4e6e-80ed-f5ea8ca69dc4",
     "Name": "Quarterstaff",
     "Category": "Simple",
     "Type": "Melee",
@@ -88,7 +88,7 @@
     "Cost": "2 SP"
   },
   {
-    "Id": "a26ef6ad-fb34-4d9a-a09b-6f574942316e",
+    "Id": "9eb4e13c-fd44-4c27-9ce4-436f8c9cd797",
     "Name": "Sickle",
     "Category": "Simple",
     "Type": "Melee",
@@ -99,7 +99,7 @@
     "Cost": "1 GP"
   },
   {
-    "Id": "e62fbcf0-76ed-4b62-af42-0e4fd3261a72",
+    "Id": "daf04718-b79b-44d9-90e6-1ceb33d627aa",
     "Name": "Spear",
     "Category": "Simple",
     "Type": "Melee",
@@ -110,7 +110,7 @@
     "Cost": "1 GP"
   },
   {
-    "Id": "09628904-c958-4dab-abb0-d4c9f638ce6e",
+    "Id": "e1b49f31-d9a3-420e-96e4-b3ced9d4289b",
     "Name": "Dart",
     "Category": "Simple",
     "Type": "Ranged",
@@ -121,7 +121,7 @@
     "Cost": "5 CP"
   },
   {
-    "Id": "f5187a39-394a-4e52-9918-d0973c9746c7",
+    "Id": "35e09e66-f148-43e3-9a4a-980f6edb13b6",
     "Name": "Light Crossbow",
     "Category": "Simple",
     "Type": "Ranged",
@@ -132,7 +132,7 @@
     "Cost": "25 GP"
   },
   {
-    "Id": "d7261525-b7a3-4bd1-8728-d45f4012c70a",
+    "Id": "becbc2c8-4519-47ec-820d-14c7ec06ba55",
     "Name": "Shortbow",
     "Category": "Simple",
     "Type": "Ranged",
@@ -143,7 +143,7 @@
     "Cost": "25 GP"
   },
   {
-    "Id": "d3111ead-491c-41ce-ab40-e43531b639b4",
+    "Id": "94fab0eb-57f2-45c2-9d8f-d0362b9d8230",
     "Name": "Sling",
     "Category": "Simple",
     "Type": "Ranged",
@@ -154,7 +154,7 @@
     "Cost": "1 SP"
   },
   {
-    "Id": "a6ee0ecd-6b32-449f-89e1-e9a9c83b99a9",
+    "Id": "53d26682-6287-48d9-9b7d-805f77b647b9",
     "Name": "Battleaxe",
     "Category": "Martial",
     "Type": "Melee",
@@ -165,7 +165,7 @@
     "Cost": "10GP"
   },
   {
-    "Id": "c5dc7357-6b26-4c7d-a045-ac8765d13f05",
+    "Id": "6ec53c27-8ffe-4cbf-b0ef-5c65bb3c761c",
     "Name": "Flail",
     "Category": "Martial",
     "Type": "Melee",
@@ -176,7 +176,7 @@
     "Cost": "10 GP"
   },
   {
-    "Id": "51d12f16-89a5-4571-92ac-cb1e4b62bca2",
+    "Id": "0c3e8cab-88b7-4bc0-81f5-0bc57433e32d",
     "Name": "Glaive",
     "Category": "Martial",
     "Type": "Melee",
@@ -187,7 +187,7 @@
     "Cost": "20 GP"
   },
   {
-    "Id": "82afc0e6-1613-4583-ae04-238ceb0ee96f",
+    "Id": "84a85b14-e43c-4691-a1b1-b9ea7d806000",
     "Name": "Greataxe",
     "Category": "Martial",
     "Type": "Melee",
@@ -198,7 +198,7 @@
     "Cost": "30 GP"
   },
   {
-    "Id": "28ad859e-1523-4f0c-b5e6-ed737ab57e99",
+    "Id": "1b7c3568-a1bb-423a-9b1f-d171a130f1bd",
     "Name": "Greatsword",
     "Category": "Martial",
     "Type": "Melee",
@@ -209,7 +209,7 @@
     "Cost": "50 GP"
   },
   {
-    "Id": "939da7d0-dd9f-4af5-8bea-2e16d3187124",
+    "Id": "60db98f9-b189-46b5-8e3e-cc93088ef34e",
     "Name": "Halberd",
     "Category": "Martial",
     "Type": "Melee",
@@ -220,7 +220,7 @@
     "Cost": "20GP"
   },
   {
-    "Id": "1df2f9b1-b8dc-4c6e-93fd-2ec62b883a13",
+    "Id": "b22272ac-5b0b-4240-8b22-295f26318e9d",
     "Name": "Lance",
     "Category": "Martial",
     "Type": "Melee",
@@ -231,7 +231,7 @@
     "Cost": "10 GP"
   },
   {
-    "Id": "753ff2e7-6a7d-4a41-a356-6ff999f1fbfc",
+    "Id": "142e7559-1c9f-49ac-a0fe-b82b892d4879",
     "Name": "Longsword",
     "Category": "Martial",
     "Type": "Melee",
@@ -242,7 +242,7 @@
     "Cost": "15 GP"
   },
   {
-    "Id": "b164a79c-9048-4719-a8b2-1c8dc7c3a2aa",
+    "Id": "59a27c01-8c6a-4389-adf0-de3ef41a6d8e",
     "Name": "Maul",
     "Category": "Martial",
     "Type": "Melee",
@@ -253,7 +253,7 @@
     "Cost": "10GP"
   },
   {
-    "Id": "aac4241d-661e-49ec-ba4a-fa4270dbc1d3",
+    "Id": "d0617ed9-b98e-469d-94e8-0b3c3f23e4d0",
     "Name": "Morningstar",
     "Category": "Martial",
     "Type": "Melee",
@@ -264,7 +264,7 @@
     "Cost": "15 GP"
   },
   {
-    "Id": "f9024c1c-3bc0-4ca7-bcb9-5066e4a9897d",
+    "Id": "d7f80312-3985-4f9f-bdea-2aa8c74fe8d1",
     "Name": "Pike",
     "Category": "Martial",
     "Type": "Melee",
@@ -275,7 +275,7 @@
     "Cost": "5 GP"
   },
   {
-    "Id": "9f0bc0bc-d363-4f21-9c7e-5765aad71e4d",
+    "Id": "c12db5be-b50b-4ec7-8d9e-d82e5ffbe2f7",
     "Name": "Rapier",
     "Category": "Martial",
     "Type": "Melee",
@@ -286,7 +286,7 @@
     "Cost": "25 GP"
   },
   {
-    "Id": "8ea118ed-2726-4671-941b-5a03df90ce3e",
+    "Id": "176a66bf-bc5c-4d84-869c-2ff31250d17a",
     "Name": "Scimitar",
     "Category": "Martial",
     "Type": "Melee",
@@ -297,7 +297,7 @@
     "Cost": "25 GP"
   },
   {
-    "Id": "97d8d53c-f70c-4dd4-a3a3-9c5f2461a5ed",
+    "Id": "2992b9de-2509-4c43-b762-8be6c65de6db",
     "Name": "Shortsword",
     "Category": "Martial",
     "Type": "Melee",
@@ -308,7 +308,7 @@
     "Cost": "10 GP"
   },
   {
-    "Id": "eec87fb7-02cc-46c8-bba9-96e536f3c376",
+    "Id": "86d15931-3704-4752-9c45-7fb8abed7396",
     "Name": "Trident",
     "Category": "Martial",
     "Type": "Melee",
@@ -319,7 +319,7 @@
     "Cost": "5 GP"
   },
   {
-    "Id": "0c460a76-ea82-43a2-9c22-c5eaf365e5ab",
+    "Id": "31b375ea-4617-42d5-ae4f-3298a1f4bdbc",
     "Name": "Warhammer",
     "Category": "Martial",
     "Type": "Melee",
@@ -330,7 +330,7 @@
     "Cost": "15 GP"
   },
   {
-    "Id": "0f6bd4b5-eac6-4732-bd50-1cb38603c9c2",
+    "Id": "5b08c5ed-89dd-4045-884a-e13dba82bbff",
     "Name": "War Pick",
     "Category": "Martial",
     "Type": "Melee",
@@ -341,7 +341,7 @@
     "Cost": "5 GP"
   },
   {
-    "Id": "b76cc174-a88b-4d0a-a2ea-ae463c9dd16b",
+    "Id": "745009e4-8fba-4708-ad65-495eda1bd427",
     "Name": "Whip",
     "Category": "Martial",
     "Type": "Melee",
@@ -352,7 +352,7 @@
     "Cost": "2 GP"
   },
   {
-    "Id": "539045a0-b1ff-453c-aa48-9d3e0f0e3fd7",
+    "Id": "fde7150b-4c09-4069-b0b4-c4d602f0d08e",
     "Name": "Blowgun",
     "Category": "Martial",
     "Type": "Ranged",
@@ -363,7 +363,7 @@
     "Cost": "10GP"
   },
   {
-    "Id": "c8b1afb9-d966-4871-9f25-ef654a85e290",
+    "Id": "987dc20d-8878-4e57-8b6d-33f278c0a3db",
     "Name": "Hand Crossbow",
     "Category": "Martial",
     "Type": "Ranged",
@@ -374,7 +374,7 @@
     "Cost": "75 GP"
   },
   {
-    "Id": "876a6a54-a0af-4aa3-a801-91ebae407914",
+    "Id": "4645a388-5b6f-41fa-bbd7-9d44fb1be776",
     "Name": "Heavy Crossbow",
     "Category": "Martial",
     "Type": "Ranged",
@@ -385,7 +385,7 @@
     "Cost": "50 GP"
   },
   {
-    "Id": "212db534-9dee-4b0d-b013-43637bdf352f",
+    "Id": "c8ef18e2-6252-42a7-9ac0-4192cec40a93",
     "Name": "Longbow",
     "Category": "Martial",
     "Type": "Ranged",
@@ -396,7 +396,7 @@
     "Cost": "50 GP"
   },
   {
-    "Id": "8bb02d58-c9a7-4d47-b179-2361680f2b83",
+    "Id": "78a21f45-04b2-4756-a81a-74dfcc3a3a0f",
     "Name": "Musket",
     "Category": "Martial",
     "Type": "Ranged",
@@ -407,7 +407,7 @@
     "Cost": "500 GP"
   },
   {
-    "Id": "46243c78-1579-46b4-bb47-78d64cb6962c",
+    "Id": "71998de7-5b4e-4564-a826-c8376f2cca76",
     "Name": "Pistol",
     "Category": "Martial",
     "Type": "Ranged",

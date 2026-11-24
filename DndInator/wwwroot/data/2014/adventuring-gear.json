@@ -1,0 +1,51 @@
+[
+  {
+    "Id": "f31b5254-bb7d-4423-a41a-8a4e2704bebf",
+    "Name": "Burglar\u0027s Pack",
+    "Weight": "Backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2 flasks of oil, 5 days rations, a tinderbox and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+    "Cost": "16 gp",
+    "Function": null
+  },
+  {
+    "Id": "557e06c1-5852-48fc-9e48-8b8a8b2c1f68",
+    "Name": "Diplomat\u0027s Pack",
+    "Weight": "Chest, 2 cases for maps and scrolls, a set of fine clothes, a bottle of ink, an ink pen, a lamp, 2 flasks of oil, 5 sheets of paper, a vial of perfume, sealing wax, and soap.",
+    "Cost": "39 gp",
+    "Function": null
+  },
+  {
+    "Id": "914771c1-07b2-4d5d-8407-aedb6400469d",
+    "Name": "Dungeoneer\u0027s Pack",
+    "Weight": "Backpack, a crowbar, a hammer, 10 pitons, 10 torches, a tinderbox, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+    "Cost": "12 gp",
+    "Function": null
+  },
+  {
+    "Id": "b2532a4a-e1bd-4c9e-a5eb-22e3279d54d1",
+    "Name": "Entertainer\u0027s Pack",
+    "Weight": "Backpack, a bedroll, 2 costumes, 5 candles, 5 days of rations, a waterskin, and a disguise kit.",
+    "Cost": "40 gp",
+    "Function": null
+  },
+  {
+    "Id": "08244202-7d8b-4cdc-9971-48d80391e74f",
+    "Name": "Explorer\u0027s Pack",
+    "Weight": "Backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+    "Cost": "10 gp",
+    "Function": null
+  },
+  {
+    "Id": "f05ff556-6f4d-4809-9d11-6e2e6aa7aca0",
+    "Name": "Priest\u0027s Pack",
+    "Weight": "Backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+    "Cost": "19 gp",
+    "Function": null
+  },
+  {
+    "Id": "4899a070-9710-4249-b98b-c9ca166331d3",
+    "Name": "Scholar\u0027s Pack",
+    "Weight": "Backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife.",
+    "Cost": "40 gp",
+    "Function": null
+  }
+]

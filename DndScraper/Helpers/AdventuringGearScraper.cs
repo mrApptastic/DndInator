@@ -51,14 +51,13 @@ public class AdventuringGearScraper
                     foreach (var row in rows.Skip(1))
                     {
                         var cells = row.SelectNodes("td");
-                        if (cells == null || cells.Count < 4) continue;
+                        if (cells == null || cells.Count < 3) continue;
 
                         var gear = new AdventuringGear
                         {
                             Name = cells[0].InnerText.Trim(),
-                            Weight = cells[1].InnerText.Trim(),
-                            Cost = cells[2].InnerText.Trim(),
-                            Function = cells[3].InnerText.Trim()
+                            Cost = cells[1].InnerText.Trim(),
+                            Weight = cells[2].InnerText.Trim()
                         };
 
                         if (gear.Weight == "—" || gear.Weight == "-") gear.Weight = null;

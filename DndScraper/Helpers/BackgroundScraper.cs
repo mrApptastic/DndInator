@@ -12,8 +12,7 @@ public class BackgroundScraper
     {
         var candidateUrls = new[]
         {
-            "https://dnd5e.wikidot.com/background",
-            "https://dnd5e.wikidot.com/backgrounds"
+            "https://dnd5e.wikidot.com/"
         };
 
         var backgrounds = new List<Background>();

@@ -1,6 +1,6 @@
 [
   {
-    "Id": "67b035d9-33f4-42b5-80b7-c5c5050a0da9",
+    "Id": "1f50669a-896d-400c-8ed5-63e0240704c4",
     "Name": "Padded Armor",
     "Category": "Light Armor",
     "ArmorClass": "11 \u002B Dex modifier",
@@ -12,7 +12,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "afbeaf6a-bf5b-412c-bea6-d0559c435115",
+    "Id": "b41f87b5-94f2-47bb-bae3-f4ab58d9def7",
     "Name": "Leather Armor",
     "Category": "Light Armor",
     "ArmorClass": "11 \u002B Dex modifier",
@@ -24,7 +24,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "0425c605-ab44-4d08-811a-36819ab4ac9b",
+    "Id": "e9c2f3b0-6963-4aba-96da-6b5bb4812899",
     "Name": "Studded Leather Armor",
     "Category": "Light Armor",
     "ArmorClass": "12 \u002B Dex modifier",
@@ -36,7 +36,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "a62be720-3662-4f2a-ad83-00d900b43d85",
+    "Id": "4e154a6c-7f99-42f9-a821-c243b9349a07",
     "Name": "Hide Armor",
     "Category": "Medium Armor",
     "ArmorClass": "12 \u002B Dex modifier (max 2)",
@@ -48,7 +48,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "d243f073-3b91-4caa-b008-573357f23c47",
+    "Id": "ed797b1f-cbd8-4f6a-9c24-7cd47cff1f19",
     "Name": "Chain Shirt",
     "Category": "Medium Armor",
     "ArmorClass": "13 \u002B Dex modifier (max 2)",
@@ -60,7 +60,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "721a4169-ba1f-4321-9d5d-02904ad26704",
+    "Id": "9dde4320-93cd-4b15-a2c0-10ba9a1896e9",
     "Name": "Scale Mail",
     "Category": "Medium Armor",
     "ArmorClass": "14 \u002B Dex modifier (max 2)",
@@ -72,7 +72,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "b58ae10d-c1a9-43a7-b769-0c8ba87d9474",
+    "Id": "1d7692d8-cd6e-4e36-b115-2b226607b6ce",
     "Name": "Breastplate",
     "Category": "Medium Armor",
     "ArmorClass": "14 \u002B Dex modifier (max 2)",
@@ -84,7 +84,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "0739ca43-d09f-4016-b135-0c2a2a1d0e80",
+    "Id": "cee71d2b-5dd6-4d5e-9d4d-ed89858bfd6d",
     "Name": "Half Plate Armor",
     "Category": "Medium Armor",
     "ArmorClass": "15 \u002B Dex modifier (max 2)",
@@ -96,7 +96,7 @@
     "DoffTime": "1 Minute"
   },
   {
-    "Id": "f868b4d2-39d0-420a-b9ed-9c54142bb51b",
+    "Id": "e71cb1b2-d417-4c08-8140-152a07ac5a46",
     "Name": "Ring Mail",
     "Category": "Heavy Armor",
     "ArmorClass": "14",
@@ -108,7 +108,7 @@
     "DoffTime": "5 Minutes"
   },
   {
-    "Id": "eb272730-a76c-45da-bb4f-21f7964e58f6",
+    "Id": "cfcd0db0-52c6-44a6-b809-60d0e6e64831",
     "Name": "Chain Mail",
     "Category": "Heavy Armor",
     "ArmorClass": "16",
@@ -120,7 +120,7 @@
     "DoffTime": "5 Minutes"
   },
   {
-    "Id": "b2eac7fc-f419-4797-8db3-8b251567a023",
+    "Id": "45f096d3-b22d-471b-9997-b6111cb0df01",
     "Name": "Splint Armor",
     "Category": "Heavy Armor",
     "ArmorClass": "17",
@@ -132,7 +132,7 @@
     "DoffTime": "5 Minutes"
   },
   {
-    "Id": "d8fb75a9-efbd-4229-9473-0bac4c9bd3df",
+    "Id": "ca1a7c9a-4957-48be-a9be-b24251eb636d",
     "Name": "Plate Armor",
     "Category": "Heavy Armor",
     "ArmorClass": "18",
@@ -144,7 +144,7 @@
     "DoffTime": "5 Minutes"
   },
   {
-    "Id": "33091a93-4b8b-403f-8b68-f497bac78ac6",
+    "Id": "7689afd2-adfe-48a5-be75-5c2b106eae4f",
     "Name": "Shield",
     "Category": "Shield",
     "ArmorClass": "\u002B2",

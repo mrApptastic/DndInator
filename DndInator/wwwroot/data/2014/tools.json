@@ -1,0 +1,298 @@
+[
+  {
+    "Id": "03d85b33-da4d-44b2-9501-c5a94ec10a57",
+    "Name": "Alchemist\u0027s supplies",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "50 gp"
+  },
+  {
+    "Id": "46e79628-14a1-4540-b741-aec5ff36358f",
+    "Name": "Brewer\u0027s supplies",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "9\u0026#160;lb.",
+    "Cost": "20 gp"
+  },
+  {
+    "Id": "777cff99-4d5a-486f-9e08-3e7c35498ec5",
+    "Name": "Calligrapher\u0027s supplies",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "10 gp"
+  },
+  {
+    "Id": "6e41141e-d137-40e1-9e45-e0176db87811",
+    "Name": "Carpenter\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "8 gp"
+  },
+  {
+    "Id": "722c0cfb-af9d-4fff-8f66-636f866d0333",
+    "Name": "Cartographer\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "15 gp"
+  },
+  {
+    "Id": "a1910e92-9cc9-4619-adfd-8790c33951ea",
+    "Name": "Cobbler\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "5 gp"
+  },
+  {
+    "Id": "6f1d848d-f6aa-4562-a111-be97c789de31",
+    "Name": "Cook\u0027s utensils",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "1 gp"
+  },
+  {
+    "Id": "7100b893-c0ae-4916-b6ef-c17b1849d64c",
+    "Name": "Glassblower\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "30 gp"
+  },
+  {
+    "Id": "44804df2-ff32-44a1-9f02-0339aeeadf94",
+    "Name": "Jeweler\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "25 gp"
+  },
+  {
+    "Id": "47805cf7-6f65-48f5-afd3-9e883c713457",
+    "Name": "Leatherworker\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "5 gp"
+  },
+  {
+    "Id": "54e90cac-7ba1-4863-99e4-6295542eea02",
+    "Name": "Mason\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "10 gp"
+  },
+  {
+    "Id": "6dfa9768-1a31-404c-b15d-59b0b77070ce",
+    "Name": "Painter\u0027s supplies",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "10 gp"
+  },
+  {
+    "Id": "d4e6975e-a91f-4ae7-bc2f-3b9a557db478",
+    "Name": "Potter\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "10 gp"
+  },
+  {
+    "Id": "2a389fe7-889d-4192-a813-8c8be7a5a959",
+    "Name": "Smith\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "8\u0026#160;lb.",
+    "Cost": "20 gp"
+  },
+  {
+    "Id": "c3b7bedd-1764-4e86-9490-83bdee8fe81c",
+    "Name": "Tinker\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "50 gp"
+  },
+  {
+    "Id": "a7e1ba4e-c326-467a-87a4-a4ee87826104",
+    "Name": "Weaver\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 gp"
+  },
+  {
+    "Id": "d95c260c-d817-499f-a8be-9b2610e08b6c",
+    "Name": "Woodcarver\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "1 gp"
+  },
+  {
+    "Id": "87533de4-0072-4c66-a955-620cb87b1e47",
+    "Name": "Dice set",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": null,
+    "Cost": "1 sp"
+  },
+  {
+    "Id": "e9fcdd29-602f-4008-a11a-750d1ac32e48",
+    "Name": "Dragonchess set",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "1/2\u0026#160;lb",
+    "Cost": "1 gp"
+  },
+  {
+    "Id": "aa63abf5-7010-4e0b-8ec1-4336ce21bec2",
+    "Name": "Playing card set",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": null,
+    "Cost": "5 sp"
+  },
+  {
+    "Id": "405f151a-e2c5-4c40-9103-27fdd363d60c",
+    "Name": "Three-Dragon Ante set",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": null,
+    "Cost": "1 gp"
+  },
+  {
+    "Id": "b7d7b7ac-f3ee-4056-b1c5-85f429eb52de",
+    "Name": "Bagpipes",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "6\u0026#160;lb.",
+    "Cost": "30 gp"
+  },
+  {
+    "Id": "435b9e6f-a240-4bbb-ad8e-b82c46106f86",
+    "Name": "Drum",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "6 gp"
+  },
+  {
+    "Id": "287bcffc-25ea-4526-8906-10c6209bcea0",
+    "Name": "Dulcimer",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "10\u0026#160;lb.",
+    "Cost": "25 gp"
+  },
+  {
+    "Id": "9da3e848-2007-42aa-a8a5-436aa58e1a8d",
+    "Name": "Flute",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "2 gp"
+  },
+  {
+    "Id": "0cf89481-e825-4db5-ba68-3495ee5e713a",
+    "Name": "Lute",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "35 gp"
+  },
+  {
+    "Id": "fa9bd5b1-7001-4e17-b81b-fa8faf292558",
+    "Name": "Lyre",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "30 gp"
+  },
+  {
+    "Id": "d2424633-405b-4a38-ab1e-274c24e08daf",
+    "Name": "Horn",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "3 gp"
+  },
+  {
+    "Id": "a08a71f8-355a-47dd-b929-5654db3f1eb6",
+    "Name": "Pan flute",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "12 gp"
+  },
+  {
+    "Id": "70db4387-bf3a-4904-98f8-c9f0fa22a923",
+    "Name": "Shawm",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "2 gp"
+  },
+  {
+    "Id": "e2e4bb92-7192-4bc1-bcf8-a5ccd317f832",
+    "Name": "Viol",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "30 gp"
+  },
+  {
+    "Id": "f53bd0dc-caf3-4a44-b3c3-8aba55d8f610",
+    "Name": "Disguise kit",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "25 gp"
+  },
+  {
+    "Id": "aad02b04-3a03-4bbb-86c9-06f9fe00b9d3",
+    "Name": "Forgery kit",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "5\u0026#160;lb.",
+    "Cost": "15 gp"
+  },
+  {
+    "Id": "3ae53dd4-bb65-47be-b9ff-c3e4d8249e5d",
+    "Name": "Herbalism kit",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "3\u0026#160;lb.",
+    "Cost": "5 gp"
+  },
+  {
+    "Id": "814f538c-e5e6-406e-90d4-700a16bf4869",
+    "Name": "Navigator\u0027s tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "25 gp"
+  },
+  {
+    "Id": "5ad773e6-222f-4b72-8be1-629861c89f28",
+    "Name": "Poisoner\u0027s kit",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "2\u0026#160;lb.",
+    "Cost": "50 gp"
+  },
+  {
+    "Id": "960f0abe-e7ed-4bf4-b865-7c641c964472",
+    "Name": "Thieves\u0027 tools",
+    "Category": "Unknown",
+    "Ability": null,
+    "Weight": "1\u0026#160;lb.",
+    "Cost": "25 gp"
+  }
+]
